@@ -2,7 +2,7 @@ import { View, Text, ImageBackground, TouchableOpacity, Image } from 'react-nati
 import React from 'react'
 import { images } from '../../utils/image'
 import { styles } from './Styles'
-import { Font } from '../../common/Fonts'
+import { Font } from '../../utils/Fonts'
 import { commonStyle } from '../../utils/commonStyles'
 import { useNavigation } from '@react-navigation/native'
 

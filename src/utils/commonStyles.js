@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
-import { s } from "react-native-size-matters";
+import { ms, s, vs } from "react-native-size-matters";
+import { Font } from "./Fonts";
+import { colors } from "./colors";
 
 export const commonStyle = StyleSheet.create({
     rowCenter: {
@@ -21,5 +23,12 @@ export const commonStyle = StyleSheet.create({
     backGroundImg: {
         height: '100%',
         width: '100%',
-    }
+    },
+    input: {
+        width: ms(300),
+        color: colors.black,
+        fontFamily: Font.sofiaProMedium,
+        padding: 10,
+        marginVertical: vs(5)
+      },
 })

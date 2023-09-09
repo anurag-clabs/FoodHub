@@ -7,37 +7,29 @@ export const styles = StyleSheet.create({
     constainer: {
         flex: 1,
     },
-    headerTxt: {
-        fontFamily: Font.sofiaProMedium,
-        fontSize: 36,
-        color: colors.black,
-        marginVertical: vs(40)
-    },
-    textInputTxt: {
-        fontFamily: Font.sofiaProMedium,
-    },
-    textInputStyle: {
-        marginVertical: vs(10),
-        borderColor: colors.orange,
-        borderWidth: 1,
+    BackImgView: {
+        marginTop: vs(30),
+        marginHorizontal: s(20),
+        backgroundColor: colors.white,
+        height: ms(40),
+        width: ms(40),
+        alignItems: 'center',
+        justifyContent: 'center',
         borderRadius: 10,
-        fontFamily: Font.sofiaProMedium,
-        padding: 10,
-        height: vs(50)
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        shadowColor: '#171717',
+        shadowOffset: { width: -2, height: 4 },
+        elevation: 5,
     },
-    hidePassword: {
-        height: ms(18),
-        width: ms(18),
-        tintColor: colors.lightGrey,
+    BackImg: {
         resizeMode: 'contain'
     },
-    passwordView: {
-        flexDirection: 'row',
-        alignItems: 'center',
-        borderWidth: 1,
-        borderRadius: 10,
-        borderColor: colors.orange,
-        marginVertical: vs(10),
+    headerTxt: {
+        fontFamily: Font.SofiaProBold,
+        fontSize: 36,
+        color: colors.black,
+        marginVertical: vs(30)
     },
     input: {
         width: ms(300),
@@ -89,7 +81,7 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         shadowColor: '#171717',
-        shadowOffset: {width: -2, height: 4},
+        shadowOffset: { width: -2, height: 4 },
         elevation: 5
     },
     iconImg: {
@@ -100,4 +92,27 @@ export const styles = StyleSheet.create({
         color: colors.black,
         fontSize: 15,
     },
-})
+    forgitTxt: {
+        color: colors.orange,
+        fontFamily: Font.sofiaProMedium,
+        textAlign: 'center',
+        fontSize: 16,
+        marginTop: vs(15)
+    },
+    codeInputFieldStyle: {
+        width: 50,
+        height: 50,
+        borderWidth: 1,
+        borderColor: colors.lightGrey,
+        borderRadius: 10,
+        color: colors.orange,
+        fontFamily: Font.sofiaProMedium,
+        fontSize: 18,
+    },
+    codelineStyleHighLighted: {
+        borderColor: colors.orange,
+    },
+    otpView: {
+        alignItems: "center",
+    },
+});

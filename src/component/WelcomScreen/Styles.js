@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
-import { Font } from "../../common/Fonts";
+import { Font } from "../../utils/Fonts";
 import { s, vs, ms } from "react-native-size-matters";
 import { transform } from "@babel/core";
 

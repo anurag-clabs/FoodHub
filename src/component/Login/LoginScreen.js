@@ -1,14 +1,15 @@
-import { View, Text, ImageBackground, TextInput, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image } from 'react-native'
 import React, { useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
+import { useNavigation } from '@react-navigation/native';
 import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
-import { useNavigation } from '@react-navigation/native';
 
-const SignUpScreen = () => {
+const LoginScreen = () => {
+
   const navigation = useNavigation();
   const [passwordHide, setPasswordHide] = useState(true);
   const [password, setPassword] = useState("");
@@ -20,13 +21,12 @@ const SignUpScreen = () => {
   return (
     <View style={styles.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
-        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
-          <Text style={styles.headerTxt}>Sign Up</Text>
-          <Text style={styles.textInputTxt}>Full name</Text>
-          <TextInput
-            style={styles.textInputStyle}
-            placeholder='Your Full name'
-          />
+        
+        <TouchableOpacity style={styles.BackImgView} onPress={() => navigation.goBack()}>
+        <Image source={images.BackImg} style={styles.BackImg}/>
+        </TouchableOpacity>
+      <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
+          <Text style={styles.headerTxt}>Login</Text>
           <Text style={styles.textInputTxt}>E-mail</Text>
           <TextInput
             style={styles.textInputStyle}
@@ -44,16 +44,19 @@ const SignUpScreen = () => {
               <Image source={passwordHide ? images.showPass : images.hidePass} style={styles.hidePassword} />
             </TouchableOpacity>
           </View>
+          <TouchableOpacity onPress={() => navigation.navigate('RessetPassword')}>
+          <Text style={styles.forgitTxt}>Forgot password?</Text>
+          </TouchableOpacity>
           <Button
             color={colors.orange}
-            buttonName="SIGN UP"
-            emptyFildFunction={() => navigation.navigate('PhoneRegistration')}
+            buttonName="LOGIN"
+            emptyFildFunction={() => navigation.navigate('Verification')}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
-              <Text style={styles.bottomSignUpTxt}>Already have an account? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
-                <Text style={styles.bottomSignUpTxt2}>Login</Text>
+              <Text style={styles.bottomSignUpTxt}>Don’t have an account? </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Verification')}>
+                <Text style={styles.bottomSignUpTxt2}>Sign up</Text>
               </TouchableOpacity>
             </View>
           </View>
@@ -80,4 +83,4 @@ const SignUpScreen = () => {
   )
 }
 
-export default SignUpScreen;
+export default LoginScreen;
