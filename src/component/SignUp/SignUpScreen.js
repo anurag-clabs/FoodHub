@@ -58,23 +58,23 @@ const SignUpScreen = () => {
             </View>
           </View>
         </View>
-        <View style={styles.bottomView}>
-            <View style={[styles.lineView, commonStyle.rowSpace]}>
-              <View style={styles.devider} />
-              <Text style={styles.deviderTxt}> Sign up with </Text>
-              <View style={styles.devider} />
-            </View>
-            <View style={[styles.iconView, commonStyle.m_20]}>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
-                <Image source={images.facebook} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>FACEBOOK</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
-                <Image source={images.google} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>GOOGLE</Text>
-              </TouchableOpacity>
-            </View>
+        <View>
+          <View style={[styles.lineView, commonStyle.rowSpace]}>
+            <View style={styles.devider} />
+            <Text style={styles.deviderTxt}> Sign up with </Text>
+            <View style={styles.devider} />
           </View>
+          <View style={[styles.iconView, commonStyle.m_20]}>
+            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <Image source={images.facebook} style={styles.iconImg} />
+              <Text style={styles.iconTxt}>FACEBOOK</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <Image source={images.google} style={styles.iconImg} />
+              <Text style={styles.iconTxt}>GOOGLE</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ImageBackground>
     </View>
   )

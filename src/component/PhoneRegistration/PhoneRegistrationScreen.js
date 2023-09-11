@@ -24,20 +24,19 @@ const PhoneRegistrationScreen = () => {
                     <Text style={styles.headerTxt}>Registration</Text>
                     <Text style={styles.textInputTxt}>Enter your phone number to verify your account</Text>
                     <PhoneInput
-                        defaultCountry="INDIA"
                         value={value}
-                        defaultCode="DM"
+                        defaultCode="IN"
                         layout="first"
                         onChange={(text) => {
                             setValue(text);
                         }}
-                        withDarkTheme
-                        withShadow
                         autoFocus
+                        containerStyle={styles.containerStyle}
                     />
                     <Button
                         color={colors.orange}
                         buttonName="Send"
+                        emptyFildFunction={() => navigation.goBack()}
                     />
                 </View>
             </ImageBackground>

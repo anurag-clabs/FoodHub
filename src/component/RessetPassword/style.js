@@ -23,7 +23,9 @@ export const styles = StyleSheet.create({
         elevation: 5,
     },
     BackImg: {
-        resizeMode: 'contain'
+        height: ms(15),
+        width: ms(15),
+        resizeMode: 'contain',
     },
     headerTxt: {
         fontFamily: Font.SofiaProBold,
@@ -35,7 +37,7 @@ export const styles = StyleSheet.create({
         fontFamily: Font.sofiaProMedium,
     },
     textInputStyle: {
-        marginVertical: vs(10),
+        marginTop: vs(30),
         borderColor: colors.orange,
         borderWidth: 1,
         borderRadius: 10,

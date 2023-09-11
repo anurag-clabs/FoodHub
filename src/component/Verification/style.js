@@ -23,7 +23,9 @@ export const styles = StyleSheet.create({
         elevation: 5,
     },
     BackImg: {
-        resizeMode: 'contain'
+        height: ms(15),
+        width: ms(15),
+        resizeMode: 'contain',
     },
     headerTxt: {
         fontFamily: Font.SofiaProBold,
@@ -31,12 +33,11 @@ export const styles = StyleSheet.create({
         color: colors.black,
         marginVertical: vs(30)
     },
-    input: {
-        width: ms(300),
-        color: colors.lightGrey,
-    },
     bottomSignUpTxtView: {
         flexDirection: 'row'
+    },
+    textInputTxt: {
+        fontFamily: Font.sofiaProMedium,
     },
     bottomSignUpTxt: {
         fontFamily: Font.sofiaProMedium,
@@ -47,7 +48,6 @@ export const styles = StyleSheet.create({
         fontFamily: Font.sofiaProMedium,
         fontSize: 15,
         color: colors.orange,
-        textDecorationLine: 'underline'
     },
     lineView: {
         marginHorizontal: s(30),
@@ -55,49 +55,6 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'center',
         alignItems: 'center',
-    },
-    devider: {
-        width: '30%',
-        height: 0.6,
-        backgroundColor: colors.grey,
-    },
-    deviderTxt: {
-        fontFamily: Font.sofiaProMedium,
-        fontSize: 15,
-        color: colors.grey
-    },
-    bottomView: {
-        marginTop: vs(10),
-    },
-    iconView: {
-        marginVertical: vs(10),
-        flexDirection: 'row',
-        justifyContent: 'space-between'
-    },
-    iconBtn: {
-        backgroundColor: colors.white,
-        borderRadius: 25,
-        width: '45%',
-        shadowOpacity: 0.2,
-        shadowRadius: 3,
-        shadowColor: '#171717',
-        shadowOffset: { width: -2, height: 4 },
-        elevation: 5
-    },
-    iconImg: {
-        margin: 14,
-    },
-    iconTxt: {
-        fontFamily: Font.sofiaProMedium,
-        color: colors.black,
-        fontSize: 15,
-    },
-    forgitTxt: {
-        color: colors.orange,
-        fontFamily: Font.sofiaProMedium,
-        textAlign: 'center',
-        fontSize: 16,
-        marginTop: vs(15)
     },
     codeInputFieldStyle: {
         width: 50,

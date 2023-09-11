@@ -2,7 +2,6 @@ import { View, Text, ImageBackground, TouchableOpacity, Image } from 'react-nati
 import React from 'react'
 import { images } from '../../utils/image'
 import { styles } from './Styles'
-import { Font } from '../../utils/Fonts'
 import { commonStyle } from '../../utils/commonStyles'
 import { useNavigation } from '@react-navigation/native'
 
@@ -40,7 +39,7 @@ const WelcomScreen = () => {
               <Text style={styles.iconTxt}>GOOGLE</Text>
             </TouchableOpacity>
           </View>
-          <TouchableOpacity style={[styles.startBtn, commonStyle.m_20]}>
+          <TouchableOpacity style={[styles.startBtn, commonStyle.m_20]} onPress={() => navigation.navigate('SignUp')}>
             <Text style={styles.startBtnTxt}>
               Start with email or phone
             </Text>
@@ -48,7 +47,7 @@ const WelcomScreen = () => {
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
               <Text style={styles.bottomSignUpTxt}>Already have an account? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
+              <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.bottomSignUpTxt2}>Sign In</Text>
               </TouchableOpacity>
             </View>

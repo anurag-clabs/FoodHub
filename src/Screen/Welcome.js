@@ -1,11 +1,9 @@
-import {View} from 'react-native';
 import React from 'react';
-import WelcomeScreen from '../component/WelcomScreen/WelcomeScreen'
+import WelcomeScreen from '../component/WelcomeScreen/WelcomeScreen'
 
 const Welcome = () => {
   return (
       <WelcomeScreen />
-
   );
 };
 
