@@ -1,12 +1,18 @@
-import { View, Text } from 'react-native'
-import React, { useEffect } from 'react'
-import AppContainer from './src/navigation/AppNavigation'
+import React from 'react';
+import AppContainer from './src/navigation/AppNavigation';
+import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {DrawerAnimationProvider} from './src/context/DrawerAnimationContext/DrawerAnimationProvider';
 
 const App = () => {
-
   return (
-    <AppContainer />
-  )
-}
+    <>
+      <DrawerAnimationProvider>
+        <SafeAreaProvider>
+          <AppContainer />
+        </SafeAreaProvider>
+      </DrawerAnimationProvider>
+    </>
+  );
+};
 
 export default App;
