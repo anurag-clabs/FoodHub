@@ -19,6 +19,9 @@ target 'FoodHub' do
     :app_path => "#{Pod::Config.instance.installation_root}/.."
   )
 
+
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'FoodHubTests' do
     inherit! :complete
     # Pods for testing
