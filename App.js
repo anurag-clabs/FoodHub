@@ -9,8 +9,14 @@ const App = () => {
   }, []);
 
   return (
-    <AppContainer />
-  )
-}
+    <>
+      <DrawerAnimationProvider>
+        <SafeAreaProvider>
+          <AppContainer />
+        </SafeAreaProvider>
+      </DrawerAnimationProvider>
+    </>
+  );
+};
 
 export default App;
