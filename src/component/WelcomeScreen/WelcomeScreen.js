@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TouchableOpacity, Image } from 'react-native'
+import { View, Text, ImageBackground, TouchableOpacity, Image, SafeAreaView } from 'react-native'
 import React from 'react'
 import { images } from '../../utils/image'
 import { styles } from './Styles'
@@ -11,7 +11,7 @@ const WelcomScreen = () => {
   const navigation = useNavigation();
 
   return (
-    <View style={styles.constainer}>
+    <SafeAreaView style={styles.constainer}>
       <ImageBackground source={images.welcomeBackIMG} style={styles.backgroundImg}>
         <View style={styles.skipBtnView}>
           <TouchableOpacity style={styles.skipBtn}>
@@ -54,7 +54,7 @@ const WelcomScreen = () => {
           </View>
         </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 

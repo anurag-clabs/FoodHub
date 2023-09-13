@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image } from 'react-native'
+import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -19,7 +19,7 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.constainer}>
+    <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
 
         <TouchableOpacity style={styles.BackImgView} onPress={() => navigation.goBack()}>
@@ -79,7 +79,7 @@ const LoginScreen = () => {
           </View>
         </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 

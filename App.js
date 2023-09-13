@@ -1,11 +1,15 @@
 import React, { useEffect } from 'react'
 import AppContainer from './src/navigation/AppNavigation'
 import SplashScreen from 'react-native-splash-screen';
+import { DrawerAnimationProvider } from './src/context/DrawerAnimationContext/DrawerAnimationProvider';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 
 const App = () => {
 
   useEffect(() => {
-    SplashScreen.hide();
+    setTimeout(() => {
+      SplashScreen.hide()
+    }, 1000)
   }, []);
 
   return (

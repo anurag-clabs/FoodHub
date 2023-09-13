@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TextInput, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ImageBackground, TextInput, Image, TouchableOpacity, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -18,7 +18,7 @@ const SignUpScreen = () => {
   };
 
   return (
-    <View style={styles.constainer}>
+    <SafeAreaView style={styles.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
         <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Sign Up</Text>
@@ -76,7 +76,7 @@ const SignUpScreen = () => {
           </View>
         </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 

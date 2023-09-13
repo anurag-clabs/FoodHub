@@ -69,7 +69,14 @@ export const styles = StyleSheet.create({
     codelineStyleHighLighted: {
         borderColor: colors.orange,
     },
-    otpView: {
-        alignItems: "center",
+    otpView: {},
+    textInputContainer: {
+        marginVertical: vs(30),
+    },
+    roundedTextInput: {
+        borderRadius: 10,
+        borderWidth: 1,
+        fontFamily: Font.sofiaProMedium,
+        color: colors.orange,
     },
 });
