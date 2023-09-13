@@ -4,6 +4,9 @@ import { Font } from "./Fonts";
 import { colors } from "./colors";
 
 export const commonStyle = StyleSheet.create({
+    constainer: {
+        flex: 1,
+      },
     rowCenter: {
         flexDirection: 'row',
         alignItems: 'center'

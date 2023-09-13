@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image } from 'react-native'
+import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -19,13 +19,13 @@ const LoginScreen = () => {
   };
 
   return (
-    <View style={styles.constainer}>
+    <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
-        
+
         <TouchableOpacity style={styles.BackImgView} onPress={() => navigation.goBack()}>
-        <Image source={images.BackImg} style={styles.BackImg}/>
+          <Image source={images.BackImg} style={styles.BackImg} />
         </TouchableOpacity>
-      <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
+        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Login</Text>
           <Text style={styles.textInputTxt}>E-mail</Text>
           <TextInput
@@ -45,7 +45,7 @@ const LoginScreen = () => {
             </TouchableOpacity>
           </View>
           <TouchableOpacity onPress={() => navigation.navigate('RessetPassword')}>
-          <Text style={styles.forgitTxt}>Forgot password?</Text>
+            <Text style={styles.forgitTxt}>Forgot password?</Text>
           </TouchableOpacity>
           <Button
             color={colors.orange}
@@ -55,31 +55,31 @@ const LoginScreen = () => {
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
               <Text style={styles.bottomSignUpTxt}>Don’t have an account? </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Verification')}>
+              <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                 <Text style={styles.bottomSignUpTxt2}>Sign up</Text>
               </TouchableOpacity>
             </View>
           </View>
         </View>
         <View style={styles.bottomView}>
-            <View style={[styles.lineView, commonStyle.rowSpace]}>
-              <View style={styles.devider} />
-              <Text style={styles.deviderTxt}> Sign up with </Text>
-              <View style={styles.devider} />
-            </View>
-            <View style={[styles.iconView, commonStyle.m_20]}>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
-                <Image source={images.facebook} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>FACEBOOK</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
-                <Image source={images.google} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>GOOGLE</Text>
-              </TouchableOpacity>
-            </View>
+          <View style={[styles.lineView, commonStyle.rowSpace]}>
+            <View style={styles.devider} />
+            <Text style={styles.deviderTxt}> Sign up with </Text>
+            <View style={styles.devider} />
           </View>
+          <View style={[styles.iconView, commonStyle.m_20]}>
+            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <Image source={images.facebook} style={styles.iconImg} />
+              <Text style={styles.iconTxt}>FACEBOOK</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <Image source={images.google} style={styles.iconImg} />
+              <Text style={styles.iconTxt}>GOOGLE</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 

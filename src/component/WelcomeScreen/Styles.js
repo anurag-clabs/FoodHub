@@ -2,8 +2,6 @@ import { StyleSheet } from "react-native";
 import { colors } from "../../utils/colors";
 import { Font } from "../../utils/Fonts";
 import { s, vs, ms } from "react-native-size-matters";
-import { transform } from "@babel/core";
-
 
 export const styles = StyleSheet.create({
     constainer: {
@@ -76,7 +74,10 @@ export const styles = StyleSheet.create({
         width: '45%',
     },
     iconImg: {
+        height: ms(25),
+        width: ms(25),
         margin: 14,
+        resizeMode: 'contain',
     },
     iconTxt: {
         fontFamily: Font.sofiaProMedium,

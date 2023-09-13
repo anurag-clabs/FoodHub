@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TouchableOpacity, Image, TextInput } from 'react-native'
+import { View, Text, ImageBackground, TouchableOpacity, Image, TextInput, SafeAreaView } from 'react-native'
 import React from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -12,7 +12,7 @@ const RessetPasswordScreen = () => {
   const navigation = useNavigation()
 
   return (
-    <View style={styles.container}>
+    <SafeAreaView style={styles.container}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
         <TouchableOpacity style={styles.BackImgView} onPress={() => navigation.goBack()}>
           <Image source={images.BackImg} style={styles.BackImg} />
@@ -30,7 +30,7 @@ const RessetPasswordScreen = () => {
           buttonName="Send new password"
         />
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 

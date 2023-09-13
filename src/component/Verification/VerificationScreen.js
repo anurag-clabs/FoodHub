@@ -1,5 +1,5 @@
 import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image } from 'react-native'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
@@ -7,17 +7,11 @@ import { TextInputText } from '../../common/TextInputComponent/TextInputComponen
 import { useNavigation } from '@react-navigation/native';
 import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
-import OTPInputView from '@twotalltotems/react-native-otp-input';
+import OTPTextView from 'react-native-otp-textinput';
 
 const VerificationScreen = () => {
 
   const navigation = useNavigation();
-  const [passwordHide, setPasswordHide] = useState(true);
-  const [password, setPassword] = useState("");
-
-  const hideandShowPassword = () => {
-    setPasswordHide(!passwordHide)
-  };
 
   return (
     <View style={styles.constainer}>
@@ -30,16 +24,15 @@ const VerificationScreen = () => {
           <Text style={styles.headerTxt}>Verification Code</Text>
           <Text style={styles.textInputTxt}>Please type the verification code sent to prelookstudio@gmail.com</Text>
           <View style={styles.otpView}>
-          <OTPInputView
-            style={{ width: '80%', height: 200, }}
-            pinCount={4}
-            autoFocusOnLoad
-            codeInputFieldStyle={styles.codeInputFieldStyle}
-            codeInputHighlightStyle={styles.codelineStyleHighLighted}
-            onCodeFilled={(code => {
-              console.log(`Code is ${code}, you are good to go!`)
-            })}
-          />
+            <OTPTextView
+              inputCount={4}
+              autoFocus
+              keyboardType="numeric"
+              containerStyle={styles.textInputContainer}
+              handleTextChange={() => { }}
+              textInputStyle={styles.roundedTextInput}
+              tintColor={colors.orange}
+            />
           </View>
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>

@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
         borderRadius: 10,
         fontFamily: Font.sofiaProMedium,
         padding: 10,
-        height: vs(50)
+        height: vs(55)
     },
     hidePassword: {
         height: ms(18),
@@ -55,7 +55,6 @@ export const styles = StyleSheet.create({
         fontFamily: Font.sofiaProMedium,
         fontSize: 15,
         color: colors.orange,
-        textDecorationLine: 'underline'
     },
     lineView: {
         marginHorizontal: s(30),
@@ -74,9 +73,6 @@ export const styles = StyleSheet.create({
         fontSize: 15,
         color: colors.grey
     },
-    bottomView: {
-        marginTop: vs(10),
-    },
     iconView: {
         marginVertical: vs(10),
         flexDirection: 'row',
@@ -93,7 +89,10 @@ export const styles = StyleSheet.create({
         elevation: 5
     },
     iconImg: {
+        height: ms(25),
+        width: ms(25),
         margin: 14,
+        resizeMode: 'contain',
     },
     iconTxt: {
         fontFamily: Font.sofiaProMedium,

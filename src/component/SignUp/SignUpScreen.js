@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TextInput, Image, TouchableOpacity } from 'react-native'
+import { View, Text, ImageBackground, TextInput, Image, TouchableOpacity, SafeAreaView } from 'react-native'
 import React, { useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -18,7 +18,7 @@ const SignUpScreen = () => {
   };
 
   return (
-    <View style={styles.constainer}>
+    <SafeAreaView style={styles.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
         <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Sign Up</Text>
@@ -58,25 +58,25 @@ const SignUpScreen = () => {
             </View>
           </View>
         </View>
-        <View style={styles.bottomView}>
-            <View style={[styles.lineView, commonStyle.rowSpace]}>
-              <View style={styles.devider} />
-              <Text style={styles.deviderTxt}> Sign up with </Text>
-              <View style={styles.devider} />
-            </View>
-            <View style={[styles.iconView, commonStyle.m_20]}>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
-                <Image source={images.facebook} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>FACEBOOK</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
-                <Image source={images.google} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>GOOGLE</Text>
-              </TouchableOpacity>
-            </View>
+        <View>
+          <View style={[styles.lineView, commonStyle.rowSpace]}>
+            <View style={styles.devider} />
+            <Text style={styles.deviderTxt}> Sign up with </Text>
+            <View style={styles.devider} />
           </View>
+          <View style={[styles.iconView, commonStyle.m_20]}>
+            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <Image source={images.facebook} style={styles.iconImg} />
+              <Text style={styles.iconTxt}>FACEBOOK</Text>
+            </TouchableOpacity>
+            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <Image source={images.google} style={styles.iconImg} />
+              <Text style={styles.iconTxt}>GOOGLE</Text>
+            </TouchableOpacity>
+          </View>
+        </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 
