@@ -27,7 +27,7 @@ export const TabButton = ({currentTab, setCurrentTab, text, icon}) => {
             fontSize: 15,
             fontWeight: 'bold',
             paddingLeft: 15,
-            color: currentTab == text ? '#5359D1' : 'white',
+            color: currentTab == text ? '#FE724C' : '#fff',
           }}>
           {text}
         </Text>

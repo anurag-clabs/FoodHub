@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, {useContext, useRef, useState} from 'react';
 import {
   Dimensions,
   Image,
@@ -8,28 +8,28 @@ import {
   TouchableOpacity,
   View,
 } from 'react-native';
-import { images } from '../utils/image';
-import { colors } from '../utils/colors';
+import {images} from '../utils/image';
+import {colors} from '../utils/colors';
 import LinearGradient from 'react-native-linear-gradient';
-import { createDrawerNavigator } from '@react-navigation/drawer';
+import {createDrawerNavigator} from '@react-navigation/drawer';
 import CustomDrawerContent from './CustomDrawerContent';
 import AppTabNavigator from './AppTabNavigator';
-import { TouchableOpacity as Touch } from 'react-native-gesture-handler';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
+import {TouchableOpacity as Touch} from 'react-native-gesture-handler';
+import {useSafeAreaInsets} from 'react-native-safe-area-context';
 import CustomDrawerItem from './CustomDrawerItem';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import { DrawerAnimationContext } from '../context/DrawerAnimationContext/Index';
-import Animated, { Value } from 'react-native-reanimated';
-import { useNavigation } from '@react-navigation/native';
-import { commonStyle } from '../utils/commonStyles';
+import {DrawerAnimationContext} from '../context/DrawerAnimationContext/Index';
+import Animated, {Value} from 'react-native-reanimated';
+import {useNavigation} from '@react-navigation/native';
+import {commonStyle} from '../utils/commonStyles';
 import Profile from '../Screen/Profile';
 
 const Drawer = createDrawerNavigator();
-const { width: WIDTH } = Dimensions.get('window');
+const {width: WIDTH} = Dimensions.get('window');
 
 const DrawerNav = () => {
   const navigation = useNavigation();
-  const { progress } = useContext(DrawerAnimationContext);
+  const {progress} = useContext(DrawerAnimationContext);
   const insets = useSafeAreaInsets();
 
   // const translateX = Animated.interpolate(animatedValue, {
@@ -61,9 +61,7 @@ const DrawerNav = () => {
             <TouchableOpacity>
               <Image source={images.Payment} style={styles.user} />
               <View>
-                <Text style={styles.profileText}>
-                  User Name
-                </Text>
+                <Text style={styles.profileText}>User Name</Text>
                 <Text style={styles.books}> Books</Text>
               </View>
             </TouchableOpacity>
@@ -71,9 +69,7 @@ const DrawerNav = () => {
             <TouchableOpacity style={commonStyle.rowCenter}>
               <Image source={images.MyProfile} style={styles.user} />
               <View>
-                <Text style={styles.profileText}>
-                  Profile Name
-                </Text>
+                <Text style={styles.profileText}>Profile Name</Text>
                 <Text style={styles.books}> Books</Text>
               </View>
             </TouchableOpacity>
@@ -82,11 +78,11 @@ const DrawerNav = () => {
       </View>
       <LinearGradient
         colors={[colors.blue, colors.orange]}
-        start={{ x: 0, y: 0 }}
-        end={{ x: 1, y: 1 }}
-        style={{ flex: 1 }}>
+        start={{x: 0, y: 0}}
+        end={{x: 1, y: 1}}
+        style={{flex: 1}}>
         <Drawer.Navigator
-          screenOptions={{ headerShown: false }}
+          screenOptions={{headerShown: false}}
           initialRouteName="Screens"
           drawerType={'slide'}
           overlayColor="transparent"
@@ -104,16 +100,15 @@ const DrawerNav = () => {
             activeTintColor: 'white',
             inactiveTintColor: 'grey',
           }}
-          drawerContent={(props) => {
+          drawerContent={props => {
             return <CustomDrawerContent {...props} />;
           }}>
-          <Drawer.Screen name="Screens" >
-            {(props) => {
+          <Drawer.Screen name="Screens">
+            {props => {
               return <AppTabNavigator {...props} progress={progress} />;
             }}
           </Drawer.Screen>
           <Drawer.Screen name="Profile" component={Profile} />
-
         </Drawer.Navigator>
       </LinearGradient>
       <View
@@ -132,44 +127,44 @@ const DrawerNav = () => {
             commonStyle.rowCenter,
           ]}>
           {Platform.OS === 'ios' ? (
-            <TouchableOpacity >
+            <TouchableOpacity>
               <CustomDrawerItem
                 title={'Settings'}
                 icon={
                   <Ionicons name="settings-sharp" color="white" size={26} />
                 }
-                titleStyle={{ color: 'white' }}
+                titleStyle={{color: 'white'}}
               />
             </TouchableOpacity>
           ) : (
-            <TouchableOpacity >
+            <TouchableOpacity>
               <CustomDrawerItem
                 title={'Settings'}
                 icon={
                   <Ionicons name="settings-sharp" color="white" size={26} />
                 }
-                titleStyle={{ color: 'white' }}
+                titleStyle={{color: 'white'}}
               />
             </TouchableOpacity>
           )}
           {Platform.OS === 'ios' ? (
-            <TouchableOpacity >
+            <TouchableOpacity>
               <CustomDrawerItem
                 title={'Log Out'}
                 icon={
                   <Ionicons name="log-out-outline" color="white" size={26} />
                 }
-                titleStyle={{ color: 'white' }}
+                titleStyle={{color: 'white'}}
               />
             </TouchableOpacity>
           ) : (
-            <TouchableOpacity >
+            <TouchableOpacity>
               <CustomDrawerItem
                 title={'Log Out'}
                 icon={
                   <Ionicons name="log-out-outline" color="white" size={26} />
                 }
-                titleStyle={{ color: 'white' }}
+                titleStyle={{color: 'white'}}
               />
             </TouchableOpacity>
           )}
@@ -179,7 +174,6 @@ const DrawerNav = () => {
   );
 };
 export default DrawerNav;
-
 
 const styles = StyleSheet.create({
   container: {

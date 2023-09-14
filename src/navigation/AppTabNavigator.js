@@ -84,7 +84,7 @@ const AppTabNavigator = () => {
             keyboardHidesTabBar: true,
             activeTintColor: 'white',
             inactiveTintColor: 'grey',
-            activeBackgroundColor: colors.blue,
+            activeBackgroundColor: colors.orange,
             labelStyle: {
               fontSize: vs(12),
             },
