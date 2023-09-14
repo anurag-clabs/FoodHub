@@ -6,7 +6,7 @@ import { commonStyle } from '../../utils/commonStyles';
 import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../utils/colors';
 import OTPTextView from 'react-native-otp-textinput';
-import { Button } from '../../common/Button/Button';
+import { BackButton, Button } from '../../common/Button/Button';
 
 const VerificationScreen = () => {
 
@@ -15,10 +15,10 @@ const VerificationScreen = () => {
   return (
     <SafeAreaView style={styles.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
-
-        <TouchableOpacity style={styles.BackImgView} onPress={() => navigation.goBack()}>
-          <Image source={images.BackImg} style={styles.BackImg} />
-        </TouchableOpacity>
+      <BackButton
+        style={styles.BackImgView}
+          onPress={() => navigation.goBack()}
+        />
         <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Verification Code</Text>
           <Text style={styles.textInputTxt}>Please type the verification code sent to prelookstudio@gmail.com</Text>

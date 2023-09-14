@@ -23,6 +23,8 @@ import Animated, { Value } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import { commonStyle } from '../utils/commonStyles';
 import Profile from '../Screen/Profile';
+import Address from '../Screen/Address';
+import Rating from '../Screen/Rating';
 
 const Drawer = createDrawerNavigator();
 const { width: WIDTH } = Dimensions.get('window');
@@ -113,7 +115,8 @@ const DrawerNav = () => {
             }}
           </Drawer.Screen>
           <Drawer.Screen name="Profile" component={Profile} />
-
+          <Drawer.Screen name="Address" component={Address} />
+          <Drawer.Screen name="Rating" component={Rating} />
         </Drawer.Navigator>
       </LinearGradient>
       <View

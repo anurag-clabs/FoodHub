@@ -18,12 +18,23 @@ export const styles = StyleSheet.create({
     },
     textInputStyle: {
         marginVertical: vs(10),
-        borderColor: colors.orange,
+        borderColor: colors.lightGrey,
         borderWidth: 1,
         borderRadius: 10,
         fontFamily: Font.sofiaProMedium,
-        padding: 10,
-        height: vs(55)
+        padding: 12,
+        height: vs(55),
+        marginBottom: vs(20),
+    },
+    focusedTextInput: {
+        marginVertical: vs(10),
+        borderWidth: 1,
+        borderRadius: 10,
+        fontFamily: Font.sofiaProMedium,
+        padding: 12,
+        height: vs(55),
+        marginBottom: vs(20),
+        borderColor: colors.orange
     },
     hidePassword: {
         height: ms(18),
@@ -32,6 +43,16 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     passwordView: {
+        height: vs(55),
+        flexDirection: 'row',
+        alignItems: 'center',
+        borderWidth: 1,
+        borderRadius: 10,
+        borderColor: colors.lightGrey,
+        marginVertical: vs(10),
+    },
+    FocuspasswordView: {
+        height: vs(55),
         flexDirection: 'row',
         alignItems: 'center',
         borderWidth: 1,
@@ -85,7 +106,7 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.2,
         shadowRadius: 3,
         shadowColor: '#171717',
-        shadowOffset: {width: -2, height: 4},
+        shadowOffset: { width: -2, height: 4 },
         elevation: 5
     },
     iconImg: {

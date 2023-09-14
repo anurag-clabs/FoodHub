@@ -12,6 +12,28 @@ const SignUpScreen = () => {
   const navigation = useNavigation();
   const [passwordHide, setPasswordHide] = useState(true);
   const [password, setPassword] = useState("");
+  const [isFullNameFocused, setIsFullNameFocused] = useState(false);
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+
+  const handleFullNameFocus = () => {
+    setIsFullNameFocused(true);
+    setIsEmailFocused(false);
+    setIsPasswordFocused(false);
+  };
+
+  const handleEmailFocus = () => {
+    setIsFullNameFocused(false);
+    setIsEmailFocused(true);
+    setIsPasswordFocused(false);
+  };
+
+  const handlePasswordFocus = () => {
+    setIsFullNameFocused(false);
+    setIsEmailFocused(false);
+    setIsPasswordFocused(true);
+  };
+
 
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide)
@@ -24,16 +46,19 @@ const SignUpScreen = () => {
           <Text style={styles.headerTxt}>Sign Up</Text>
           <Text style={styles.textInputTxt}>Full name</Text>
           <TextInput
-            style={styles.textInputStyle}
+            style={isFullNameFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
             placeholder='Your Full name'
+            onFocus={handleFullNameFocus}
           />
           <Text style={styles.textInputTxt}>E-mail</Text>
           <TextInput
-            style={styles.textInputStyle}
+            style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
             placeholder='Your email or phone'
+            onFocus={handleEmailFocus}
           />
           <Text style={styles.textInputTxt}>Password</Text>
-          <View style={styles.passwordView}>
+          <View onFocus={handlePasswordFocus}
+            style={isPasswordFocused ? [styles.passwordView, styles.FocuspasswordView] : styles.passwordView}>
             <TextInputText
               secureTextEntry={passwordHide}
               placeHolder='Password'

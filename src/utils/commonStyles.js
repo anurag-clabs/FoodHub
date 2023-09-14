@@ -1,4 +1,4 @@
-import { StyleSheet } from "react-native";
+import { Dimensions, StyleSheet } from "react-native";
 import { ms, s, vs } from "react-native-size-matters";
 import { Font } from "./Fonts";
 import { colors } from "./colors";
@@ -9,7 +9,7 @@ export const commonStyle = StyleSheet.create({
       },
     rowCenter: {
         flexDirection: 'row',
-        alignItems: 'center'
+        alignItems: 'center',
     },
     rowSpace: {
         flexDirection: 'row',
@@ -23,15 +23,57 @@ export const commonStyle = StyleSheet.create({
     m_20: {
         marginHorizontal: s(20)
     },
-    backGroundImg: {
-        height: '100%',
-        width: '100%',
-    },
-    input: {
-        width: ms(300),
-        color: colors.black,
-        fontFamily: Font.sofiaProMedium,
-        padding: 10,
-        marginVertical: vs(5)
+    dropdown: {
+        height: vs(55),
+        width: Dimensions.get('screen').width / 1.2,
       },
+      BoxText: {
+        // fontSize: 20,
+        paddingLeft: 10,
+        fontFamily: Font.sofiaProMedium
+      },
+      DownArrow: {
+        width: ms(30),
+        height: ms(30),
+        tintColor: colors.black,
+      },
+      Boxs: {
+        marginVertical: vs(10),
+        borderColor: colors.lightGrey,
+        borderWidth: 1,
+        borderRadius: 10,
+        marginBottom: vs(20),
+      },
+    backGroundImg: {
+        position: 'absolute',
+        left: 0,
+        top: 0,
+        width: Dimensions.get('window').width,
+        height: Dimensions.get('window').height,
+    },
+      imageStyle: {
+        height: ms(15),
+        width: ms(15),
+        resizeMode: 'contain',
+      },
+      textInputStyle: {
+        marginVertical: vs(10),
+        borderColor: colors.lightGrey,
+        borderWidth: 1,
+        borderRadius: 10,
+        fontFamily: Font.sofiaProMedium,
+        padding: 12,
+        height: vs(55),
+        marginBottom: vs(20),
+    },
+    focusedTextInput: {
+        marginVertical: vs(10),
+        borderWidth: 1,
+        borderRadius: 10,
+        fontFamily: Font.sofiaProMedium,
+        padding: 12,
+        height: vs(55),
+        marginBottom: vs(20),
+        borderColor: colors.orange
+    },
 })
