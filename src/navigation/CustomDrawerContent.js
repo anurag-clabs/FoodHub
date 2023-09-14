@@ -22,22 +22,22 @@ const CustomDrawerContent = props => {
       contentContainerStyle={styles.drawerView}>
       <View style={{flexGrow: 1}} />
       <CustomDrawerItem
-        title="Home"
+        title="My Order"
         icon={<Image source={images.MyOrder} style={styles.drawerImage} />}
         onPress={() => navigation.navigate('Home')}
       />
       <CustomDrawerItem
-        title="Categories"
+        title="My Profile"
         icon={<Image source={images.MyProfile} style={styles.drawerImage} />}
-        // onPress={() => navigation.navigate('Explore')}
+        onPress={() => navigation.navigate('Profile')}
       />
       <CustomDrawerItem
-        title="Books Near Me"
+        title="Delivery Address"
         icon={<Image source={images.Location} style={styles.drawerImage} />}
         // onPress={() => navigation.navigate('BookNear')}
       />
       <CustomDrawerItem
-        title="FAQs"
+        title="Payment Methods"
         icon={<Image source={images.Payment} style={styles.drawerImage} />}
         // onPress={() => navigation.navigate('Faq')}
       />

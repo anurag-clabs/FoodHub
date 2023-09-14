@@ -17,46 +17,46 @@ const AppTabNavigator = () => {
   const Tabs = AnimatedTabBarNavigator();
   const {progress} = React.useContext(DrawerAnimationContext);
 
-  const scale = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 0.73],
-  });
-  const backgroundScreen = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [1, 0.85],
-  });
-  const translateX = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [0, -85],
-  });
-  const translateXContainer = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [0, 0],
-  });
-  const borderRadius = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [0, 30],
-  });
+  // const scale = Animated.interpolate(progress, {
+  //   inputRange: [0, 1],
+  //   outputRange: [1, 0.73],
+  // });
+  // const backgroundScreen = Animated.interpolate(progress, {
+  //   inputRange: [0, 1],
+  //   outputRange: [1, 0.85],
+  // });
+  // const translateX = Animated.interpolate(progress, {
+  //   inputRange: [0, 1],
+  //   outputRange: [0, -85],
+  // });
+  // const translateXContainer = Animated.interpolate(progress, {
+  //   inputRange: [0, 1],
+  //   outputRange: [0, 0],
+  // });
+  // const borderRadius = Animated.interpolate(progress, {
+  //   inputRange: [0, 1],
+  //   outputRange: [0, 30],
+  // });
   return (
     <Animated.View
       style={{
         flex: 1,
         justifyContent: 'center',
-        transform: [{scale: scale}, {translateX: translateXContainer}],
+        // transform: [{scale: scale}, {translateX: translateXContainer}],
       }}>
       <Animated.View
         style={[
           styles.topTabView,
           {
-            borderRadius: borderRadius,
-            transform: [{translateX: translateX}, {scale: backgroundScreen}],
+            // borderRadius: borderRadius,
+            // transform: [{translateX: translateX}, {scale: backgroundScreen}],
           },
         ]}
       />
       <Animated.View
         style={{
           flex: 1,
-          borderRadius: borderRadius,
+          // borderRadius: borderRadius,
           overflow: 'hidden',
         }}>
         <Tabs.Navigator

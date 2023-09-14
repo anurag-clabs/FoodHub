@@ -14,4 +14,5 @@ export const images = {
   Setting: require('../assets/images/Setting/Setting.png'),
   Payment: require('../assets/images/Wallet/Wallet.png'),
   MyOrder: require('../assets/images/Document/Document.png'),
+  ProfileBackGround: require('../assets/images/ProfileBackground/Profile.png'),
 };

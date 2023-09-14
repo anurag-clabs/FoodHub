@@ -74,9 +74,13 @@ export const styles = StyleSheet.create({
         marginVertical: vs(30),
     },
     roundedTextInput: {
+        height: 60,
+        width: 60,
         borderRadius: 10,
         borderWidth: 1,
         fontFamily: Font.sofiaProMedium,
         color: colors.orange,
+        fontSize: 25,
+        borderBottomWidth: 1
     },
 });
