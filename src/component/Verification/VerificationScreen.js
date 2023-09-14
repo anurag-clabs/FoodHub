@@ -1,20 +1,19 @@
-import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image } from 'react-native'
+import { View, Text, ImageBackground, TextInput, TouchableOpacity, Image, SafeAreaView } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
-import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import OTPTextView from 'react-native-otp-textinput';
+import { Button } from '../../common/Button/Button';
 
 const VerificationScreen = () => {
 
   const navigation = useNavigation();
 
   return (
-    <View style={styles.constainer}>
+    <SafeAreaView style={styles.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
 
         <TouchableOpacity style={styles.BackImgView} onPress={() => navigation.goBack()}>
@@ -42,9 +41,14 @@ const VerificationScreen = () => {
               </TouchableOpacity>
             </View>
           </View>
+          <Button 
+          color={colors.orange}
+          buttonName="Verify"
+          emptyFildFunction={() => navigation.navigate('Drawer')}
+          />
         </View>
       </ImageBackground>
-    </View>
+    </SafeAreaView>
   )
 }
 

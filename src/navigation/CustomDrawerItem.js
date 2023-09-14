@@ -1,7 +1,8 @@
 import React from 'react';
-import {StyleSheet, Text, View} from 'react-native';
-import {TouchableOpacity} from 'react-native-gesture-handler';
+import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {s, vs} from 'react-native-size-matters';
+import { colors } from '../utils/colors';
+import { Font } from '../utils/Fonts';
 
 const CustomDrawerItem = props => {
   const {title, icon, titleStyle, ...touchableProps} = props;
@@ -15,6 +16,7 @@ const CustomDrawerItem = props => {
 export default CustomDrawerItem;
 const styles = StyleSheet.create({
   container: {
+    flexDirection: 'row',
     justifyContent: 'flex-start',
     paddingVertical: vs(15),
   },
@@ -29,6 +31,7 @@ const styles = StyleSheet.create({
   },
   title: {
     fontSize: vs(18),
-    color: 'white',
+    color: colors.black,
+    fontFamily: Font.sofiaProMedium
   },
 });

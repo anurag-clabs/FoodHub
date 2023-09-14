@@ -1,168 +1,92 @@
-import React, {useContext, useRef, useState} from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import {
-  Animated,
   Dimensions,
   Image,
   Platform,
-  SafeAreaView,
   StyleSheet,
   Text,
   TouchableOpacity,
   View,
 } from 'react-native';
-import {TabButton} from './TabButton';
-import {logOutTab, tabs} from '../utils/tab';
-import {images} from '../utils/image';
-import {colors} from '../utils/colors';
+import { images } from '../utils/image';
+import { colors } from '../utils/colors';
 import LinearGradient from 'react-native-linear-gradient';
-import {createDrawerNavigator} from '@react-navigation/drawer';
+import { createDrawerNavigator } from '@react-navigation/drawer';
 import CustomDrawerContent from './CustomDrawerContent';
 import AppTabNavigator from './AppTabNavigator';
-import {TouchableOpacity as Touch} from 'react-native-gesture-handler';
-import {useSafeAreaInsets} from 'react-native-safe-area-context';
+import { TouchableOpacity as Touch } from 'react-native-gesture-handler';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 import CustomDrawerItem from './CustomDrawerItem';
 import Ionicons from 'react-native-vector-icons/Ionicons';
-import {DrawerAnimationContext} from '../context/DrawerAnimationContext/Index';
+import { DrawerAnimationContext } from '../context/DrawerAnimationContext/Index';
+import Animated, { Value } from 'react-native-reanimated';
+import { useNavigation } from '@react-navigation/native';
+import { commonStyle } from '../utils/commonStyles';
+import Profile from '../Screen/Profile';
 
 const Drawer = createDrawerNavigator();
-const {width: WIDTH} = Dimensions.get('window');
+const { width: WIDTH } = Dimensions.get('window');
 
-export default function App() {
-  const [currentTab, setCurrentTab] = useState('Home');
-  const [showMenu, setShowMenu] = useState(false);
-  const {progress} = useContext(DrawerAnimationContext);
-
-  const offsetValue = useRef(new Animated.Value(0)).current;
-  const scaleValue = useRef(new Animated.Value(1)).current;
-  const closeButtonOffset = useRef(new Animated.Value(0)).current;
+const DrawerNav = () => {
+  const navigation = useNavigation();
+  const { progress } = useContext(DrawerAnimationContext);
   const insets = useSafeAreaInsets();
 
-  const translateX = Animated.interpolate(progress, {
-    inputRange: [0, 1],
-    outputRange: [0, WIDTH],
-  });
-  const opacity = Animated.interpolate(progress, {
-    inputRange: [0, 0.7, 1],
-    outputRange: [0, 0, 1],
-  });
+  // const translateX = Animated.interpolate(animatedValue, {
+  //   inputRange: [0, 1],
+  //   outputRange: [0, WIDTH],
+  // });
+  // const opacity = Animated.interpolate(progress, {
+  //   inputRange: [0, 0.7, 1],
+  //   outputRange: [0, 0, 1],
+  // });
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={{justifyContent: 'flex-start', padding: 15}}>
-        <Image
-          source={images.facebook}
-          style={{
-            width: 70,
-            height: 70,
-            borderRadius: 10,
-            marginTop: 8,
-          }}
-        />
-
-        <View style={{flexGrow: 1, marginTop: 50}}>
-          {
-            // Tab Bar Buttons....
-          }
-          {tabs.map(item => {
-            return (
-              <TabButton
-                currentTab={currentTab}
-                setCurrentTab={setCurrentTab}
-                text={item.text}
-                icon={item.icon}
-                key={item.id}
-              />
-            );
-          })}
-        </View>
-
-        <View>
-          <TabButton
-            currentTab={currentTab}
-            setCurrentTab={setCurrentTab}
-            text={logOutTab.text}
-            icon={logOutTab.icon}
-            key={logOutTab.id}
-          />
-        </View>
-      </View>
-
-      <Animated.View
+    <>
+      <View
         style={{
-          flexGrow: 1,
-          backgroundColor: 'white',
           position: 'absolute',
-          top: 0,
-          bottom: 0,
-          left: 0,
-          right: 0,
-          paddingHorizontal: 15,
-          paddingVertical: 20,
-          borderRadius: showMenu ? 15 : 0,
-          transform: [{scale: scaleValue}, {translateX: offsetValue}],
+          elevation: 1,
+          zIndex: 2,
+          top: Math.max(insets.top, 16),
+          left: -WIDTH,
         }}>
-        {
-          // Menu Button...
-        }
-
         <Animated.View
           style={{
-            transform: [
-              {
-                translateY: closeButtonOffset,
-              },
-            ],
+            marginTop: 15,
+            // opacity: opacity,
+            // transform: [{ translateX: translateX }],
           }}>
-          <TouchableOpacity
-            onPress={() => {
-              Animated.timing(scaleValue, {
-                toValue: showMenu ? 1 : 0.55,
-                duration: 300,
-                useNativeDriver: true,
-              }).start();
-
-              Animated.timing(offsetValue, {
-                toValue: showMenu ? 0 : 400,
-                duration: 300,
-                useNativeDriver: true,
-              }).start();
-
-              Animated.timing(closeButtonOffset, {
-                toValue: !showMenu ? -30 : 0,
-                duration: 300,
-                useNativeDriver: true,
-              }).start();
-
-              setShowMenu(!showMenu);
-            }}>
-            <Image
-              source={images.Menu}
-              style={{
-                width: 20,
-                height: 20,
-                tintColor: 'black',
-                marginTop: 40,
-              }}
-            />
-          </TouchableOpacity>
-
-          <Text
-            style={{
-              fontSize: 30,
-              fontWeight: 'bold',
-              color: 'black',
-              paddingTop: 20,
-            }}>
-            tabTitle
-          </Text>
+          {Platform.OS === 'ios' ? (
+            <TouchableOpacity>
+              <Image source={images.Payment} style={styles.user} />
+              <View>
+                <Text style={styles.profileText}>
+                  User Name
+                </Text>
+                <Text style={styles.books}> Books</Text>
+              </View>
+            </TouchableOpacity>
+          ) : (
+            <TouchableOpacity style={commonStyle.rowCenter}>
+              <Image source={images.MyProfile} style={styles.user} />
+              <View>
+                <Text style={styles.profileText}>
+                  Profile Name
+                </Text>
+                <Text style={styles.books}> Books</Text>
+              </View>
+            </TouchableOpacity>
+          )}
         </Animated.View>
-      </Animated.View>
+      </View>
       <LinearGradient
         colors={[colors.blue, colors.orange]}
-        start={{x: 0, y: 0}}
-        end={{x: 1, y: 1}}
-        style={{flex: 1}}>
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        style={{ flex: 1 }}>
         <Drawer.Navigator
+          screenOptions={{ headerShown: false }}
           initialRouteName="Screens"
           drawerType={'slide'}
           overlayColor="transparent"
@@ -180,15 +104,17 @@ export default function App() {
             activeTintColor: 'white',
             inactiveTintColor: 'grey',
           }}
-          drawerContent={props => {
+          drawerContent={(props) => {
             return <CustomDrawerContent {...props} />;
-          }}
-        />
-        <Drawer.Screen name="Screens">
-          {props => {
-            return <AppTabNavigator {...props} progress={progress} />;
-          }}
-        </Drawer.Screen>
+          }}>
+          <Drawer.Screen name="Screens" >
+            {(props) => {
+              return <AppTabNavigator {...props} progress={progress} />;
+            }}
+          </Drawer.Screen>
+          <Drawer.Screen name="Profile" component={Profile} />
+
+        </Drawer.Navigator>
       </LinearGradient>
       <View
         style={{
@@ -200,59 +126,60 @@ export default function App() {
         <Animated.View
           style={[
             {
-              opacity: opacity,
-              transform: [{translateX: translateX}],
+              // opacity: opacity,
+              // transform: [{ translateX: translateX }],
             },
+            commonStyle.rowCenter,
           ]}>
           {Platform.OS === 'ios' ? (
-            <TouchableOpacity>
+            <TouchableOpacity >
               <CustomDrawerItem
                 title={'Settings'}
                 icon={
                   <Ionicons name="settings-sharp" color="white" size={26} />
                 }
-                titleStyle={{color: 'white'}}
+                titleStyle={{ color: 'white' }}
               />
             </TouchableOpacity>
           ) : (
-            <Touch>
+            <TouchableOpacity >
               <CustomDrawerItem
                 title={'Settings'}
                 icon={
                   <Ionicons name="settings-sharp" color="white" size={26} />
                 }
-                titleStyle={{color: 'white'}}
+                titleStyle={{ color: 'white' }}
               />
-            </Touch>
+            </TouchableOpacity>
           )}
           {Platform.OS === 'ios' ? (
-            <TouchableOpacity>
+            <TouchableOpacity >
               <CustomDrawerItem
                 title={'Log Out'}
                 icon={
                   <Ionicons name="log-out-outline" color="white" size={26} />
                 }
-                titleStyle={{color: 'white'}}
+                titleStyle={{ color: 'white' }}
               />
             </TouchableOpacity>
           ) : (
-            <Touch>
+            <TouchableOpacity >
               <CustomDrawerItem
                 title={'Log Out'}
                 icon={
                   <Ionicons name="log-out-outline" color="white" size={26} />
                 }
-                titleStyle={{color: 'white'}}
+                titleStyle={{ color: 'white' }}
               />
-            </Touch>
+            </TouchableOpacity>
           )}
         </Animated.View>
       </View>
-    </SafeAreaView>
+    </>
   );
-}
+};
+export default DrawerNav;
 
-// For multiple Buttons...
 
 const styles = StyleSheet.create({
   container: {
