@@ -1,8 +1,9 @@
-import { View, Text } from 'react-native'
+import { View, Text, Image } from 'react-native'
 import React from 'react'
 import { commonStyle } from '../../utils/commonStyles';
 import { BackButton } from '../Button/Button';
 import { styles } from './style';
+import { s } from 'react-native-size-matters';
 
 export const Header = props => {
     return (
@@ -11,7 +12,9 @@ export const Header = props => {
                 onPress={() => props.onPress()}
             />
             <Text style={styles.text}>{props.Text}</Text>
-            <View style={commonStyle.m_20}/>
+            <View style={{marginLeft: s(20)}}>
+                <Image source={props.HeaderImg} style={props.HeaderImgstyle}/>
+            </View>
         </View>
     )
 }

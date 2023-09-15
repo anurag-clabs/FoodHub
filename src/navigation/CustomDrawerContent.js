@@ -51,7 +51,7 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="Contact Us"
           icon={<Image source={images.Message} style={styles.drawerImage} />}
-        // onPress={() => navigation.navigate('About')}
+        onPress={() => navigation.navigate('ReviewResturent')}
         />
         <CustomDrawerItem
           title="Settings"

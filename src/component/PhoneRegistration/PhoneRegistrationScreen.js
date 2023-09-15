@@ -37,7 +37,7 @@ const PhoneRegistrationScreen = () => {
                     <Button
                         color={colors.orange}
                         buttonName="Send"
-                        emptyFildFunction={() => navigation.goBack()}
+                        onPress={() => navigation.goBack()}
                     />
                 </View>
             </ImageBackground>

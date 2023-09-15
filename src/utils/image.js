@@ -18,5 +18,12 @@ export const images = {
   UserProfile: require('../assets/images/UserProfile/UserProfile.png'),
   Logout: require('../assets/images/LogOut/Logout.png'),
   Camera: require('../assets/images/CameraIcon/Camera.png'),
-  PizzaHut: require('../assets/images/PizzaHut/PizzaHut.png'),
+  Pizza: require('../assets/images/Pizza/Pizza.png'),
+  PizzaHutLogo: require('../assets/images/PizzaHut/PizzaHut.png'),
+  Verified: require('../assets/images/VerifiedIcon/Verified.png'),
+  User1: require('../assets/images/User1/User.png'),
+  User2: require('../assets/images/User2/User.png'),
+  User3: require('../assets/images/User3/User3.png'),
+  User4: require('../assets/images/User4/User4.png'),
+  MoreDot: require('../assets/images/moreDot/moreDot.png'),
 };

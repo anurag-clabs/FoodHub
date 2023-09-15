@@ -52,7 +52,7 @@ const LoginScreen = () => {
           <Button
             color={colors.orange}
             buttonName="LOGIN"
-            emptyFildFunction={() => navigation.navigate('Verification')}
+            onPress={() => navigation.navigate('Verification')}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>

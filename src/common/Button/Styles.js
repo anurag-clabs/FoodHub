@@ -11,6 +11,11 @@ export const Styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: vs(20),
     borderRadius: 25,
+    shadowOpacity: 1,
+    shadowRadius: 4,
+    shadowColor: colors.black,
+    shadowOffset: { width: -2, height: 4 },
+    elevation: 10,
   },
   TextButton: {
     fontSize: 15,

@@ -6,6 +6,7 @@ import { colors } from "./colors";
 export const commonStyle = StyleSheet.create({
     constainer: {
         flex: 1,
+        backgroundColor: colors.white
       },
     rowCenter: {
         flexDirection: 'row',
@@ -75,5 +76,11 @@ export const commonStyle = StyleSheet.create({
         height: vs(55),
         marginBottom: vs(20),
         borderColor: colors.orange
+    },
+    headerImg: {
+      height: ms(40),
+      width: ms(40),
+      resizeMode: 'contain',
+      borderRadius: ms(35) / 4,
     },
 })

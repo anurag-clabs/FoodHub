@@ -12,7 +12,6 @@ export const styles = StyleSheet.create({
         fontFamily: Font.sofiaProMedium,
     },
     Btn: {
-        backgroundColor: colors.orange,
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: colors.orange,

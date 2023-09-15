@@ -72,7 +72,7 @@ const SignUpScreen = () => {
           <Button
             color={colors.orange}
             buttonName="SIGN UP"
-            emptyFildFunction={() => navigation.navigate('PhoneRegistration')}
+            onPress={() => navigation.navigate('PhoneRegistration')}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>

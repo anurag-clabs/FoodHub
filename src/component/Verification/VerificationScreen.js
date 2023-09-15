@@ -44,7 +44,7 @@ const VerificationScreen = () => {
           <Button 
           color={colors.orange}
           buttonName="Verify"
-          emptyFildFunction={() => navigation.navigate('Drawer')}
+          onPress={() => navigation.navigate('Drawer')}
           />
         </View>
       </ImageBackground>

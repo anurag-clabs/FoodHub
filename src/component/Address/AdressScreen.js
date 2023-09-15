@@ -46,6 +46,7 @@ const AdressScreen = () => {
                     <Button
                         style={styles.Btn}
                         buttonName="SAVE"
+                        color={colors.orange}
                     />
                 </View>
             </ScrollView>
