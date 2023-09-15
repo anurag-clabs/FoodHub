@@ -182,3 +182,92 @@ export const city = [
     name: 'Valsad',
   },
 ];
+
+const getRatingText = rating => {
+  if (rating === 5) {
+    return 'Excellent';
+  } else if (rating >= 4) {
+    return 'Very Good';
+  } else if (rating >= 3) {
+    return 'Good';
+  } else if (rating >= 2) {
+    return 'Fair';
+  } else if (rating >= 1) {
+    return 'Bad';
+  } else {
+    return 'No Rating';
+  }
+};
+
+export const Featured_Restaurants = [
+  {
+    id: 1,
+    RestaurantsImg: images.McDonald,
+    Reating: 4.5,
+    Star: images.star,
+    user: '(25+)',
+    Like: images.Like,
+    Restaurants: "McDonald's",
+    Verified: images.verified,
+    DeliveryIcon: images.Delivery,
+    Delivery: ' Free delivery',
+    TimeIcon: images.Time,
+    Time: ' 10-15 mins',
+    Burger: 'BURGER',
+    Chicken: 'CHICKEN',
+    FastFood: 'FAST FOOD',
+  },
+  {
+    id: 2,
+    RestaurantsImg: images.StarBuck,
+    Reating: 4.7,
+    Star: images.star,
+    user: '(99+)',
+    Like: images.Like,
+    Restaurants: 'Starbuck',
+    Verified: images.verified,
+    DeliveryIcon: images.Delivery,
+    Delivery: ' Free delivery',
+    TimeIcon: images.Time,
+    Time: ' 10-15 mins',
+    Burger: 'Burger',
+    Chicken: 'CHICKEN',
+    FastFood: 'FAST FOOD',
+  },
+];
+
+export const PopularItems = [
+  {
+    Id: 1,
+    ItemImg: images.ChineseFood,
+    Star: images.star,
+    Price: '$5.50',
+    Like: images.Like,
+    Rating: 4.5,
+    User: '(25+)',
+    Title: 'Salmon Salad',
+    FoodName: 'Baked salmon fish',
+  },
+  {
+    Id: 2,
+    ItemImg: images.ItalianPizza,
+    Star: images.star,
+    Price: '$8.25',
+    Like: images.Like,
+    Rating: 4.5,
+    User: '(25+)',
+    Title: 'Salmon Salad',
+    FoodName: 'Baked salmon fish',
+  },
+  {
+    Id: 3,
+    ItemImg: images.ChineseFood,
+    Star: images.star,
+    Price: '$5.50',
+    Like: images.Like,
+    Rating: 4.5,
+    User: '(25+)',
+    Title: 'Salmon Salad',
+    FoodName: 'Baked salmon fish',
+  },
+];

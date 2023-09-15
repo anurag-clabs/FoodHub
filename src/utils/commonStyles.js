@@ -34,4 +34,9 @@ export const commonStyle = StyleSheet.create({
     padding: 10,
     marginVertical: vs(5),
   },
+  f_D_R: {
+    flexDirection: 'row',
+    marginTop: vs(10),
+    marginLeft: s(12),
+  },
 });
