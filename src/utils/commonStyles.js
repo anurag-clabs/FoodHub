@@ -1,3 +1,4 @@
+
 import { Dimensions, StyleSheet } from "react-native";
 import { ms, s, vs } from "react-native-size-matters";
 import { Font } from "./Fonts";
@@ -83,4 +84,16 @@ export const commonStyle = StyleSheet.create({
       resizeMode: 'contain',
       borderRadius: ms(35) / 4,
     },
+    f_D_R: {
+    flexDirection: 'row',
+    marginTop: vs(10),
+    marginLeft: s(12),
+  },
+    input: {
+    width: ms(300),
+    color: colors.black,
+    fontFamily: Font.sofiaProMedium,
+    padding: 10,
+    marginVertical: vs(5),
+  },
 })

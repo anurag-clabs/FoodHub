@@ -1,12 +1,20 @@
-import { View, Text, ImageBackground, TextInput, Image, TouchableOpacity, SafeAreaView } from 'react-native'
-import React, { useState } from 'react'
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { commonStyle } from '../../utils/commonStyles';
-import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
-import { Button } from '../../common/Button/Button';
-import { colors } from '../../utils/colors';
-import { useNavigation } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import React, {useState} from 'react';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {commonStyle} from '../../utils/commonStyles';
+import {TextInputText} from '../../common/TextInputComponent/TextInputComponent';
+import {Button} from '../../common/Button/Button';
+import {colors} from '../../utils/colors';
+import {useNavigation} from '@react-navigation/native';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -36,13 +44,15 @@ const SignUpScreen = () => {
 
 
   const hideandShowPassword = () => {
-    setPasswordHide(!passwordHide)
+    setPasswordHide(!passwordHide);
   };
 
   return (
     <SafeAreaView style={styles.constainer}>
-      <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
-        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
+      <ImageBackground
+        source={images.commonBackGround}
+        style={commonStyle.backGroundImg}>
+        <View style={[commonStyle.m_20, {marginVertical: 20}]}>
           <Text style={styles.headerTxt}>Sign Up</Text>
           <Text style={styles.textInputTxt}>Full name</Text>
           <TextInput
@@ -61,12 +71,15 @@ const SignUpScreen = () => {
             style={isPasswordFocused ? [styles.passwordView, styles.FocuspasswordView] : styles.passwordView}>
             <TextInputText
               secureTextEntry={passwordHide}
-              placeHolder='Password'
+              placeHolder="Password"
               value={password}
               onChangeText={text => setPassword(text)}
             />
             <TouchableOpacity onPress={hideandShowPassword}>
-              <Image source={passwordHide ? images.showPass : images.hidePass} style={styles.hidePassword} />
+              <Image
+                source={passwordHide ? images.showPass : images.hidePass}
+                style={styles.hidePassword}
+              />
             </TouchableOpacity>
           </View>
           <Button
@@ -76,7 +89,9 @@ const SignUpScreen = () => {
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
-              <Text style={styles.bottomSignUpTxt}>Already have an account? </Text>
+              <Text style={styles.bottomSignUpTxt}>
+                Already have an account?{' '}
+              </Text>
               <TouchableOpacity onPress={() => navigation.navigate('Login')}>
                 <Text style={styles.bottomSignUpTxt2}>Login</Text>
               </TouchableOpacity>
@@ -102,7 +117,7 @@ const SignUpScreen = () => {
         </View>
       </ImageBackground>
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export default SignUpScreen;
