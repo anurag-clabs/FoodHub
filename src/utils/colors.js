@@ -8,5 +8,13 @@ export const colors = {
   blue: 'blue',
   darkgray: '#8C9099',
   yellow: 'rgba(255, 197, 41, 1)',
-  green: 'rgba(83, 215, 118, 1)'
+  green: 'rgba(83, 215, 118, 1)',
+  WhiteSmoke: '#F6F6F6',
+  GreySuit: '#9796A1',
+  darkNavy: '#323643',
+  DimGray: '#67666D',
+  DarkShadeGray: '#171717',
+  LightGrayishBlue: '#FCFCFD',
+  RomanSilver: '#8A8E9B',
+  search: '#767F9D',
 };
