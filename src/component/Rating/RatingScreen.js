@@ -42,7 +42,7 @@ const RatingScreen = () => {
     <SafeAreaView style={commonStyle.constainer} >
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={[commonStyle.m_20, styles.headerView]}>
-          <ImageBackground source={images.Pizza} style={styles.BackgroundImg} imageStyle={{ borderRadius: 15 }}>
+          <ImageBackground source={images.FoodItem1} style={styles.BackgroundImg} imageStyle={{ borderRadius: 15 }}>
             <BackButton
               style={styles.BackImgView}
               onPress={() => navigation.goBack()}

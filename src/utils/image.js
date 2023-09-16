@@ -38,6 +38,9 @@ export const images = {
   Logout: require('../assets/images/LogOut/Logout.png'),
   Camera: require('../assets/images/CameraIcon/Camera.png'),
   FoodItem1: require('../assets/images/FoodItem1/Pizza.png'),
+  RedPizza: require('../assets/images/RedPizza/RedPizza.png'),
+  ChickenHawaiian: require('../assets/images/ChickenHawaiian/ChickenHawaiian.png'),
+  FoodItem4: require('../assets/images/FoodItem4/Foodimage4.png'),
   PizzaHutLogo: require('../assets/images/PizzaHut/PizzaHut.png'),
   Verified: require('../assets/images/VerifiedIcon/Verified.png'),
   User1: require('../assets/images/User1/User.png'),
@@ -45,5 +48,6 @@ export const images = {
   User3: require('../assets/images/User3/User3.png'),
   User4: require('../assets/images/User4/User4.png'),
   MoreDot: require('../assets/images/moreDot/moreDot.png'),
+  HeartIcon: require('../assets/images/HeartIcon/HeartIcon.png'),
   DisLike: require('../assets/images/disLike/disLike.png'),
 };
