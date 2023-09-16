@@ -38,7 +38,7 @@ export const images = {
   UserProfile: require('../assets/images/UserProfile/UserProfile.png'),
   Logout: require('../assets/images/LogOut/Logout.png'),
   Camera: require('../assets/images/CameraIcon/Camera.png'),
-  FoodItem1: require('../assets/images/Pizza/Pizza.png'),
+  FoodItem1: require('../assets/images/FoodItem1/Pizza.png'),
   PizzaHutLogo: require('../assets/images/PizzaHut/PizzaHut.png'),
   Verified: require('../assets/images/VerifiedIcon/Verified.png'),
   User1: require('../assets/images/User1/User.png'),
