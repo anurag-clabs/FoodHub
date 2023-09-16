@@ -1,11 +1,13 @@
 import React from "react";
-import { TextInput } from "react-native";
-import { commonStyle } from "../../utils/commonStyles";
+import { StyleSheet, TextInput } from "react-native";
+import { ms, s, vs } from "react-native-size-matters";
+import { colors } from "../../utils/colors";
+import { Font } from "../../utils/Fonts";
 
 export const TextInputText = props => {
     return (
       <TextInput
-        style={[commonStyle.input, props.style]}
+        style={[styles.input, props.style]}
         value={props.value}
         onChangeText={props.onChangeText}
         placeholder={props.placeHolder}
@@ -14,3 +16,13 @@ export const TextInputText = props => {
     );
   };
   
+
+const styles = StyleSheet.create({
+  input: {
+    width: s(280),
+    color: colors.black,
+    fontFamily: Font.sofiaProMedium,
+    padding: 12,
+    height: vs(55)
+  },
+})

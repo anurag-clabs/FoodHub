@@ -5,8 +5,9 @@ import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
 import { useNavigation } from '@react-navigation/native';
-import { Button } from '../../common/Button/Button';
+import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
+import { s, vs } from 'react-native-size-matters';
 
 const LoginScreen = () => {
 
@@ -22,9 +23,10 @@ const LoginScreen = () => {
     <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
 
-        <TouchableOpacity style={styles.BackImgView} onPress={() => navigation.goBack()}>
-          <Image source={images.BackImg} style={styles.BackImg} />
-        </TouchableOpacity>
+        <BackButton
+        style={styles.BackImgView}
+          onPress={() => navigation.goBack()}
+        />
         <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Login</Text>
           <Text style={styles.textInputTxt}>E-mail</Text>
@@ -50,7 +52,7 @@ const LoginScreen = () => {
           <Button
             color={colors.orange}
             buttonName="LOGIN"
-            emptyFildFunction={() => navigation.navigate('Verification')}
+            onPress={() => navigation.navigate('Verification')}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>

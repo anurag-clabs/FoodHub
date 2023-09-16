@@ -1,21 +1,22 @@
 /* eslint-disable react-native/no-inline-styles */
 import React from 'react';
-import {AnimatedTabBarNavigator} from 'react-native-animated-nav-tab-bar';
+import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
 import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
-import {DrawerAnimationContext} from '../context/DrawerAnimationContext/Index';
-import {vs, s} from 'react-native-size-matters';
+import { DrawerAnimationContext } from '../context/DrawerAnimationContext/Index';
+import { vs, s } from 'react-native-size-matters';
 import PhoneRegistration from '../Screen/PhoneRegistration';
 import Login from '../Screen/Login';
 import Welcome from '../Screen/Welcome';
 import RessetPassword from '../Screen/RessetPassword';
-import {StyleSheet} from 'react-native';
-import {colors} from '../utils/colors';
+import { StyleSheet } from 'react-native';
+import { colors } from '../utils/colors';
 import Home from '../Screen/Home';
+import FavoritesFood from '../Screen/FavoritesFood';
 
 const AppTabNavigator = () => {
   const Tabs = AnimatedTabBarNavigator();
-  const {progress} = React.useContext(DrawerAnimationContext);
+  const { progress } = React.useContext(DrawerAnimationContext);
 
   // const scale = Animated.interpolate(progress, {
   //   inputRange: [0, 1],
@@ -61,21 +62,21 @@ const AppTabNavigator = () => {
         }}>
         <Tabs.Navigator
           initialRouteName="Home"
-          screenOptions={({route}) => ({
-            tabBarIcon: ({focused, color, size}) => {
+          screenOptions={({ route }) => ({
+            tabBarIcon: ({ focused, color, size }) => {
               let iconName;
               if (route.name === 'Home') {
-                iconName = focused ? 'home' : 'home-outline';
+                iconName = focused ? 'compass' : 'compass-outline';
               } else if (route.name === 'Donate') {
                 iconName = focused
-                  ? 'add-circle-outline'
-                  : 'add-circle-outline';
+                  ? 'bag'
+                  : 'bag-outline';
               } else if (route.name === 'Search') {
-                iconName = focused ? 'search' : 'search-outline';
+                iconName = focused ? 'location' : 'location-outline';
               } else if (route.name === 'Explore') {
-                iconName = focused ? 'compass' : 'compass-outline';
+                iconName = focused ? 'heart' : 'heart-outline';
               } else if (route.name === 'Chat') {
-                iconName = focused ? 'chatbubble' : 'chatbubble-outline';
+                iconName = focused ? 'notifications' : 'notifications-outline';
               }
               return <Icon name={iconName} size={size} color={color} />;
             },
@@ -95,8 +96,8 @@ const AppTabNavigator = () => {
           <Tabs.Screen name="Explore" component={Welcome} />
           <Tabs.Screen
             name="Chat"
-            component={RessetPassword}
-            options={{title: 'Inbox'}}
+            component={FavoritesFood}
+            options={{ title: 'Inbox' }}
           />
         </Tabs.Navigator>
       </Animated.View>
