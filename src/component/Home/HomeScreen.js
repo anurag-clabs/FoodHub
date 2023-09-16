@@ -112,14 +112,12 @@ const HomeScreen = () => {
                     <View style={styles.rowSpace}>
                       <View style={styles.Elevation}>
                         <Text style={styles.Reating}>{item.Reating}</Text>
-                        <Image style={styles.star} source={item.Star} />
-                        <Text style={styles.user}>{item.user}</Text>
                       </View>
                       <Image style={styles.Like} source={item.Like} />
                     </View>
                   </ImageBackground>
                   <View style={commonStyle.f_D_R}>
-                    <Text style={styles.Restaurants}>{item.Restaurants}</Text>
+                    <Text style={styles.Restaurants}>{item.Restaurants} </Text>
                     <Image style={styles.Verified} source={item.Verified} />
                   </View>
                   <View style={[commonStyle.f_D_R]}>
@@ -162,9 +160,28 @@ const HomeScreen = () => {
             showsHorizontalScrollIndicator={false}>
             {PopularItems.map(item => {
               return (
-                <TouchableOpacity>
-                  <Text>Food</Text>
-                </TouchableOpacity>
+                <View>
+                  <ImageBackground
+                    borderRadius={15}
+                    style={styles.ItemBox}
+                    source={item.ItemImg}>
+                    <View style={styles.rowSpace}>
+                      <View style={styles.PopularItemElevation}>
+                        <Text style={styles.Reating}>$ {item.Price}</Text>
+                      </View>
+                      <TouchableOpacity>
+                        <Image style={styles.Like} source={item.Like} />
+                      </TouchableOpacity>
+                    </View>
+                    <View style={styles.ItemElevation}>
+                      <Text style={styles.Reating}>{item.Rating}</Text>
+                    </View>
+                  </ImageBackground>
+                  <View style={{marginLeft: s(20)}}>
+                    <Text style={styles.ItemTitle}>{item.Title}</Text>
+                    <Text style={styles.FoodName}>{item.FoodName}</Text>
+                  </View>
+                </View>
               );
             })}
           </ScrollView>

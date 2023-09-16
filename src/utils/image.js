@@ -28,7 +28,6 @@ export const images = {
   OpenAero: require('../assets/images/OpenAero/OpenAero.png'),
   star: require('../assets/images/Star/Star.png'),
   Like: require('../assets/images/Like/Like.png'),
-  verified: require('../assets/images/Verified/Verified.png'),
   Delivery: require('../assets/images/Delivery/DeliVery.png'),
   Time: require('../assets/images/time/Time.png'),
   McDonald: require('../assets/images/McDonald/McDonald.png'),
@@ -46,4 +45,5 @@ export const images = {
   User3: require('../assets/images/User3/User3.png'),
   User4: require('../assets/images/User4/User4.png'),
   MoreDot: require('../assets/images/moreDot/moreDot.png'),
+  DisLike: require('../assets/images/disLike/disLike.png'),
 };
