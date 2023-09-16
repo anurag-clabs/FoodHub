@@ -163,11 +163,7 @@ const HomeScreen = () => {
             {PopularItems.map(item => {
               return (
                 <TouchableOpacity>
-                  <ImageBackground>
-                    <View>
-                      <Text />
-                    </View>
-                  </ImageBackground>
+                  <Text>Food</Text>
                 </TouchableOpacity>
               );
             })}
