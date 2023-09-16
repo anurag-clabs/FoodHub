@@ -23,6 +23,10 @@ import Animated, { Value } from 'react-native-reanimated';
 import { useNavigation } from '@react-navigation/native';
 import { commonStyle } from '../utils/commonStyles';
 import Profile from '../Screen/Profile';
+import Address from '../Screen/Address';
+import Rating from '../Screen/Rating';
+import Reviews from '../Screen/Reviews';
+import ReviewResturent from '../Screen/ReviewResturent';
 
 const Drawer = createDrawerNavigator();
 const { width: WIDTH } = Dimensions.get('window');
@@ -86,7 +90,10 @@ const DrawerNav = () => {
         end={{ x: 1, y: 1 }}
         style={{ flex: 1 }}>
         <Drawer.Navigator
-          screenOptions={{ headerShown: false }}
+          screenOptions={{
+            headerShown: false, activeTintColor: 'white',
+            inactiveTintColor: 'grey',
+          }}
           initialRouteName="Screens"
           drawerType={'slide'}
           overlayColor="transparent"
@@ -100,10 +107,6 @@ const DrawerNav = () => {
             overflow: 'visible',
             zIndex: 1,
           }}
-          drawerContentOptions={{
-            activeTintColor: 'white',
-            inactiveTintColor: 'grey',
-          }}
           drawerContent={(props) => {
             return <CustomDrawerContent {...props} />;
           }}>
@@ -113,7 +116,10 @@ const DrawerNav = () => {
             }}
           </Drawer.Screen>
           <Drawer.Screen name="Profile" component={Profile} />
-
+          <Drawer.Screen name="Address" component={Address} />
+          <Drawer.Screen name="Rating" component={Rating} />
+          <Drawer.Screen name="Reviews" component={Reviews} />
+          <Drawer.Screen name="ReviewResturent" component={ReviewResturent} />
         </Drawer.Navigator>
       </LinearGradient>
       <View
