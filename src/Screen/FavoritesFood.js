@@ -9,6 +9,7 @@ import { colors } from '../utils/colors';
 import FavoriteResturentScreen from '../component/Favorites/FavoriteResturentScreen';
 import FavoritesFoodScreen from '../component/Favorites/FavoritesFoodScreen';
 import { s, vs } from 'react-native-size-matters';
+import { Font } from '../utils/Fonts';
 
 const FavoritesFood = () => {
 
@@ -26,9 +27,11 @@ const FavoritesFood = () => {
             <ProfileTabNavigator.Navigator tabBarOptions={{
                 activeTintColor: colors.white,
                 labelStyle: {
-                    textTransform: "uppercase",
+                    fontFamily: Font.sofiaProMedium,
+                    textTransform: 'capitalize',
+                    fontSize: 15,
                 },
-                inactiveTintColor: colors.grey,
+                inactiveTintColor: colors.orange,
                 indicatorStyle: {
                     height: 45,
                     top: '10%',
@@ -39,15 +42,10 @@ const FavoritesFood = () => {
                     backgroundColor: colors.orange,
                 },
                 style: {
-                    padding: 5,
-                    alignSelf: "center",
                     height: 55,
-                    width: '90%',
+                    justifyContent: 'center',
                     borderRadius: 100,
-                    elevation: 5,
-                    shadowOpacity: .10, 
-                    shadowRadius: 4, 
-                    marginTop: vs(20),
+                    marginVertical: vs(20),
                     marginHorizontal: s(20)
                 },
                 tabStyle: {

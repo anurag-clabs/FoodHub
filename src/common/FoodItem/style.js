@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
     },
     mainView: {
         borderRadius: 20,
-        marginVertical: vs(20) ,
+        marginBottom: vs(20) ,
         backgroundColor: colors.white,
         shadowOpacity: 1,
         shadowRadius: 4,
