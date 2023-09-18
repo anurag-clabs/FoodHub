@@ -10,6 +10,7 @@ export const styles = StyleSheet.create({
   HeaderView: {
     flexDirection: 'row',
     justifyContent: 'space-between',
+    alignItems: 'center',
   },
   BackImgView: {
     marginTop: vs(10),
@@ -93,7 +94,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   boxElevation: {
-    marginLeft: s(10),
+    marginHorizontal: s(5),
     height: vs(110),
     width: s(72),
     backgroundColor: colors.white,
@@ -121,7 +122,6 @@ export const styles = StyleSheet.create({
   },
   titleRestaurant: {
     marginHorizontal: s(20),
-    marginTop: vs(20),
     fontFamily: Font.SofiaProBold,
     fontSize: 20,
     color: colors.darkNavy,
@@ -129,7 +129,7 @@ export const styles = StyleSheet.create({
   titleView: {
     flexDirection: 'row',
     marginHorizontal: vs(10),
-    marginTop: vs(20),
+    alignItems: 'center',
   },
   ViewAll: {
     color: colors.orange,
@@ -169,8 +169,9 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     flexDirection: 'row',
     justifyContent: 'space-evenly',
+    position: 'relative',
   },
-  Reating: {
+  Rating: {
     color: colors.black,
     fontFamily: Font.sofiaProMedium,
     fontSize: 13,
@@ -192,8 +193,9 @@ export const styles = StyleSheet.create({
     marginTop: vs(5),
   },
   Restaurants: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProBold,
     fontSize: 16,
+    color: colors.black
   },
   Verified: {
     resizeMode: 'contain',
@@ -262,8 +264,9 @@ export const styles = StyleSheet.create({
   },
   ItemTitle: {
     marginTop: vs(20),
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProBold,
     fontSize: 16,
+    color: colors.black
   },
   FoodName: {
     marginVertical: vs(10),

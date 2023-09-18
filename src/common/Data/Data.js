@@ -1,4 +1,4 @@
-import {images} from '../../utils/image';
+import { images } from '../../utils/image';
 
 export const FoodList = [
   {
@@ -202,30 +202,30 @@ const getRatingText = rating => {
 export const Featured_Restaurants = [
   {
     id: 1,
-    RestaurantsImg: images.McDonald,
-    Reating: '4.5 ⭐ (25+)',
+    BackgroundImg: images.McDonaldBack,
+    Rating: '4.5 ⭐ (25+)',
     Like: images.Like,
-    Restaurants: "McDonald's",
+    RestaurantName: "McDonald's",
     Verified: images.Verified,
     DeliveryIcon: images.Delivery,
-    Delivery: ' Free delivery',
+    DeliveryOption: ' Free delivery',
     TimeIcon: images.Time,
-    Time: ' 10-15 mins',
+    DeliveryTime: ' 10-15 mins',
     Burger: 'BURGER',
     Chicken: 'CHICKEN',
     FastFood: 'FAST FOOD',
   },
   {
     id: 2,
-    RestaurantsImg: images.StarBuck,
-    Reating: '4.7 ⭐ (99+)',
+    BackgroundImg: images.StarBuck,
+    Rating: '4.7 ⭐ (99+)',
     Like: images.Like,
-    Restaurants: 'Starbuck',
-    Verified: images.verified,
+    RestaurantName: 'Starbuck',
+    Verified: images.Verified,
     DeliveryIcon: images.Delivery,
-    Delivery: ' Free delivery',
+    DeliveryOption: ' Free delivery',
     TimeIcon: images.Time,
-    Time: ' 10-15 mins',
+    DeliveryTime: ' 10-15 mins',
     Burger: 'Burger',
     Chicken: 'CHICKEN',
     FastFood: 'FAST FOOD',
@@ -240,8 +240,8 @@ export const PopularItems = [
     Price: '5.50',
     Like: images.Like,
     Rating: ' 4.5 ⭐ (25+)',
-    Title: 'Salmon Salad',
-    FoodName: 'Baked salmon fish',
+    FoodName: 'Salmon Salad',
+    FoodDescription: 'Baked salmon fish',
   },
   {
     Id: 2,
@@ -250,8 +250,8 @@ export const PopularItems = [
     Price: '8.25',
     Like: images.Like,
     Rating: '4.5 ⭐ (25+)',
-    Title: 'Salmon Salad',
-    FoodName: 'Baked salmon fish',
+    FoodName: 'Salmon Salad',
+    FoodDescription: 'Baked salmon fish',
   },
   {
     Id: 3,
@@ -260,7 +260,7 @@ export const PopularItems = [
     Price: '5.50',
     Like: images.Like,
     Rating: '4.5 ⭐ (25+)',
-    Title: 'Salmon Salad',
-    FoodName: 'Baked salmon fish',
+    FoodName: 'Salmon Salad',
+    FoodDescription: 'Baked salmon fish',
   },
 ];

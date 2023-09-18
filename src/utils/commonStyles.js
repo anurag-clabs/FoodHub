@@ -25,12 +25,14 @@ export const commonStyle = StyleSheet.create({
     m_20: {
         marginHorizontal: s(20)
     },
+    v_10: {
+      marginVertical: vs(10)
+    },
     dropdown: {
         height: vs(55),
         width: Dimensions.get('screen').width / 1.2,
       },
       BoxText: {
-        // fontSize: 20,
         paddingLeft: 10,
         fontFamily: Font.sofiaProMedium
       },
