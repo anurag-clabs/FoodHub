@@ -7,7 +7,7 @@ import { commonStyle } from '../../utils/commonStyles';
 import { Font } from '../../utils/Fonts';
 import { vs } from 'react-native-size-matters';
 import { BackButton, Button } from '../../common/Button/Button';
-import Header from '../../common/Header/Header';
+import { Header } from '../../common/Header/Header';
 import { colors } from '../../utils/colors';
 import { DropDown } from '../../common/DropDown/DropDown';
 
@@ -15,31 +15,31 @@ const AdressScreen = () => {
     const navigation = useNavigation()
     return (
         <SafeAreaView style={commonStyle.constainer}>
-            <ScrollView  showsVerticalScrollIndicator={false}>
+            <ScrollView showsVerticalScrollIndicator={false}>
                 <Header
-                    Text='Add new address'
+                    Text='Add new address aaa aaa'
                     onPress={() => navigation.goBack()}
-                    />
+                />
                 <View style={[commonStyle.m_20, { marginVertical: vs(30) }]}>
-                    <Text style={styles.textInputTxt}>Full Name</Text>
+                    <Text style={styles.TextInputTxt}>Full Name</Text>
                     <TextInput
                         style={commonStyle.textInputStyle}
                         placeholder='Your Full Name'
                     />
-                    <Text style={styles.textInputTxt}>E-mail</Text>
+                    <Text style={styles.TextInputTxt}>E-mail</Text>
                     <TextInput
                         style={commonStyle.textInputStyle}
                         placeholder='Your phone Number'
                     />
-                    <Text style={styles.textInputTxt}>State</Text>
+                    <Text style={styles.TextInputTxt}>State</Text>
                     <DropDown
                         placeholder='Select State'
                     />
-                    <Text style={styles.textInputTxt}>City</Text>
+                    <Text style={styles.TextInputTxt}>City</Text>
                     <DropDown
                         placeholder='Select City'
                     />
-                    <Text style={styles.textInputTxt}>Street (Include house number)</Text>
+                    <Text style={styles.TextInputTxt}>Street (Include house number)</Text>
                     <DropDown
                         placeholder='Street'
                     />

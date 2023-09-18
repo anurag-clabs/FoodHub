@@ -22,12 +22,13 @@ import {
 } from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';
 import FoodItem from '../../common/FoodItem/FoodItem';
+import Header, { MenuHeader } from '../../common/Header/Header';
 
 const HomeScreen = () => {
   const [selectedFood, setSelectedFood] = useState(null);
   const navigation = useNavigation();
   const openDrawerClick = () => {
-    navigation.dispatch(DrawerActions.openDrawer());
+    navigation.openDrawer();
   };
   const handleFoodItemClick = index => {
     setSelectedFood(index);
@@ -67,24 +68,14 @@ const HomeScreen = () => {
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
-      <SafeAreaView style={styles.constainer}>
-        <View style={styles.HeaderView}>
-          <TouchableOpacity
-            style={styles.BackImgView}
-            onPress={openDrawerClick}>
-            <Image source={images.Menu} style={styles.BackImg} />
-          </TouchableOpacity>
-          <View>
-            <View style={styles.TextHeader}>
-              <Text style={styles.Deliver}>Deliver to</Text>
-              <Image style={styles.HeaderAero} source={images.HeaderAero} />
-            </View>
-            <Text style={styles.header}>4102 Pretty View Lane </Text>
-          </View>
-          <View style={styles.ImgView}>
-            <Image style={styles.Img} source={images.ProfileImage} />
-          </View>
-        </View>
+      <SafeAreaView style={commonStyle.constainer}>
+        <MenuHeader 
+        onPress={openDrawerClick}
+            Deliver='Deliver to'
+            DeliveryAddress='4102 Pretty View Lane'
+            HeaderImg={images.UserProfile}
+            HeaderImgstyle={styles.UserImg}
+        />
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
         </Text>

@@ -9,21 +9,21 @@ import { useNavigation } from '@react-navigation/native';
 const FoodItem = props => {
     return (
         <>
-            <TouchableOpacity style={[styles.mainView]}>
+            <TouchableOpacity style={[styles.MainView]}>
                 <Image source={props.ItemImg} style={styles.FoodBackgroundImg} />
-                <TouchableOpacity style={styles.reviewTxtView} onPress={props.onPress}>
-                    <Text style={styles.reviewTxt}>{props.Rating}</Text>
+                <TouchableOpacity style={styles.ReviewTxtView} onPress={props.onPress}>
+                    <Text style={styles.ReviewTxt}>{props.Rating}</Text>
                 </TouchableOpacity>
-                <View style={styles.itemNameView}>
-                    <Text style={styles.itemName}>{props.FoodName}</Text>
-                    <Text style={styles.itemDescription}>{props.FoodDescription}</Text>
+                <View style={styles.ItemNameView}>
+                    <Text style={styles.ItemName}>{props.FoodName}</Text>
+                    <Text style={styles.ItemDescription}>{props.FoodDescription}</Text>
                 </View>
             </TouchableOpacity>
-            <View style={styles.ratingHeaderView}>
-                <View style={styles.priceHeaderView}>
-                    <View style={styles.priceTagView}>
+            <View style={styles.RatingHeaderView}>
+                <View style={styles.PriceHeaderView}>
+                    <View style={styles.PriceTagView}>
                         <Text style={{ color: colors.orange }}>$</Text>
-                        <Text style={styles.priceTagTxt}>{props.Price}</Text>
+                        <Text style={styles.PriceTagTxt}>{props.Price}</Text>
                     </View>
                     <TouchableOpacity style={styles.HeartIconView}>
                         <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
@@ -35,4 +35,4 @@ const FoodItem = props => {
     )
 }
 
-export default FoodItem
+export default FoodItem;

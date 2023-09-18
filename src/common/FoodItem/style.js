@@ -15,7 +15,7 @@ export const styles = StyleSheet.create({
         width: s(140),
         borderRadius: 15
     },
-    mainView: {
+    MainView: {
         marginHorizontal: s(10),
         borderRadius: 20,
         marginBottom: vs(20) ,
@@ -26,7 +26,7 @@ export const styles = StyleSheet.create({
         shadowOffset: { width: -2, height: 4 },
         elevation: 5,
     },
-    priceTagView: {
+    PriceTagView: {
         borderRadius: 20,
         backgroundColor: colors.white,
         height: vs(28),
@@ -43,12 +43,12 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    priceTagTxt: {
+    PriceTagTxt: {
         fontFamily: Font.SofiaProBold,
         color: colors.black,
         fontSize: 22
     },
-    priceHeaderView: {
+    PriceHeaderView: {
         marginTop: vs(10),
         marginHorizontal: s(10),
         flexDirection: 'row',
@@ -63,7 +63,7 @@ export const styles = StyleSheet.create({
         width: s(290),
         left: 15
     },
-    reviewTxtView: {
+    ReviewTxtView: {
         borderRadius: ms(30) / 2,
         backgroundColor: colors.white,
         height: ms(32),
@@ -95,25 +95,25 @@ export const styles = StyleSheet.create({
         bottom: 70,
         left: 15
     },
-    reviewTxt: {
+    ReviewTxt: {
         fontFamily: Font.sofiaProMedium,
         fontSize: 12,
         color: colors.black
     },
-    itemNameView: {
+    ItemNameView: {
         marginHorizontal: s(10),
         marginVertical: vs(15)
     },
-    itemName: {
+    ItemName: {
         fontFamily: Font.SofiaProBold,
         color: colors.black,
         fontSize: 20,
     },
-    itemDescription: {
+    ItemDescription: {
         fontFamily: Font.sofiaProMedium,
         fontSize: 15,
     },
-    ratingHeaderView: {
+    RatingHeaderView: {
         width: s(150),
         marginTop: vs(10),
         marginHorizontal: s(5),

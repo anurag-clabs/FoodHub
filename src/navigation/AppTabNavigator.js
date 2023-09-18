@@ -67,15 +67,15 @@ const AppTabNavigator = () => {
               let iconName;
               if (route.name === 'Home') {
                 iconName = focused ? 'compass' : 'compass-outline';
-              } else if (route.name === 'Donate') {
+              } else if (route.name === 'Cart') {
                 iconName = focused
                   ? 'bag'
                   : 'bag-outline';
               } else if (route.name === 'Search') {
                 iconName = focused ? 'location' : 'location-outline';
-              } else if (route.name === 'Explore') {
+              } else if (route.name === 'Favorites') {
                 iconName = focused ? 'heart' : 'heart-outline';
-              } else if (route.name === 'Chat') {
+              } else if (route.name === 'Notifications') {
                 iconName = focused ? 'notifications' : 'notifications-outline';
               }
               return <Icon name={iconName} size={size} color={color} />;
@@ -92,12 +92,11 @@ const AppTabNavigator = () => {
           }}>
           <Tabs.Screen name="Home" component={Home} />
           <Tabs.Screen name="Search" component={PhoneRegistration} />
-          <Tabs.Screen name="Donate" component={Login} />
-          <Tabs.Screen name="Explore" component={Welcome} />
+          <Tabs.Screen name="Cart" component={Login} />
+          <Tabs.Screen name="Favorites" component={FavoritesFood} />
           <Tabs.Screen
-            name="Chat"
-            component={FavoritesFood}
-            options={{ title: 'Inbox' }}
+            name="Notifications"
+            component={Welcome}
           />
         </Tabs.Navigator>
       </Animated.View>
