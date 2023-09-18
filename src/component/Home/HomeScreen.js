@@ -7,48 +7,75 @@ import {
   TextInput,
   ScrollView,
   ImageBackground,
+  FlatList,
 } from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './style';
-import {images} from '../../utils/image';
-import {DrawerActions, useNavigation} from '@react-navigation/native';
-import {s, vs} from 'react-native-size-matters';
-import {commonStyle} from '../../utils/commonStyles';
+import React, { useState } from 'react';
+import { styles } from './style';
+import { images } from '../../utils/image';
+import { DrawerActions, useNavigation } from '@react-navigation/native';
+import { s, vs } from 'react-native-size-matters';
+import { commonStyle } from '../../utils/commonStyles';
 import {
   Featured_Restaurants,
   FoodList,
   PopularItems,
 } from '../../common/Data/Data';
+import Resturents from '../../common/Resturents/Resturents';
+import FoodItem from '../../common/FoodItem/FoodItem';
+import Header, { MenuHeader } from '../../common/Header/Header';
 
 const HomeScreen = () => {
   const [selectedFood, setSelectedFood] = useState(null);
   const navigation = useNavigation();
   const openDrawerClick = () => {
-    navigation.dispatch(DrawerActions.openDrawer());
+    navigation.openDrawer();
   };
   const handleFoodItemClick = index => {
     setSelectedFood(index);
   };
+
+  const renderRestaurants = ({ item }) => (
+    <View style={commonStyle.v_10}>
+      <Resturents
+        BackgroundImg={item.BackgroundImg}
+        RestaurantName={item.RestaurantName}
+        Rating={item.Rating}
+        Verified={item.Verified}
+        DeliveryIcon={item.DeliveryIcon}
+        DeliveryOption={item.DeliveryOption}
+        TimeIcon={item.TimeIcon}
+        DeliveryTime={item.DeliveryTime}
+        Burger={item.Burger}
+        Chicken={item.Chicken}
+        FastFood={item.FastFood}
+        onPress={() => navigation.navigate('Reviews')}
+      />
+    </View>
+  )
+
+  const renderFoodItem = ({ item }) => (
+    <View style={[commonStyle.v_10]}>
+      <FoodItem
+        ItemImg={item.ItemImg}
+        Price={item.Price}
+        Rating={item.Rating}
+        FoodName={item.FoodName}
+        FoodDescription={item.FoodDescription}
+        onPress={() => navigation.navigate('Reviews')}
+      />
+    </View>
+  )
+
   return (
-    <ScrollView>
-      <SafeAreaView style={styles.constainer}>
-        <View style={styles.HeaderView}>
-          <TouchableOpacity
-            style={styles.BackImgView}
-            onPress={openDrawerClick}>
-            <Image source={images.Menu} style={styles.BackImg} />
-          </TouchableOpacity>
-          <View>
-            <View style={styles.TextHeader}>
-              <Text style={styles.Deliver}>Deliver to</Text>
-              <Image style={styles.HeaderAero} source={images.HeaderAero} />
-            </View>
-            <Text style={styles.header}>4102 Pretty View Lane </Text>
-          </View>
-          <View style={styles.ImgView}>
-            <Image style={styles.Img} source={images.ProfileImage} />
-          </View>
-        </View>
+    <ScrollView showsVerticalScrollIndicator={false}>
+      <SafeAreaView style={commonStyle.constainer}>
+        <MenuHeader 
+        onPress={openDrawerClick}
+            Deliver='Deliver to'
+            DeliveryAddress='4102 Pretty View Lane'
+            HeaderImg={images.UserProfile}
+            HeaderImgstyle={styles.UserImg}
+        />
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
         </Text>
@@ -61,20 +88,20 @@ const HomeScreen = () => {
             <Image style={styles.filter} source={images.filter} />
           </TouchableOpacity>
         </View>
-        <View>
+        <View style={commonStyle.m_20}>
           <ScrollView
             horizontal={true}
-            style={{width: '110%'}}
-            contentContainerStyle={{marginRight: s(20), paddingRight: s(50)}}
+            style={{ width: '110%' }}
+            contentContainerStyle={{ marginRight: s(20), paddingRight: s(50), marginBottom: vs(20) }}
             showsHorizontalScrollIndicator={false}>
             {FoodList.map((item, index) => {
               const itemStyle = [
                 styles.boxElevation,
-                selectedFood === index && {backgroundColor: '#FE724C'},
+                selectedFood === index && { backgroundColor: '#FE724C' },
               ];
               const nameStyle = [
                 styles.name,
-                selectedFood === index && {color: '#fff'},
+                selectedFood === index && { color: '#fff' },
               ];
               return (
                 <TouchableOpacity
@@ -88,64 +115,23 @@ const HomeScreen = () => {
             })}
           </ScrollView>
         </View>
-        <View style={styles.HeaderView}>
-          <Text style={styles.titleRestaurant}>Featured Restaurants</Text>
-          <TouchableOpacity style={styles.titleView}>
-            <Text style={styles.ViewAll}>View All</Text>
-            <Image style={styles.OpenAero} source={images.OpenAero} />
-          </TouchableOpacity>
-        </View>
-        <View>
-          <ScrollView
-            horizontal={true}
-            style={{width: '110%'}}
-            contentContainerStyle={{marginRight: s(20), paddingRight: s(50)}}
-            showsHorizontalScrollIndicator={false}>
-            {Featured_Restaurants.map(item => {
-              return (
-                <TouchableOpacity style={styles.SecondBoxElevation}>
-                  <ImageBackground
-                    borderTopRightRadius={15}
-                    borderTopLeftRadius={15}
-                    style={styles.mainImg}
-                    source={item.RestaurantsImg}>
-                    <View style={styles.rowSpace}>
-                      <View style={styles.Elevation}>
-                        <Text style={styles.Reating}>{item.Reating}</Text>
-                      </View>
-                      <Image style={styles.Like} source={item.Like} />
-                    </View>
-                  </ImageBackground>
-                  <View style={commonStyle.f_D_R}>
-                    <Text style={styles.Restaurants}>{item.Restaurants} </Text>
-                    <Image style={styles.Verified} source={item.Verified} />
-                  </View>
-                  <View style={[commonStyle.f_D_R]}>
-                    <Image
-                      style={styles.DeliveryIcon}
-                      source={item.DeliveryIcon}
-                    />
-                    <Text style={[styles.Delivery, {marginRight: 20}]}>
-                      {item.Delivery}
-                    </Text>
-                    <Image style={styles.DeliveryIcon} source={item.TimeIcon} />
-                    <Text style={styles.Delivery}>{item.Time}</Text>
-                  </View>
-                  <View style={{flexDirection: 'row'}}>
-                    <View style={styles.Box}>
-                      <Text style={styles.Food}>{item.Burger}</Text>
-                    </View>
-                    <View style={styles.Box}>
-                      <Text style={styles.Food}>{item.Chicken}</Text>
-                    </View>
-                    <View style={styles.Box}>
-                      <Text style={styles.Food}>{item.FastFood}</Text>
-                    </View>
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
-          </ScrollView>
+
+        <View >
+          <View style={styles.HeaderView}>
+            <Text style={styles.titleRestaurant}>Featured Restaurants</Text>
+            <TouchableOpacity style={styles.titleView}>
+              <Text style={styles.ViewAll}>View All</Text>
+              <Image style={styles.OpenAero} source={images.OpenAero} />
+            </TouchableOpacity>
+          </View>
+          <FlatList
+            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            data={Featured_Restaurants}
+            keyExtractor={(item) => item.id}
+            renderItem={renderRestaurants}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+          />
           <View style={styles.HeaderView}>
             <Text style={styles.titleRestaurant}>Popular Items</Text>
             <TouchableOpacity style={styles.titleView}>
@@ -153,38 +139,14 @@ const HomeScreen = () => {
               <Image style={styles.OpenAero} source={images.OpenAero} />
             </TouchableOpacity>
           </View>
-          <ScrollView
-            horizontal={true}
-            style={{width: '110%'}}
-            contentContainerStyle={{marginRight: s(20), paddingRight: s(50)}}
-            showsHorizontalScrollIndicator={false}>
-            {PopularItems.map(item => {
-              return (
-                <View>
-                  <ImageBackground
-                    borderRadius={15}
-                    style={styles.ItemBox}
-                    source={item.ItemImg}>
-                    <View style={styles.rowSpace}>
-                      <View style={styles.PopularItemElevation}>
-                        <Text style={styles.Reating}>$ {item.Price}</Text>
-                      </View>
-                      <TouchableOpacity>
-                        <Image style={styles.Like} source={item.Like} />
-                      </TouchableOpacity>
-                    </View>
-                    <View style={styles.ItemElevation}>
-                      <Text style={styles.Reating}>{item.Rating}</Text>
-                    </View>
-                  </ImageBackground>
-                  <View style={{marginLeft: s(20)}}>
-                    <Text style={styles.ItemTitle}>{item.Title}</Text>
-                    <Text style={styles.FoodName}>{item.FoodName}</Text>
-                  </View>
-                </View>
-              );
-            })}
-          </ScrollView>
+          <FlatList
+            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            data={PopularItems}
+            keyExtractor={(item) => item.Id}
+            renderItem={renderFoodItem}
+            showsHorizontalScrollIndicator={false}
+            horizontal
+          />
         </View>
       </SafeAreaView>
     </ScrollView>

@@ -4,30 +4,35 @@ import { commonStyle } from '../../utils/commonStyles';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { colors } from '../../utils/colors';
+import { useNavigation } from '@react-navigation/native';
 
 const FoodItem = props => {
     return (
-        <View style={[commonStyle.m_20, styles.mainView]}>
-            <ImageBackground source={props.backgroundImg} style={styles.BackgroundImg} imageStyle={{ borderRadius: 15 }}>
-                <View style={styles.priceHeaderView}>
-                    <View style={styles.priceTagView}>
+        <>
+            <TouchableOpacity style={[styles.MainView]}>
+                <Image source={props.ItemImg} style={styles.FoodBackgroundImg} />
+                <TouchableOpacity style={styles.ReviewTxtView} onPress={props.onPress}>
+                    <Text style={styles.ReviewTxt}>{props.Rating}</Text>
+                </TouchableOpacity>
+                <View style={styles.ItemNameView}>
+                    <Text style={styles.ItemName}>{props.FoodName}</Text>
+                    <Text style={styles.ItemDescription}>{props.FoodDescription}</Text>
+                </View>
+            </TouchableOpacity>
+            <View style={styles.RatingHeaderView}>
+                <View style={styles.PriceHeaderView}>
+                    <View style={styles.PriceTagView}>
                         <Text style={{ color: colors.orange }}>$</Text>
-                        <Text style={styles.priceTagTxt}>{props.price}</Text>
+                        <Text style={styles.PriceTagTxt}>{props.Price}</Text>
                     </View>
                     <TouchableOpacity style={styles.HeartIconView}>
                         <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
                     </TouchableOpacity>
                 </View>
-                <TouchableOpacity style={styles.reviewTxtView} onPress={() => navigation.navigate('Reviews')}>
-                    <Text style={styles.reviewTxt}>{props.rating}</Text>
-                </TouchableOpacity>
-            </ImageBackground>
-            <View style={styles.itemNameView}>
-                <Text style={styles.itemName}>{props.foodName}</Text>
-                <Text style={styles.itemDescription}>{props.foodDescription}</Text>
+                
             </View>
-        </View>
+        </>
     )
 }
 
-export default FoodItem
+export default FoodItem;

@@ -4,11 +4,7 @@ import { colors } from "../../utils/colors";
 import { Font } from "../../utils/Fonts";
 
 export const styles = StyleSheet.create({
-    headerView: {
-        marginTop: vs(30),
-        marginHorizontal: s(20),
-    },
-    textInputTxt: {
+    TextInputTxt: {
         fontFamily: Font.sofiaProMedium,
     },
     Btn: {

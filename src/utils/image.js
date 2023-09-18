@@ -30,7 +30,7 @@ export const images = {
   Like: require('../assets/images/Like/Like.png'),
   Delivery: require('../assets/images/Delivery/DeliVery.png'),
   Time: require('../assets/images/time/Time.png'),
-  McDonald: require('../assets/images/McDonald/McDonald.png'),
+  McDonaldBack: require('../assets/images/McDonald/McDonald.png'),
   StarBuck: require('../assets/images/StarBucks/StarBuck.png'),
   ChineseFood: require('../assets/images/chineseFood/chineseFood.png'),
   ItalianPizza: require('../assets/images/ItalianPizza/ItalianPizza.png'),

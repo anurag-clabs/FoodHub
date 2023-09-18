@@ -23,7 +23,16 @@ export const Button = props => {
 export const BackButton = props => {
   return (
     <TouchableOpacity style={[Styles.BackImgView, props.style]} onPress={() => props.onPress()}>
-      <Image source={images.BackImg} style={commonStyle.imageStyle} />
+      <Image source={images.BackImg} style={commonStyle.ImageStyle} />
     </TouchableOpacity>
   )
 }
+
+export const MenuButton = props => {
+  return (
+    <TouchableOpacity style={[Styles.BackImgView, props.style]} onPress={() => props.onPress()}>
+      <Image source={images.Menu} style={commonStyle.ImageStyle} />
+    </TouchableOpacity>
+  )
+}
+

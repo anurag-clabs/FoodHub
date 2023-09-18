@@ -4,15 +4,36 @@ import { colors } from "../../utils/colors";
 import { Font } from "../../utils/Fonts";
 
 export const styles = StyleSheet.create({
-    headerView: {
-        marginTop: vs(30),
+    HeaderView: {
+        marginTop: vs(20),
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
     },
-    text: {
+    Text: {
         fontFamily: Font.sofiaProMedium,
         fontSize: 18,
         color: colors.black,
-    }
+    },
+    TextHeader: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        alignSelf: 'center',
+    },
+    Deliver: {
+        marginHorizontal: 3,
+        fontFamily: Font.sofiaProMedium,
+        fontSize: 14,
+        color: colors.darkgray,
+    },
+    HeaderAero: {
+        resizeMode: 'contain',
+        height: vs(8),
+        width: s(10),
+    },
+    HeaderAddress: {
+        fontFamily: Font.sofiaProMedium,
+        color: colors.orange,
+        fontSize: 15,
+    },
 })

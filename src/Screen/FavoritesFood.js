@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react';
-import Header from '../common/Header/Header';
+import { Header } from '../common/Header/Header';
 import { commonStyle } from '../utils/commonStyles';
 import { images } from '../utils/image';
 import { useNavigation } from '@react-navigation/native';
@@ -17,7 +17,7 @@ const FavoritesFood = () => {
     const ProfileTabNavigator = createMaterialTopTabNavigator()
 
     return (
-        <SafeAreaView style={{flex: 1}}>
+        <SafeAreaView style={{ flex: 1 }}>
             <Header
                 Text='Favorites'
                 onPress={() => navigation.goBack()}
@@ -35,7 +35,7 @@ const FavoritesFood = () => {
                 indicatorStyle: {
                     height: 45,
                     top: '10%',
-                    bottom: '10%',  
+                    bottom: '10%',
                     width: '48%',
                     left: '1%',
                     borderRadius: 100,
