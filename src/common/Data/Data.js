@@ -1,4 +1,4 @@
-import { images } from '../../utils/image';
+import {images} from '../../utils/image';
 
 export const FoodList = [
   {
@@ -217,7 +217,7 @@ export const Featured_Restaurants = [
   },
   {
     id: 2,
-    BackgroundImg: images.StarBuck,
+    BackgroundImg: images.StarBuckPasta,
     Rating: '4.7 ⭐ (99+)',
     Like: images.Like,
     RestaurantName: 'Starbuck',
@@ -262,5 +262,27 @@ export const PopularItems = [
     Rating: '4.5 ⭐ (25+)',
     FoodName: 'Salmon Salad',
     FoodDescription: 'Baked salmon fish',
+  },
+];
+export const Setting = [
+  {
+    Id: 1,
+    title: 'Edit Profile',
+    aero: images.OpenAero,
+  },
+  {
+    Id: 2,
+    title: 'Order Detail',
+    aero: images.OpenAero,
+  },
+  {
+    Id: 3,
+    title: 'Change Password',
+    aero: images.OpenAero,
+  },
+  {
+    Id: 4,
+    title: 'Contact Us',
+    aero: images.OpenAero,
   },
 ];

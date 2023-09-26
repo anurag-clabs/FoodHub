@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 import ProfileScreen from '../component/Profile/ProfileScreen';
 
 const Profile = () => {
-  return <ProfileScreen />
-}
+  return <ProfileScreen />;
+};
 
 export default Profile;
