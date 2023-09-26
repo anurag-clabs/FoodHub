@@ -17,4 +17,8 @@ export const colors = {
   LightGrayishBlue: '#FCFCFD',
   RomanSilver: '#8A8E9B',
   search: '#767F9D',
+  offWhite: '#EFF0F1',
+  darkPrimaryColor: '#242424',
+  silver: '#C4C4C4',
+  LightSlateGrey: '#7E8392',
 };

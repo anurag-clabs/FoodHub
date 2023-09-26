@@ -9,12 +9,12 @@ import {
   ImageBackground,
   FlatList,
 } from 'react-native';
-import React, { useState } from 'react';
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { DrawerActions, useNavigation } from '@react-navigation/native';
-import { s, vs } from 'react-native-size-matters';
-import { commonStyle } from '../../utils/commonStyles';
+import React, {useState} from 'react';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {DrawerActions, useNavigation} from '@react-navigation/native';
+import {s, vs} from 'react-native-size-matters';
+import {commonStyle} from '../../utils/commonStyles';
 import {
   Featured_Restaurants,
   FoodList,
@@ -22,7 +22,7 @@ import {
 } from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';
 import FoodItem from '../../common/FoodItem/FoodItem';
-import Header, { MenuHeader } from '../../common/Header/Header';
+import Header, {MenuHeader} from '../../common/Header/Header';
 
 const HomeScreen = () => {
   const [selectedFood, setSelectedFood] = useState(null);
@@ -34,7 +34,7 @@ const HomeScreen = () => {
     setSelectedFood(index);
   };
 
-  const renderRestaurants = ({ item }) => (
+  const renderRestaurants = ({item}) => (
     <View style={commonStyle.v_10}>
       <Resturents
         BackgroundImg={item.BackgroundImg}
@@ -51,9 +51,9 @@ const HomeScreen = () => {
         onPress={() => navigation.navigate('Reviews')}
       />
     </View>
-  )
+  );
 
-  const renderFoodItem = ({ item }) => (
+  const renderFoodItem = ({item}) => (
     <View style={[commonStyle.v_10]}>
       <FoodItem
         ItemImg={item.ItemImg}
@@ -64,17 +64,17 @@ const HomeScreen = () => {
         onPress={() => navigation.navigate('Reviews')}
       />
     </View>
-  )
+  );
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
       <SafeAreaView style={commonStyle.constainer}>
-        <MenuHeader 
-        onPress={openDrawerClick}
-            Deliver='Deliver to'
-            DeliveryAddress='4102 Pretty View Lane'
-            HeaderImg={images.UserProfile}
-            HeaderImgstyle={styles.UserImg}
+        <MenuHeader
+          onPress={openDrawerClick}
+          Deliver="Deliver to"
+          DeliveryAddress="4102 Pretty View Lane"
+          HeaderImg={images.UserProfile}
+          HeaderImgstyle={styles.UserImg}
         />
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
@@ -91,17 +91,21 @@ const HomeScreen = () => {
         <View style={commonStyle.m_20}>
           <ScrollView
             horizontal={true}
-            style={{ width: '110%' }}
-            contentContainerStyle={{ marginRight: s(20), paddingRight: s(50), marginBottom: vs(20) }}
+            style={{width: '110%'}}
+            contentContainerStyle={{
+              marginRight: s(20),
+              paddingRight: s(50),
+              marginBottom: vs(20),
+            }}
             showsHorizontalScrollIndicator={false}>
             {FoodList.map((item, index) => {
               const itemStyle = [
                 styles.boxElevation,
-                selectedFood === index && { backgroundColor: '#FE724C' },
+                selectedFood === index && {backgroundColor: '#FE724C'},
               ];
               const nameStyle = [
                 styles.name,
-                selectedFood === index && { color: '#fff' },
+                selectedFood === index && {color: '#fff'},
               ];
               return (
                 <TouchableOpacity
@@ -116,7 +120,7 @@ const HomeScreen = () => {
           </ScrollView>
         </View>
 
-        <View >
+        <View>
           <View style={styles.HeaderView}>
             <Text style={styles.titleRestaurant}>Featured Restaurants</Text>
             <TouchableOpacity style={styles.titleView}>
@@ -125,9 +129,9 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            contentContainerStyle={{paddingHorizontal: s(10)}}
             data={Featured_Restaurants}
-            keyExtractor={(item) => item.id}
+            keyExtractor={item => item.id}
             renderItem={renderRestaurants}
             showsHorizontalScrollIndicator={false}
             horizontal
@@ -140,9 +144,9 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            contentContainerStyle={{paddingHorizontal: s(10)}}
             data={PopularItems}
-            keyExtractor={(item) => item.Id}
+            keyExtractor={item => item.Id}
             renderItem={renderFoodItem}
             showsHorizontalScrollIndicator={false}
             horizontal
