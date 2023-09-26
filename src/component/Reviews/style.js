@@ -33,7 +33,7 @@ export const styles = StyleSheet.create({
     reviewDescription: {
         width: '95%',
         fontSize: 17,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
     },
     reviewCount: {
         height: ms(18),
@@ -53,7 +53,7 @@ export const styles = StyleSheet.create({
         bottom: 15
     },
     reviewCountTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.white,
         fontSize: 10,
     },
@@ -66,12 +66,12 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     userName: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.black,
         fontSize: 15
     },
     date: {
-        fontFamily: Font.sofiaProMedium
+        fontFamily: Font.SofiaProMedium
     },
     usernameView: {
         height: vs(55),

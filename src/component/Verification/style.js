@@ -26,15 +26,15 @@ export const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     textInputTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
     },
     bottomSignUpTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 15,
         color: colors.grey,
     },
     bottomSignUpTxt2: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 15,
         color: colors.orange,
     },
@@ -52,7 +52,7 @@ export const styles = StyleSheet.create({
         borderColor: colors.lightGrey,
         borderRadius: 10,
         color: colors.orange,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 18,
     },
     codelineStyleHighLighted: {
@@ -67,7 +67,7 @@ export const styles = StyleSheet.create({
         width: 60,
         borderRadius: 10,
         borderWidth: 1,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.orange,
         fontSize: 25,
         borderBottomWidth: 1

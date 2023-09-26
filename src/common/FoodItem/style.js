@@ -96,7 +96,7 @@ export const styles = StyleSheet.create({
     left: 15,
   },
   ReviewTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 12,
     color: colors.black,
   },
@@ -110,7 +110,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
   },
   ItemDescription: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 15,
   },
   RatingHeaderView: {

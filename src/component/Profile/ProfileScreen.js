@@ -72,7 +72,11 @@ const ProfileScreen = () => {
           </View>
           <Text style={styles.profileText}>Eljad Eendaz</Text>
           <TouchableOpacity>
-            <Text style={{fontFamily: Font.sofiaPro, color: colors.GreySuit}}>
+            <Text
+              style={{
+                fontFamily: Font.SofiaProRegular,
+                color: colors.GreySuit,
+              }}>
               Edit Profile
             </Text>
           </TouchableOpacity>

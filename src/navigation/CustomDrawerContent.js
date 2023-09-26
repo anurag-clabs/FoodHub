@@ -25,7 +25,7 @@ const CustomDrawerContent = props => {
       <View style={styles.ProfileView}>
         <Image source={images.UserProfile} style={styles.ProfileImage} />
         <Text style={styles.profileText}>Farion Wick</Text>
-        <Text style={{fontFamily: Font.sofiaProMedium}}>
+        <Text style={{fontFamily: Font.SofiaProMedium}}>
           farionwick@gmail.com
         </Text>
       </View>
@@ -125,7 +125,7 @@ const styles = StyleSheet.create({
     elevation: 10,
   },
   LogoutTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.white,
     marginHorizontal: s(5),
   },

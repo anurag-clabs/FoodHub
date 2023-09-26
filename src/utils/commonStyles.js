@@ -33,7 +33,7 @@ export const commonStyle = StyleSheet.create({
   },
   BoxText: {
     paddingLeft: 10,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
   },
   DownArrow: {
     width: ms(30),
@@ -64,7 +64,7 @@ export const commonStyle = StyleSheet.create({
     borderColor: colors.lightGrey,
     borderWidth: 1,
     borderRadius: 10,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     padding: 12,
     height: vs(55),
     marginBottom: vs(20),
@@ -73,7 +73,7 @@ export const commonStyle = StyleSheet.create({
     marginVertical: vs(10),
     borderWidth: 1,
     borderRadius: 10,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     padding: 12,
     height: vs(55),
     marginBottom: vs(20),
@@ -93,7 +93,7 @@ export const commonStyle = StyleSheet.create({
   input: {
     width: ms(300),
     color: colors.black,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     padding: 10,
     marginVertical: vs(5),
   },

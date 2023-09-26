@@ -5,7 +5,7 @@ import {Font} from '../../utils/Fonts';
 
 export const styles = StyleSheet.create({
   TextInputTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.GreySuit,
   },
   Btn: {

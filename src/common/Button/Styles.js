@@ -22,7 +22,7 @@ export const Styles = StyleSheet.create({
     fontWeight: '500',
     color: 'white',
     textAlign: 'center',
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
   },
   BackImgView: {
     backgroundColor: colors.white,

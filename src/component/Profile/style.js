@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     marginVertical: vs(30),
   },
   textInputTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.GreySuit,
   },
   CameraView: {

@@ -7,7 +7,7 @@ import {ms} from 'react-native-size-matters';
 export const styles = StyleSheet.create({
   contact: {
     fontSize: 16,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     margin: ms(10),
     width: ms(265),
     color: colors.black,

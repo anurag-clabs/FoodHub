@@ -27,7 +27,7 @@ const FavoritesFood = () => {
             <ProfileTabNavigator.Navigator tabBarOptions={{
                 activeTintColor: colors.white,
                 labelStyle: {
-                    fontFamily: Font.sofiaProMedium,
+                    fontFamily: Font.SofiaProMedium,
                     textTransform: 'capitalize',
                     fontSize: 15,
                 },

@@ -1,5 +1,15 @@
- export const Font = {
-    SofiaPro : 'SofiaProLight',
-    SofiaProBold : 'SofiaProBold',
-    sofiaProMedium : 'SofiaProMedium'
- }
+export const Font = {
+  PoppinsBlack: 'Poppins-Black',
+  PoppinsBlackItalic: 'Poppins-BlackItalic',
+  PoppinsBold: 'Poppins-Bold',
+  PoppinsItalic: 'Poppins-Italic',
+  PoppinsLight: 'Poppins-Light',
+  SofiaProBlack: 'SofiaProBlack',
+  SofiaProBold: 'SofiaProBold',
+  SofiaProExtraLight: 'SofiaProExtraLight',
+  SofiaProLight: 'SofiaProLight',
+  SofiaProMedium: 'SofiaProMedium',
+  SofiaProRegular: 'SofiaProRegular',
+  SofiaProSemiBold: 'SofiaProSemiBold',
+  SofiaProUltraLight: 'SofiaProUltraLight',
+};

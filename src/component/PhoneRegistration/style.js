@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
         marginVertical: vs(30)
     },
     textInputTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         width: '75%'
     },
     containerStyle: {

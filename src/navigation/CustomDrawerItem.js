@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: vs(18),
     color: colors.black,
-    fontFamily: Font.sofiaProMedium
+    fontFamily: Font.SofiaProMedium
   },
 });

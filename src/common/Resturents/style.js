@@ -71,7 +71,7 @@ export const styles = StyleSheet.create({
     left: 15,
   },
   reviewTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 12,
     color: colors.black,
   },
@@ -84,7 +84,7 @@ export const styles = StyleSheet.create({
     fontSize: 20,
   },
   itemDescription: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 15,
   },
   DeliveryIcon: {
@@ -94,7 +94,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   Delivery: {
-    fontFamily: Font.SofiaPro,
+    fontFamily: Font.SofiaProRegular,
     fontSize: 16,
     alignSelf: 'center',
   },
