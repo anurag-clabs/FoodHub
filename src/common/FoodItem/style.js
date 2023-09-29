@@ -18,13 +18,15 @@ export const styles = StyleSheet.create({
     MainView: {
         marginHorizontal: s(10),
         borderRadius: 20,
-        marginBottom: vs(20) ,
+        marginBottom: vs(20),
         backgroundColor: colors.white,
+        elevation: 1.5,
+    },
+    IosShadow: {
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: '#171717',
         shadowOffset: { width: -2, height: 4 },
-        elevation: 5,
     },
     PriceTagView: {
         borderRadius: 20,
@@ -49,7 +51,7 @@ export const styles = StyleSheet.create({
         fontSize: 22
     },
     PriceHeaderView: {
-        marginTop: vs(10),
+        marginTop: vs(5),
         marginHorizontal: s(10),
         flexDirection: 'row',
         justifyContent: 'space-between',
@@ -61,7 +63,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between',
         position: 'absolute',
         width: s(290),
-        left: 15
+        left: s(15)
     },
     ReviewTxtView: {
         borderRadius: ms(30) / 2,
@@ -70,14 +72,10 @@ export const styles = StyleSheet.create({
         width: ms(80),
         alignItems: 'center',
         justifyContent: 'center',
-        shadowOpacity: 1,
-        shadowRadius: 4,
-        shadowColor: colors.orange,
-        shadowOffset: { width: -2, height: 4 },
-        elevation: 5,
+        elevation: 1.5,
         position: 'absolute',
-        bottom: 70,
-        left: 10
+        bottom: vs(60),
+        left: s(8)
     },
     FavoritesreviewTxtView: {
         borderRadius: ms(30) / 2,
@@ -86,14 +84,16 @@ export const styles = StyleSheet.create({
         width: ms(80),
         alignItems: 'center',
         justifyContent: 'center',
+        elevation: 1.5,
+        position: 'absolute',
+        bottom: vs(60),
+        left: 15
+    },
+    Favoritesreview: {
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: colors.orange,
         shadowOffset: { width: -2, height: 4 },
-        elevation: 5,
-        position: 'absolute',
-        bottom: 70,
-        left: 15
     },
     ReviewTxt: {
         fontFamily: Font.sofiaProMedium,
@@ -119,6 +119,6 @@ export const styles = StyleSheet.create({
         marginHorizontal: s(5),
         justifyContent: 'space-between',
         position: 'absolute',
-        top:-5
+        top: -5
     },
 })

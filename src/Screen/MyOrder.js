@@ -1,25 +1,26 @@
-import { View, Text, SafeAreaView } from 'react-native'
 import React from 'react';
+import { View, Text, SafeAreaView } from 'react-native'
 import { Header } from '../common/Header/Header';
-import { commonStyle } from '../utils/commonStyles';
-import { images } from '../utils/image';
 import { useNavigation } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { colors } from '../utils/colors';
-import FavoriteResturentScreen from '../component/Favorites/FavoriteResturentScreen';
-import FavoritesFoodScreen from '../component/Favorites/FavoritesFoodScreen';
-import { s, vs } from 'react-native-size-matters';
 import { Font } from '../utils/Fonts';
+import FavoritesFoodScreen from '../component/Favorites/FavoritesFoodScreen';
+import FavoriteResturentScreen from '../component/Favorites/FavoriteResturentScreen';
+import { s, vs } from 'react-native-size-matters';
+import { commonStyle } from '../utils/commonStyles';
+import { images } from '../utils/image';
+import MyOrderScreen from '../component/MyOrder/MyOrderScreen';
+import OrderHistoryScreen from '../component/MyOrder/OrderHistoryScreen';
 
-const FavoritesFood = () => {
-
+const MyOrder = () => {
     const navigation = useNavigation();
     const ProfileTabNavigator = createMaterialTopTabNavigator()
 
     return (
-        <SafeAreaView style={{ flex: 1 }}>
+        <SafeAreaView style={commonStyle.constainer}>
             <Header
-                Text='Favorites'
+                Text='My Orders'
                 onPress={() => navigation.goBack()}
                 HeaderImg={images.UserProfile}
                 HeaderImgstyle={commonStyle.headerImg}
@@ -55,11 +56,12 @@ const FavoritesFood = () => {
                     swipeEnabled: true,
                 }}
             >
-                <ProfileTabNavigator.Screen name="Food Item" component={FavoritesFoodScreen} />
-                <ProfileTabNavigator.Screen name="Resturent" component={FavoriteResturentScreen} />
+                <ProfileTabNavigator.Screen name="Upcoming" component={MyOrderScreen} />
+                <ProfileTabNavigator.Screen name="History" component={OrderHistoryScreen} />
             </ProfileTabNavigator.Navigator>
         </SafeAreaView>
     )
+
 }
 
-export default FavoritesFood;
+export default MyOrder;
