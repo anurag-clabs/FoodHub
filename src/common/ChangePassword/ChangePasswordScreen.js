@@ -1,5 +1,5 @@
 import {View, Text, SafeAreaView, TextInput} from 'react-native';
-import React from 'react';
+import React, {useState} from 'react';
 import {TitleHeader} from '../Button/Button';
 import {commonStyle} from '../../utils/commonStyles';
 import {images} from '../../utils/image';
@@ -9,6 +9,26 @@ import {colors} from '../../utils/colors';
 
 const ChangePasswordScreen = () => {
   const navigation = useNavigation();
+  const [isAddPasswordFocused, setIsAddPasswordFocused] = useState(false);
+  const [isAddNewPasswordFocused, setIsAddNewPasswordFocused] = useState(false);
+  const [isConfirmPasswordFocused, setIsConfirmPasswordFocused] =
+    useState(false);
+
+  const handleAddPasswordFocused = () => {
+    setIsAddPasswordFocused(true);
+    setIsAddNewPasswordFocused(false);
+    setIsConfirmPasswordFocused(false);
+  };
+  const handleAddNewPasswordFocused = () => {
+    setIsAddPasswordFocused(false);
+    setIsAddNewPasswordFocused(true);
+    setIsConfirmPasswordFocused(false);
+  };
+  const handleConfirmPasswordFocused = () => {
+    setIsAddPasswordFocused(false);
+    setIsAddNewPasswordFocused(false);
+    setIsConfirmPasswordFocused(true);
+  };
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <TitleHeader
@@ -19,21 +39,36 @@ const ChangePasswordScreen = () => {
       <View style={[commonStyle.m_20, {marginVertical: 20}]}>
         <Text style={styles.textInputTxt}>Current Password</Text>
         <TextInput
-          style={styles.textInputStyle}
+          style={
+            isAddPasswordFocused
+              ? [styles.textInputStyle, styles.focusedTextInput]
+              : styles.textInputStyle
+          }
           placeholderTextColor={colors.RomanSilver}
           placeholder="Add Password"
+          onFocus={handleAddPasswordFocused}
         />
         <Text style={styles.textInputTxt}>New Password</Text>
         <TextInput
           placeholderTextColor={colors.RomanSilver}
-          style={styles.textInputStyle}
+          style={
+            isAddNewPasswordFocused
+              ? [styles.textInputStyle, styles.focusedTextInput]
+              : styles.textInputStyle
+          }
           placeholder="Add New Password"
+          onFocus={handleAddNewPasswordFocused}
         />
         <Text style={styles.textInputTxt}>Confirm Password</Text>
         <TextInput
           placeholderTextColor={colors.RomanSilver}
-          style={styles.textInputStyle}
+          style={
+            isConfirmPasswordFocused
+              ? [styles.textInputStyle, styles.focusedTextInput]
+              : styles.textInputStyle
+          }
           placeholder="Add Confirm Password"
+          onFocus={handleConfirmPasswordFocused}
         />
       </View>
     </SafeAreaView>

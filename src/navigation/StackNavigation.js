@@ -10,6 +10,7 @@ import DrawerNavigation from './DrawerNavigation';
 import Contact from '../Screen/Contact';
 import Setting from '../Screen/Setting';
 import ChangePassword from '../Screen/ChangePassword';
+import Category from '../Screen/Category';
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ const StackNavigation = () => {
       <Stack.Screen name="Contact" component={Contact} />
       <Stack.Screen name="Setting" component={Setting} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
+      <Stack.Screen name="Category" component={Category} />
     </Stack.Navigator>
   );
 };

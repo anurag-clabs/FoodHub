@@ -55,4 +55,6 @@ export const images = {
   Call: require('../assets/images/Call/Call.png'),
   FaceBookIcon: require('../assets/images/FaceBookIcon/facebook.png'),
   Twitter: require('../assets/images/twitterIcon/twitter.png'),
+  BackGroundPizza: require('../assets/images/BackGraundPizzaImg/BackGraundPizzaImg.png'),
+  Aero: require('../assets/images/Aero/Aero.png'),
 };

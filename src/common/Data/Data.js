@@ -286,3 +286,30 @@ export const Setting = [
     aero: images.OpenAero,
   },
 ];
+
+export const FoodData = [
+  {
+    id: 1,
+    ItemImg: images.ChickenHawaiian,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Chicken Hawaiian',
+    FoodDescription: 'Chicken, Cheese and pineapple',
+  },
+  {
+    id: 2,
+    ItemImg: images.RedPizza,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Red N Hot Pizza',
+    FoodDescription: 'Chicken, Chili',
+  },
+  {
+    id: 3,
+    ItemImg: images.FoodItem4,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Chicken Hawaiian',
+    FoodDescription: 'Chicken, Cheese and pineapple',
+  },
+];

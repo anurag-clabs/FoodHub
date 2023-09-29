@@ -9,7 +9,7 @@ import { useNavigation } from '@react-navigation/native';
 const FavoritesFoodItem = props => {
     return (
         <>
-            <TouchableOpacity style={[styles.MainView]}>
+            <TouchableOpacity style={[styles.MainView, {shadowOpacity: 0.2}]}>
                 <Image source={props.ItemImg} style={styles.BackgroundImg} />
                 <TouchableOpacity style={styles.FavoritesreviewTxtView} onPress={props.onPress}>
                 <Text style={styles.ReviewTxt}>{props.Rating}</Text>

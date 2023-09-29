@@ -21,4 +21,6 @@ export const colors = {
   darkPrimaryColor: '#242424',
   silver: '#C4C4C4',
   LightSlateGrey: '#7E8392',
+  Fast: '#272D2F',
+  RichBlack: '#111719',
 };
