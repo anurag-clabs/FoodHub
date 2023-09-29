@@ -13,11 +13,11 @@ const Resturents = props => {
 
     return (
         <>
-            <TouchableOpacity style={[styles.mainView]}>
+            <TouchableOpacity style={[styles.mainView, Platform.OS === 'ios' && styles.IosShadow]}>
                 <Image source={props.BackgroundImg} style={styles.BackgroundImg} />
                 <View style={[commonStyle.f_D_R, { alignItems: 'center' }]} >
                     <Text style={styles.itemName}>{props.RestaurantName} </Text>
-                    <Image style={commonStyle.imageStyle} source={props.Verified} />
+                    <Image style={commonStyle.ImageStyle} source={props.Verified} />
                 </View>
                 <View style={[commonStyle.f_D_R]}>
                     <Image
@@ -47,7 +47,7 @@ const Resturents = props => {
                     <Text style={styles.reviewTxt}>{props.Rating}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.HeartIconView}>
-                    <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
+                    <Image source={images.HeartIcon} style={commonStyle.ImageStyle} />
                 </TouchableOpacity>
             </View>
         </>

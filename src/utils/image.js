@@ -50,6 +50,7 @@ export const images = {
   MoreDot: require('../assets/images/moreDot/moreDot.png'),
   HeartIcon: require('../assets/images/HeartIcon/HeartIcon.png'),
   DisLike: require('../assets/images/disLike/disLike.png'),
+  StarBucksLogo: require('../assets/images/StarbucksLogo/StarBucks.png'),
   Addresh: require('../assets/images/Addresh/Addresh.png'),
   Email: require('../assets/images/Email/Email.png'),
   Call: require('../assets/images/Call/Call.png'),

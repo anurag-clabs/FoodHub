@@ -21,7 +21,7 @@ const UserReview = props => {
                     <Text style={styles.date}>{props.Date}</Text>
                 </View>
                 <TouchableOpacity>
-                    <Image source={props.MoreImage} style={commonStyle.imageStyle} />
+                    <Image source={props.MoreImage} style={commonStyle.ImageStyle} />
                 </TouchableOpacity>
             </View>
             <Text style={styles.reviewDescription}>{props.ReviewDescription}</Text>
