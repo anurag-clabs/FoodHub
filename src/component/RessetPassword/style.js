@@ -23,14 +23,14 @@ export const styles = StyleSheet.create({
         marginVertical: vs(30)
     },
     textInputTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
     },
     textInputStyle: {
         marginTop: vs(30),
         borderColor: colors.orange,
         borderWidth: 1,
         borderRadius: 10,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         padding: 12,
         height: vs(50)
     },

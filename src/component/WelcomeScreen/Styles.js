@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
   },
   skipBtnTxt: {
     color: colors.orange,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: vs(14),
   },
   headerView: {
@@ -42,7 +42,7 @@ export const styles = StyleSheet.create({
     color: colors.orange,
   },
   headerTxtContent: {
-    fontFamily: Font.SofiaPro,
+    fontFamily: Font.SofiaProRegular,
     color: colors.grey,
     fontSize: 20,
     width: 300,
@@ -64,7 +64,7 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
   },
   deviderTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 15,
     color: colors.white,
   },
@@ -80,7 +80,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   iconTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.black,
     fontSize: 15,
   },
@@ -99,7 +99,7 @@ export const styles = StyleSheet.create({
   },
   startBtnTxt: {
     margin: 15,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 18,
     color: colors.white,
   },
@@ -107,12 +107,12 @@ export const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   bottomSignUpTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 18,
     color: colors.white,
   },
   bottomSignUpTxt2: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 18,
     color: colors.white,
     textDecorationLine: 'underline',

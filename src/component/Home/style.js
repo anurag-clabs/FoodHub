@@ -46,13 +46,13 @@ export const styles = StyleSheet.create({
   },
   Deliver: {
     marginHorizontal: 3,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 14,
     color: colors.darkgray,
   },
   header: {
     alignSelf: 'center',
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.orange,
     fontSize: 15,
   },
@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
     borderColor: colors.WhiteSmoke,
     borderWidth: 1,
     borderRadius: 10,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     padding: 10,
     height: vs(45),
     width: '65%',
@@ -118,7 +118,7 @@ export const styles = StyleSheet.create({
   name: {
     color: colors.DimGray,
     fontSize: 14,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
   },
   titleRestaurant: {
     marginHorizontal: s(20),
@@ -133,7 +133,7 @@ export const styles = StyleSheet.create({
   },
   ViewAll: {
     color: colors.orange,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 14,
   },
   OpenAero: {
@@ -173,7 +173,7 @@ export const styles = StyleSheet.create({
   },
   Rating: {
     color: colors.black,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 13,
   },
   star: {
@@ -184,7 +184,7 @@ export const styles = StyleSheet.create({
   },
   user: {
     color: colors.GreySuit,
-    fontFamily: Font.SofiaPro,
+    fontFamily: Font.SofiaProRegular,
     fontSize: 12,
   },
   Like: {
@@ -209,7 +209,7 @@ export const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   Delivery: {
-    fontFamily: Font.SofiaPro,
+    fontFamily: Font.SofiaProRegular,
     fontSize: 16,
     alignSelf: 'center',
   },
@@ -271,7 +271,7 @@ export const styles = StyleSheet.create({
   FoodName: {
     marginVertical: vs(10),
     marginTop: vs(5),
-    fontFamily: Font.SofiaPro,
+    fontFamily: Font.SofiaProRegular,
     fontSize: 16,
   },
 });

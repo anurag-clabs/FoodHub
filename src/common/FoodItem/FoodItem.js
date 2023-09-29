@@ -1,10 +1,16 @@
 import React from 'react';
-import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native';
-import { commonStyle } from '../../utils/commonStyles';
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { colors } from '../../utils/colors';
-import { useNavigation } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  Image,
+  TouchableOpacity,
+} from 'react-native';
+import {commonStyle} from '../../utils/commonStyles';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {colors} from '../../utils/colors';
+import {useNavigation} from '@react-navigation/native';
 
 const FoodItem = props => {
     return (

@@ -1,8 +1,8 @@
-import { StyleSheet } from "react-native";
-import { s, vs } from "react-native-size-matters";
-import { colors } from "../../utils/colors";
-import { Font } from "../../utils/Fonts";
-import { ms } from "react-native-size-matters";
+import {StyleSheet} from 'react-native';
+import {s, vs} from 'react-native-size-matters';
+import {colors} from '../../utils/colors';
+import {Font} from '../../utils/Fonts';
+import {ms} from 'react-native-size-matters';
 
 export const styles = StyleSheet.create({
     BackgroundImg: {
@@ -100,3 +100,4 @@ export const styles = StyleSheet.create({
         fontSize: 12,
     },
 })
+

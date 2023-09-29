@@ -8,20 +8,20 @@ export const styles = StyleSheet.create({
         flex: 1,
     },
     headerTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 36,
         color: colors.black,
         marginVertical: vs(40)
     },
     textInputTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
     },
     textInputStyle: {
         marginVertical: vs(10),
         borderColor: colors.lightGrey,
         borderWidth: 1,
         borderRadius: 10,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         padding: 12,
         height: vs(55),
         marginBottom: vs(20),
@@ -30,7 +30,7 @@ export const styles = StyleSheet.create({
         marginVertical: vs(10),
         borderWidth: 1,
         borderRadius: 10,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         padding: 12,
         height: vs(55),
         marginBottom: vs(20),
@@ -68,12 +68,12 @@ export const styles = StyleSheet.create({
         flexDirection: 'row'
     },
     bottomSignUpTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 15,
         color: colors.grey,
     },
     bottomSignUpTxt2: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 15,
         color: colors.orange,
     },
@@ -90,7 +90,7 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.grey,
     },
     deviderTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 15,
         color: colors.grey
     },
@@ -116,7 +116,7 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     iconTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.black,
         fontSize: 15,
     },

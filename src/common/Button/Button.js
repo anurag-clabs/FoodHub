@@ -1,14 +1,14 @@
-import { Image, Text, TouchableOpacity } from 'react-native';
+import {Image, Text, TouchableOpacity, View} from 'react-native';
 import React from 'react';
-import { Styles } from './Styles';
-import { ButtonLoader } from '../Loader/Loder';
-import { images } from '../../utils/image';
-import { commonStyle } from '../../utils/commonStyles';
+import {Styles} from './Styles';
+import {ButtonLoader} from '../Loader/Loder';
+import {images} from '../../utils/image';
+import {commonStyle} from '../../utils/commonStyles';
 
 export const Button = props => {
   return (
     <TouchableOpacity
-      style={[Styles.Button, props.style, {backgroundColor: props.color} ]}
+      style={[Styles.Button, props.style, {backgroundColor: props.color}]}
       onPress={() => props.onPress()}>
       {!props?.loading ? (
         <Text style={Styles.TextButton}>{props.buttonName}</Text>
@@ -19,20 +19,33 @@ export const Button = props => {
   );
 };
 
+export const TitleHeader = ({onPress, title, source}) => {
+  return (
+    <View style={commonStyle.mT10}>
+      <TouchableOpacity style={Styles.menuView} onPress={onPress}>
+        <Image source={source} style={Styles.menuIcon} />
+      </TouchableOpacity>
+      <Text style={Styles.menuTitle}>{title}</Text>
+    </View>
+  );
+};
 
 export const BackButton = props => {
   return (
-    <TouchableOpacity style={[Styles.BackImgView, props.style]} onPress={() => props.onPress()}>
+    <TouchableOpacity
+      style={[Styles.BackImgView, props.style]}
+      onPress={() => props.onPress()}>
       <Image source={images.BackImg} style={commonStyle.ImageStyle} />
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 export const MenuButton = props => {
   return (
-    <TouchableOpacity style={[Styles.BackImgView, props.style]} onPress={() => props.onPress()}>
+    <TouchableOpacity
+      style={[Styles.BackImgView, props.style]}
+      onPress={() => props.onPress()}>
       <Image source={images.Menu} style={commonStyle.ImageStyle} />
     </TouchableOpacity>
-  )
-}
-
+  );
+};

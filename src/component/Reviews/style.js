@@ -30,4 +30,52 @@ export const styles = StyleSheet.create({
         marginHorizontal: s(20),
         marginVertical: vs(10),
     },
+        width: '95%',
+        fontSize: 17,
+        fontFamily: Font.SofiaProMedium,
+    },
+    reviewCount: {
+        height: ms(18),
+        width: ms(19),
+        resizeMode: 'contain',
+        borderRadius: ms(12) / 2,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: colors.yellow,
+        shadowOpacity: 1,
+        shadowRadius: 4,
+        shadowColor: colors.yellow,
+        shadowOffset: { width: -2, height: 5 },
+        elevation: 10,
+        position: 'absolute',
+        right: 0,
+        bottom: 15
+    },
+    reviewCountTxt: {
+        fontFamily: Font.SofiaProMedium,
+        color: colors.white,
+        fontSize: 10,
+    },
+    userImgView: {
+        height: ms(55),
+        width: ms(55),
+    },
+    userHeaderView: {
+        flexDirection: 'row',
+        alignItems: 'center',
+    },
+    userName: {
+        fontFamily: Font.SofiaProMedium,
+        color: colors.black,
+        fontSize: 15
+    },
+    date: {
+        fontFamily: Font.SofiaProMedium
+    },
+    usernameView: {
+        height: vs(55),
+        width: s(190),
+        marginHorizontal: s(10), 
+        marginRight: 50,
+    },
 })

@@ -1,18 +1,18 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useContext, useEffect } from 'react';
-import { Image, StyleSheet, Text, View } from 'react-native';
-import { DrawerContentScrollView } from '@react-navigation/drawer';
-import { images } from '../utils/image';
+import React, {useContext, useEffect} from 'react';
+import {Image, StyleSheet, Text, View} from 'react-native';
+import {DrawerContentScrollView} from '@react-navigation/drawer';
+import {images} from '../utils/image';
 import CustomDrawerItem from './CustomDrawerItem';
-import { ms, s, vs } from 'react-native-size-matters';
+import {ms, s, vs} from 'react-native-size-matters';
 import DrawerAnimationContext from '../context/DrawerAnimationContext/Context';
-import { colors } from '../utils/colors';
-import { Font } from '../utils/Fonts';
+import {colors} from '../utils/colors';
+import {Font} from '../utils/Fonts';
 
 const CustomDrawerContent = props => {
-  const { progress, navigation } = props;
-  const { setProgress } = useContext(DrawerAnimationContext);
+  const {progress, navigation} = props;
+  const {setProgress} = useContext(DrawerAnimationContext);
 
   useEffect(() => {
     progress && setProgress(progress);
@@ -24,8 +24,10 @@ const CustomDrawerContent = props => {
       contentContainerStyle={styles.drawerView}>
       <View style={styles.ProfileView}>
         <Image source={images.UserProfile} style={styles.ProfileImage} />
-          <Text style={styles.profileText}>Farion Wick</Text>
-          <Text style={{fontFamily: Font.sofiaProMedium}}>farionwick@gmail.com</Text>
+        <Text style={styles.profileText}>Farion Wick</Text>
+        <Text style={{fontFamily: Font.SofiaProMedium}}>
+          farionwick@gmail.com
+        </Text>
       </View>
       <View style={styles.drawerContent}>
         <CustomDrawerItem
@@ -41,36 +43,31 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="Delivery Address"
           icon={<Image source={images.Location} style={styles.drawerImage} />}
-        onPress={() => navigation.navigate('Address')}
+          onPress={() => navigation.navigate('Address')}
         />
         <CustomDrawerItem
           title="Payment Methods"
           icon={<Image source={images.Payment} style={styles.drawerImage} />}
-        onPress={() => navigation.navigate('Rating')}
+          onPress={() => navigation.navigate('Rating')}
         />
         <CustomDrawerItem
           title="Contact Us"
           icon={<Image source={images.Message} style={styles.drawerImage} />}
-        onPress={() => navigation.navigate('ReviewResturent')}
+          onPress={() => navigation.navigate('Contact')}
         />
         <CustomDrawerItem
           title="Settings"
           icon={<Image source={images.Setting} style={styles.drawerImage} />}
-        // onPress={() => navigation.navigate('About')}
+          onPress={() => navigation.navigate('Setting')}
         />
         <CustomDrawerItem
           title="Helps & FAQs"
-          icon={
-            <Image
-              source={images.Helps}
-              style={[styles.drawerImage,]}
-            />
-          }
-        // onPress={() => navigation.navigate('Feedback')}
+          icon={<Image source={images.Helps} style={[styles.drawerImage]} />}
+          // onPress={() => navigation.navigate('Feedback')}
         />
       </View>
       <View style={styles.LogoutView}>
-        <Image source={images.Logout} style={styles.drawerImage}/>
+        <Image source={images.Logout} style={styles.drawerImage} />
         <Text style={styles.LogoutTxt}>Log Out</Text>
       </View>
     </DrawerContentScrollView>
@@ -81,7 +78,7 @@ const styles = StyleSheet.create({
   ProfileView: {
     marginTop: vs(25),
     marginHorizontal: s(20),
-    justifyContent: 'flex-start'
+    justifyContent: 'flex-start',
   },
   ProfileImage: {
     height: ms(80),
@@ -93,7 +90,7 @@ const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 20,
     fontFamily: Font.SofiaProBold,
-    marginTop: vs(10)
+    marginTop: vs(10),
   },
   drawerContent: {
     marginVertical: vs(15),
@@ -124,13 +121,13 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowColor: colors.orange,
-    shadowOffset: { width: -2, height: 4 },
+    shadowOffset: {width: -2, height: 4},
     elevation: 10,
   },
   LogoutTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.white,
-    marginHorizontal: s(5)
-  }
+    marginHorizontal: s(5),
+  },
 });
 export default CustomDrawerContent;

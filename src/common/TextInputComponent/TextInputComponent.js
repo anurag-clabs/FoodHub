@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
   input: {
     width: s(280),
     color: colors.black,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     padding: 12,
     height: vs(55)
   },

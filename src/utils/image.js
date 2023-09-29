@@ -31,7 +31,7 @@ export const images = {
   Delivery: require('../assets/images/Delivery/DeliVery.png'),
   Time: require('../assets/images/time/Time.png'),
   McDonaldBack: require('../assets/images/McDonald/McDonald.png'),
-  StarBuck: require('../assets/images/StarBucks/StarBuck.png'),
+  StarBuckPasta: require('../assets/images/StarBucksPasta/StarBuckPasta.png'),
   ChineseFood: require('../assets/images/chineseFood/chineseFood.png'),
   ItalianPizza: require('../assets/images/ItalianPizza/ItalianPizza.png'),
   UserProfile: require('../assets/images/UserProfile/UserProfile.png'),
@@ -51,4 +51,9 @@ export const images = {
   HeartIcon: require('../assets/images/HeartIcon/HeartIcon.png'),
   DisLike: require('../assets/images/disLike/disLike.png'),
   StarBucksLogo: require('../assets/images/StarbucksLogo/StarBucks.png'),
+  Addresh: require('../assets/images/Addresh/Addresh.png'),
+  Email: require('../assets/images/Email/Email.png'),
+  Call: require('../assets/images/Call/Call.png'),
+  FaceBookIcon: require('../assets/images/FaceBookIcon/facebook.png'),
+  Twitter: require('../assets/images/twitterIcon/twitter.png'),
 };
