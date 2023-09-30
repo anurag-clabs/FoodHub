@@ -15,6 +15,7 @@ import Home from '../Screen/Home';
 import FavoritesFood from '../Screen/FavoritesFood';
 import { Font } from '../utils/Fonts';
 import MyOrder from '../Screen/MyOrder';
+import Cart from '../Screen/Cart';
 
 const AppTabNavigator = () => {
   const Tabs = AnimatedTabBarNavigator();
@@ -100,7 +101,7 @@ const AppTabNavigator = () => {
           />
           <Tabs.Screen
             name="Cart"
-            component={Login}
+            component={Cart}
             options={{
               tabBarIcon: ({ focused, color, size }) => (
                 <Icon

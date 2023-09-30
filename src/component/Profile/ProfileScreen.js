@@ -55,10 +55,11 @@ const ProfileScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground
         source={images.ProfileBackGround}
         style={commonStyle.backGroundImg}>
+          <ScrollView>
         <BackButton
           style={styles.BackImgView}
           onPress={() => navigation.goBack()}
@@ -128,6 +129,7 @@ const ProfileScreen = () => {
           color={colors.orange}
           onPress={() => navigation.navigate('Reviews')}
         />
+        </ScrollView>
       </ImageBackground>
     </SafeAreaView>
   );

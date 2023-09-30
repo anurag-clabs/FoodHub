@@ -1,16 +1,11 @@
 import React from 'react';
 import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import { styles } from './style';
-import { colors } from '../../utils/colors';
 import { images } from '../../utils/image';
-import { useNavigation } from '@react-navigation/native';
 import { commonStyle } from '../../utils/commonStyles';
 import { s } from 'react-native-size-matters';
 
 const Resturents = props => {
-
-    const navigation = useNavigation();
-
     return (
         <>
             <TouchableOpacity style={[styles.mainView, Platform.OS === 'ios' && styles.IosShadow]}>

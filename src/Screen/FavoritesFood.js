@@ -29,7 +29,7 @@ const FavoritesFood = () => {
                     tabBarActiveTintColor: colors.white,
                     tabBarInactiveTintColor: colors.orange,
                     tabBarLabelStyle: {
-                        fontFamily: Font.sofiaProMedium,
+                        fontFamily: Font.SofiaProMedium,
                         textTransform: 'capitalize',
                         fontSize: 15,
                     },

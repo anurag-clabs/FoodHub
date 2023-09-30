@@ -1,8 +1,7 @@
 import {StyleSheet} from 'react-native';
-import {s, vs} from 'react-native-size-matters';
+import {s, vs, ms} from 'react-native-size-matters';
 import {colors} from '../../utils/colors';
 import {Font} from '../../utils/Fonts';
-import {ms} from 'react-native-size-matters';
 
 export const styles = StyleSheet.create({
     BackgroundImg: {
@@ -57,7 +56,7 @@ export const styles = StyleSheet.create({
         left: s(10),
     },
     reviewTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 12,
         color: colors.black
     },
@@ -70,7 +69,7 @@ export const styles = StyleSheet.create({
         fontSize: 20,
     },
     itemDescription: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 15,
     },
     DeliveryIcon: {
@@ -80,7 +79,7 @@ export const styles = StyleSheet.create({
         alignSelf: 'center',
     },
     Delivery: {
-        fontFamily: Font.SofiaPro,
+        fontFamily: Font.SofiaProRegular,
         fontSize: 16,
         alignSelf: 'center',
     },
@@ -96,6 +95,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-evenly',
     },
     Food: {
+        fontFamily: Font.SofiaProRegular,
         color: colors.RomanSilver,
         fontSize: 12,
     },

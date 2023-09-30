@@ -30,6 +30,7 @@ export const styles = StyleSheet.create({
         marginHorizontal: s(20),
         marginVertical: vs(10),
     },
+    reviewDescription: {
         width: '95%',
         fontSize: 17,
         fontFamily: Font.SofiaProMedium,

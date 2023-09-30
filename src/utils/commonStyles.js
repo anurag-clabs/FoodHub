@@ -24,6 +24,9 @@ export const commonStyle = StyleSheet.create({
   m_20: {
     marginHorizontal: s(20),
   },
+  mV20: {
+    marginVertical: vs(20),
+  },
   v_10: {
     marginVertical: vs(10),
   },
@@ -103,8 +106,17 @@ export const commonStyle = StyleSheet.create({
   mH15: {
     marginHorizontal: s(15),
   },
+  mV15: {
+    marginVertical: vs(15),
+  },
   mT30: {
     marginTop: vs(30),
+  },
+  mB10: {
+    marginBottom: s(10)
+  },
+  mB15: {
+    marginBottom: s(15)
   },
   flexRow: {
     flexDirection: 'row',
@@ -121,4 +133,25 @@ export const commonStyle = StyleSheet.create({
     height: ms(24),
     resizeMode: 'contain',
   },
+  blackShadow: {
+    shadowColor: colors.black,
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 4, 
+  },
+  orangeShadow: {
+    shadowColor: colors.orange,
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5, 
+  },
+
 });

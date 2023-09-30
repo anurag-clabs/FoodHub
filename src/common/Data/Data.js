@@ -264,6 +264,7 @@ export const PopularItems = [
     FoodDescription: 'Baked salmon fish',
   },
 ];
+
 export const Setting = [
   {
     Id: 1,
@@ -286,3 +287,50 @@ export const Setting = [
     aero: images.OpenAero,
   },
 ];
+
+export const CartData = [
+  {
+    Id: 1,
+    ItemImg: images.ChickenHawaiian,
+    ItemPrice: '$15.30',
+    ItemName: 'Red n hot pizza',
+    ItemDescription: 'Spicy chicken, beef',
+  },
+  {
+    Id: 2,
+    ItemImg: images.GreekSalad,
+    ItemPrice: '$12.00',
+    ItemName: 'Greek salad ',
+    ItemDescription: 'with baked salmon',
+  },
+]
+
+export const UpcomingOrder = [
+  {
+    Id: 1,
+    RestaurantName: 'Starbuck',
+    RestaurantImage: images.StarBucksLogo,
+    EstimateTime: 25,
+    Items: '3 Items',
+    OrderNumber: '#264100'
+  },
+];
+
+export const OrderHistoryData = [
+  {
+    Id: 1,
+    RestaurantName: 'Jimmy John’s ',
+    RestaurantImage: images.JimmyJohnLogo,
+    OrderDate: '20 Jun, 10:30',
+    OrderPrice: '$17.10',
+    Items: '3 Items',
+  },
+  {
+    Id: 2,
+    RestaurantName: 'Subway ',
+    RestaurantImage: images.SubwayLogo,
+    OrderDate: '19 Jun, 11:50',
+    OrderPrice: '$20.50',
+    Items: '2 Items',
+  },
+]
