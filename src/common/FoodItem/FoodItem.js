@@ -32,7 +32,7 @@ const FoodItem = props => {
                         <Text style={styles.PriceTagTxt}>{props.Price}</Text>
                     </View>
                     <TouchableOpacity style={styles.HeartIconView}>
-                        <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
+                        <Image source={images.HeartIcon} style={commonStyle.ImageStyle} />
                     </TouchableOpacity>
                 </View>
                 

@@ -60,3 +60,14 @@ export const SmallButton = props => {
     </TouchableOpacity>
   )
 }
+
+export const ApplyButton = props => {
+  return (
+    <TouchableOpacity
+      style={[Styles.applyButtonView, props.style, { backgroundColor: props.color }]}
+      onPress={() => props.onPress()}>
+      <Text style={[Styles.ButtonTxt, { color: props.Txtcolor }]}>{props.buttonName}</Text>
+    </TouchableOpacity>
+  )
+}
+

@@ -65,7 +65,7 @@ export const Styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
-    elevation: 5,
+    elevation: 2,
   },
   menuTitle: {
     fontSize: 22,
@@ -77,6 +77,12 @@ export const Styles = StyleSheet.create({
   buttonView: {
     height: vs(40),
     width: s(120),
+    justifyContent: 'center',
+    borderRadius: 25,
+  },
+  applyButtonView: {
+    height: vs(40),
+    width: s(90),
     justifyContent: 'center',
     borderRadius: 25,
   },

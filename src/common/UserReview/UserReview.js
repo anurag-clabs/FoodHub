@@ -68,7 +68,7 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: colors.yellow,
-        shadowOffset: { width: -2, height: 5 },
+        shadowOffset: { width: 0, height: 2 },
         elevation: 10,
         position: 'absolute',
         right: 0,
