@@ -90,13 +90,22 @@ export const styles = StyleSheet.create({
         left: 15
     },
     Favoritesreview: {
+        borderRadius: ms(30) / 2,
+        backgroundColor: colors.white,
+        height: ms(32),
+        width: ms(80),
+        alignItems: 'center',
+        justifyContent: 'center',
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: colors.orange,
         shadowOffset: { width: -2, height: 4 },
+        position: 'absolute',
+        bottom: vs(60),
+        left: 15
     },
     ReviewTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 12,
         color: colors.black
     },
@@ -110,7 +119,7 @@ export const styles = StyleSheet.create({
         fontSize: 20,
     },
     ItemDescription: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 15,
     },
     RatingHeaderView: {

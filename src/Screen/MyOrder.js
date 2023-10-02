@@ -5,8 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import { colors } from '../utils/colors';
 import { Font } from '../utils/Fonts';
-import FavoritesFoodScreen from '../component/Favorites/FavoritesFoodScreen';
-import FavoriteResturentScreen from '../component/Favorites/FavoriteResturentScreen';
 import { s, vs } from 'react-native-size-matters';
 import { commonStyle } from '../utils/commonStyles';
 import { images } from '../utils/image';
@@ -30,7 +28,7 @@ const MyOrder = () => {
                     tabBarActiveTintColor: colors.white,
                     tabBarInactiveTintColor: colors.orange,
                     tabBarLabelStyle: {
-                        fontFamily: Font.sofiaProMedium,
+                        fontFamily: Font.SofiaProMedium,
                         textTransform: 'capitalize',
                         fontSize: 15,
                     },

@@ -1,14 +1,14 @@
-import {Image, Text, TouchableOpacity, View} from 'react-native';
+import { Image, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
-import {Styles} from './Styles';
-import {ButtonLoader} from '../Loader/Loder';
-import {images} from '../../utils/image';
-import {commonStyle} from '../../utils/commonStyles';
+import { Styles } from './Styles';
+import { ButtonLoader } from '../Loader/Loder';
+import { images } from '../../utils/image';
+import { commonStyle } from '../../utils/commonStyles';
 
 export const Button = props => {
   return (
     <TouchableOpacity
-      style={[Styles.Button, props.style, {backgroundColor: props.color}]}
+      style={[Styles.Button, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
       {!props?.loading ? (
         <Text style={Styles.TextButton}>{props.buttonName}</Text>
@@ -19,7 +19,7 @@ export const Button = props => {
   );
 };
 
-export const TitleHeader = ({onPress, title, source}) => {
+export const TitleHeader = ({ onPress, title, source }) => {
   return (
     <View style={commonStyle.mT10}>
       <TouchableOpacity style={Styles.menuView} onPress={onPress}>
@@ -49,3 +49,14 @@ export const MenuButton = props => {
     </TouchableOpacity>
   );
 };
+
+
+export const SmallButton = props => {
+  return (
+    <TouchableOpacity
+      style={[Styles.buttonView, props.style, { backgroundColor: props.color }]}
+      onPress={() => props.onPress()}>
+      <Text style={[Styles.ButtonTxt, { color: props.Txtcolor }]}>{props.buttonName}</Text>
+    </TouchableOpacity>
+  )
+}
