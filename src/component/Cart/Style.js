@@ -37,4 +37,21 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
+    textBarView: {
+        padding: 5,
+        borderWidth: 1,
+        borderRadius: 35,
+        borderColor: colors.lightGrey,
+    },
+    subTotalTxt: {
+        fontFamily: Font.SofiaProSemiBold,
+        color: colors.black,
+        fontSize: 20,
+        // marginBottom: s(10)
+    },
+    devider: {
+        borderWidth: 0.2,
+        borderColor: colors.RomanSilver,
+        marginVertical: vs(8)
+    },
 })

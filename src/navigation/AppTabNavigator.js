@@ -70,7 +70,7 @@ const AppTabNavigator = () => {
             inactiveTintColor: 'grey',
             activeBackgroundColor: colors.orange,
             labelStyle: {
-              fontFamily: Font.sofiaProMedium
+              fontFamily: Font.SofiaProMedium
             },
           }}>
           <Tabs.Screen

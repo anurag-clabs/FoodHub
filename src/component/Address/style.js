@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 4,
     shadowColor: colors.orange,
-    shadowOffset: {width: -2, height: 5},
+    shadowOffset: {width: 0, height: 2},
     elevation: 10,
   },
 });

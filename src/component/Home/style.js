@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: {width: 0, height: 2},
     elevation: 5,
   },
   ImgView: {
@@ -104,7 +104,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: {width: 0, height: 2},
     elevation: 5,
     marginBottom: 6,
   },
@@ -259,7 +259,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: {width: 0, height: 2},
     elevation: 5,
   },
   ItemTitle: {

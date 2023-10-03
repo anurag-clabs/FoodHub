@@ -97,7 +97,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: {width: 0, height: 2},
     elevation: 5,
   },
   iconImg: {

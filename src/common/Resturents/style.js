@@ -17,10 +17,14 @@ export const styles = StyleSheet.create({
         elevation: 1.5,
     },
     IosShadow: {
+        marginHorizontal: s(10),
+        borderRadius: 20,
+        marginBottom: vs(20),
+        backgroundColor: colors.white,
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: '#171717',
-        shadowOffset: { width: -2, height: 4 },
+        shadowOffset: { width: 0, height: 2 },
       },
     priceTagView: {
         borderRadius: 20,
