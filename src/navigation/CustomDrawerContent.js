@@ -9,10 +9,21 @@ import {ms, s, vs} from 'react-native-size-matters';
 import DrawerAnimationContext from '../context/DrawerAnimationContext/Context';
 import {colors} from '../utils/colors';
 import {Font} from '../utils/Fonts';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CustomDrawerContent = props => {
   const {progress, navigation} = props;
   const {setProgress} = useContext(DrawerAnimationContext);
+
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem('userLoggedIn');
+    } catch (error) {
+      console.error('Error clearing userLoggedIn state:', error);
+    }
+    navigation.navigate('Welcome');
+  };
 
   useEffect(() => {
     progress && setProgress(progress);
@@ -38,7 +49,7 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="My Profile"
           icon={<Image source={images.MyProfile} style={styles.drawerImage} />}
-          onPress={() => navigation.navigate('Profile')}
+          onPress={() => navigation.navigate('Edit-Profile')}
         />
         <CustomDrawerItem
           title="Delivery Address"
@@ -66,10 +77,12 @@ const CustomDrawerContent = props => {
           // onPress={() => navigation.navigate('Feedback')}
         />
       </View>
-      <View style={styles.LogoutView}>
+        <TouchableOpacity 
+        style={styles.LogoutView} 
+        onPress={handleLogout}>
         <Image source={images.Logout} style={styles.drawerImage} />
         <Text style={styles.LogoutTxt}>Log Out</Text>
-      </View>
+        </TouchableOpacity>
     </DrawerContentScrollView>
   );
 };
@@ -107,6 +120,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   LogoutView: {
+    marginTop: s(40),
     marginHorizontal: s(20),
     backgroundColor: colors.orange,
     flexDirection: 'row',
@@ -115,14 +129,11 @@ const styles = StyleSheet.create({
     width: s(90),
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 15,
-    left: 0,
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowColor: colors.orange,
     shadowOffset: {width: 0, height: 2},
-    elevation: 10,
+    elevation: 5,
   },
   LogoutTxt: {
     fontFamily: Font.SofiaProMedium,

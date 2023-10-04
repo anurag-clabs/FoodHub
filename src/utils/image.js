@@ -60,4 +60,10 @@ export const images = {
   Call: require('../assets/images/Call/Call.png'),
   FaceBookIcon: require('../assets/images/FaceBookIcon/facebook.png'),
   Twitter: require('../assets/images/twitterIcon/twitter.png'),
+  PepperJulienned: require('../assets/images/PepperJulienned/PepperJulienned.png'), 
+  Masroom: require('../assets/images/Masroom/Masroom.png'),
+  BabySpinach: require('../assets/images/Baby-Spinach/Baby-Spinach.png'),
+  FilledDot: require('../assets/images/filledDot/filledDot.png'),
+  BlankDot: require('../assets/images/blankDot/blankDot.png'),
+  BackGraundPizzaImg: require('../assets/images/BackGraundPizzaImg/BackGraundPizzaImg.png'),
 };

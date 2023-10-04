@@ -20,6 +20,23 @@ export const Styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  BagButton: {
+    height: vs(50),
+    width: s(160),
+    alignItems: 'center',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    marginVertical: vs(10),
+    borderRadius: 30,
+    shadowColor: colors.black,
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
+  },
   TextButton: {
     fontSize: 15,
     color: colors.white,
@@ -28,6 +45,11 @@ export const Styles = StyleSheet.create({
   },
   ButtonTxt: {
     fontSize: 16,
+    textAlign: 'center',
+    fontFamily: Font.SofiaProMedium,
+  },
+  ButtonTxt2: {
+    fontSize: 14,
     textAlign: 'center',
     fontFamily: Font.SofiaProMedium,
   },
@@ -81,9 +103,19 @@ export const Styles = StyleSheet.create({
     borderRadius: 25,
   },
   applyButtonView: {
-    height: vs(40),
-    width: s(90),
+    height: vs(35),
+    width: s(80),
     justifyContent: 'center',
     borderRadius: 25,
+  },
+  bagImgView: {
+    height: ms(40),
+    width: ms(40),
+    borderRadius: 35,
+    backgroundColor: colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: s(5),
+    marginRight: s(10)
   },
 });

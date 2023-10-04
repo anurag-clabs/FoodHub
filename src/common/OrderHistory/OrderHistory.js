@@ -7,8 +7,10 @@ import { commonStyle } from '../../utils/commonStyles';
 import { colors } from '../../utils/colors';
 import { SmallButton } from '../Button/Button';
 import Icon from 'react-native-vector-icons/FontAwesome';
+import { useNavigation } from '@react-navigation/native';
 
 const OrderHistory = props => {
+    const navigation = useNavigation()
     return (
         <View style={[styles.MainView]}>
             <View style={styles.topView}>
@@ -34,6 +36,7 @@ const OrderHistory = props => {
                     color={colors.white}
                     buttonName='Rate'
                     Txtcolor={colors.black}
+                    onPress={() => navigation.navigate('Reviews')}
                 />
                 <SmallButton
                     style={commonStyle.orangeShadow}

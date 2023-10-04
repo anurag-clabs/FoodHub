@@ -21,10 +21,13 @@ const SettingScreen = () => {
       <View style={[commonStyle.m_20, {marginTop: vs(30)}]}>
         {Setting.map(item => {
           return (
-            <View style={styles.titleView}>
-              <Text style={styles.title}>{item.title}</Text>
+              
               <TouchableOpacity
+              style={styles.titleView}
                 onPress={() => {
+                  item.title === 'Edit Profile'
+                    ? navigation.navigate('Edit-Profile')
+                    : null;
                   item.title === 'Change Password'
                     ? navigation.navigate('ChangePassword')
                     : null;
@@ -32,12 +35,12 @@ const SettingScreen = () => {
                     ? navigation.navigate('Contact')
                     : null;
                 }}>
+                  <Text style={styles.title}>{item.title}</Text>
                 <Image
                   source={item.aero}
                   style={[styles.OpenAero, {tintColor: colors.black}]}
                 />
               </TouchableOpacity>
-            </View>
           );
         })}
       </View>

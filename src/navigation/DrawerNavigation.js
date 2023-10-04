@@ -111,7 +111,7 @@ const DrawerNav = () => {
               return <AppTabNavigator {...props} progress={progress} />;
             }}
           </Drawer.Screen>
-          <Drawer.Screen name="Profile" component={Profile} />
+          <Drawer.Screen name="Edit-Profile" component={Profile} />
           <Drawer.Screen name="Address" component={Address} />
           <Drawer.Screen name="Rating" component={Rating} />
           <Drawer.Screen name="Reviews" component={Reviews} />

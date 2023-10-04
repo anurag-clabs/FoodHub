@@ -6,13 +6,12 @@ import {
   Image,
   TextInput,
   ScrollView,
-  ImageBackground,
   FlatList,
 } from 'react-native';
 import React, {useState} from 'react';
 import {styles} from './style';
 import {images} from '../../utils/image';
-import {DrawerActions, useNavigation} from '@react-navigation/native';
+import { useNavigation} from '@react-navigation/native';
 import {s, vs} from 'react-native-size-matters';
 import {commonStyle} from '../../utils/commonStyles';
 import {
@@ -22,7 +21,8 @@ import {
 } from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';
 import FoodItem from '../../common/FoodItem/FoodItem';
-import Header, {MenuHeader} from '../../common/Header/Header';
+import {MenuHeader} from '../../common/Header/Header';
+import { colors } from '../../utils/colors';
 
 const HomeScreen = () => {
   const [selectedFood, setSelectedFood] = useState(null);
@@ -79,46 +79,41 @@ const HomeScreen = () => {
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
         </Text>
-        <View style={commonStyle.f_D_R}>
-          <View style={styles.textInputStyle}>
+        <View style={[commonStyle.rowCenter, commonStyle.mT20, commonStyle.m_20]}>
+          <View style={styles.textInputStyleView}>
             <Image style={styles.search} source={images.search} />
-            <TextInput placeholder="Find for food or restaurant..." />
+            <TextInput 
+            placeholder="Find for food or restaurant....." 
+            style={styles.textInputBar}
+            />
           </View>
-          <TouchableOpacity>
+          <TouchableOpacity style={styles.filetBtn}>
             <Image style={styles.filter} source={images.filter} />
           </TouchableOpacity>
         </View>
-        <View style={commonStyle.m_20}>
           <ScrollView
             horizontal={true}
-            style={{width: '110%'}}
-            contentContainerStyle={{
-              marginRight: s(20),
-              paddingRight: s(50),
-              marginBottom: vs(20),
-            }}
             showsHorizontalScrollIndicator={false}>
             {FoodList.map((item, index) => {
               const itemStyle = [
                 styles.boxElevation,
-                selectedFood === index && {backgroundColor: '#FE724C'},
+                selectedFood === index && styles.selectedBoxElevation,
               ];
               const nameStyle = [
                 styles.name,
-                selectedFood === index && {color: '#fff'},
+                selectedFood === index && {color: colors.white},
               ];
               return (
                 <TouchableOpacity
                   onPress={() => handleFoodItemClick(index)}
                   key={index}
-                  style={itemStyle}>
+                  style={[itemStyle, commonStyle.mV25]}>
                   <Image style={styles.image} source={item.image} />
                   <Text style={nameStyle}>{item.title}</Text>
                 </TouchableOpacity>
               );
             })}
           </ScrollView>
-        </View>
 
         <View>
           <View style={styles.HeaderView}>
@@ -138,7 +133,10 @@ const HomeScreen = () => {
           />
           <View style={styles.HeaderView}>
             <Text style={styles.titleRestaurant}>Popular Items</Text>
-            <TouchableOpacity style={styles.titleView}>
+            <TouchableOpacity 
+            style={styles.titleView} 
+            onPress={() => navigation.navigate('Category')}
+            >
               <Text style={styles.ViewAll}>View All</Text>
               <Image style={styles.OpenAero} source={images.OpenAero} />
             </TouchableOpacity>

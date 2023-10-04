@@ -109,14 +109,23 @@ export const commonStyle = StyleSheet.create({
   mV15: {
     marginVertical: vs(15),
   },
+  mV25: {
+    marginVertical: vs(25),
+  },
   mT30: {
     marginTop: vs(30),
+  },
+  mT20: {
+    marginTop: vs(20),
   },
   mB10: {
     marginBottom: s(10)
   },
   mB15: {
     marginBottom: s(15)
+  },
+  mB30: {
+    marginBottom: s(30),
   },
   flexRow: {
     flexDirection: 'row',

@@ -7,13 +7,18 @@ import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 
 const FavoritesFoodItem = props => {
+    const navigation = useNavigation();
+
     return (
         <>
-            <TouchableOpacity style={[styles.MainView, Platform.OS === 'ios' && styles.IosShadow]}>
+            <TouchableOpacity
+                style={[styles.MainView, Platform.OS === 'ios' && styles.IosShadow]}
+                onPress={() => navigation.navigate('FoodDetail')}
+            >
                 <Image source={props.ItemImg} style={styles.BackgroundImg} />
                 <TouchableOpacity style={[styles.FavoritesreviewTxtView, Platform.OS === 'ios' && styles.Favoritesreview]} onPress={props.onPress}>
-                <Text style={styles.ReviewTxt}>{props.Rating}</Text>
-            </TouchableOpacity>
+                    <Text style={styles.ReviewTxt}>{props.Rating}</Text>
+                </TouchableOpacity>
                 <View style={styles.ItemNameView}>
                     <Text style={styles.ItemName}>{props.FoodName}</Text>
                     <Text style={styles.ItemDescription}>{props.FoodDescription}</Text>
@@ -28,7 +33,7 @@ const FavoritesFoodItem = props => {
                     <Image source={images.HeartIcon} style={commonStyle.ImageStyle} />
                 </TouchableOpacity>
             </View>
-           
+
         </>
     )
 }

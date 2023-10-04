@@ -1,3 +1,4 @@
+import React, { useState } from 'react';
 import {
   View,
   Text,
@@ -7,23 +8,49 @@ import {
   Image,
   SafeAreaView,
 } from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './style';
-import {images} from '../../utils/image';
-import {commonStyle} from '../../utils/commonStyles';
-import {TextInputText} from '../../common/TextInputComponent/TextInputComponent';
-import {useNavigation} from '@react-navigation/native';
-import {BackButton, Button} from '../../common/Button/Button';
-import {colors} from '../../utils/colors';
-import {s, vs} from 'react-native-size-matters';
+import { styles } from './style';
+import { images } from '../../utils/image';
+import { commonStyle } from '../../utils/commonStyles';
+import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
+import { useNavigation } from '@react-navigation/native';
+import { BackButton, Button } from '../../common/Button/Button';
+import { colors } from '../../utils/colors';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [passwordHide, setPasswordHide] = useState(true);
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [emailError, setEmailError] = useState('');
+  const [passwordError, setPasswordError] = useState('');
 
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide);
+  };
+
+  const handleLogin = async () => {
+    setEmailError('');
+    setPasswordError('');
+
+    let hasError = false; 
+
+    if (!email) {
+      setEmailError('Please enter your email');
+      hasError = true;
+    }
+    if (!password) {
+      setPasswordError('Please enter your password');
+      hasError = true;
+    }
+    if (!hasError) {
+      try {
+        await AsyncStorage.setItem('userLoggedIn', 'true');
+      } catch (error) {
+        console.error('Error saving userLoggedIn state:', error);
+      }
+      navigation.navigate('Verification');
+    }
   };
 
   return (
@@ -35,20 +62,23 @@ const LoginScreen = () => {
           style={styles.BackImgView}
           onPress={() => navigation.goBack()}
         />
-        <View style={[commonStyle.m_20, {marginVertical: 20}]}>
+        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Login</Text>
           <Text style={styles.textInputTxt}>E-mail</Text>
           <TextInput
             style={styles.textInputStyle}
             placeholder="Your email or phone"
+            onChangeText={(text) => setEmail(text)}
+            value={email}
           />
+          <Text style={{ color: 'red' }}>{emailError}</Text>
           <Text style={styles.textInputTxt}>Password</Text>
           <View style={styles.passwordView}>
             <TextInputText
               secureTextEntry={passwordHide}
               placeHolder="Password"
               value={password}
-              onChangeText={text => setPassword(text)}
+              onChangeText={(text) => setPassword(text)}
             />
             <TouchableOpacity onPress={hideandShowPassword}>
               <Image
@@ -57,20 +87,19 @@ const LoginScreen = () => {
               />
             </TouchableOpacity>
           </View>
+          <Text style={{ color: 'red' }}>{passwordError}</Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('RessetPassword')}>
+            onPress={() => navigation.navigate('ResetPassword')}>
             <Text style={styles.forgitTxt}>Forgot password?</Text>
           </TouchableOpacity>
           <Button
             color={colors.orange}
             buttonName="LOGIN"
-            onPress={() => navigation.navigate('Verification')}
+            onPress={handleLogin}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
-              <Text style={styles.bottomSignUpTxt}>
-                Don’t have an account?{' '}
-              </Text>
+              <Text style={styles.bottomSignUpTxt}>Don’t have an account? </Text>
               <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                 <Text style={styles.bottomSignUpTxt2}>Sign up</Text>
               </TouchableOpacity>

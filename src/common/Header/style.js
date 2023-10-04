@@ -11,7 +11,7 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     Text: {
-        fontFamily: Font.SofiaProMedium,
+        fontFamily: Font.SofiaProSemiBold,
         fontSize: 18,
         color: colors.black,
     },

@@ -1,6 +1,5 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import ChangePasswordScreen from '../common/ChangePassword/ChangePasswordScreen';
+import ChangePasswordScreen from '../component/ChangePassword/ChangePasswordScreen';
 
 const ChangePassword = () => {
   return <ChangePasswordScreen />;
