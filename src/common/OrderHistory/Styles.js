@@ -86,7 +86,7 @@ export const styles = StyleSheet.create({
     statusTimeTxt: {
         textAlign: 'right',
         fontFamily: Font.SofiaProRegular,
-        marginBottom: s(10),
+        marginBottom: vs(10),
     },
     statusTxt: {
         color: colors.black,

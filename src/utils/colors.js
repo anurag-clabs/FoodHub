@@ -22,4 +22,5 @@ export const colors = {
   darkPrimaryColor: '#242424',
   silver: '#C4C4C4',
   LightSlateGrey: '#7E8392',
+  Blue: "#123B70",
 };

@@ -27,6 +27,7 @@ import Address from '../Screen/Address';
 import Rating from '../Screen/Rating';
 import Reviews from '../Screen/Reviews';
 import ReviewResturent from '../Screen/ReviewResturent';
+import PaymentMethod from '../Screen/PaymentMethod';
 
 const Drawer = createDrawerNavigator();
 const {width: WIDTH} = Dimensions.get('window');
@@ -113,7 +114,7 @@ const DrawerNav = () => {
           </Drawer.Screen>
           <Drawer.Screen name="Edit-Profile" component={Profile} />
           <Drawer.Screen name="Address" component={Address} />
-          <Drawer.Screen name="Rating" component={Rating} />
+          <Drawer.Screen name="PaymentMethod" component={PaymentMethod} />
           <Drawer.Screen name="Reviews" component={Reviews} />
           <Drawer.Screen name="ReviewResturent" component={ReviewResturent} />
         </Drawer.Navigator>

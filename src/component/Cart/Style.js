@@ -14,7 +14,7 @@ export const styles = StyleSheet.create({
         alignContent: 'flex-end'
     },
     ItemTxt: {
-        marginRight: vs(40)
+        marginRight: s(40)
     },
     itemName: {
         fontFamily: Font.SofiaProSemiBold,
@@ -25,7 +25,7 @@ export const styles = StyleSheet.create({
         fontFamily: Font.SofiaProSemiBold,
     },
     itemPrice: {
-        marginTop: s(5),
+        marginTop: vs(5),
         fontFamily: Font.SofiaProSemiBold,
         color: colors.orange
     },
@@ -59,6 +59,10 @@ export const styles = StyleSheet.create({
         marginVertical: vs(8)
     },
     bottomButton: {
-        marginTop: s(50)
+        marginTop: vs(40)
+    },
+    itemNo: {
+        fontFamily: Font.SofiaProMedium,
+        fontSize: 15,
     },
 })

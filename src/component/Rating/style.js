@@ -34,7 +34,6 @@ export const styles = StyleSheet.create({
         marginTop: vs(50)
     },
     logoImgView: {
-        // marginVertical: vs(20),
         backgroundColor: colors.white,
         height: ms(100),
         width: ms(100),
@@ -107,13 +106,12 @@ export const styles = StyleSheet.create({
     textInputStyle: {
         width: '100%',
         height: vs(150),
-        // marginHorizontal: s(20),
         marginVertical: vs(10),
         borderColor: colors.lightGrey,
         borderWidth: 1,
         borderRadius: 10,
         fontFamily: Font.SofiaProMedium,
-        padding: 12,
+        padding: ms(12),
         textAlignVertical: 'top',
     },
 })

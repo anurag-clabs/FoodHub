@@ -31,7 +31,7 @@ export const styles = StyleSheet.create({
   ProfileImage: {
     height: '85%',
     width: '85%',
-    borderRadius: s(80),
+    borderRadius: 80,
     resizeMode: 'contain',
   },
   headerTxt: {

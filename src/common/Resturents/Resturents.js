@@ -3,7 +3,7 @@ import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-nati
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
-import { s } from 'react-native-size-matters';
+import { s, vs } from 'react-native-size-matters';
 
 const Resturents = props => {
     return (
@@ -25,7 +25,7 @@ const Resturents = props => {
                     <Image style={styles.DeliveryIcon} source={props.TimeIcon} />
                     <Text style={styles.Delivery}>{props.DeliveryTime}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', marginBottom: s(10) }}>
+                <View style={{ flexDirection: 'row', marginBottom: vs(10) }}>
                     <View style={styles.Box}>
                         <Text style={styles.Food}>{props.Burger}</Text>
                     </View>

@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, SafeAreaView, TouchableOpacity, Image, Platform } from 'react-native';
+import { View, Text, ImageBackground, SafeAreaView, TouchableOpacity, Image, Platform, ScrollView } from 'react-native';
 import React from 'react'
 import { images } from '../../utils/image';
 import { styles } from './Style';
@@ -15,6 +15,7 @@ const FoodDetailScreen = () => {
 
     return (
         <SafeAreaView style={commonStyle.constainer}>
+            <ScrollView>
             <View style={[commonStyle.m_20, styles.headerView]}>
                 <ImageBackground source={images.McDonaldBack} style={styles.BackgroundImg} imageStyle={{ borderRadius: 15 }} >
                     <View style={[commonStyle.rowSpace, styles.BackImgView]}>
@@ -99,6 +100,7 @@ const FoodDetailScreen = () => {
             color={colors.orange}
             buttonName='ADD TO CART'
             />
+            </ScrollView>
         </SafeAreaView>
     )
 }

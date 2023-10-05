@@ -13,6 +13,6 @@ export const styles = StyleSheet.create({
     shadowRadius: 4,
     shadowColor: colors.orange,
     shadowOffset: {width: 0, height: 2},
-    elevation: 10,
+    elevation: 2,
   },
 });

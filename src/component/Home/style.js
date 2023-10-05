@@ -114,7 +114,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   boxElevation: {
-    marginLeft: vs(20),
+    marginLeft: s(20),
     height: vs(100),
     width: s(62),
     backgroundColor: colors.white,
@@ -155,7 +155,7 @@ export const styles = StyleSheet.create({
   },
   titleView: {
     flexDirection: 'row',
-    marginHorizontal: vs(10),
+    marginHorizontal: s(10),
     alignItems: 'center',
   },
   ViewAll: {

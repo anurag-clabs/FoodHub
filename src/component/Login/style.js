@@ -103,7 +103,7 @@ export const styles = StyleSheet.create({
   iconImg: {
     height: ms(25),
     width: ms(25),
-    margin: 14,
+    margin: ms(14),
     resizeMode: 'contain',
   },
   iconTxt: {

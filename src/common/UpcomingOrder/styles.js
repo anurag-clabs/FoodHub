@@ -76,12 +76,13 @@ export const styles = StyleSheet.create({
         fontFamily: Font.SofiaProRegular,
         color: colors.black,
         marginHorizontal: s(3),
-        bottom: -30,
+        alignSelf: 'flex-end',
+        marginBottom: vs(5),
     },
     statusTimeTxt: {
         textAlign: 'right',
         fontFamily: Font.SofiaProRegular,
-        marginBottom: s(10),
+        marginBottom: vs(10),
     },
     statusTxt: {
         color: colors.black,
