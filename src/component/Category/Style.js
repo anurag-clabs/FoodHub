@@ -5,21 +5,22 @@ import { colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
     BackgroundImg: {
-        marginLeft: vs(120),
+        marginLeft: s(120),
         width: '82%',
         height: vs(240),
         resizeMode: 'contain',
     },
     BackImgView: {
         position: 'absolute',
-        left: vs(20),
-        top: s(20),
+        left: s(20),
+        top: vs(20),
     },
     header1: {
         fontFamily: Font.SofiaProBold,
         fontSize: 40,
         color: colors.black,
-        marginBottom: s(-15)
+        marginTop: vs(15), 
+
     },
     header2: {
         fontFamily: Font.SofiaProBold,

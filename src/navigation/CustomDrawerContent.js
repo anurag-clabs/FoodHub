@@ -59,7 +59,7 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="Payment Methods"
           icon={<Image source={images.Payment} style={styles.drawerImage} />}
-          onPress={() => navigation.navigate('Rating')}
+          onPress={() => navigation.navigate('PaymentMethod')}
         />
         <CustomDrawerItem
           title="Contact Us"
@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   LogoutView: {
-    marginTop: s(40),
+    marginTop: vs(40),
     marginHorizontal: s(20),
     backgroundColor: colors.orange,
     flexDirection: 'row',

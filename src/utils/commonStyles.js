@@ -119,16 +119,19 @@ export const commonStyle = StyleSheet.create({
     marginTop: vs(20),
   },
   mB10: {
-    marginBottom: s(10)
+    marginBottom: vs(10)
   },
   mB15: {
-    marginBottom: s(15)
+    marginBottom: vs(15)
   },
   mB30: {
-    marginBottom: s(30),
+    marginBottom: vs(30),
   },
   flexRow: {
     flexDirection: 'row',
+  },
+  pH10: {
+    paddingHorizontal: s(10)
   },
   iconView: {
     width: ms(30),

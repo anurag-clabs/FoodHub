@@ -8,7 +8,7 @@ import Icon from 'react-native-vector-icons/Feather';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
 import { colors } from '../../utils/colors';
-import { s } from 'react-native-size-matters';
+import { s, vs } from 'react-native-size-matters';
 import { ApplyButton, Button } from '../../common/Button/Button';
 import { useNavigation } from '@react-navigation/native';
 
@@ -30,7 +30,7 @@ const CartScreen = () => {
                     </View>
                     <View style={{ alignItems: 'flex-end' }}>
                         <Icon2 name="close" size={20} color={colors.orange} />
-                        <View style={[commonStyle.rowCenter, { marginTop: s(20) }]}>
+                        <View style={[commonStyle.rowCenter, { marginTop: vs(20) }]}>
                             <TouchableOpacity>
                                 <Icon name="minus-circle" size={25} color={colors.orange} style={commonStyle.orangeShadow} />
                             </TouchableOpacity>
@@ -50,7 +50,7 @@ const CartScreen = () => {
                     </View>
                     <View style={{ alignItems: 'flex-end' }}>
                         <Icon2 name="close" size={20} color={colors.orange} />
-                        <View style={[commonStyle.rowCenter, { marginTop: s(20) }]}>
+                        <View style={[commonStyle.rowCenter, { marginTop: vs(20) }]}>
                             <TouchableOpacity>
                                 <Icon name="minus-circle" size={25} color={colors.orange} style={commonStyle.orangeShadow} />
                             </TouchableOpacity>
@@ -78,7 +78,7 @@ const CartScreen = () => {
                         <Text style={styles.subTotalTxt}>Subtotal</Text>
                         <View style={[commonStyle.rowCenter]}>
                             <Text style={styles.subTotalTxt}>$27.30 </Text>
-                            <Text>USD</Text>
+                            <Text style={styles.itemNo}>USD</Text>
                         </View>
                     </View>
                     <View style={[styles.devider, commonStyle.m_20]} />
@@ -86,7 +86,7 @@ const CartScreen = () => {
                         <Text style={styles.subTotalTxt}>Tax and Fees</Text>
                         <View style={[commonStyle.rowCenter]}>
                             <Text style={styles.subTotalTxt}>$5.30 </Text>
-                            <Text>USD</Text>
+                            <Text style={styles.itemNo}>USD</Text>
                         </View>
                     </View>
                     <View style={[styles.devider, commonStyle.m_20]} />
@@ -94,25 +94,27 @@ const CartScreen = () => {
                         <Text style={styles.subTotalTxt}>Delivery</Text>
                         <View style={[commonStyle.rowCenter]}>
                             <Text style={styles.subTotalTxt}>$1.00 </Text>
-                            <Text>USD</Text>
+                            <Text style={styles.itemNo}>USD</Text>
                         </View>
                     </View>
                     <View style={[styles.devider, commonStyle.m_20]} />
                     <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
                         <View style={[commonStyle.rowCenter]}>
                             <Text style={styles.subTotalTxt}>Total </Text>
-                            <Text>(2 Items)</Text>
+                            <Text style={styles.itemNo}>(2 Items)</Text>
                         </View>
                         <View style={[commonStyle.rowCenter]}>
                             <Text style={styles.subTotalTxt}>$33.60 </Text>
-                            <Text>USD</Text>
+                            <Text style={styles.itemNo}>USD</Text>
                         </View>
                     </View>
                 </View>
+                
                 <Button
                     style={styles.bottomButton}
                     color={colors.orange}
-                    buttonName="CHECKOUT"
+                    buttonName="GO TO PAYMENT"
+                    onPress={() => navigation.navigate('PaymentMethod')}
                 />
             </ScrollView>
         </SafeAreaView>

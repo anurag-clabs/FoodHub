@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
         alignItems: 'flex-end'
     },
     dolorSign: {
-        marginBottom: s(5),
+        marginBottom: vs(5),
         color: colors.black,
         fontSize: 15,
         fontFamily: Font.SofiaProSemiBold
@@ -100,7 +100,7 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain'
     },
     btnView: {
+        marginTop: vs(25),
         possition: 'abolute',
-        bottom: -20
     },
 })

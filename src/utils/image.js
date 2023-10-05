@@ -66,4 +66,6 @@ export const images = {
   FilledDot: require('../assets/images/filledDot/filledDot.png'),
   BlankDot: require('../assets/images/blankDot/blankDot.png'),
   BackGraundPizzaImg: require('../assets/images/BackGraundPizzaImg/BackGraundPizzaImg.png'),
+  Master: require("../assets/images/Master-Card/MasterCard.png"),
+  Visa: require("../assets/images/Visa/Visa.png"),
 };
