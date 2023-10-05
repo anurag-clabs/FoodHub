@@ -68,7 +68,7 @@ const ProfileScreen = () => {
           <View style={styles.ProfileImgView}>
             <Image source={images.UserProfile} style={styles.ProfileImage} />
             <TouchableOpacity style={styles.CameraView}>
-              <Image source={images.Camera} style={commonStyle.imageStyle} />
+              <Image source={images.Camera} style={commonStyle.ImageStyle} />
             </TouchableOpacity>
           </View>
           <Text style={styles.profileText}>Eljad Eendaz</Text>

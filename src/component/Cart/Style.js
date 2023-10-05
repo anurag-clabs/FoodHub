@@ -38,20 +38,27 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
     },
     textBarView: {
-        padding: 5,
+        paddingHorizontal: 5,
         borderWidth: 1,
         borderRadius: 35,
-        borderColor: colors.lightGrey,
+        borderColor: colors.whiteGrey,
+    },
+    textInputBar: {
+        fontFamily: Font.SofiaProRegular,
+        width: '73%',
+        color: colors.whiteGrey,
     },
     subTotalTxt: {
         fontFamily: Font.SofiaProSemiBold,
         color: colors.black,
-        fontSize: 20,
-        // marginBottom: s(10)
+        fontSize: 18,
     },
     devider: {
-        borderWidth: 0.2,
-        borderColor: colors.RomanSilver,
+        borderWidth: 1,
+        borderColor: colors.whiteGrey,
         marginVertical: vs(8)
+    },
+    bottomButton: {
+        marginTop: s(50)
     },
 })

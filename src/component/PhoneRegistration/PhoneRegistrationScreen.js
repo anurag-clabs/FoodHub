@@ -36,7 +36,7 @@ const PhoneRegistrationScreen = () => {
                     />
                     <Button
                         color={colors.orange}
-                        buttonName="Send"
+                        buttonName="SEND"
                     />
                 </View>
             </ImageBackground>

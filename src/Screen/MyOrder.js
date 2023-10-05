@@ -10,6 +10,7 @@ import { commonStyle } from '../utils/commonStyles';
 import { images } from '../utils/image';
 import MyOrderScreen from '../component/MyOrder/MyOrderScreen';
 import OrderHistoryScreen from '../component/MyOrder/OrderHistoryScreen';
+import CustomTabBar from '../navigation/CustomTabBar';
 
 const MyOrder = () => {
     const navigation = useNavigation();
@@ -24,35 +25,7 @@ const MyOrder = () => {
                 HeaderImgstyle={commonStyle.headerImg}
             />
             <ProfileTabNavigator.Navigator
-                screenOptions={{
-                    tabBarActiveTintColor: colors.white,
-                    tabBarInactiveTintColor: colors.orange,
-                    tabBarLabelStyle: {
-                        fontFamily: Font.SofiaProMedium,
-                        textTransform: 'capitalize',
-                        fontSize: 15,
-                    },
-                    tabBarIndicatorStyle: {
-                        height: 45,
-                        top: '10%',
-                        bottom: '10%',
-                        width: '48%',
-                        left: '1%',
-                        borderRadius: 100,
-                        backgroundColor: colors.orange,
-                    },
-                    tabBarStyle: {
-                        height: 55,
-                        justifyContent: 'center',
-                        borderRadius: 100,
-                        marginVertical: vs(20),
-                        marginHorizontal: s(20)
-                    },
-                    tabBarTabStyle: {
-                        borderRadius: 100,
-                    },
-                    swipeEnabled: true,
-                }}
+                tabBar={props => <CustomTabBar {...props} />}
             >
                 <ProfileTabNavigator.Screen name="Upcoming" component={MyOrderScreen} />
                 <ProfileTabNavigator.Screen name="History" component={OrderHistoryScreen} />

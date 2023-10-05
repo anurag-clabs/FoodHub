@@ -1,14 +1,9 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
 import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerAnimationContext } from '../context/DrawerAnimationContext/Index';
 import { vs, s } from 'react-native-size-matters';
-import PhoneRegistration from '../Screen/PhoneRegistration';
-import Login from '../Screen/Login';
-import Welcome from '../Screen/Welcome';
-import RessetPassword from '../Screen/RessetPassword';
 import { StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import Home from '../Screen/Home';
@@ -16,6 +11,7 @@ import FavoritesFood from '../Screen/FavoritesFood';
 import { Font } from '../utils/Fonts';
 import MyOrder from '../Screen/MyOrder';
 import Cart from '../Screen/Cart';
+import Search from '../Screen/Search';
 
 const AppTabNavigator = () => {
   const Tabs = AnimatedTabBarNavigator();
@@ -88,11 +84,11 @@ const AppTabNavigator = () => {
           />
           <Tabs.Screen
             name="Search"
-            component={PhoneRegistration}
+            component={Search}
             options={{
               tabBarIcon: ({ focused, color, size }) => (
                 <Icon
-                  name={focused ? 'location' : 'location-outline'}
+                  name={focused ? 'search-circle' : 'search'}
                   size={size}
                   color={color}
                 />

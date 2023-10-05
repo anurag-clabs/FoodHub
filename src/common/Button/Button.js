@@ -4,12 +4,31 @@ import { Styles } from './Styles';
 import { ButtonLoader } from '../Loader/Loder';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
+import Icon from 'react-native-vector-icons/FontAwesome6';
+import { colors } from '../../utils/colors';
 
 export const Button = props => {
   return (
     <TouchableOpacity
       style={[Styles.Button, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
+      {!props?.loading ? (
+        <Text style={Styles.TextButton}>{props.buttonName}</Text>
+      ) : (
+        <ButtonLoader />
+      )}
+    </TouchableOpacity>
+  );
+};
+
+export const BagButton = props => {
+  return (
+    <TouchableOpacity
+      style={[Styles.BagButton, props.style, { backgroundColor: props.color }]}
+      onPress={() => props.onPress()}>
+        <View style={Styles.bagImgView}>
+        <Icon  name='bag-shopping' size={20} color={colors.orange}/>
+        </View>
       {!props?.loading ? (
         <Text style={Styles.TextButton}>{props.buttonName}</Text>
       ) : (
@@ -66,7 +85,7 @@ export const ApplyButton = props => {
     <TouchableOpacity
       style={[Styles.applyButtonView, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
-      <Text style={[Styles.ButtonTxt, { color: props.Txtcolor }]}>{props.buttonName}</Text>
+      <Text style={[Styles.ButtonTxt2, { color: props.Txtcolor }]}>{props.buttonName}</Text>
     </TouchableOpacity>
   )
 }

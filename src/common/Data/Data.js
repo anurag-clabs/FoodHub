@@ -265,6 +265,41 @@ export const PopularItems = [
   },
 ];
 
+export const FoodData = [
+  {
+    Id: 1,
+    ItemImg: images.ChickenHawaiian,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Chicken Hawaiian',
+    FoodDescription: 'Chicken, Cheese and pineapple'
+  },
+  {
+    Id: 2,
+    ItemImg: images.RedPizza,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Red N Hot Pizza',
+    FoodDescription: 'Chicken, Chili'
+  },
+  {
+    Id: 3,
+    ItemImg: images.FoodItem4,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Chicken Hawaiian',
+    FoodDescription: 'Chicken, Cheese and pineapple'
+  },
+  {
+    Id: 4,
+    ItemImg: images.McDonaldBack,
+    Price: '$9.50',
+    Rating: '4.5 ⭐(30+)',
+    FoodName: 'Ground Beef Tacos',
+    FoodDescription: 'Spices – chili powder, cumin, onion powder.'
+  }
+]
+
 export const Setting = [
   {
     Id: 1,

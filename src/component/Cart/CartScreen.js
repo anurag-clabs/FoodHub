@@ -10,13 +10,15 @@ import Icon1 from 'react-native-vector-icons/FontAwesome6';
 import { colors } from '../../utils/colors';
 import { s } from 'react-native-size-matters';
 import { ApplyButton, Button } from '../../common/Button/Button';
-import { Font } from '../../utils/Fonts';
+import { useNavigation } from '@react-navigation/native';
 
-const CartScreen = Item => {
+const CartScreen = () => {
+    const navigation = useNavigation();
     return (
         <SafeAreaView style={commonStyle.constainer}>
             <Header
                 Text='Cart'
+                onPress={() => navigation.goBack()}
             />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={[commonStyle.rowSpace, commonStyle.m_20, commonStyle.mV20]}>
@@ -59,10 +61,11 @@ const CartScreen = Item => {
                         </View>
                     </View>
                 </View>
-                <View style={[commonStyle.rowSpace, commonStyle.m_20, styles.textBarView, commonStyle.mV20]}>
+                <View style={[commonStyle.rowCenter, commonStyle.m_20, styles.textBarView, commonStyle.mV20]}>
                     <TextInput
                         placeholder='Promo Code'
-                        style={{ fontFamily: Font.SofiaProRegular, marginLeft: 10 }}
+                        style={styles.textInputBar}
+                        placeholderTextColor={colors.lightGrey}
                     />
                     <ApplyButton
                         color={colors.orange}
@@ -70,44 +73,46 @@ const CartScreen = Item => {
                         buttonName='Apply'
                     />
                 </View>
-                <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
-                    <Text style={styles.subTotalTxt}>Subtotal</Text>
-                    <View style={[commonStyle.rowCenter]}>
-                        <Text style={styles.subTotalTxt}>$27.30 </Text>
-                        <Text>USD</Text>
+                <View style={commonStyle.mB30}>
+                    <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
+                        <Text style={styles.subTotalTxt}>Subtotal</Text>
+                        <View style={[commonStyle.rowCenter]}>
+                            <Text style={styles.subTotalTxt}>$27.30 </Text>
+                            <Text>USD</Text>
+                        </View>
                     </View>
-                </View>
-                <View style={[styles.devider, commonStyle.m_20]} />
-                <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
-                    <Text style={styles.subTotalTxt}>Tax and Fees</Text>
-                    <View style={[commonStyle.rowCenter]}>
-                        <Text style={styles.subTotalTxt}>$5.30 </Text>
-                        <Text>USD</Text>
+                    <View style={[styles.devider, commonStyle.m_20]} />
+                    <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
+                        <Text style={styles.subTotalTxt}>Tax and Fees</Text>
+                        <View style={[commonStyle.rowCenter]}>
+                            <Text style={styles.subTotalTxt}>$5.30 </Text>
+                            <Text>USD</Text>
+                        </View>
                     </View>
-                </View>
-                <View style={[styles.devider, commonStyle.m_20]} />
-                <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
-                    <Text style={styles.subTotalTxt}>Delivery</Text>
-                    <View style={[commonStyle.rowCenter]}>
-                        <Text style={styles.subTotalTxt}>$1.00 </Text>
-                        <Text>USD</Text>
+                    <View style={[styles.devider, commonStyle.m_20]} />
+                    <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
+                        <Text style={styles.subTotalTxt}>Delivery</Text>
+                        <View style={[commonStyle.rowCenter]}>
+                            <Text style={styles.subTotalTxt}>$1.00 </Text>
+                            <Text>USD</Text>
+                        </View>
                     </View>
-                </View>
-                <View style={[styles.devider, commonStyle.m_20]} />
-                <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
-                    <View style={[commonStyle.rowCenter]}>
-                        <Text style={styles.subTotalTxt}>Total </Text>
-                        <Text>(2 Items)</Text>
-                    </View>
-                    <View style={[commonStyle.rowCenter]}>
-                        <Text style={styles.subTotalTxt}>$33.60 </Text>
-                        <Text>USD</Text>
+                    <View style={[styles.devider, commonStyle.m_20]} />
+                    <View style={[commonStyle.rowSpace, commonStyle.m_20,]}>
+                        <View style={[commonStyle.rowCenter]}>
+                            <Text style={styles.subTotalTxt}>Total </Text>
+                            <Text>(2 Items)</Text>
+                        </View>
+                        <View style={[commonStyle.rowCenter]}>
+                            <Text style={styles.subTotalTxt}>$33.60 </Text>
+                            <Text>USD</Text>
+                        </View>
                     </View>
                 </View>
                 <Button
-                style={styles.bottomButton}
+                    style={styles.bottomButton}
                     color={colors.orange}
-                    buttonName="Send"
+                    buttonName="CHECKOUT"
                 />
             </ScrollView>
         </SafeAreaView>
