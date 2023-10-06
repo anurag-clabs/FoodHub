@@ -5,6 +5,7 @@ import { styles } from './style';
 import { images } from '../../utils/image';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
+import { FoodData } from '../Data/Data';
 
 const FavoritesFoodItem = props => {
     const navigation = useNavigation();

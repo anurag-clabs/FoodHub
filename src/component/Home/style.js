@@ -301,4 +301,20 @@ export const styles = StyleSheet.create({
     fontFamily: Font.SofiaProRegular,
     fontSize: 16,
   },
+  filterModalContainer: {
+    backgroundColor: 'white',
+    borderTopLeftRadius: 10,
+    borderTopRightRadius: 10,
+    padding: 16,
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'flex-end',
+  },
+  modalBackground: {
+    flex: 1,
+    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the alpha (fourth value) to control transparency
+    // justifyContent: 'center',
+    // alignItems: 'center',
+  },
 });

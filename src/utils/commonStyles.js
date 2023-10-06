@@ -30,6 +30,9 @@ export const commonStyle = StyleSheet.create({
   v_10: {
     marginVertical: vs(10),
   },
+  mV5: {
+    marginVertical: vs(5),
+  },
   dropdown: {
     height: vs(55),
     width: Dimensions.get('screen').width / 1.2,
@@ -126,6 +129,9 @@ export const commonStyle = StyleSheet.create({
   },
   mB30: {
     marginBottom: vs(30),
+  },
+  mB40: {
+    marginBottom: vs(40),
   },
   flexRow: {
     flexDirection: 'row',

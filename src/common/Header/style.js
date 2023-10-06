@@ -12,7 +12,7 @@ export const styles = StyleSheet.create({
     },
     Text: {
         fontFamily: Font.SofiaProSemiBold,
-        fontSize: 18,
+        fontSize: 20,
         color: colors.black,
     },
     TextHeader: {
