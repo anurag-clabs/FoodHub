@@ -161,18 +161,17 @@ const HomeScreen = () => {
         </View>
       </SafeAreaView>
       <Modal
-      
-          animationType="slide"
-          transparent={true}
-          visible={isFilterModalVisible}
-          onRequestClose={() => {
-            setModalVisible(!isModalVisible);
+        animationType="slide"
+        transparent={true}
+        visible={isFilterModalVisible}
+        onRequestClose={() => {
+          setModalVisible(!isModalVisible);
         }}
-        >
-       <View style={styles.modalBackground}>
-    <FilterScreen onclick={toggleFilterModal} />
-  </View>
-        </Modal>
+      >
+        <View style={styles.modalBackground}>
+          <FilterScreen onclick={toggleFilterModal} />
+        </View>
+      </Modal>
     </ScrollView>
   );
 };

@@ -313,8 +313,6 @@ export const styles = StyleSheet.create({
   },
   modalBackground: {
     flex: 1,
-    backgroundColor: 'rgba(0, 0, 0, 0.5)', // Adjust the alpha (fourth value) to control transparency
-    // justifyContent: 'center',
-    // alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
 });
