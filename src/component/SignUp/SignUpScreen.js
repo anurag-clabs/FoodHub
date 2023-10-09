@@ -16,16 +16,26 @@ import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { apiInstance } from '../../httpclient/httpclient';
+import { handelAuthVerify, signup } from '../../redux/action/SignUp';
+import FlashMessage, { showMessage } from 'react-native-flash-message';
+import { useDispatch } from 'react-redux';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
-  const [name, setName] = useState(""); 
-  const [email, setEmail] = useState(""); 
+  const dispatch = useDispatch();
+
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
   const [passwordHide, setPasswordHide] = useState(true);
   const [password, setPassword] = useState("");
   const [isFullNameFocused, setIsFullNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
+
+  let msg = {
+    type: 'info',
+    backgroundColor: colors.errorColor,
+  };
 
   const handleFullNameFocus = () => {
     setIsFullNameFocused(true);
@@ -53,37 +63,40 @@ const SignUpScreen = () => {
       });
       return;
     }
-    if (isFullNameFocused.length != 4) {
-      showMessage({
-        ...msg,
-        message: 'Please Enter Valid Full Name',
-      });
-      return;
-    }
   };
 
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide);
   };
 
-  const handleSignUp = async () => {
+  const handelSignUpVerify = async () => {
+    handleFullNameSubmit();
     try {
-      console.log('enter password');
-      const response = await apiInstance.post('signup', {
-        body: {
-          name: name,
-          email: email,
-          password: password,
-        },
-      });
-      console.log('body', response);
-      if (response.ok) {
-        navigation.navigate('Verification');
+      const signupData = {
+        name: name,
+        email: email,
+        password: password,
+      };
+      console.log('signupData:', signupData);
+      const response = await signup(signupData);
+      console.log('Signup response:', response); 
+      if (response) {
+        console.log('Signup successful');
+        showMessage({
+          ...msg,
+          message: response.message, 
+        });
+        navigation.navigate('Verification')
       } else {
-        console.error('Registration failed');
+        console.log('Signup failed');
       }
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Signup error:', error);
+      showMessage({
+        message: 'An error occurred while signing up', 
+        type: 'error',
+        backgroundColor: colors.errorColor, 
+      });
     }
   };
 
@@ -129,7 +142,7 @@ const SignUpScreen = () => {
           <Button
             color={colors.orange}
             buttonName="SIGN UP"
-            onPress={handleSignUp}
+            onPress={() => handelSignUpVerify()}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
@@ -160,6 +173,7 @@ const SignUpScreen = () => {
           </View>
         </View>
       </ImageBackground>
+      <FlashMessage position="top"/>
     </SafeAreaView>
   );
 };

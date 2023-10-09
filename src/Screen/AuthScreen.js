@@ -12,7 +12,7 @@ const Authatication = () => {
         if (userLoggedIn === 'true') {
           navigation.navigate('Drawer');
         } else {
-          navigation.navigate('Login');
+          navigation.navigate('Welcome');
         }
       } catch (error) {
         console.error('Error checking userLoggedIn state:', error);
