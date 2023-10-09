@@ -7,17 +7,20 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './style';
-import {images} from '../../utils/image';
-import {commonStyle} from '../../utils/commonStyles';
-import {TextInputText} from '../../common/TextInputComponent/TextInputComponent';
-import {Button} from '../../common/Button/Button';
-import {colors} from '../../utils/colors';
-import {useNavigation} from '@react-navigation/native';
+import React, { useState } from 'react';
+import { styles } from './style';
+import { images } from '../../utils/image';
+import { commonStyle } from '../../utils/commonStyles';
+import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
+import { Button } from '../../common/Button/Button';
+import { colors } from '../../utils/colors';
+import { useNavigation } from '@react-navigation/native';
+import { apiInstance } from '../../httpclient/httpclient';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
+  const [name, setName] = useState(""); 
+  const [email, setEmail] = useState(""); 
   const [passwordHide, setPasswordHide] = useState(true);
   const [password, setPassword] = useState("");
   const [isFullNameFocused, setIsFullNameFocused] = useState(false);
@@ -42,9 +45,46 @@ const SignUpScreen = () => {
     setIsPasswordFocused(true);
   };
 
+  const handleFullNameSubmit = () => {
+    if (!isFullNameFocused.length) {
+      showMessage({
+        ...msg,
+        message: 'Please Enter Full Name',
+      });
+      return;
+    }
+    if (isFullNameFocused.length != 4) {
+      showMessage({
+        ...msg,
+        message: 'Please Enter Valid Full Name',
+      });
+      return;
+    }
+  };
 
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide);
+  };
+
+  const handleSignUp = async () => {
+    try {
+      console.log('enter password');
+      const response = await apiInstance.post('signup', {
+        body: {
+          name: name,
+          email: email,
+          password: password,
+        },
+      });
+      console.log('body', response);
+      if (response.ok) {
+        navigation.navigate('Verification');
+      } else {
+        console.error('Registration failed');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
@@ -52,19 +92,23 @@ const SignUpScreen = () => {
       <ImageBackground
         source={images.commonBackGround}
         style={commonStyle.backGroundImg}>
-        <View style={[commonStyle.m_20, {marginVertical: 20}]}>
+        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Sign Up</Text>
           <Text style={styles.textInputTxt}>Full name</Text>
           <TextInput
             style={isFullNameFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
             placeholder='Your Full name'
             onFocus={handleFullNameFocus}
+            value={name}
+            onChangeText={text => setName(text)}
           />
           <Text style={styles.textInputTxt}>E-mail</Text>
           <TextInput
             style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
             placeholder='Your email or phone'
             onFocus={handleEmailFocus}
+            value={email}
+            onChangeText={text => setEmail(text)}
           />
           <Text style={styles.textInputTxt}>Password</Text>
           <View onFocus={handlePasswordFocus}
@@ -85,7 +129,7 @@ const SignUpScreen = () => {
           <Button
             color={colors.orange}
             buttonName="SIGN UP"
-            onPress={() => navigation.navigate('PhoneRegistration')}
+            onPress={handleSignUp}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
