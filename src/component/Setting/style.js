@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
   title: {
     color: colors.black,
     marginHorizontal: 20,
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     fontSize: 20,
   },
   OpenAero: {

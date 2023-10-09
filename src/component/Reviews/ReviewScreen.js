@@ -1,14 +1,11 @@
 import { View, Text, SafeAreaView, TouchableOpacity, Image, FlatList } from 'react-native'
 import React from 'react'
 import { commonStyle } from '../../utils/commonStyles';
-import Header from '../../common/Header/Header';
+import {Header} from '../../common/Header/Header';
 import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
 import { styles } from './style';
 import { images } from '../../utils/image';
-import { Font } from '../../utils/Fonts';
-import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
-import { s } from 'react-native-size-matters';
 import UserReview from '../../common/UserReview/UserReview';
 
 const reviewsData = [

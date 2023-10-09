@@ -2,67 +2,87 @@ import {
   View,
   Text,
   SafeAreaView,
+  ImageBackground,
   Image,
   TouchableOpacity,
   FlatList,
   ScrollView,
+  Modal,
 } from 'react-native';
-import React from 'react';
-import {BackButton} from '../../common/Button/Button';
-import {useNavigation} from '@react-navigation/native';
-import {styles} from './style';
+import React, {useState} from 'react';
+import {commonStyle} from '../../utils/commonStyles';
 import {images} from '../../utils/image';
-import {s, vs} from 'react-native-size-matters';
+import {styles} from './Style';
+import {useNavigation} from '@react-navigation/native';
+import {BackButton} from '../../common/Button/Button';
 import FavoritesFoodItem from '../../common/FoodItem/FavoritesFoodItem';
 import {FoodData} from '../../common/Data/Data';
-import {commonStyle} from '../../utils/commonStyles';
+import FilterScreen from '../Filter/FilterScreen';
 
 const CategoryScreen = () => {
   const navigation = useNavigation();
-  const renderItem = ({item}) => (
-    <FavoritesFoodItem
-      ItemImg={item.ItemImg}
-      Price={item.Price}
-      Rating={item.Rating}
-      FoodName={item.FoodName}
-      FoodDescription={item.FoodDescription}
-      onPress={() => navigation.navigate('Reviews')}
-    />
-  );
+  const [isFilterModalVisible, setFilterModalVisible] = useState(false);
+
+  const toggleFilterModal = () => {
+    setFilterModalVisible(!isFilterModalVisible);
+  };
+
+  const renderItem = () => {
+    return FoodData.map((item, index) => (
+      <View key={index}>
+        <FavoritesFoodItem
+          ItemImg={item.ItemImg}
+          Price={item.Price}
+          Rating={item.Rating}
+          FoodName={item.FoodName}
+          FoodDescription={item.FoodDescription}
+          onPress={() => navigation.navigate('Reviews')}
+        />
+      </View>
+    ));
+  };
+
   return (
-    <ScrollView style={commonStyle.mT30}>
-      <View style={styles.headerView}>
-        <View style={{flexDirection: 'column'}}>
-          <BackButton
-            style={styles.BackImgView}
-            onPress={() => navigation.goBack()}
-          />
-          <View style={{marginTop: vs(30), marginLeft: s(20)}}>
-            <Text style={styles.Fast}>Fast</Text>
-            <Text style={styles.Food}>Food</Text>
-            <Text style={styles.PizzaType}>80 type of pizza</Text>
-          </View>
+    <SafeAreaView style={commonStyle.constainer}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <ImageBackground
+          source={images.BackGraundPizzaImg}
+          style={styles.BackgroundImg}
+        />
+        <View style={[styles.BackImgView]}>
+          <BackButton onPress={() => navigation.goBack()} />
+          <Text style={styles.header1}>
+            Fast{'\n'}
+            <Text style={styles.header2}>Food</Text>
+          </Text>
+          <Text style={styles.types}>80 type of pizza</Text>
         </View>
-        <Image style={styles.BackGroundImg} source={images.BackGroundPizza} />
-      </View>
-      <View style={styles.HeaderView}>
-        <Text style={styles.title}>
-          Short by:
-          <Text style={styles.Popular}> Popular </Text>
-          <Image style={styles.Aero} source={images.Aero} />
-        </Text>
-        <TouchableOpacity>
-          <Image style={styles.filter} source={images.filter} />
-        </TouchableOpacity>
-      </View>
-      <FlatList
-        contentContainerStyle={{marginHorizontal: s(10)}}
-        data={FoodData}
-        keyExtractor={item => item.id}
-        renderItem={renderItem}
-        showsVerticalScrollIndicator={false}
-      />
-    </ScrollView>
+        <View style={[commonStyle.rowSpace, commonStyle.m_20]}>
+          <View style={commonStyle.flexRow}>
+            <Text style={styles.shortbyTxt}>Short by: </Text>
+            <TouchableOpacity style={[commonStyle.rowCenter]}>
+              <Text style={[styles.popularDropdown]}> Popular </Text>
+              <Text>&#x2304;</Text>
+            </TouchableOpacity>
+          </View>
+          <TouchableOpacity style={styles.filetBtn} onPress={toggleFilterModal}>
+            <Image style={styles.filter} source={images.filter} />
+          </TouchableOpacity>
+        </View>
+        <View style={[commonStyle.mT20, commonStyle.pH10]}>{renderItem()}</View>
+      </ScrollView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isFilterModalVisible}
+        onRequestClose={() => {
+          setModalVisible(!isModalVisible);
+        }}>
+        <View style={styles.modalBackground}>
+          <FilterScreen onclick={toggleFilterModal} />
+        </View>
+      </Modal>
+    </SafeAreaView>
   );
 };
 

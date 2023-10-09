@@ -264,6 +264,42 @@ export const PopularItems = [
     FoodDescription: 'Baked salmon fish',
   },
 ];
+
+export const FoodData = [
+  {
+    Id: 1,
+    ItemImg: images.ChickenHawaiian,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Chicken Hawaiian',
+    FoodDescription: 'Chicken, Cheese and pineapple',
+  },
+  {
+    Id: 2,
+    ItemImg: images.RedPizza,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Red N Hot Pizza',
+    FoodDescription: 'Chicken, Chili',
+  },
+  {
+    Id: 3,
+    ItemImg: images.FoodItem4,
+    Price: '12.20',
+    Rating: '4.5 ⭐(25+)',
+    FoodName: 'Chicken Hawaiian',
+    FoodDescription: 'Chicken, Cheese and pineapple',
+  },
+  {
+    Id: 4,
+    ItemImg: images.McDonaldBack,
+    Price: '$9.50',
+    Rating: '4.5 ⭐(30+)',
+    FoodName: 'Ground Beef Tacos',
+    FoodDescription: 'Spices – chili powder, cumin, onion powder.',
+  },
+];
+
 export const Setting = [
   {
     Id: 1,
@@ -287,29 +323,49 @@ export const Setting = [
   },
 ];
 
-export const FoodData = [
+export const CartData = [
   {
-    id: 1,
+    Id: 1,
     ItemImg: images.ChickenHawaiian,
-    Price: '12.20',
-    Rating: '4.5 ⭐(25+)',
-    FoodName: 'Chicken Hawaiian',
-    FoodDescription: 'Chicken, Cheese and pineapple',
+    ItemPrice: '$15.30',
+    ItemName: 'Red n hot pizza',
+    ItemDescription: 'Spicy chicken, beef',
   },
   {
-    id: 2,
-    ItemImg: images.RedPizza,
-    Price: '12.20',
-    Rating: '4.5 ⭐(25+)',
-    FoodName: 'Red N Hot Pizza',
-    FoodDescription: 'Chicken, Chili',
+    Id: 2,
+    ItemImg: images.GreekSalad,
+    ItemPrice: '$12.00',
+    ItemName: 'Greek salad ',
+    ItemDescription: 'with baked salmon',
+  },
+];
+
+export const UpcomingOrder = [
+  {
+    Id: 1,
+    RestaurantName: 'Starbuck',
+    RestaurantImage: images.StarBucksLogo,
+    EstimateTime: 25,
+    Items: '3 Items',
+    OrderNumber: '#264100',
+  },
+];
+
+export const OrderHistoryData = [
+  {
+    Id: 1,
+    RestaurantName: 'Jimmy John’s ',
+    RestaurantImage: images.JimmyJohnLogo,
+    OrderDate: '20 Jun, 10:30',
+    OrderPrice: '$17.10',
+    Items: '3 Items',
   },
   {
-    id: 3,
-    ItemImg: images.FoodItem4,
-    Price: '12.20',
-    Rating: '4.5 ⭐(25+)',
-    FoodName: 'Chicken Hawaiian',
-    FoodDescription: 'Chicken, Cheese and pineapple',
+    Id: 2,
+    RestaurantName: 'Subway ',
+    RestaurantImage: images.SubwayLogo,
+    OrderDate: '19 Jun, 11:50',
+    OrderPrice: '$20.50',
+    Items: '2 Items',
   },
 ];

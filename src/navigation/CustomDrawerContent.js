@@ -9,10 +9,21 @@ import {ms, s, vs} from 'react-native-size-matters';
 import DrawerAnimationContext from '../context/DrawerAnimationContext/Context';
 import {colors} from '../utils/colors';
 import {Font} from '../utils/Fonts';
+import { TouchableOpacity } from 'react-native-gesture-handler';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CustomDrawerContent = props => {
   const {progress, navigation} = props;
   const {setProgress} = useContext(DrawerAnimationContext);
+
+  const handleLogout = async () => {
+    try {
+      await AsyncStorage.removeItem('userLoggedIn');
+    } catch (error) {
+      console.error('Error clearing userLoggedIn state:', error);
+    }
+    navigation.navigate('Welcome');
+  };
 
   useEffect(() => {
     progress && setProgress(progress);
@@ -25,7 +36,7 @@ const CustomDrawerContent = props => {
       <View style={styles.ProfileView}>
         <Image source={images.UserProfile} style={styles.ProfileImage} />
         <Text style={styles.profileText}>Farion Wick</Text>
-        <Text style={{fontFamily: Font.sofiaProMedium}}>
+        <Text style={{fontFamily: Font.SofiaProMedium}}>
           farionwick@gmail.com
         </Text>
       </View>
@@ -38,7 +49,7 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="My Profile"
           icon={<Image source={images.MyProfile} style={styles.drawerImage} />}
-          onPress={() => navigation.navigate('Profile')}
+          onPress={() => navigation.navigate('Edit-Profile')}
         />
         <CustomDrawerItem
           title="Delivery Address"
@@ -48,7 +59,7 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="Payment Methods"
           icon={<Image source={images.Payment} style={styles.drawerImage} />}
-          onPress={() => navigation.navigate('Rating')}
+          onPress={() => navigation.navigate('PaymentMethod')}
         />
         <CustomDrawerItem
           title="Contact Us"
@@ -63,13 +74,15 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="Helps & FAQs"
           icon={<Image source={images.Helps} style={[styles.drawerImage]} />}
-          // onPress={() => navigation.navigate('Feedback')}
+          onPress={() => navigation.navigate('HelpsFAQ')}
         />
       </View>
-      <View style={styles.LogoutView}>
+        <TouchableOpacity 
+        style={styles.LogoutView} 
+        onPress={handleLogout}>
         <Image source={images.Logout} style={styles.drawerImage} />
         <Text style={styles.LogoutTxt}>Log Out</Text>
-      </View>
+        </TouchableOpacity>
     </DrawerContentScrollView>
   );
 };
@@ -107,6 +120,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   LogoutView: {
+    marginTop: vs(40),
     marginHorizontal: s(20),
     backgroundColor: colors.orange,
     flexDirection: 'row',
@@ -115,17 +129,14 @@ const styles = StyleSheet.create({
     width: s(90),
     justifyContent: 'center',
     alignItems: 'center',
-    position: 'absolute',
-    bottom: 15,
-    left: 0,
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowColor: colors.orange,
-    shadowOffset: {width: -2, height: 4},
-    elevation: 10,
+    shadowOffset: {width: 0, height: 2},
+    elevation: 5,
   },
   LogoutTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.white,
     marginHorizontal: s(5),
   },

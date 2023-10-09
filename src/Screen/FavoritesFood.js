@@ -8,8 +8,14 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import {colors} from '../utils/colors';
 import FavoriteResturentScreen from '../component/Favorites/FavoriteResturentScreen';
 import FavoritesFoodScreen from '../component/Favorites/FavoritesFoodScreen';
+<<<<<<< HEAD
 import {s, vs} from 'react-native-size-matters';
 import {Font} from '../utils/Fonts';
+=======
+import { s, vs } from 'react-native-size-matters';
+import { Font } from '../utils/Fonts';
+import CustomTabBar from '../navigation/CustomTabBar';
+>>>>>>> 2911b29a72fa9c6c2f0f80ccd0d2955e8b7fff0c
 
 const FavoritesFood = () => {
   const navigation = useNavigation();
@@ -66,4 +72,26 @@ const FavoritesFood = () => {
   );
 };
 
+<<<<<<< HEAD
 export default FavoritesFood;
+=======
+    return (
+        <SafeAreaView style={commonStyle.constainer}>
+            <Header
+                Text='Favorites'
+                onPress={() => navigation.goBack()}
+                HeaderImg={images.UserProfile}
+                HeaderImgstyle={commonStyle.headerImg}
+            />
+            <ProfileTabNavigator.Navigator
+                tabBar={props => <CustomTabBar {...props} />}
+            >
+                <ProfileTabNavigator.Screen name="Food Item" component={FavoritesFoodScreen} />
+                <ProfileTabNavigator.Screen name="Resturent" component={FavoriteResturentScreen} />
+            </ProfileTabNavigator.Navigator>
+        </SafeAreaView>
+    )
+}
+
+export default FavoritesFood;
+>>>>>>> 2911b29a72fa9c6c2f0f80ccd0d2955e8b7fff0c

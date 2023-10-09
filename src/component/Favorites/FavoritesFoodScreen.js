@@ -1,47 +1,12 @@
 import React from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  ImageBackground,
-  Image,
-  TouchableOpacity,
-  FlatList,
-} from 'react-native';
+import {SafeAreaView, FlatList} from 'react-native';
 import {commonStyle} from '../../utils/commonStyles';
-import {images} from '../../utils/image';
 import {useNavigation} from '@react-navigation/native';
 import FavoritesFoodItem from '../../common/FoodItem/FavoritesFoodItem';
 import {s} from 'react-native-size-matters';
+import {FoodData} from '../../common/Data/Data';
 
 const FavoritesFoodScreen = () => {
-  const FoodData = [
-    {
-      id: 1,
-      ItemImg: images.ChickenHawaiian,
-      Price: '12.20',
-      Rating: '4.5 ⭐(25+)',
-      FoodName: 'Chicken Hawaiian',
-      FoodDescription: 'Chicken, Cheese and pineapple',
-    },
-    {
-      id: 2,
-      ItemImg: images.RedPizza,
-      Price: '12.20',
-      Rating: '4.5 ⭐(25+)',
-      FoodName: 'Red N Hot Pizza',
-      FoodDescription: 'Chicken, Chili',
-    },
-    {
-      id: 3,
-      ItemImg: images.FoodItem4,
-      Price: '12.20',
-      Rating: '4.5 ⭐(25+)',
-      FoodName: 'Chicken Hawaiian',
-      FoodDescription: 'Chicken, Cheese and pineapple',
-    },
-  ];
-
   const navigation = useNavigation();
 
   const renderItem = ({item}) => (
@@ -60,7 +25,7 @@ const FavoritesFoodScreen = () => {
       <FlatList
         contentContainerStyle={{paddingHorizontal: s(10)}}
         data={FoodData}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.Id}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
       />

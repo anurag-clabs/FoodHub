@@ -25,13 +25,13 @@ export const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowColor: '#ffff99',
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: {width: 0, height: 2},
     elevation: 10,
   },
   ProfileImage: {
     height: '85%',
     width: '85%',
-    borderRadius: s(80),
+    borderRadius: 80,
     resizeMode: 'contain',
   },
   headerTxt: {
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     marginVertical: vs(30),
   },
   textInputTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.GreySuit,
   },
   CameraView: {
@@ -55,7 +55,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
+    shadowOffset: {width: 0, height: 2},
     elevation: 5,
     position: 'absolute',
     bottom: 10,

@@ -10,7 +10,10 @@ import DrawerNavigation from './DrawerNavigation';
 import Contact from '../Screen/Contact';
 import Setting from '../Screen/Setting';
 import ChangePassword from '../Screen/ChangePassword';
+import Authatication from '../Screen/AuthScreen';
+import FoodDetail from '../Screen/FoodDetail';
 import Category from '../Screen/Category';
+import Filter from '../Screen/Filter';
 
 const Stack = createNativeStackNavigator();
 
@@ -18,8 +21,9 @@ const StackNavigation = () => {
   return (
     <Stack.Navigator
       screenOptions={{headerShown: false}}
-      initialRouteName="Drawer">
-      <Stack.Screen name="WelcomeScreen" component={Welcome} />
+      initialRouteName="AuthScreen">
+      <Stack.Screen name="Welcome" component={Welcome} />
+      <Stack.Screen name="AuthScreen" component={Authatication} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Verification" component={VerificationCode} />
@@ -29,7 +33,9 @@ const StackNavigation = () => {
       <Stack.Screen name="Contact" component={Contact} />
       <Stack.Screen name="Setting" component={Setting} />
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
+      <Stack.Screen name="FoodDetail" component={FoodDetail} />
       <Stack.Screen name="Category" component={Category} />
+      <Stack.Screen name="Filter" component={Filter} />
     </Stack.Navigator>
   );
 };

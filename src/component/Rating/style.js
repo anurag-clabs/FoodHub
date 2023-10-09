@@ -34,7 +34,6 @@ export const styles = StyleSheet.create({
         marginTop: vs(50)
     },
     logoImgView: {
-        // marginVertical: vs(20),
         backgroundColor: colors.white,
         height: ms(100),
         width: ms(100),
@@ -44,7 +43,7 @@ export const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: colors.yellow,
-        shadowOffset: { width: -2, height: 5 },
+        shadowOffset: { width: 0, height: 2 },
         elevation: 10,
     },
     VerifiedImgView: {
@@ -57,7 +56,7 @@ export const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: '#171717',
-        shadowOffset: { width: -2, height: 4 },
+        shadowOffset: { width: 0, height: 2 },
         elevation: 5,
         position: 'absolute',
         bottom: 8,
@@ -81,12 +80,12 @@ export const styles = StyleSheet.create({
     },
     headerDescription: {
         fontSize: 14,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
     },
     statusTxt: {
         fontSize: 15,
         marginVertical: vs(10),
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.green
     },
     ratingTxt: {
@@ -97,7 +96,7 @@ export const styles = StyleSheet.create({
     },
     rateTxt: {
         marginVertical: vs(5),
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.orange,
         fontSize: 25
     },
@@ -107,13 +106,12 @@ export const styles = StyleSheet.create({
     textInputStyle: {
         width: '100%',
         height: vs(150),
-        // marginHorizontal: s(20),
         marginVertical: vs(10),
         borderColor: colors.lightGrey,
         borderWidth: 1,
         borderRadius: 10,
-        fontFamily: Font.sofiaProMedium,
-        padding: 12,
+        fontFamily: Font.SofiaProMedium,
+        padding: ms(12),
         textAlignVertical: 'top',
     },
 })

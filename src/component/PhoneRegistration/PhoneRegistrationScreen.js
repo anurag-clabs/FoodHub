@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TouchableOpacity, Image, TextInput, SafeAreaView } from 'react-native'
+import { View, Text, ImageBackground, SafeAreaView } from 'react-native'
 import React, { useRef, useState } from 'react'
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -36,8 +36,7 @@ const PhoneRegistrationScreen = () => {
                     />
                     <Button
                         color={colors.orange}
-                        buttonName="Send"
-                        onPress={() => navigation.goBack()}
+                        buttonName="SEND"
                     />
                 </View>
             </ImageBackground>

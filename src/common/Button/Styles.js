@@ -1,7 +1,7 @@
-import {Platform, StyleSheet} from 'react-native';
-import {ms, s, vs} from 'react-native-size-matters';
-import {Font} from '../../utils/Fonts';
-import {colors} from '../../utils/colors';
+import { Platform, StyleSheet } from 'react-native';
+import { ms, s, vs } from 'react-native-size-matters';
+import { Font } from '../../utils/Fonts';
+import { colors } from '../../utils/colors';
 
 export const Styles = StyleSheet.create({
   Button: {
@@ -11,18 +11,47 @@ export const Styles = StyleSheet.create({
     alignSelf: 'center',
     marginVertical: vs(10),
     borderRadius: 25,
-    shadowOpacity: 0.2,
-    shadowRadius: 4,
     shadowColor: colors.black,
-    shadowOffset: {width: -2, height: 4},
-    elevation: 10,
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 3,
+  },
+  BagButton: {
+    height: vs(50),
+    width: s(160),
+    alignItems: 'center',
+    flexDirection: 'row',
+    alignSelf: 'center',
+    marginVertical: vs(10),
+    borderRadius: 30,
+    shadowColor: colors.black,
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 5,
   },
   TextButton: {
     fontSize: 15,
-    fontWeight: '500',
-    color: 'white',
+    color: colors.white,
     textAlign: 'center',
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
+  },
+  ButtonTxt: {
+    fontSize: 16,
+    textAlign: 'center',
+    fontFamily: Font.SofiaProMedium,
+  },
+  ButtonTxt2: {
+    fontSize: 14,
+    textAlign: 'center',
+    fontFamily: Font.SofiaProMedium,
   },
   BackImgView: {
     backgroundColor: colors.white,
@@ -31,10 +60,13 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderRadius: 15,
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
+    shadowColor: colors.black,
+    shadowOffset: {
+        width: 0,
+        height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
     elevation: 5,
   },
   menuView: {
@@ -48,11 +80,14 @@ export const Styles = StyleSheet.create({
     marginLeft: s(18),
     height: ms(40),
     width: ms(40),
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    shadowColor: '#171717',
-    shadowOffset: {width: -2, height: 4},
-    elevation: 5,
+    shadowColor: colors.black,
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.25,
+    shadowRadius: 4,
+    elevation: 2,
   },
   menuTitle: {
     fontSize: 22,
@@ -60,5 +95,27 @@ export const Styles = StyleSheet.create({
     textAlign: 'center',
     marginTop: Platform.OS === 'ios' ? vs(10) : vs(5),
     color: colors.darkPrimaryColor,
+  },
+  buttonView: {
+    height: vs(40),
+    width: s(120),
+    justifyContent: 'center',
+    borderRadius: 25,
+  },
+  applyButtonView: {
+    height: vs(35),
+    width: s(80),
+    justifyContent: 'center',
+    borderRadius: 25,
+  },
+  bagImgView: {
+    height: ms(40),
+    width: ms(40),
+    borderRadius: 35,
+    backgroundColor: colors.white,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginLeft: s(5),
+    marginRight: s(10)
   },
 });

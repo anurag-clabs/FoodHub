@@ -11,8 +11,8 @@ export const styles = StyleSheet.create({
         justifyContent: 'space-between'
     },
     Text: {
-        fontFamily: Font.sofiaProMedium,
-        fontSize: 18,
+        fontFamily: Font.SofiaProSemiBold,
+        fontSize: 20,
         color: colors.black,
     },
     TextHeader: {
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     },
     Deliver: {
         marginHorizontal: 3,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         fontSize: 14,
         color: colors.darkgray,
     },
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
         width: s(10),
     },
     HeaderAddress: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.orange,
         fontSize: 15,
     },

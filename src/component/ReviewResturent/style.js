@@ -23,7 +23,7 @@ export const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: colors.black,
-        shadowOffset: { width: -2, height: 5 },
+        shadowOffset: { width: 0, height: 2 },
         elevation: 10,
     },
     PizzaHutImage: {
@@ -32,13 +32,13 @@ export const styles = StyleSheet.create({
         resizeMode: 'contain',
     },
     QuestionTxt: {
-        fontFamily: Font.SofiaPro,
+        fontFamily: Font.SofiaProRegular,
         fontSize: 32,
         color: colors.black
     },
     rateTxt: {
         marginVertical: vs(5),
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.orange,
         fontSize: 25
     },
@@ -54,7 +54,7 @@ export const styles = StyleSheet.create({
         borderColor: colors.lightGrey,
         borderWidth: 1,
         borderRadius: 10,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         padding: 12,
         textAlignVertical: 'top',
     },

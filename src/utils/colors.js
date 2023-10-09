@@ -5,6 +5,7 @@ export const colors = {
   grey: '#30384F',
   lightWhite: 'rgba(255, 255, 255, 0.21)',
   lightGrey: 'rgba(208, 210, 209, 1)',
+  whiteGrey: 'rgba(238, 238, 238, 1)',
   blue: 'blue',
   darkgray: '#8C9099',
   yellow: 'rgba(255, 197, 41, 1)',
@@ -21,6 +22,5 @@ export const colors = {
   darkPrimaryColor: '#242424',
   silver: '#C4C4C4',
   LightSlateGrey: '#7E8392',
-  Fast: '#272D2F',
-  RichBlack: '#111719',
+  Blue: '#123B70',
 };

@@ -5,14 +5,14 @@ import {Font} from '../../utils/Fonts';
 
 export const styles = StyleSheet.create({
   TextInputTxt: {
-    fontFamily: Font.sofiaProMedium,
+    fontFamily: Font.SofiaProMedium,
     color: colors.GreySuit,
   },
   Btn: {
     shadowOpacity: 0.5,
     shadowRadius: 4,
     shadowColor: colors.orange,
-    shadowOffset: {width: -2, height: 5},
-    elevation: 10,
+    shadowOffset: {width: 0, height: 2},
+    elevation: 2,
   },
 });

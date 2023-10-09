@@ -55,10 +55,11 @@ const ProfileScreen = () => {
   };
 
   return (
-    <SafeAreaView>
+    <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground
         source={images.ProfileBackGround}
         style={commonStyle.backGroundImg}>
+          <ScrollView>
         <BackButton
           style={styles.BackImgView}
           onPress={() => navigation.goBack()}
@@ -67,12 +68,16 @@ const ProfileScreen = () => {
           <View style={styles.ProfileImgView}>
             <Image source={images.UserProfile} style={styles.ProfileImage} />
             <TouchableOpacity style={styles.CameraView}>
-              <Image source={images.Camera} style={commonStyle.imageStyle} />
+              <Image source={images.Camera} style={commonStyle.ImageStyle} />
             </TouchableOpacity>
           </View>
           <Text style={styles.profileText}>Eljad Eendaz</Text>
           <TouchableOpacity>
-            <Text style={{fontFamily: Font.sofiaPro, color: colors.GreySuit}}>
+            <Text
+              style={{
+                fontFamily: Font.SofiaProRegular,
+                color: colors.GreySuit,
+              }}>
               Edit Profile
             </Text>
           </TouchableOpacity>
@@ -124,6 +129,7 @@ const ProfileScreen = () => {
           color={colors.orange}
           onPress={() => navigation.navigate('Reviews')}
         />
+        </ScrollView>
       </ImageBackground>
     </SafeAreaView>
   );

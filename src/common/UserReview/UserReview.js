@@ -21,7 +21,7 @@ const UserReview = props => {
                     <Text style={styles.date}>{props.Date}</Text>
                 </View>
                 <TouchableOpacity>
-                    <Image source={props.MoreImage} style={commonStyle.imageStyle} />
+                    <Image source={props.MoreImage} style={commonStyle.ImageStyle} />
                 </TouchableOpacity>
             </View>
             <Text style={styles.reviewDescription}>{props.ReviewDescription}</Text>
@@ -37,19 +37,19 @@ const styles = StyleSheet.create({
     reviewDescription: {
         width: '95%',
         fontSize: 17,
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
     },
     userHeaderView: {
         flexDirection: 'row',
         alignItems: 'center',
     },
     userName: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.black,
         fontSize: 15
     },
     date: {
-        fontFamily: Font.sofiaProMedium
+        fontFamily: Font.SofiaProMedium
     },
     usernameView: {
         height: vs(55),
@@ -68,14 +68,14 @@ const styles = StyleSheet.create({
         shadowOpacity: 1,
         shadowRadius: 4,
         shadowColor: colors.yellow,
-        shadowOffset: { width: -2, height: 5 },
+        shadowOffset: { width: 0, height: 2 },
         elevation: 10,
         position: 'absolute',
         right: 0,
         bottom: 15
     },
     reviewCountTxt: {
-        fontFamily: Font.sofiaProMedium,
+        fontFamily: Font.SofiaProMedium,
         color: colors.white,
         fontSize: 10,
     },

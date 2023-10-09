@@ -1,11 +1,11 @@
 import {View, Text, SafeAreaView, TextInput} from 'react-native';
 import React, {useState} from 'react';
-import {TitleHeader} from '../Button/Button';
 import {commonStyle} from '../../utils/commonStyles';
 import {images} from '../../utils/image';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './style';
 import {colors} from '../../utils/colors';
+import {TitleHeader} from '../../common/Button/Button';
 
 const ChangePasswordScreen = () => {
   const navigation = useNavigation();

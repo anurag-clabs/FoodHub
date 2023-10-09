@@ -1,18 +1,17 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from 'react';
 import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
 import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { DrawerAnimationContext } from '../context/DrawerAnimationContext/Index';
 import { vs, s } from 'react-native-size-matters';
-import PhoneRegistration from '../Screen/PhoneRegistration';
-import Login from '../Screen/Login';
-import Welcome from '../Screen/Welcome';
-import RessetPassword from '../Screen/RessetPassword';
 import { StyleSheet } from 'react-native';
 import { colors } from '../utils/colors';
 import Home from '../Screen/Home';
 import FavoritesFood from '../Screen/FavoritesFood';
+import { Font } from '../utils/Fonts';
+import MyOrder from '../Screen/MyOrder';
+import Cart from '../Screen/Cart';
+import Search from '../Screen/Search';
 
 const AppTabNavigator = () => {
   const Tabs = AnimatedTabBarNavigator();
@@ -57,46 +56,83 @@ const AppTabNavigator = () => {
       <Animated.View
         style={{
           flex: 1,
-          // borderRadius: borderRadius,
-          overflow: 'hidden',
         }}>
         <Tabs.Navigator
           initialRouteName="Home"
-          screenOptions={({ route }) => ({
-            tabBarIcon: ({ focused, color, size }) => {
-              let iconName;
-              if (route.name === 'Home') {
-                iconName = focused ? 'compass' : 'compass-outline';
-              } else if (route.name === 'Cart') {
-                iconName = focused
-                  ? 'bag'
-                  : 'bag-outline';
-              } else if (route.name === 'Search') {
-                iconName = focused ? 'location' : 'location-outline';
-              } else if (route.name === 'Favorites') {
-                iconName = focused ? 'heart' : 'heart-outline';
-              } else if (route.name === 'Notifications') {
-                iconName = focused ? 'notifications' : 'notifications-outline';
-              }
-              return <Icon name={iconName} size={size} color={color} />;
-            },
-          })}
           tabBarOptions={{
+            headerShown: false,
             keyboardHidesTabBar: true,
             activeTintColor: 'white',
             inactiveTintColor: 'grey',
             activeBackgroundColor: colors.orange,
             labelStyle: {
-              fontSize: vs(12),
+              fontFamily: Font.SofiaProMedium
             },
           }}>
-          <Tabs.Screen name="Home" component={Home} />
-          <Tabs.Screen name="Search" component={PhoneRegistration} />
-          <Tabs.Screen name="Cart" component={Login} />
-          <Tabs.Screen name="Favorites" component={FavoritesFood} />
+          <Tabs.Screen
+            name="Home"
+            component={Home}
+            options={{
+              tabBarIcon: ({ focused, color, size }) => (
+                <Icon
+                  name={focused ? 'compass' : 'compass-outline'}
+                  size={size}
+                  color={color}
+                />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="Search"
+            component={Search}
+            options={{
+              tabBarIcon: ({ focused, color, size }) => (
+                <Icon
+                  name={focused ? 'search-circle' : 'search'}
+                  size={size}
+                  color={color}
+                />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="Cart"
+            component={Cart}
+            options={{
+              tabBarIcon: ({ focused, color, size }) => (
+                <Icon
+                  name={focused ? 'bag' : 'bag-outline'}
+                  size={size}
+                  color={color}
+                />
+              ),
+            }}
+          />
+          <Tabs.Screen
+            name="Favorites"
+            component={FavoritesFood}
+            options={{
+              tabBarIcon: ({ focused, color, size }) => (
+                <Icon
+                  name={focused ? 'heart' : 'heart-outline'}
+                  size={size}
+                  color={color}
+                />
+              ),
+            }}
+          />
           <Tabs.Screen
             name="Notifications"
-            component={Welcome}
+            component={MyOrder}
+            options={{
+              tabBarIcon: ({ focused, color, size }) => (
+                <Icon
+                  name={focused ? 'notifications' : 'notifications-outline'}
+                  size={size}
+                  color={color}
+                />
+              ),
+            }}
           />
         </Tabs.Navigator>
       </Animated.View>

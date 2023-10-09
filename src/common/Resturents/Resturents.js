@@ -1,23 +1,18 @@
 import React from 'react';
 import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native'
 import { styles } from './style';
-import { colors } from '../../utils/colors';
 import { images } from '../../utils/image';
-import { useNavigation } from '@react-navigation/native';
 import { commonStyle } from '../../utils/commonStyles';
-import { s } from 'react-native-size-matters';
+import { s, vs } from 'react-native-size-matters';
 
 const Resturents = props => {
-
-    const navigation = useNavigation();
-
     return (
         <>
-            <TouchableOpacity style={[styles.mainView]}>
+            <TouchableOpacity style={[styles.mainView, Platform.OS === 'ios' && styles.IosShadow]}>
                 <Image source={props.BackgroundImg} style={styles.BackgroundImg} />
                 <View style={[commonStyle.f_D_R, { alignItems: 'center' }]} >
                     <Text style={styles.itemName}>{props.RestaurantName} </Text>
-                    <Image style={commonStyle.imageStyle} source={props.Verified} />
+                    <Image style={commonStyle.ImageStyle} source={props.Verified} />
                 </View>
                 <View style={[commonStyle.f_D_R]}>
                     <Image
@@ -30,7 +25,7 @@ const Resturents = props => {
                     <Image style={styles.DeliveryIcon} source={props.TimeIcon} />
                     <Text style={styles.Delivery}>{props.DeliveryTime}</Text>
                 </View>
-                <View style={{ flexDirection: 'row', marginBottom: s(10) }}>
+                <View style={{ flexDirection: 'row', marginBottom: vs(10) }}>
                     <View style={styles.Box}>
                         <Text style={styles.Food}>{props.Burger}</Text>
                     </View>
@@ -47,7 +42,7 @@ const Resturents = props => {
                     <Text style={styles.reviewTxt}>{props.Rating}</Text>
                 </TouchableOpacity>
                 <TouchableOpacity style={styles.HeartIconView}>
-                    <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
+                    <Image source={images.HeartIcon} style={commonStyle.ImageStyle} />
                 </TouchableOpacity>
             </View>
         </>
