@@ -13,6 +13,7 @@ import ChangePassword from '../Screen/ChangePassword';
 import Authatication from '../Screen/AuthScreen';
 import FoodDetail from '../Screen/FoodDetail';
 import Category from '../Screen/Category';
+import Filter from '../Screen/Filter';
 
 const Stack = createNativeStackNavigator();
 
@@ -34,6 +35,7 @@ const StackNavigation = () => {
       <Stack.Screen name="ChangePassword" component={ChangePassword} />
       <Stack.Screen name="FoodDetail" component={FoodDetail} />
       <Stack.Screen name="Category" component={Category} />
+      <Stack.Screen name="Filter" component={Filter} />
     </Stack.Navigator>
   );
 };

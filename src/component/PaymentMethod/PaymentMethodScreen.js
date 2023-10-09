@@ -1,9 +1,8 @@
+import React from 'react';
 import { View, Text, SafeAreaView, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
 import { commonStyle } from '../../utils/commonStyles';
 import { Header } from '../../common/Header/Header';
 import { useNavigation } from '@react-navigation/native';
-import Icon2 from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
 import { styles } from './Style';
 import { colors } from '../../utils/colors';

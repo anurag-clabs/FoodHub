@@ -1,17 +1,22 @@
-import { View, Text, SafeAreaView, ImageBackground, Image, TouchableOpacity, FlatList, ScrollView } from 'react-native'
-import React from 'react'
+import { View, Text, SafeAreaView, ImageBackground, Image, TouchableOpacity, FlatList, ScrollView, Modal } from 'react-native'
+import React, { useState } from 'react'
 import { commonStyle } from '../../utils/commonStyles';
 import { images } from '../../utils/image';
 import { styles } from './Style';
 import { useNavigation } from '@react-navigation/native';
 import { BackButton } from '../../common/Button/Button';
 import FavoritesFoodItem from '../../common/FoodItem/FavoritesFoodItem';
-import { s } from 'react-native-size-matters';
 import { FoodData } from '../../common/Data/Data';
+import FilterScreen from '../Filter/FilterScreen';
 
 const CategoryScreen = () => {
 
     const navigation = useNavigation();
+    const [isFilterModalVisible, setFilterModalVisible] = useState(false);
+
+    const toggleFilterModal = () => {
+        setFilterModalVisible(!isFilterModalVisible);
+    };
 
     const renderItem = () => {
         return FoodData.map((item, index) => (
@@ -47,7 +52,7 @@ const CategoryScreen = () => {
                             <Text>&#x2304;</Text>
                         </TouchableOpacity>
                     </View>
-                    <TouchableOpacity style={styles.filetBtn}>
+                    <TouchableOpacity style={styles.filetBtn} onPress={toggleFilterModal}>
                         <Image style={styles.filter} source={images.filter} />
                     </TouchableOpacity>
                 </View>
@@ -55,6 +60,18 @@ const CategoryScreen = () => {
                     {renderItem()}
                 </View>
             </ScrollView>
+            <Modal
+                animationType="slide"
+                transparent={true}
+                visible={isFilterModalVisible}
+                onRequestClose={() => {
+                    setModalVisible(!isModalVisible);
+                }}
+            >
+                <View style={styles.modalBackground}>
+                    <FilterScreen onclick={toggleFilterModal} />
+                </View>
+            </Modal>
         </SafeAreaView>
     )
 }

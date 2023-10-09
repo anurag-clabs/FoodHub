@@ -28,6 +28,7 @@ import Rating from '../Screen/Rating';
 import Reviews from '../Screen/Reviews';
 import ReviewResturent from '../Screen/ReviewResturent';
 import PaymentMethod from '../Screen/PaymentMethod';
+import HelpsFAQs from '../Screen/HelpsFAQs';
 
 const Drawer = createDrawerNavigator();
 const {width: WIDTH} = Dimensions.get('window');
@@ -117,6 +118,7 @@ const DrawerNav = () => {
           <Drawer.Screen name="PaymentMethod" component={PaymentMethod} />
           <Drawer.Screen name="Reviews" component={Reviews} />
           <Drawer.Screen name="ReviewResturent" component={ReviewResturent} />
+          <Drawer.Screen name="HelpsFAQ" component={HelpsFAQs} />
         </Drawer.Navigator>
       </LinearGradient>
       <View

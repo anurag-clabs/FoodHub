@@ -7,13 +7,15 @@ import {
   TextInput,
   ScrollView,
   FlatList,
+  Modal,
+  Pressable,
 } from 'react-native';
-import React, {useState} from 'react';
-import {styles} from './style';
-import {images} from '../../utils/image';
-import { useNavigation} from '@react-navigation/native';
-import {s, vs} from 'react-native-size-matters';
-import {commonStyle} from '../../utils/commonStyles';
+import React, { useState } from 'react';
+import { styles } from './style';
+import { images } from '../../utils/image';
+import { useNavigation } from '@react-navigation/native';
+import { s, vs } from 'react-native-size-matters';
+import { commonStyle } from '../../utils/commonStyles';
 import {
   Featured_Restaurants,
   FoodList,
@@ -21,11 +23,13 @@ import {
 } from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';
 import FoodItem from '../../common/FoodItem/FoodItem';
-import {MenuHeader} from '../../common/Header/Header';
+import { MenuHeader } from '../../common/Header/Header';
 import { colors } from '../../utils/colors';
+import FilterScreen from '../Filter/FilterScreen';
 
 const HomeScreen = () => {
   const [selectedFood, setSelectedFood] = useState(null);
+  const [isFilterModalVisible, setFilterModalVisible] = useState(false);
   const navigation = useNavigation();
   const openDrawerClick = () => {
     navigation.openDrawer();
@@ -34,7 +38,11 @@ const HomeScreen = () => {
     setSelectedFood(index);
   };
 
-  const renderRestaurants = ({item}) => (
+  const toggleFilterModal = () => {
+    setFilterModalVisible(!isFilterModalVisible);
+  };
+
+  const renderRestaurants = ({ item }) => (
     <View style={commonStyle.v_10}>
       <Resturents
         BackgroundImg={item.BackgroundImg}
@@ -53,7 +61,7 @@ const HomeScreen = () => {
     </View>
   );
 
-  const renderFoodItem = ({item}) => (
+  const renderFoodItem = ({ item }) => (
     <View style={[commonStyle.v_10]}>
       <FoodItem
         ItemImg={item.ItemImg}
@@ -65,6 +73,7 @@ const HomeScreen = () => {
       />
     </View>
   );
+
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -82,38 +91,38 @@ const HomeScreen = () => {
         <View style={[commonStyle.rowCenter, commonStyle.mT20, commonStyle.m_20]}>
           <View style={styles.textInputStyleView}>
             <Image style={styles.search} source={images.search} />
-            <TextInput 
-            placeholder="Find for food or restaurant....." 
-            style={styles.textInputBar}
+            <TextInput
+              placeholder="Find for food or restaurant....."
+              style={styles.textInputBar}
             />
           </View>
-          <TouchableOpacity style={styles.filetBtn}>
+          <TouchableOpacity style={styles.filetBtn} onPress={toggleFilterModal}>
             <Image style={styles.filter} source={images.filter} />
           </TouchableOpacity>
         </View>
-          <ScrollView
-            horizontal={true}
-            showsHorizontalScrollIndicator={false}>
-            {FoodList.map((item, index) => {
-              const itemStyle = [
-                styles.boxElevation,
-                selectedFood === index && styles.selectedBoxElevation,
-              ];
-              const nameStyle = [
-                styles.name,
-                selectedFood === index && {color: colors.white},
-              ];
-              return (
-                <TouchableOpacity
-                  onPress={() => handleFoodItemClick(index)}
-                  key={index}
-                  style={[itemStyle, commonStyle.mV25]}>
-                  <Image style={styles.image} source={item.image} />
-                  <Text style={nameStyle}>{item.title}</Text>
-                </TouchableOpacity>
-              );
-            })}
-          </ScrollView>
+        <ScrollView
+          horizontal={true}
+          showsHorizontalScrollIndicator={false}>
+          {FoodList.map((item, index) => {
+            const itemStyle = [
+              styles.boxElevation,
+              selectedFood === index && styles.selectedBoxElevation,
+            ];
+            const nameStyle = [
+              styles.name,
+              selectedFood === index && { color: colors.white },
+            ];
+            return (
+              <TouchableOpacity
+                onPress={() => handleFoodItemClick(index)}
+                key={index}
+                style={[itemStyle, commonStyle.mV25]}>
+                <Image style={styles.image} source={item.image} />
+                <Text style={nameStyle}>{item.title}</Text>
+              </TouchableOpacity>
+            );
+          })}
+        </ScrollView>
 
         <View>
           <View style={styles.HeaderView}>
@@ -124,7 +133,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{paddingHorizontal: s(10)}}
+            contentContainerStyle={{ paddingHorizontal: s(10) }}
             data={Featured_Restaurants}
             keyExtractor={item => item.id}
             renderItem={renderRestaurants}
@@ -133,16 +142,16 @@ const HomeScreen = () => {
           />
           <View style={styles.HeaderView}>
             <Text style={styles.titleRestaurant}>Popular Items</Text>
-            <TouchableOpacity 
-            style={styles.titleView} 
-            onPress={() => navigation.navigate('Category')}
+            <TouchableOpacity
+              style={styles.titleView}
+              onPress={() => navigation.navigate('Category')}
             >
               <Text style={styles.ViewAll}>View All</Text>
               <Image style={styles.OpenAero} source={images.OpenAero} />
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{paddingHorizontal: s(10)}}
+            contentContainerStyle={{ paddingHorizontal: s(10) }}
             data={PopularItems}
             keyExtractor={item => item.Id}
             renderItem={renderFoodItem}
@@ -151,6 +160,18 @@ const HomeScreen = () => {
           />
         </View>
       </SafeAreaView>
+      <Modal
+        animationType="slide"
+        transparent={true}
+        visible={isFilterModalVisible}
+        onRequestClose={() => {
+          setModalVisible(!isModalVisible);
+        }}
+      >
+        <View style={styles.modalBackground}>
+          <FilterScreen onclick={toggleFilterModal} />
+        </View>
+      </Modal>
     </ScrollView>
   );
 };

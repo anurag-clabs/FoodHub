@@ -74,7 +74,7 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="Helps & FAQs"
           icon={<Image source={images.Helps} style={[styles.drawerImage]} />}
-          // onPress={() => navigation.navigate('Feedback')}
+          onPress={() => navigation.navigate('HelpsFAQ')}
         />
       </View>
         <TouchableOpacity 

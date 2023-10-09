@@ -85,7 +85,7 @@ export const ApplyButton = props => {
     <TouchableOpacity
       style={[Styles.applyButtonView, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
-      <Text style={[Styles.ButtonTxt2, { color: props.Txtcolor }]}>{props.buttonName}</Text>
+      <Text style={[Styles.ButtonTxt2, props.Txtstyle,  { color: props.Txtcolor }]}>{props.buttonName}</Text>
     </TouchableOpacity>
   )
 }

@@ -42,7 +42,6 @@ export const styles = StyleSheet.create({
          color: colors.orange
     },
     filetBtn: {
-        // marginLeft: s(12),
         height: ms(45),
         width: ms(45),
         backgroundColor: colors.LightGrayishBlue,
@@ -54,5 +53,9 @@ export const styles = StyleSheet.create({
         shadowColor: colors.DarkShadeGray,
         shadowOffset: {width: 0, height: 2},
         elevation: 1,
+      },
+      modalBackground: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
       },
 })
