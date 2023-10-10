@@ -13,14 +13,14 @@ import {TitleHeader} from '../Button/Button';
 import {useNavigation} from '@react-navigation/native';
 import {images} from '../../utils/image';
 import {ms} from 'react-native-size-matters';
+import { Header } from '../Header/Header';
 
 const ContactScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={commonStyle.constainer}>
-      <TitleHeader
-        title={'Contact Us'}
-        source={images.BackImg}
+      <Header
+        Text={'Contact Us'}
         onPress={() => navigation.goBack()}
       />
       <View style={[commonStyle.mH15, commonStyle.mT30]}>

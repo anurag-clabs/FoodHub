@@ -20,4 +20,8 @@ export const styles = StyleSheet.create({
     padding: 12,
     height: vs(55),
   },
+  btn: {
+    position: 'relative',
+    bottom: 20
+  },
 });
