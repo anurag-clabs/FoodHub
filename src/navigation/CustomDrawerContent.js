@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {images} from '../utils/image';
@@ -14,20 +14,37 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CustomDrawerContent = props => {
   const {progress, navigation} = props;
+  const [userData, setUserData] = useState({});
   const {setProgress} = useContext(DrawerAnimationContext);
 
   const handleLogout = async () => {
     try {
-      await AsyncStorage.removeItem('userLoggedIn');
+      await AsyncStorage.removeItem('userData');
     } catch (error) {
       console.error('Error clearing userLoggedIn state:', error);
     }
     navigation.navigate('Welcome');
   };
 
+
   useEffect(() => {
+    console.log('userData', userData);
     progress && setProgress(progress);
+    async function getUserData() {
+      try {
+        const data = await AsyncStorage.getItem('userData');
+        if (data !== null) {
+          const userDataObject = JSON.parse(data);
+          setUserData(userDataObject);
+        }
+      } catch (error) {
+        console.error('Error retrieving user data:', error);
+      }
+    }
+
+    getUserData();
   }, [progress]);
+
   return (
     <DrawerContentScrollView
       {...props}
@@ -35,9 +52,9 @@ const CustomDrawerContent = props => {
       contentContainerStyle={styles.drawerView}>
       <View style={styles.ProfileView}>
         <Image source={images.UserProfile} style={styles.ProfileImage} />
-        <Text style={styles.profileText}>Farion Wick</Text>
+        <Text style={styles.profileText}>{userData.name}</Text>
         <Text style={{fontFamily: Font.SofiaProMedium}}>
-          farionwick@gmail.com
+          {userData.email}
         </Text>
       </View>
       <View style={styles.drawerContent}>
