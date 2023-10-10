@@ -15,14 +15,12 @@ import { TextInputText } from '../../common/TextInputComponent/TextInputComponen
 import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
-import { apiInstance } from '../../httpclient/httpclient';
-import { handelAuthVerify, signup } from '../../redux/action/SignUp';
+import { signup } from '../../redux/action/SignUp';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
-import { useDispatch } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
-  const dispatch = useDispatch();
 
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -55,47 +53,37 @@ const SignUpScreen = () => {
     setIsPasswordFocused(true);
   };
 
-  const handleFullNameSubmit = () => {
-    if (!isFullNameFocused.length) {
-      showMessage({
-        ...msg,
-        message: 'Please Enter Full Name',
-      });
-      return;
-    }
-  };
-
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide);
   };
 
   const handelSignUpVerify = async () => {
-    handleFullNameSubmit();
     try {
       const signupData = {
         name: name,
         email: email,
         password: password,
       };
-      console.log('signupData:', signupData);
       const response = await signup(signupData);
-      console.log('Signup response:', response); 
       if (response) {
         console.log('Signup successful');
         showMessage({
           ...msg,
-          message: response.message, 
+          message: response.message,
         });
-        navigation.navigate('Verification')
+        await AsyncStorage.setItem('userData', JSON.stringify(signupData));
+        navigation.navigate('Verification', {
+          data: response,
+        });
       } else {
         console.log('Signup failed');
       }
     } catch (error) {
       console.error('Signup error:', error);
       showMessage({
-        message: 'An error occurred while signing up', 
+        message: 'An error occurred while signing up',
         type: 'error',
-        backgroundColor: colors.errorColor, 
+        backgroundColor: colors.errorColor,
       });
     }
   };
@@ -115,7 +103,7 @@ const SignUpScreen = () => {
             value={name}
             onChangeText={text => setName(text)}
           />
-          <Text style={styles.textInputTxt}>E-mail</Text>
+          <Text style={styles.textInputTxt}>E-mail or Phone</Text>
           <TextInput
             style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
             placeholder='Your email or phone'
@@ -173,7 +161,7 @@ const SignUpScreen = () => {
           </View>
         </View>
       </ImageBackground>
-      <FlashMessage position="top"/>
+      <FlashMessage position="top" />
     </SafeAreaView>
   );
 };
