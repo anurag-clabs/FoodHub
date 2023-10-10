@@ -8,8 +8,8 @@ const Authatication = () => {
   useEffect(() => {
     const checkAuthentication = async () => {
       try {
-        const userLoggedIn = await AsyncStorage.getItem('userLoggedIn');
-        if (userLoggedIn === 'true') {
+        const userData = await AsyncStorage.getItem('userData');
+        if (userData?.length) {
           navigation.navigate('Drawer');
         } else {
           navigation.navigate('Welcome');

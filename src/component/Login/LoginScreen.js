@@ -16,42 +16,52 @@ import { useNavigation } from '@react-navigation/native';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { showMessage } from 'react-native-flash-message';
+import { Login } from '../../redux/action/Login';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [passwordHide, setPasswordHide] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [emailError, setEmailError] = useState('');
-  const [passwordError, setPasswordError] = useState('');
 
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide);
   };
 
-  const handleLogin = async () => {
-    setEmailError('');
-    setPasswordError('');
-
-    let hasError = false; 
-
-    if (!email) {
-      setEmailError('Please enter your email');
-      hasError = true;
-    }
-    if (!password) {
-      setPasswordError('Please enter your password');
-      hasError = true;
-    }
-    if (!hasError) {
-      try {
-        await AsyncStorage.setItem('userLoggedIn', 'true');
-      } catch (error) {
-        console.error('Error saving userLoggedIn state:', error);
-      }
-      navigation.navigate('Verification');
-    }
+  let msg = {
+    type: 'info',
+    backgroundColor: colors.errorColor,
   };
+
+const handleLogin = async () => {
+  try {
+    const loginData = {
+      email: email,
+      password: password,
+    };
+    const response = await Login(loginData);
+    if (response) {
+      console.log('Login successful');
+      showMessage({
+        ...msg,
+        message: response.message,
+      });
+      console.log('Login failed', response);
+      await AsyncStorage.setItem('user_email', email);
+      navigation.navigate('Drawer');
+    } else {
+      console.log('Login failed');
+    }
+  } catch (error) {
+    console.error('Login error:', error);
+    showMessage({
+      message: 'An error occurred while Login up',
+      type: 'error',
+      backgroundColor: colors.errorColor,
+    });
+  }
+}
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
@@ -71,7 +81,6 @@ const LoginScreen = () => {
             onChangeText={(text) => setEmail(text)}
             value={email}
           />
-          <Text style={{ color: 'red' }}>{emailError}</Text>
           <Text style={styles.textInputTxt}>Password</Text>
           <View style={styles.passwordView}>
             <TextInputText
@@ -87,15 +96,14 @@ const LoginScreen = () => {
               />
             </TouchableOpacity>
           </View>
-          <Text style={{ color: 'red' }}>{passwordError}</Text>
           <TouchableOpacity
-            onPress={() => navigation.navigate('ResetPassword')}>
+            onPress={() => navigation.navigate('RessetPassword')}>
             <Text style={styles.forgitTxt}>Forgot password?</Text>
           </TouchableOpacity>
           <Button
             color={colors.orange}
             buttonName="LOGIN"
-            onPress={handleLogin}
+            onPress={() => handleLogin()}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
