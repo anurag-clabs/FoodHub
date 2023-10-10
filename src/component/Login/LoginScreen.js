@@ -48,7 +48,9 @@ const handleLogin = async () => {
         message: response.message,
       });
       console.log('Login failed', response);
-      await AsyncStorage.setItem('user_email', email);
+      await AsyncStorage.setItem('userEmail', response.email);
+      await AsyncStorage.setItem('userName', response.name);
+      await AsyncStorage.setItem('userToken', response.token);
       navigation.navigate('Drawer');
     } else {
       console.log('Login failed');

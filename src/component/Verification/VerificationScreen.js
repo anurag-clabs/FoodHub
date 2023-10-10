@@ -14,9 +14,9 @@ const VerificationScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const signupData = route?.params?.data?.user;
-  const loginData = route?.params
-  console.log('Verificatio code', loginData);
-  console.log('VerificationScreen', signupData);
+  // const loginData = route?.params
+  // console.log('Verificatio code', loginData);
+  // console.log('VerificationScreen', signupData);
 
   const [enteredOTP, setEnteredOTP] = useState('');
   const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -48,7 +48,7 @@ const VerificationScreen = () => {
     const result = await verify(signupData?.email, enteredOTP);
     if (result) {
       setIsOTPVerified(true);
-      navigation.navigate('Drawer');
+      navigation.navigate('Login');
     }
   };
 

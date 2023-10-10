@@ -71,7 +71,6 @@ const SignUpScreen = () => {
           ...msg,
           message: response.message,
         });
-        await AsyncStorage.setItem('userData', JSON.stringify(signupData));
         navigation.navigate('Verification', {
           data: response,
         });
