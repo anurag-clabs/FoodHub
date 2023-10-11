@@ -1,65 +1,61 @@
-import {StyleSheet} from 'react-native';
-import {ms, s, vs} from 'react-native-size-matters';
-import {Font} from '../../utils/Fonts';
-import {colors} from '../../utils/colors';
+import { StyleSheet } from "react-native";
+import { ms, s, vs } from "react-native-size-matters";
+import { Font } from "../../utils/Fonts";
+import { colors } from "../../utils/colors";
 
 export const styles = StyleSheet.create({
-  BackImgView: {
-    marginTop: vs(20),
-    marginHorizontal: s(20),
-  },
-  headerView: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-  },
-  Fast: {
-    fontFamily: Font.SofiaProBold,
-    fontSize: 45,
-    color: colors.Fast,
-  },
-  Food: {
-    fontFamily: Font.SofiaProBold,
-    fontSize: 52,
-    color: colors.orange,
-    marginTop: vs(10),
-  },
-  BackGroundImg: {
-    height: vs(270),
-    width: s(230),
-    right: 13,
-  },
-  PizzaType: {
-    fontFamily: Font.sofiaProMedium,
-    fontSize: 17,
-    color: colors.GreySuit,
-    marginTop: vs(10),
-  },
-  filter: {
-    resizeMode: 'contain',
-    alignSelf: 'center',
-  },
-  Aero: {
-    height: ms(10),
-    width: ms(10),
-    resizeMode: 'contain',
-    marginBottom: s(8),
-  },
-  HeaderView: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginHorizontal: s(20),
-  },
-  title: {
-    fontFamily: Font.sofiaProMedium,
-    fontSize: 18,
-    color: colors.black,
-    marginBottom: s(20),
-  },
-  Popular: {
-    fontFamily: Font.sofiaProMedium,
-    fontSize: 20,
-    marginBottom: s(20),
-    color: colors.orange,
-  },
-});
+    BackgroundImg: {
+        marginLeft: s(120),
+        width: '82%',
+        height: vs(240),
+        resizeMode: 'contain',
+    },
+    BackImgView: {
+        position: 'absolute',
+        left: s(20),
+        top: vs(20),
+    },
+    header1: {
+        fontFamily: Font.SofiaProBold,
+        fontSize: 40,
+        color: colors.black,
+        marginTop: vs(15), 
+
+    },
+    header2: {
+        fontFamily: Font.SofiaProBold,
+        fontSize: 45,
+        color: colors.orange
+    },
+    types: {
+        fontFamily: Font.SofiaProRegular,
+        fontSize: 15
+    },
+    shortbyTxt: {
+        fontFamily: Font.SofiaProMedium,
+        fontSize: 15,
+        color: colors.black
+    },
+    popularDropdown: {
+        fontFamily: Font.SofiaProRegular,
+        fontSize: 17,
+         color: colors.orange
+    },
+    filetBtn: {
+        height: ms(45),
+        width: ms(45),
+        backgroundColor: colors.LightGrayishBlue,
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 10,
+        shadowOpacity: 0.2,
+        shadowRadius: 3,
+        shadowColor: colors.DarkShadeGray,
+        shadowOffset: {width: 0, height: 2},
+        elevation: 1,
+      },
+      modalBackground: {
+        flex: 1,
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      },
+})
