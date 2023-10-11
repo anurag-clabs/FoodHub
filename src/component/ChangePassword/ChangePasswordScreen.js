@@ -1,7 +1,6 @@
 import {View, Text, SafeAreaView, TextInput, ScrollView} from 'react-native';
 import React, {useState} from 'react';
 import {commonStyle} from '../../utils/commonStyles';
-import {images} from '../../utils/image';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './style';
 import {colors} from '../../utils/colors';
@@ -23,27 +22,26 @@ const ChangePasswordScreen = () => {
 
   const handleChangePassword = async () => {
     try {
-      const passwordData = {
+      const changePassword = {
         oldPassword: oldPassword,
         newPassword: newPassword,
         confirmPassword: confirmPassword,
       };
-      const response = await ChangePassword(passwordData);
+      const response = await ChangePassword(changePassword);
       if (response) {
         console.log('password Change successful');
         showMessage({
           ...msg,
           message: response.message,
         });
-        console.log('passwordData', response);
-        navigation.navigate('Login');
+        navigation.navigate('Drawer');
       } else {
-        console.log('passwordData failed');
+        console.log('changePassword failed');
       }
     } catch (error) {
-      console.error('passwordData error:', error);
+      console.error('changePassword error:', error);
       showMessage({
-        message: 'An error occurred while password Enter',
+        message: 'An error occurred while Change password',
         type: 'error',
         backgroundColor: colors.errorColor,
       });

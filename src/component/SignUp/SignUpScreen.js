@@ -17,7 +17,6 @@ import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { signup } from '../../redux/action/SignUp';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
