@@ -12,7 +12,7 @@ import {
 import React, {useState} from 'react';
 import {commonStyle} from '../../utils/commonStyles';
 import {images} from '../../utils/image';
-import {styles} from './Style';
+import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
 import {BackButton} from '../../common/Button/Button';
 import FavoritesFoodItem from '../../common/FoodItem/FavoritesFoodItem';

@@ -1,7 +1,7 @@
 import { View, Text, ImageBackground, SafeAreaView, TouchableOpacity, Image, Platform, ScrollView } from 'react-native';
 import React from 'react'
 import { images } from '../../utils/image';
-import { styles } from './Style';
+import { styles } from './style';
 import { commonStyle } from '../../utils/commonStyles';
 import { BackButton, BagButton } from '../../common/Button/Button';
 import { useNavigation } from '@react-navigation/native';

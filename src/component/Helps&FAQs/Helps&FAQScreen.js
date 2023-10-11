@@ -3,7 +3,7 @@ import { View, Text, SafeAreaView, TouchableOpacity, Image, TextInput } from 're
 import { commonStyle } from '../../utils/commonStyles';
 import { Header } from '../../common/Header/Header';
 import { useNavigation } from '@react-navigation/native';
-import { styles } from './Style';
+import { styles } from './style';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Icon1 from 'react-native-vector-icons/MaterialCommunityIcons';
 import { colors } from '../../utils/colors';
