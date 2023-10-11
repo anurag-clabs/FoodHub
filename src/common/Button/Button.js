@@ -11,7 +11,7 @@ export const Button = props => {
   return (
     <TouchableOpacity
       style={[Styles.Button, props.style, { backgroundColor: props.color }]}
-      onPress={() => props.onPress()}>
+      onPress={props.onPress}>
       {!props?.loading ? (
         <Text style={Styles.TextButton}>{props.buttonName}</Text>
       ) : (

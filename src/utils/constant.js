@@ -1,4 +1,4 @@
-export const baseURL = 'http://192.168.29.226:3000';
+export const baseURL = 'http://192.168.0.192:3000/';
 
 export const SIGNUP_TOKEN = 'SIGNUP_TOKEN';
 export const SIGNUP_CLUSTER_ID = 'SIGNUP_CLUSTER_ID';

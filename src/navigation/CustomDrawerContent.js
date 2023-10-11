@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Image, StyleSheet, Text, View} from 'react-native';
 import {DrawerContentScrollView} from '@react-navigation/drawer';
 import {images} from '../utils/image';
@@ -14,11 +14,15 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const CustomDrawerContent = props => {
   const {progress, navigation} = props;
+  const [userName, setUserName] = useState('');
+  const [userEmail, setUserEmail] = useState('');
   const {setProgress} = useContext(DrawerAnimationContext);
 
   const handleLogout = async () => {
     try {
-      await AsyncStorage.removeItem('userLoggedIn');
+      await AsyncStorage.removeItem('userEmail');
+      await AsyncStorage.removeItem('userName');
+      await AsyncStorage.removeItem('userToken');
     } catch (error) {
       console.error('Error clearing userLoggedIn state:', error);
     }
@@ -27,7 +31,22 @@ const CustomDrawerContent = props => {
 
   useEffect(() => {
     progress && setProgress(progress);
+    const getUserData = async () => {
+      try {
+        const storedUserName = await AsyncStorage.getItem('userName');
+        const storedUserEmail = await AsyncStorage.getItem('userEmail');
+        if (storedUserName && storedUserEmail) {
+          setUserName(storedUserName);
+          setUserEmail(storedUserEmail);
+        }
+      } catch (error) {
+        console.error('Error retrieving user data:', error);
+      }
+    };
+
+    getUserData();
   }, [progress]);
+
   return (
     <DrawerContentScrollView
       {...props}
@@ -35,10 +54,8 @@ const CustomDrawerContent = props => {
       contentContainerStyle={styles.drawerView}>
       <View style={styles.ProfileView}>
         <Image source={images.UserProfile} style={styles.ProfileImage} />
-        <Text style={styles.profileText}>Farion Wick</Text>
-        <Text style={{fontFamily: Font.SofiaProMedium}}>
-          farionwick@gmail.com
-        </Text>
+        <Text style={styles.profileText}>{userName}</Text>
+        <Text style={{fontFamily: Font.SofiaProMedium}}>{userEmail}</Text>
       </View>
       <View style={styles.drawerContent}>
         <CustomDrawerItem

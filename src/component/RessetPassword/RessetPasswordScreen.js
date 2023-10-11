@@ -6,10 +6,46 @@ import { commonStyle } from '../../utils/commonStyles';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
+import { showMessage } from 'react-native-flash-message';
+import { ForgotPassword } from '../../redux/action/ForgotPassword';
+import { useState } from 'react';
 
 const RessetPasswordScreen = () => {
 
   const navigation = useNavigation()
+  const [email, setEmail] = useState('');
+
+  let msg = {
+    type: 'info',
+    backgroundColor: colors.errorColor,
+  };
+
+  const handleForgotPassword = async () => {
+    try {
+      const passwordData = {
+        email: email,
+      };
+      const response = await ForgotPassword(passwordData);
+      if (response) {
+        console.log('password successful');
+        showMessage({
+          ...msg,
+          message: response.message,
+        });
+        console.log('passwordData', response);
+        navigation.navigate('Login');
+      } else {
+        console.log('passwordData failed');
+      }
+    } catch (error) {
+      console.error('passwordData error:', error);
+      showMessage({
+        message: 'An error occurred while password Enter',
+        type: 'error',
+        backgroundColor: colors.errorColor,
+      });
+    }
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -24,11 +60,14 @@ const RessetPasswordScreen = () => {
           <TextInput
             style={styles.textInputStyle}
             placeholder='Your email or phone'
+            value={email}
+            onChangeText={(text) => setEmail(text)}
           />
         </View>
         <Button
           color={colors.orange}
           buttonName="Send new password"
+          onPress={() => handleForgotPassword()}
         />
       </ImageBackground>
     </SafeAreaView>

@@ -46,8 +46,8 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
     },
     codeInputFieldStyle: {
-        width: 50,
-        height: 50,
+        width: 45,
+        height: 45,
         borderWidth: 1,
         borderColor: colors.lightGrey,
         borderRadius: 10,
@@ -63,13 +63,13 @@ export const styles = StyleSheet.create({
         marginVertical: vs(30),
     },
     roundedTextInput: {
-        height: 60,
-        width: 60,
+        height: 45,
+        width: 45,
         borderRadius: 10,
         borderWidth: 1,
         fontFamily: Font.SofiaProMedium,
         color: colors.orange,
-        fontSize: 25,
+        fontSize: 20,
         borderBottomWidth: 1
     },
 });

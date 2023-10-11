@@ -20,14 +20,8 @@ export const styles = StyleSheet.create({
     padding: 12,
     height: vs(55),
   },
-  focusedTextInput: {
-    marginVertical: vs(10),
-    borderWidth: 1,
-    borderRadius: 10,
-    fontFamily: Font.sofiaProMedium,
-    padding: 12,
-    height: vs(55),
-    // marginBottom: vs(20),
-    borderColor: colors.orange,
+  btn: {
+    position: 'relative',
+    bottom: 20,
   },
 });

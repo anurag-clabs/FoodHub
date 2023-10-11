@@ -8,8 +8,8 @@ const config = {
   };
 
   const state = {
-    SignUp
-  }
+    
+  };
 
 
 export default persistCombineReducers(config, state);
