@@ -90,7 +90,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-between',
   },
   startBtn: {
-    marginVertical: vs(20),
+    marginVertical: vs(10),
     backgroundColor: colors.lightWhite,
     alignItems: 'center',
     borderRadius: 25,

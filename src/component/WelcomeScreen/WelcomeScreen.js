@@ -51,7 +51,12 @@ const WelcomScreen = () => {
           <TouchableOpacity
             style={[styles.startBtn, commonStyle.m_20]}
             onPress={() => navigation.navigate('SignUp')}>
-            <Text style={styles.startBtnTxt}>Start with email or phone</Text>
+            <Text style={styles.startBtnTxt}>SignUp with email</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.startBtn, commonStyle.m_20]}
+            onPress={() => navigation.navigate('PhoneRegistration')}>
+            <Text style={styles.startBtnTxt}>SignUp with phone</Text>
           </TouchableOpacity>
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>

@@ -16,11 +16,13 @@ const CustomDrawerContent = props => {
   const {progress, navigation} = props;
   const [userName, setUserName] = useState('');
   const [userEmail, setUserEmail] = useState('');
+  const [userPhoneNumber, setUserPhoneNumber] = useState();
   const {setProgress} = useContext(DrawerAnimationContext);
 
   const handleLogout = async () => {
     try {
       await AsyncStorage.removeItem('userEmail');
+      await AsyncStorage.removeItem('userPhoneNumber');
       await AsyncStorage.removeItem('userName');
       await AsyncStorage.removeItem('userToken');
     } catch (error) {
@@ -35,9 +37,11 @@ const CustomDrawerContent = props => {
       try {
         const storedUserName = await AsyncStorage.getItem('userName');
         const storedUserEmail = await AsyncStorage.getItem('userEmail');
-        if (storedUserName && storedUserEmail) {
+        const storedUserPhoneNumber = await AsyncStorage.getItem('userPhoneNumber');
+        if (storedUserName && storedUserEmail && storedUserPhoneNumber) {
           setUserName(storedUserName);
           setUserEmail(storedUserEmail);
+          setUserPhoneNumber(storedUserPhoneNumber);
         }
       } catch (error) {
         console.error('Error retrieving user data:', error);
