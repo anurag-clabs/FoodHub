@@ -1,16 +1,15 @@
-import React from 'react'
-import { View, Text, FlatList, SafeAreaView } from 'react-native';
-import { commonStyle } from '../../utils/commonStyles';
-import { Featured_Restaurants } from '../../common/Data/Data';
+import React from 'react';
+import {View, Text, FlatList, SafeAreaView} from 'react-native';
+import {commonStyle} from '../../utils/commonStyles';
+import {Featured_Restaurants} from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';
-import { useNavigation } from '@react-navigation/native';
-import { s } from 'react-native-size-matters';
+import {useNavigation} from '@react-navigation/native';
+import {s} from 'react-native-size-matters';
 
 const FavoriteResturentScreen = () => {
-
   const navigation = useNavigation();
 
-  const renderItem = ({ item }) => (
+  const renderItem = ({item}) => (
     <Resturents
       BackgroundImg={item.BackgroundImg}
       RestaurantName={item.RestaurantName}
@@ -25,19 +24,19 @@ const FavoriteResturentScreen = () => {
       FastFood={item.FastFood}
       onPress={() => navigation.navigate('Reviews')}
     />
-  )
+  );
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <FlatList
-       contentContainerStyle={{ paddingHorizontal: s(10) }}
+        contentContainerStyle={{paddingHorizontal: s(10)}}
         data={Featured_Restaurants}
-        keyExtractor={(item) => item.id}
+        keyExtractor={item => item.id}
         renderItem={renderItem}
         showsVerticalScrollIndicator={false}
       />
     </SafeAreaView>
-  )
-}
+  );
+};
 
 export default FavoriteResturentScreen;
