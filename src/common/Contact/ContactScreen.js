@@ -9,27 +9,26 @@ import {
 import React from 'react';
 import {commonStyle} from '../../utils/commonStyles';
 import {styles} from './style';
-import {TitleHeader} from '../Button/Button';
 import {useNavigation} from '@react-navigation/native';
 import {images} from '../../utils/image';
-import {ms} from 'react-native-size-matters';
+import {ms, vs} from 'react-native-size-matters';
+import { Header } from '../Header/Header';
 
 const ContactScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={commonStyle.constainer}>
-      <TitleHeader
-        title={'Contact Us'}
-        source={images.BackImg}
+      <Header
+        Text={'Contact Us'}
         onPress={() => navigation.goBack()}
       />
-      <View style={[commonStyle.mH15, commonStyle.mT30]}>
+      <View style={[commonStyle.mH15, commonStyle.mT10]}>
         <View style={commonStyle.flexRow}>
           <View style={[commonStyle.iconView, {margin: ms(10)}]}>
             <Image source={images.Addresh} style={commonStyle.icon} />
           </View>
           <Text style={styles.contact}>
-            STC ofc no 911, Near Vip circal, Mota Varachha, Surat 394110 Gujarat
+            STC ofc no 911, Near Vip circal, Mota Varachha, Surat-394110, Gujarat
           </Text>
         </View>
         <View style={commonStyle.flexRow}>
@@ -38,7 +37,7 @@ const ContactScreen = () => {
           </View>
           <TouchableOpacity
             onPress={() => Linking.openURL('foodhub@gmail.org')}>
-            <Text style={[styles.contact, {marginTop: 15}]}>
+            <Text style={[styles.contact, {marginTop: vs(15)}]}>
               foodhub@gmail.org
             </Text>
           </TouchableOpacity>

@@ -6,13 +6,15 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import configureStore from './src/redux/store/configureStore';
 
+const store = configureStore(); 
+
 const App = () => {
   useEffect(() => {
     SplashScreen.hide();
   }, []);
 
   return (
-    <Provider store={configureStore}>
+    <Provider store={store}>
       <DrawerAnimationProvider>
         <SafeAreaProvider>
           <AppContainer />
