@@ -21,7 +21,7 @@ const WelcomScreen = () => {
         source={images.welcomeBackIMG}
         style={styles.backgroundImg}>
         <View style={styles.skipBtnView}>
-          <TouchableOpacity style={styles.skipBtn}>
+          <TouchableOpacity style={styles.skipBtn} onPress={() => navigation.navigate('Drawer')}>
             <Text style={styles.skipBtnTxt}>Skip</Text>
           </TouchableOpacity>
         </View>

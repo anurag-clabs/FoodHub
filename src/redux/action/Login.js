@@ -12,7 +12,6 @@ export const Login = async loginData => {
       const res = await apiInstance.post('login', loginData);
       return res.data;
     } catch (err) {
-      console.log(' login -=-=-=-=-=-=  err: ', err);
       showMessage({
         ...msg,
         message: err.response.data.message,

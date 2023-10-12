@@ -1,6 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { persistCombineReducers } from "redux-persist";
-import { SignUp } from "./SignUp";
+import {GetCatecories} from "./GetCategories";
 
 const config = {
     key: 'primary',
@@ -8,7 +8,7 @@ const config = {
   };
 
   const state = {
-    
+    GetCatecories,
   };
 
 

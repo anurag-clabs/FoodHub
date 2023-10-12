@@ -10,7 +10,6 @@ let msg = {
 export const PhoneRegistration = async numberData => {
     try {
       const res = await apiInstance.post('register', numberData);
-      console.log('Registered', res);
       return res.data;
     } catch (err) {
       console.log(' register -=-=-=-=-=-=  err: ', err);

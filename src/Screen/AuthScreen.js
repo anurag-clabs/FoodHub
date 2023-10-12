@@ -28,7 +28,7 @@ const Authatication = () => {
         if (storedUserToken?.length) {
           setUserToken(storedUserToken);
         }
-        if (storedUserToken && storedUserName && storedUserEmail && storedUserPhoneNumber) {
+        if (storedUserToken || storedUserName || storedUserEmail || storedUserPhoneNumber) {
           navigation.navigate('Drawer');
         } else {
           navigation.navigate('Welcome');

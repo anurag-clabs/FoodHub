@@ -10,11 +10,11 @@ import {
   Modal,
   Pressable,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { useNavigation } from '@react-navigation/native';
-import { s, vs } from 'react-native-size-matters';
+import { s } from 'react-native-size-matters';
 import { commonStyle } from '../../utils/commonStyles';
 import {
   Featured_Restaurants,
@@ -26,11 +26,15 @@ import FoodItem from '../../common/FoodItem/FoodItem';
 import { MenuHeader } from '../../common/Header/Header';
 import { colors } from '../../utils/colors';
 import FilterScreen from '../Filter/FilterScreen';
+import { useDispatch, useSelector } from 'react-redux';
+import { GetCategoriesAction } from '../../redux/action/GetCategoriesAction';
 
 const HomeScreen = () => {
+  const navigation = useNavigation();
+  const dispatch = useDispatch();
   const [selectedFood, setSelectedFood] = useState(null);
   const [isFilterModalVisible, setFilterModalVisible] = useState(false);
-  const navigation = useNavigation();
+
   const openDrawerClick = () => {
     navigation.openDrawer();
   };
@@ -41,6 +45,14 @@ const HomeScreen = () => {
   const toggleFilterModal = () => {
     setFilterModalVisible(!isFilterModalVisible);
   };
+
+  const handleCategories = () => dispatch(GetCategoriesAction());
+
+  const categories = useSelector(state => state?.GetCatecories?.categoriesGet);
+
+  useEffect(() => {
+    handleCategories();
+  }, []);
 
   const renderRestaurants = ({ item }) => (
     <View style={commonStyle.v_10}>
@@ -61,6 +73,24 @@ const HomeScreen = () => {
     </View>
   );
 
+  const renderCategories = ({ category, index }) => {
+    const itemStyle = [
+      styles.boxElevation,
+      selectedFood === index && styles.selectedBoxElevation,
+    ];
+    const nameStyle = [
+      styles.name,
+      selectedFood === index && { color: colors.white },
+    ];
+    <TouchableOpacity
+      onPress={() => handleFoodItemClick(index)}
+      key={index}
+      style={[itemStyle, commonStyle.mV25]}>
+      <Image style={styles.image} source={{ uri: category.images }} />
+      <Text style={nameStyle}>{category.name}</Text>
+    </TouchableOpacity>
+  }
+
   const renderFoodItem = ({ item }) => (
     <View style={[commonStyle.v_10]}>
       <FoodItem
@@ -73,7 +103,6 @@ const HomeScreen = () => {
       />
     </View>
   );
-
 
   return (
     <ScrollView showsVerticalScrollIndicator={false}>
@@ -100,10 +129,10 @@ const HomeScreen = () => {
             <Image style={styles.filter} source={images.filter} />
           </TouchableOpacity>
         </View>
-        <ScrollView
+        {/* <ScrollView
           horizontal={true}
-          showsHorizontalScrollIndicator={false}>
-          {FoodList.map((item, index) => {
+          showsHorizontalScrollIndicator={false}> */}
+          {/* {categories?.map((item, index) => {
             const itemStyle = [
               styles.boxElevation,
               selectedFood === index && styles.selectedBoxElevation,
@@ -117,12 +146,19 @@ const HomeScreen = () => {
                 onPress={() => handleFoodItemClick(index)}
                 key={index}
                 style={[itemStyle, commonStyle.mV25]}>
-                <Image style={styles.image} source={item.image} />
-                <Text style={nameStyle}>{item.title}</Text>
+                <Image style={styles.image} source={{ uri: category.images }} />
+                <Text style={nameStyle}>{item.name}</Text>
               </TouchableOpacity>
             );
-          })}
-        </ScrollView>
+          })} */}
+          <FlatList 
+          data={categories}
+          keyExtractor={item => item._id}
+          renderItem={renderCategories}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          />
+        {/* </ScrollView> */}
 
         <View>
           <View style={styles.HeaderView}>

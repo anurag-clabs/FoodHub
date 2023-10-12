@@ -57,6 +57,7 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   textInputStyle: {
+    fontSize: 18,
     marginVertical: vs(10),
     borderColor: colors.orange,
     borderWidth: 1,
@@ -64,6 +65,9 @@ export const styles = StyleSheet.create({
     fontFamily: Font.SofiaProMedium,
     padding: 12,
     height: vs(55),
+  },
+  passwordInputStyle: {
+    fontSize: 18,
   },
   hidePassword: {
     height: ms(18),
@@ -146,7 +150,7 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 15,
   },
-  forgitTxt: {
+  forgotTxt: {
     color: colors.orange,
     fontFamily: Font.SofiaProMedium,
     textAlign: 'center',

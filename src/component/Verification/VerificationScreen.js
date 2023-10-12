@@ -15,7 +15,9 @@ const VerificationScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const signupData = route?.params?.data?.user;
-  const numberOtp = route?.params?.code;
+  const numberOtp = route?.params?.code || '';
+  const loginData = route?.params?.loginNumber
+// console.log('loginData', loginData);
 
   const [enteredOTP, setEnteredOTP] = useState('');
   const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -43,10 +45,10 @@ const VerificationScreen = () => {
     }
   };
 
-  const verifyPhoneNumber = async (phoneNumber, verifyCode) => {
+  const verifyPhoneNumber = async (phoneNumber, verifyCode, loginNumber) => {
     try {
       const res = await apiInstance.post('verifyNumber', {
-        phoneNumber: phoneNumber,
+        phoneNumber: phoneNumber || loginNumber,
         verificationCode: verifyCode,
       });
       return res.data;
@@ -62,11 +64,10 @@ const VerificationScreen = () => {
   };
 
   const handleOTPVerification = async () => {
-    if (numberOtp?.phoneNumber) {
-      const result = await verifyPhoneNumber(numberOtp?.phoneNumber, enteredOTP);
+    if (numberOtp?.phoneNumber || loginData?.phoneNumber) {
+      const result = await verifyPhoneNumber(numberOtp?.phoneNumber || loginData?.phoneNumber, enteredOTP);
       if (result) {
         setIsOTPVerified(true);
-        await AsyncStorage.setItem('userPhoneNumber', numberOtp?.phoneNumber);
         navigation.navigate('Drawer');
       }
     } else if (signupData?.email) {
