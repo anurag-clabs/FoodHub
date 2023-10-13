@@ -7,16 +7,23 @@ let msg = {
   backgroundColor: colors.errorColor,
 };
 
-export const signup = async signupData => {
+export const UserSignUp = async signupData => {
   try {
     const res = await apiInstance.post( 'signup', signupData);
-    return res.data;
-  } catch (err) {
-    console.log(' signup -=-=-=-=-=-=  err: ', err);
+    console.log('signup', res.data);
     showMessage({
-      ...msg,
-      message: err.response.data.message,
+      type: 'success',
       duration: 2000,
+      message: res.data.message,
+      backgroundColor: colors.green,
+    });
+    return res.data;
+  } catch (error) {
+    showMessage({
+      type: 'error',
+      duration: 2000,
+      backgroundColor: colors.errorColor,
+      message: error.response.data.errors[0].msg,
     });
     return null;
   }

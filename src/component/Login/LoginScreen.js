@@ -16,7 +16,7 @@ import { useNavigation } from '@react-navigation/native';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { showMessage } from 'react-native-flash-message';
-import { Login } from '../../redux/action/Login';
+import { UserLogin } from '../../redux/action/UserLogin';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -58,14 +58,20 @@ const LoginScreen = () => {
 
     try {
       setLoader(true)
-      const response = await Login(loginData);
+      const response = await UserLogin(loginData);
       setLoader(false)
       if (response) {
         console.log('login successful', response);
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'Drawer' }],
-        });
+        if (isEmailSelected) {
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Drawer' }],
+          });
+
+        }else {
+          navigation.navigate('Verification', {loginData: response})
+        }
+        
       } else {
         console.log('Login failed');
       }
