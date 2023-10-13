@@ -10,7 +10,9 @@ import DrawerAnimationContext from '../context/DrawerAnimationContext/Context';
 import {colors} from '../utils/colors';
 import {Font} from '../utils/Fonts';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { removeToken } from '../httpclient/httpclient/clientHelper';
+import { AUTH_TOKEN } from '../utils/constant';
+import { removeItem } from '../utils/storage';
 
 const CustomDrawerContent = props => {
   const {progress, navigation} = props;
@@ -20,35 +22,13 @@ const CustomDrawerContent = props => {
   const {setProgress} = useContext(DrawerAnimationContext);
 
   const handleLogout = async () => {
-    try {
-      await AsyncStorage.removeItem('userEmail');
-      await AsyncStorage.removeItem('userPhoneNumber');
-      await AsyncStorage.removeItem('userName');
-      await AsyncStorage.removeItem('userToken');
-    } catch (error) {
-      console.error('Error clearing userLoggedIn state:', error);
-    }
+    removeItem(AUTH_TOKEN)
+    removeToken(AUTH_TOKEN);
     navigation.navigate('Welcome');
   };
 
   useEffect(() => {
     progress && setProgress(progress);
-    const getUserData = async () => {
-      try {
-        const storedUserName = await AsyncStorage.getItem('userName');
-        const storedUserEmail = await AsyncStorage.getItem('userEmail');
-        const storedUserPhoneNumber = await AsyncStorage.getItem('userPhoneNumber');
-        if (storedUserName || storedUserEmail || storedUserPhoneNumber) {
-          setUserName(storedUserName);
-          setUserEmail(storedUserEmail);
-          setUserPhoneNumber(storedUserPhoneNumber);
-        }
-      } catch (error) {
-        console.error('Error retrieving user data:', error);
-      }
-    };
-
-    getUserData();
   }, [progress]);
 
   return (

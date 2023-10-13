@@ -16,7 +16,7 @@ import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { signup } from '../../redux/action/SignUp';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
+import { showMessage } from 'react-native-flash-message';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -159,7 +159,6 @@ const SignUpScreen = () => {
           </View>
         </View>
       </ImageBackground>
-      <FlashMessage position="top" />
     </SafeAreaView>
   );
 };

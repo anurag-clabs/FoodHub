@@ -1,12 +1,12 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import AppContainer from './src/navigation/AppNavigation';
 import SplashScreen from 'react-native-splash-screen';
-import {DrawerAnimationProvider} from './src/context/DrawerAnimationContext/DrawerAnimationProvider';
-import {SafeAreaProvider} from 'react-native-safe-area-context';
+import { DrawerAnimationProvider } from './src/context/DrawerAnimationContext/DrawerAnimationProvider';
+import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import configureStore from './src/redux/store/configureStore';
 
-const store = configureStore(); 
+const store = configureStore();
 
 const App = () => {
   useEffect(() => {
@@ -20,7 +20,7 @@ const App = () => {
           <AppContainer />
         </SafeAreaProvider>
       </DrawerAnimationProvider>
-      </Provider>
+    </Provider>
   );
 };
 

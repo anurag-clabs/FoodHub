@@ -8,7 +8,7 @@ import PhoneInput from "react-native-phone-number-input";
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { PhoneRegistration } from '../../redux/action/PhoneRegistration';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
+import { showMessage } from 'react-native-flash-message';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PhoneRegistrationScreen = () => {
@@ -71,7 +71,6 @@ const PhoneRegistrationScreen = () => {
                         onPress={() => handleRegistration()}
                     />
                 </View>
-                <FlashMessage />
             </ImageBackground>
         </SafeAreaView>
     )

@@ -15,8 +15,7 @@ import { TextInputText } from '../../common/TextInputComponent/TextInputComponen
 import { useNavigation } from '@react-navigation/native';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
+import { showMessage } from 'react-native-flash-message';
 import { Login } from '../../redux/action/Login';
 
 const LoginScreen = () => {
@@ -25,6 +24,7 @@ const LoginScreen = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailSelected, setIsEmailSelected] = useState(true);
+  const [loader, setLoader] = useState(false);
 
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide);
@@ -39,73 +39,38 @@ const LoginScreen = () => {
       });
       return;
     }
-    
+
     if (!password?.length && isEmailSelected) {
-      showMessage({ 
-        type: 'error', 
-        message: 'Please enter your Password' 
+      showMessage({
+        type: 'error',
+        message: 'Please enter your Password',
+        backgroundColor: colors.errorColor,
       });
       return;
-    }  
+    }
 
-    if (isEmailSelected) {
-      try {
-        const loginData = {
-          email: email,
-          password: password,
-        };
-        const response = await Login(loginData);
-        if (response) {
-          console.log('Login successful');
-          showMessage({
-            type: 'success',
-            message: response.message,
-            backgroundColor: colors.green,
-          });
-          console.log('login Data', loginData);
-          await AsyncStorage.setItem('userEmail', response.email);
-          await AsyncStorage.setItem('userName', response.name);
-          await AsyncStorage.setItem('userToken', response.token);
-          navigation.navigate('Drawer');
-        } else {
-          console.log('Login failed');
-        }
-      } catch (error) {
-        console.error('Login error:', error);
-        showMessage({
-          type: 'error',
-          message: 'An error occurred while logging in',
-          backgroundColor: colors.errorColor,
+    const loginData = isEmailSelected ? {
+      email: email,
+      password: password,
+    } : {
+      phoneNumber: email,
+    }
+
+    try {
+      setLoader(true)
+      const response = await Login(loginData);
+      setLoader(false)
+      if (response) {
+        console.log('login successful', response);
+        navigation.reset({
+          index: 0,
+          routes: [{ name: 'Drawer' }],
         });
+      } else {
+        console.log('Login failed');
       }
-    } else {
-      try {
-        const loginData = {
-          phoneNumber: email,
-        };
-        const response = await Login(loginData);
-        if (response) {
-          console.log('Login successful');
-          showMessage({
-            type: 'success',
-            message: response.message,
-            backgroundColor: colors.green,
-          });
-          console.log('verification', response);
-          await AsyncStorage.setItem('userPhoneNumber', loginData.phoneNumber);
-          await AsyncStorage.setItem('userToken', response.token);
-          navigation.navigate('Verification', { loginNumber: loginData });
-        } else {
-          console.log('Number Login failed');
-        }
-      } catch (error) {
-        console.error('Number Login error:', error);
-        showMessage({
-          type: 'error',
-          message: 'An error occurred while logging in',
-          backgroundColor: colors.errorColor,
-        });
-      }
+    } catch (error) {
+      setLoader(false);
     }
   }
 
@@ -184,6 +149,7 @@ const LoginScreen = () => {
             color={colors.orange}
             buttonName="LOGIN"
             onPress={handleLogin}
+            loading={loader}
           />
           <View style={[commonStyle.alignCenter]}>
             <View style={styles.bottomSignUpTxtView}>
@@ -211,7 +177,6 @@ const LoginScreen = () => {
             </View>
           </View>
         </View>
-        <FlashMessage position="top" />
       </ImageBackground>
     </SafeAreaView>
   );
