@@ -1,8 +1,7 @@
 import { View, Text, Image } from 'react-native'
 import React from 'react'
-import { styles } from './Styles';
+import { styles } from './styles';
 import { images } from '../../utils/image';
-import { Font } from '../../utils/Fonts';
 import { commonStyle } from '../../utils/commonStyles';
 import { colors } from '../../utils/colors';
 import { SmallButton } from '../Button/Button';

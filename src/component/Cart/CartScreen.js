@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, SafeAreaView, Image, TouchableOpacity, TextInput, ScrollView } from 'react-native';
 import { commonStyle } from '../../utils/commonStyles';
 import { Header } from '../../common/Header/Header';
-import { styles } from './Style';
+import { styles } from './style';
 import { images } from '../../utils/image';
 import Icon from 'react-native-vector-icons/Feather';
 import Icon2 from 'react-native-vector-icons/AntDesign';

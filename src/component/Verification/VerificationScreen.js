@@ -7,9 +7,8 @@ import { useNavigation, useRoute } from '@react-navigation/native';
 import { colors } from '../../utils/colors';
 import OTPTextView from 'react-native-otp-textinput';
 import { BackButton, Button } from '../../common/Button/Button';
-import FlashMessage, { showMessage } from 'react-native-flash-message';
+import { showMessage } from 'react-native-flash-message';
 import { apiInstance } from '../../httpclient/httpclient';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const VerificationScreen = () => {
   const route = useRoute();
@@ -17,7 +16,6 @@ const VerificationScreen = () => {
   const signupData = route?.params?.data?.user;
   const numberOtp = route?.params?.code || '';
   const loginData = route?.params?.loginNumber
-// console.log('loginData', loginData);
 
   const [enteredOTP, setEnteredOTP] = useState('');
   const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -123,7 +121,6 @@ const VerificationScreen = () => {
           />
         </View>
       </ImageBackground>
-      <FlashMessage position="top" />
     </SafeAreaView>
   )
 }

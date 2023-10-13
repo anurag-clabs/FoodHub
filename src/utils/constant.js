@@ -1,5 +1,7 @@
 export const baseURL = 'http://192.168.0.192:3000/';
 
+export const AUTH_TOKEN = 'AUTH_TOKEN';
+
 export const SIGNUP_TOKEN = 'SIGNUP_TOKEN';
 export const SIGNUP_CLUSTER_ID = 'SIGNUP_CLUSTER_ID';
 export const SIGNUP_EPISODE_ID = 'SIGNUP_EPISODE_ID';
