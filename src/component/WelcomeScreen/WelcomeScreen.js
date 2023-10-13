@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React from 'react';
 import {images} from '../../utils/image';
-import {styles} from './Styles';
+import {styles} from './style';
 import {commonStyle} from '../../utils/commonStyles';
 import {useNavigation} from '@react-navigation/native';
 

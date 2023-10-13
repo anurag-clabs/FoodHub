@@ -2,7 +2,7 @@ import React from 'react';
 import CategoryScreen from '../component/Category/CategoryScreen';
 
 const Category = () => {
-  return <CategoryScreen />
-}
+  return <CategoryScreen />;
+};
 
 export default Category;

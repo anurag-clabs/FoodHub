@@ -23,7 +23,7 @@ const StackNavigation = () => {
       screenOptions={{headerShown: false}}
       initialRouteName="AuthScreen">
       <Stack.Screen name="Welcome" component={Welcome} />
-      <Stack.Screen name='AuthScreen' component={Authatication} />
+      <Stack.Screen name="AuthScreen" component={Authatication} />
       <Stack.Screen name="SignUp" component={SignUpScreen} />
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Verification" component={VerificationCode} />

@@ -22,6 +22,6 @@ export const styles = StyleSheet.create({
   },
   btn: {
     position: 'relative',
-    bottom: 20
+    bottom: 20,
   },
 });

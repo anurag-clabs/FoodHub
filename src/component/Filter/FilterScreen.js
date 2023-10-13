@@ -1,6 +1,6 @@
 import { View, Text, TouchableOpacity, Pressable, Image } from 'react-native'
 import React from 'react'
-import { styles } from './Style';
+import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { ApplyButton } from '../../common/Button/Button';
