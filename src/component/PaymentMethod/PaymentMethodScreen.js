@@ -4,7 +4,7 @@ import { commonStyle } from '../../utils/commonStyles';
 import { Header } from '../../common/Header/Header';
 import { useNavigation } from '@react-navigation/native';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
-import { styles } from './Style';
+import { styles } from './style';
 import { colors } from '../../utils/colors';
 import { images } from '../../utils/image';
 import { useState } from 'react';

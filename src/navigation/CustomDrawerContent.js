@@ -65,7 +65,7 @@ const CustomDrawerContent = props => {
         <CustomDrawerItem
           title="My Orders"
           icon={<Image source={images.MyOrder} style={styles.drawerImage} />}
-          onPress={() => navigation.navigate('Home')}
+          onPress={() => navigation.navigate('Category')}
         />
         <CustomDrawerItem
           title="My Profile"

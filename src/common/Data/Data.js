@@ -272,7 +272,7 @@ export const FoodData = [
     Price: '12.20',
     Rating: '4.5 ⭐(25+)',
     FoodName: 'Chicken Hawaiian',
-    FoodDescription: 'Chicken, Cheese and pineapple'
+    FoodDescription: 'Chicken, Cheese and pineapple',
   },
   {
     Id: 2,
@@ -280,7 +280,7 @@ export const FoodData = [
     Price: '12.20',
     Rating: '4.5 ⭐(25+)',
     FoodName: 'Red N Hot Pizza',
-    FoodDescription: 'Chicken, Chili'
+    FoodDescription: 'Chicken, Chili',
   },
   {
     Id: 3,
@@ -288,7 +288,7 @@ export const FoodData = [
     Price: '12.20',
     Rating: '4.5 ⭐(25+)',
     FoodName: 'Chicken Hawaiian',
-    FoodDescription: 'Chicken, Cheese and pineapple'
+    FoodDescription: 'Chicken, Cheese and pineapple',
   },
   {
     Id: 4,
@@ -296,9 +296,9 @@ export const FoodData = [
     Price: '$9.50',
     Rating: '4.5 ⭐(30+)',
     FoodName: 'Ground Beef Tacos',
-    FoodDescription: 'Spices – chili powder, cumin, onion powder.'
-  }
-]
+    FoodDescription: 'Spices – chili powder, cumin, onion powder.',
+  },
+];
 
 export const Setting = [
   {
@@ -338,7 +338,7 @@ export const CartData = [
     ItemName: 'Greek salad ',
     ItemDescription: 'with baked salmon',
   },
-]
+];
 
 export const UpcomingOrder = [
   {
@@ -347,7 +347,7 @@ export const UpcomingOrder = [
     RestaurantImage: images.StarBucksLogo,
     EstimateTime: 25,
     Items: '3 Items',
-    OrderNumber: '#264100'
+    OrderNumber: '#264100',
   },
 ];
 
@@ -368,4 +368,4 @@ export const OrderHistoryData = [
     OrderPrice: '$20.50',
     Items: '2 Items',
   },
-]
+];

@@ -4,10 +4,10 @@ import {commonStyle} from '../../utils/commonStyles';
 import {useNavigation} from '@react-navigation/native';
 import {styles} from './style';
 import {colors} from '../../utils/colors';
-import { Button } from '../../common/Button/Button';
-import { showMessage } from 'react-native-flash-message';
-import { ChangePassword } from '../../redux/action/ChangePassword';
-import { Header } from '../../common/Header/Header';
+import {Button} from '../../common/Button/Button';
+import {showMessage} from 'react-native-flash-message';
+import {ChangePassword} from '../../redux/action/ChangePassword';
+import {Header} from '../../common/Header/Header';
 
 const ChangePasswordScreen = () => {
   const navigation = useNavigation();
@@ -46,48 +46,57 @@ const ChangePasswordScreen = () => {
         backgroundColor: colors.errorColor,
       });
     }
-  }
+  };
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
-      <ScrollView >
-      <Header
-        Text={'Change Password'}
-        onPress={() => navigation.goBack()}
-      />
-      <View style={[commonStyle.m_20]}>
-        <Text style={styles.textInputTxt}>Current Password</Text>
-        <TextInput
-          style={styles.textInputStyle}
-          placeholderTextColor={colors.RomanSilver}
-          placeholder="Add Password"
-          value={oldPassword}
-          onChangeText={(text) => setOldPassword(text)}
-        />
-        <Text style={styles.textInputTxt}>New Password</Text>
-        <TextInput
-          placeholderTextColor={colors.RomanSilver}
-          style={styles.textInputStyle}
-          placeholder="Add New Password"
-          value={newPassword}
-          onChangeText={(text) => setNewPassword(text)}
-        />
-        <Text style={styles.textInputTxt}>Confirm Password</Text>
-        <TextInput
-          placeholderTextColor={colors.RomanSilver}
-          style={styles.textInputStyle}
-          placeholder="Add Confirm Password"
-          value={confirmPassword}
-          onChangeText={(text) => setConfirmPassword(text)}
-        />
-      </View>
-        </ScrollView>
+      <ScrollView>
+        <Header Text={'Change Password'} onPress={() => navigation.goBack()} />
+        <View style={[commonStyle.m_20]}>
+          <Text style={styles.textInputTxt}>Current Password</Text>
+          <TextInput
+            style={
+              isAddPasswordFocused
+                ? [styles.textInputStyle, styles.focusedTextInput]
+                : styles.textInputStyle
+            }
+            placeholderTextColor={colors.RomanSilver}
+            placeholder="Add Password"
+            value={oldPassword}
+            onChangeText={text => setOldPassword(text)}
+          />
+          <Text style={styles.textInputTxt}>New Password</Text>
+          <TextInput
+            placeholderTextColor={colors.RomanSilver}
+            style={
+              isAddNewPasswordFocused
+                ? [styles.textInputStyle, styles.focusedTextInput]
+                : styles.textInputStyle
+            }
+            placeholder="Add New Password"
+            value={newPassword}
+            onChangeText={text => setNewPassword(text)}
+          />
+          <Text style={styles.textInputTxt}>Confirm Password</Text>
+          <TextInput
+            placeholderTextColor={colors.RomanSilver}
+            style={
+              isConfirmPasswordFocused
+                ? [styles.textInputStyle, styles.focusedTextInput]
+                : styles.textInputStyle
+            }
+            placeholder="Add Confirm Password"
+            value={confirmPassword}
+            onChangeText={text => setConfirmPassword(text)}
+          />
+        </View>
+      </ScrollView>
       <Button
-          style={[styles.btn, commonStyle.orangeShadow]}
-          color={colors.orange}
-          buttonName="SAVE"
-          onPress={() => handleChangePassword()}
-        />
+        style={[styles.btn, commonStyle.orangeShadow]}
+        color={colors.orange}
+        buttonName="SAVE"
+        onPress={() => handleChangePassword()}
+      />
     </SafeAreaView>
   );
 };

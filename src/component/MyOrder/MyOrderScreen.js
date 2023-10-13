@@ -5,7 +5,7 @@ import { OrderHistoryData, UpcomingOrder } from '../../common/Data/Data';
 import { useNavigation } from '@react-navigation/native';
 import OrderDetail from '../../common/UpcomingOrder/OrderDetail';
 import OrderHistory from '../../common/OrderHistory/OrderHistory';
-import { styles } from './Style';
+import { styles } from './style';
 
 const FavoriteResturentScreen = () => {
 
