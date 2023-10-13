@@ -9,14 +9,15 @@ import OTPTextView from 'react-native-otp-textinput';
 import { BackButton, Button } from '../../common/Button/Button';
 import FlashMessage, { showMessage } from 'react-native-flash-message';
 import { apiInstance } from '../../httpclient/httpclient';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const VerificationScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
   const signupData = route?.params?.data?.user;
-  // const loginData = route?.params
-  // console.log('Verificatio code', loginData);
-  // console.log('VerificationScreen', signupData);
+  const numberOtp = route?.params?.code || '';
+  const loginData = route?.params?.loginNumber
+// console.log('loginData', loginData);
 
   const [enteredOTP, setEnteredOTP] = useState('');
   const [isOTPVerified, setIsOTPVerified] = useState(false);
@@ -26,15 +27,33 @@ const VerificationScreen = () => {
     backgroundColor: colors.errorColor,
   };
 
-  const verify = async (email, verifyCode) => {
+  const verifyEmail = async (email, verifyCode) => {
     try {
       const res = await apiInstance.post('verify', {
-        email: email, 
-        verificationCode: verifyCode, 
+        email: email,
+        verificationCode: verifyCode,
       });
       return res.data;
     } catch (err) {
-      console.log(' verify -=-=-=-=-=-=  err: ', err);
+      console.log(' verifyEmail -=-=-=-=-=-=  err: ', err);
+      showMessage({
+        ...msg,
+        message: err.response.data.message,
+        duration: 2000,
+      });
+      return null;
+    }
+  };
+
+  const verifyPhoneNumber = async (phoneNumber, verifyCode, loginNumber) => {
+    try {
+      const res = await apiInstance.post('verifyNumber', {
+        phoneNumber: phoneNumber || loginNumber,
+        verificationCode: verifyCode,
+      });
+      return res.data;
+    } catch (err) {
+      console.log(' verifyPhoneNumber -=-=-=-=-=-=  err: ', err);
       showMessage({
         ...msg,
         message: err.response.data.message,
@@ -45,13 +64,20 @@ const VerificationScreen = () => {
   };
 
   const handleOTPVerification = async () => {
-    const result = await verify(signupData?.email, enteredOTP);
-    if (result) {
-      setIsOTPVerified(true);
-      navigation.navigate('Login');
+    if (numberOtp?.phoneNumber || loginData?.phoneNumber) {
+      const result = await verifyPhoneNumber(numberOtp?.phoneNumber || loginData?.phoneNumber, enteredOTP);
+      if (result) {
+        setIsOTPVerified(true);
+        navigation.navigate('Drawer');
+      }
+    } else if (signupData?.email) {
+      const result = await verifyEmail(signupData?.email, enteredOTP);
+      if (result) {
+        setIsOTPVerified(true);
+        navigation.navigate('Login');
+      }
     }
   };
-
 
   return (
     <SafeAreaView style={styles.constainer}>
@@ -62,7 +88,7 @@ const VerificationScreen = () => {
         />
         <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Verification Code</Text>
-          <Text style={styles.textInputTxt}>Please type the verification code sent to {signupData?.email}</Text>
+          <Text style={styles.textInputTxt}>Please type the verification code sent to {signupData?.email}{numberOtp?.phoneNumber} </Text>
           <View style={styles.otpView}>
             <OTPTextView
               inputCount={6}
@@ -91,7 +117,9 @@ const VerificationScreen = () => {
           <Button
             color={colors.orange}
             buttonName="Verify"
-            onPress={() => handleOTPVerification()}
+            onPress={() => {
+              handleOTPVerification();
+            }}
           />
         </View>
       </ImageBackground>

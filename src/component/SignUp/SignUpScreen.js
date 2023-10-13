@@ -101,10 +101,10 @@ const SignUpScreen = () => {
             value={name}
             onChangeText={text => setName(text)}
           />
-          <Text style={styles.textInputTxt}>E-mail or Phone</Text>
+          <Text style={styles.textInputTxt}>E-mail</Text>
           <TextInput
             style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
-            placeholder='Your email or phone'
+            placeholder='Your email'
             onFocus={handleEmailFocus}
             value={email}
             onChangeText={text => setEmail(text)}

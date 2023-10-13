@@ -7,11 +7,12 @@ let msg = {
     backgroundColor: colors.errorColor,
   };
 
-export const Login = async loginData => {
+export const PhoneRegistration = async numberData => {
     try {
-      const res = await apiInstance.post('login', loginData);
+      const res = await apiInstance.post('register', numberData);
       return res.data;
     } catch (err) {
+      console.log(' register -=-=-=-=-=-=  err: ', err);
       showMessage({
         ...msg,
         message: err.response.data.message,

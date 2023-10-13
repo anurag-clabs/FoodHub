@@ -20,12 +20,44 @@ export const styles = StyleSheet.create({
     fontFamily: Font.SofiaProBold,
     fontSize: 36,
     color: colors.black,
-    marginVertical: vs(30),
+    marginTop: vs(30),
   },
   textInputTxt: {
     fontFamily: Font.SofiaProMedium,
   },
+  toggleTxt: {
+    fontSize: 18,
+    fontFamily: Font.SofiaProMedium,
+  },
+  toggleBtn: {
+    height: vs(40),
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 25,
+    width: '45%',
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    shadowColor: '#171717',
+    shadowOffset: {width: 0, height: 2},
+    elevation: 3,
+  },
+  activeToggleBtn: {
+    height: vs(40),
+    borderRadius: 20,
+    alignItems: 'center',
+    justifyContent: 'center',
+    backgroundColor: colors.white,
+    borderRadius: 25,
+    width: '45%',
+    shadowOpacity: 0.2,
+    shadowRadius: 3,
+    shadowColor: colors.orange,
+    shadowOffset: {width: 0, height: 2},
+    elevation: 3,
+  },
   textInputStyle: {
+    fontSize: 18,
     marginVertical: vs(10),
     borderColor: colors.orange,
     borderWidth: 1,
@@ -33,6 +65,9 @@ export const styles = StyleSheet.create({
     fontFamily: Font.SofiaProMedium,
     padding: 12,
     height: vs(55),
+  },
+  passwordInputStyle: {
+    fontSize: 18,
   },
   hidePassword: {
     height: ms(18),
@@ -54,6 +89,7 @@ export const styles = StyleSheet.create({
   },
   bottomSignUpTxtView: {
     flexDirection: 'row',
+    alignItems: 'center',
   },
   bottomSignUpTxt: {
     fontFamily: Font.SofiaProMedium,
@@ -83,7 +119,10 @@ export const styles = StyleSheet.create({
     color: colors.grey,
   },
   bottomView: {
-    marginTop: vs(10),
+    position: 'absolute',
+    bottom: vs(30),
+    left: 0,
+    right: 0,
   },
   iconView: {
     marginVertical: vs(10),
@@ -111,11 +150,32 @@ export const styles = StyleSheet.create({
     color: colors.black,
     fontSize: 15,
   },
-  forgitTxt: {
+  forgotTxt: {
     color: colors.orange,
     fontFamily: Font.SofiaProMedium,
     textAlign: 'center',
     fontSize: 16,
     marginTop: vs(15),
   },
+  toggleView: {
+    marginVertical: vs(25),
+    justifyContent: 'space-around',
+    flexDirection: 'row',
+    alignItems: 'center',
+  },
+  activeToggleTxt: {
+    fontSize: 18,
+    fontFamily: Font.SofiaProMedium,
+    color: colors.orange
+  },
+  roundedTextInput: {
+    height: 45,
+    width: 45,
+    borderRadius: 10,
+    borderWidth: 1,
+    fontFamily: Font.SofiaProMedium,
+    color: colors.orange,
+    fontSize: 20,
+    borderBottomWidth: 1
+},
 });
