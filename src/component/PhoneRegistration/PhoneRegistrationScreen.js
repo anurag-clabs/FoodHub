@@ -31,7 +31,7 @@ const PhoneRegistrationScreen = () => {
             setLoader(false);
             if (response) {
                 console.log('Registration', response);
-                navigation.navigate('Verification', { code: numberData });
+                navigation.navigate('Verification', { phoneNumber, type: 'signup' });
             } else {
                 console.log('Register failed');
             }

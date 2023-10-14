@@ -29,6 +29,9 @@ export const styles = StyleSheet.create({
     fontSize: 18,
     fontFamily: Font.SofiaProMedium,
   },
+  activeToggleTxt: {
+    color: colors.orange
+  },
   toggleBtn: {
     height: vs(40),
     alignItems: 'center',
@@ -39,20 +42,6 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: '#171717',
-    shadowOffset: {width: 0, height: 2},
-    elevation: 3,
-  },
-  activeToggleBtn: {
-    height: vs(40),
-    borderRadius: 20,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: colors.white,
-    borderRadius: 25,
-    width: '45%',
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    shadowColor: colors.orange,
     shadowOffset: {width: 0, height: 2},
     elevation: 3,
   },
@@ -67,14 +56,7 @@ export const styles = StyleSheet.create({
     height: vs(55),
   },
   focusedTextInput: {
-    fontSize: 18,
-    marginVertical: vs(10),
     borderColor: colors.orange,
-    borderWidth: 1,
-    borderRadius: 10,
-    fontFamily: Font.SofiaProMedium,
-    padding: 12,
-    height: vs(55),
   },
   passwordInputStyle: {
     fontSize: 18,
@@ -94,13 +76,7 @@ export const styles = StyleSheet.create({
     marginVertical: vs(10),
   },
   FocuspasswordView: {
-    height: vs(55),
-    flexDirection: 'row',
-    alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 10,
     borderColor: colors.orange,
-    marginVertical: vs(10),
 },
   input: {
     width: ms(300),
@@ -152,11 +128,6 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.white,
     borderRadius: 25,
     width: '45%',
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    shadowColor: '#171717',
-    shadowOffset: {width: 0, height: 2},
-    elevation: 5,
   },
   iconImg: {
     height: ms(25),
@@ -181,11 +152,6 @@ export const styles = StyleSheet.create({
     justifyContent: 'space-around',
     flexDirection: 'row',
     alignItems: 'center',
-  },
-  activeToggleTxt: {
-    fontSize: 18,
-    fontFamily: Font.SofiaProMedium,
-    color: colors.orange
   },
   roundedTextInput: {
     height: 45,

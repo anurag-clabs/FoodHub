@@ -65,7 +65,7 @@ const RessetPasswordScreen = () => {
           <TextInput
           onFocus={handleEmailFocus}
           style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
-            placeholder='Your email or phone'
+            placeholder='Your email'
             value={email}
             onChangeText={(text) => setEmail(text)}
           />

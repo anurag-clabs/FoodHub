@@ -11,7 +11,6 @@ export const UserLogin = async loginData => {
       const token = res.data.token;
       saveData(AUTH_TOKEN, token)
       setToken(token);
-      console.log('success', res.data);
       showMessage({
         type: 'success',
         duration: 2000,
