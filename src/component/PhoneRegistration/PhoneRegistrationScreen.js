@@ -9,41 +9,35 @@ import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { PhoneRegistration } from '../../redux/action/PhoneRegistration';
 import { showMessage } from 'react-native-flash-message';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 const PhoneRegistrationScreen = () => {
 
     const navigation = useNavigation()
+    const [loader, setLoader] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState();
 
     let msg = {
         type: 'info',
         backgroundColor: colors.errorColor,
-      };
-    
+    };
+
     const handleRegistration = async () => {
         try {
             const numberData = {
                 phoneNumber: phoneNumber,
             };
+            setLoader(true);
             const response = await PhoneRegistration(numberData);
+            setLoader(false);
             if (response) {
-                showMessage({
-                    ...msg,
-                    message: response.message,
-                });
                 console.log('Registration', response);
-                await AsyncStorage.setItem('userPhoneNumber', response?.phoneNumber);
-                navigation.navigate('Verification', {code: response});
+                navigation.navigate('Verification', { code: numberData });
             } else {
                 console.log('Register failed');
             }
         } catch (error) {
+            setLoader(false);
             console.error('Register error:', error);
-            showMessage({
-                ...msg,
-                message: 'An error occurred while Register Number',
-            });
         }
     }
 
@@ -64,11 +58,13 @@ const PhoneRegistrationScreen = () => {
                         onChangeText={(text) => setPhoneNumber(text)}
                         autoFocus
                         containerStyle={styles.containerStyle}
+                        textInputStyle={styles.textInputStyle}
                     />
                     <Button
                         color={colors.orange}
                         buttonName="SEND"
                         onPress={() => handleRegistration()}
+                        loading={loader}
                     />
                 </View>
             </ImageBackground>

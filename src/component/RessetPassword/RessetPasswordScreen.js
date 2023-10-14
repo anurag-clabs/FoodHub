@@ -14,11 +14,16 @@ const RessetPasswordScreen = () => {
 
   const navigation = useNavigation()
   const [email, setEmail] = useState('');
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
 
   let msg = {
     type: 'info',
     backgroundColor: colors.errorColor,
   };
+
+  const handleEmailFocus = () => {
+    setIsEmailFocused(true);
+    };
 
   const handleForgotPassword = async () => {
     try {
@@ -58,7 +63,8 @@ const RessetPasswordScreen = () => {
           <Text style={styles.headerTxt}>Resset Password</Text>
           <Text style={styles.textInputTxt}>Please enter your email address to request a password reset</Text>
           <TextInput
-            style={styles.textInputStyle}
+          onFocus={handleEmailFocus}
+          style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
             placeholder='Your email or phone'
             value={email}
             onChangeText={(text) => setEmail(text)}

@@ -30,10 +30,12 @@ export const styles = StyleSheet.create({
         borderColor: colors.orange,
         borderWidth: 1,
         borderRadius: 10,
-        paddingHorizontal: 5, 
-        marginBottom: 10, 
+        paddingHorizontal: 5,
+        marginBottom: 10,
         marginVertical: vs(25),
         width: '100%',
-        height: '20%'
+    },
+    textInputStyle: {
+        height: 40,
     },
 });

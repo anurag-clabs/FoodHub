@@ -17,6 +17,7 @@ export const styles = StyleSheet.create({
         fontFamily: Font.SofiaProMedium,
     },
     textInputStyle: {
+        fontSize: 17,
         marginVertical: vs(10),
         borderColor: colors.lightGrey,
         borderWidth: 1,
@@ -27,6 +28,7 @@ export const styles = StyleSheet.create({
         marginBottom: vs(20),
     },
     focusedTextInput: {
+        fontSize: 17,
         marginVertical: vs(10),
         borderWidth: 1,
         borderRadius: 10,
@@ -60,6 +62,9 @@ export const styles = StyleSheet.create({
         borderColor: colors.orange,
         marginVertical: vs(10),
     },
+    passwordInputStyle: {
+        fontSize: 17,
+      },
     input: {
         width: ms(300),
         color: colors.lightGrey,

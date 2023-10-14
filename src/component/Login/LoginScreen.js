@@ -16,18 +16,30 @@ import { useNavigation } from '@react-navigation/native';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { showMessage } from 'react-native-flash-message';
-import { Login } from '../../redux/action/Login';
+import { UserLogin } from '../../redux/action/UserLogin';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [passwordHide, setPasswordHide] = useState(true);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isEmailFocused, setIsEmailFocused] = useState(false);
+  const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [isEmailSelected, setIsEmailSelected] = useState(true);
   const [loader, setLoader] = useState(false);
 
   const hideandShowPassword = () => {
     setPasswordHide(!passwordHide);
+  };
+
+  const handleEmailFocus = () => {
+    setIsEmailFocused(true);
+    setIsPasswordFocused(false);
+  };
+
+  const handlePasswordFocus = () => {
+    setIsEmailFocused(false);
+    setIsPasswordFocused(true);
   };
 
   const handleLogin = async () => {
@@ -58,14 +70,20 @@ const LoginScreen = () => {
 
     try {
       setLoader(true)
-      const response = await Login(loginData);
+      const response = await UserLogin(loginData);
       setLoader(false)
       if (response) {
         console.log('login successful', response);
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'Drawer' }],
-        });
+        if (isEmailSelected) {
+          navigation.reset({
+            index: 0,
+            routes: [{ name: 'Drawer' }],
+          });
+
+        } else {
+          navigation.navigate('Verification', { loginData: response })
+        }
+
       } else {
         console.log('Login failed');
       }
@@ -105,13 +123,15 @@ const LoginScreen = () => {
             <View>
               <Text style={styles.textInputTxt}>E-mail</Text>
               <TextInput
-                style={styles.textInputStyle}
+                onFocus={handleEmailFocus}
+                style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
                 placeholder="Your email"
                 onChangeText={(text) => setEmail(text)}
                 value={email}
               />
               <Text style={styles.textInputTxt}>Password</Text>
-              <View style={styles.passwordView}>
+              <View onFocus={handlePasswordFocus}
+                style={isPasswordFocused ? [styles.passwordView, styles.FocuspasswordView] : styles.passwordView}>
                 <TextInputText
                   style={styles.passwordInputStyle}
                   secureTextEntry={passwordHide}
@@ -131,7 +151,8 @@ const LoginScreen = () => {
             <View style={commonStyle.mT20}>
               <Text style={styles.textInputTxt}>Number</Text>
               <TextInput
-                style={styles.textInputStyle}
+                style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
+                onFocus={handleEmailFocus}
                 keyboardType="numeric"
                 placeholder="Your phone number"
                 onChangeText={(text) => setEmail(text)}
@@ -142,7 +163,7 @@ const LoginScreen = () => {
           )}
         </View>
         <View style={styles.bottomView}>
-          <TouchableOpacity onPress={() => navigation.navigate('ResetPassword')}>
+          <TouchableOpacity onPress={() => navigation.navigate('RessetPassword')}>
             <Text style={styles.forgotTxt}>Forgot password?</Text>
           </TouchableOpacity>
           <Button

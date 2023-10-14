@@ -2,14 +2,9 @@ import { showMessage } from "react-native-flash-message";
 import { apiInstance } from "../../httpclient/httpclient";
 import { colors } from "../../utils/colors";
 
-let msg = {
-    type: 'info',
-    backgroundColor: colors.errorColor,
-  };
-
-export const PhoneRegistration = async numberData => {
+export const PhoneNumberVerify = async (number) => {
     try {
-      const res = await apiInstance.post('register', numberData);
+      const res = await apiInstance.post('verifyNumber', number);
       showMessage({
         type: 'success',
         duration: 2000,
@@ -18,12 +13,12 @@ export const PhoneRegistration = async numberData => {
       });
       return res.data;
     } catch (err) {
-      console.log(' register -=-=-=-=-=-=  err: ', err);
+      console.log(' verifyPhoneNumber -=-=-=-=-=-=  err: ', err);
       showMessage({
-        type: 'error',
-        duration: 2000,
+        type: 'info',
         backgroundColor: colors.errorColor,
-        message: err.response.data.errors[0].msg,
+        message: err.response.data.error,
+        duration: 2000,
       });
       return null;
     }

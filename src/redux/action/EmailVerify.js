@@ -1,17 +1,10 @@
 import { showMessage } from "react-native-flash-message";
 import { apiInstance } from "../../httpclient/httpclient";
 import { colors } from "../../utils/colors";
-import { setToken } from "../../httpclient/httpclient/clientHelper";
-import { saveData } from "../../utils/storage";
-import { AUTH_TOKEN } from "../../utils/constant";
 
-export const Login = async loginData => {
+export const EmailVerify = async verifyData => {
     try {
-      const res = await apiInstance.post('login', loginData);
-      const token = res.data.token;
-      saveData(AUTH_TOKEN, token)
-      setToken(token);
-      console.log('success', res.data);
+      const res = await apiInstance.post('verify', verifyData);
       showMessage({
         type: 'success',
         duration: 2000,
@@ -20,6 +13,7 @@ export const Login = async loginData => {
       });
       return res.data;
     } catch (err) {
+      console.log(' verifyEmail -=-=-=-=-=-=  err: ', err);
       showMessage({
         type: 'info',
         backgroundColor: colors.errorColor,

@@ -15,8 +15,7 @@ import { TextInputText } from '../../common/TextInputComponent/TextInputComponen
 import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
-import { signup } from '../../redux/action/SignUp';
-import { showMessage } from 'react-native-flash-message';
+import { UserSignUp } from '../../redux/action/UserSignUp';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -28,11 +27,7 @@ const SignUpScreen = () => {
   const [isFullNameFocused, setIsFullNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
-
-  let msg = {
-    type: 'info',
-    backgroundColor: colors.errorColor,
-  };
+  const [loader, setLoader] = useState(false);
 
   const handleFullNameFocus = () => {
     setIsFullNameFocused(true);
@@ -63,13 +58,11 @@ const SignUpScreen = () => {
         email: email,
         password: password,
       };
-      const response = await signup(signupData);
+      setLoader(true)
+      const response = await UserSignUp(signupData);
+      setLoader(false)
       if (response) {
         console.log('Signup successful');
-        showMessage({
-          ...msg,
-          message: response.message,
-        });
         navigation.navigate('Verification', {
           data: response,
         });
@@ -77,12 +70,7 @@ const SignUpScreen = () => {
         console.log('Signup failed');
       }
     } catch (error) {
-      console.error('Signup error:', error);
-      showMessage({
-        message: 'An error occurred while signing up',
-        type: 'error',
-        backgroundColor: colors.errorColor,
-      });
+      setLoader(false)
     }
   };
 
@@ -113,6 +101,7 @@ const SignUpScreen = () => {
           <View onFocus={handlePasswordFocus}
             style={isPasswordFocused ? [styles.passwordView, styles.FocuspasswordView] : styles.passwordView}>
             <TextInputText
+            style={styles.passwordInputStyle}
               secureTextEntry={passwordHide}
               placeHolder="Password"
               value={password}
@@ -129,6 +118,7 @@ const SignUpScreen = () => {
             color={colors.orange}
             buttonName="SIGN UP"
             onPress={() => handelSignUpVerify()}
+            loading={loader}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
