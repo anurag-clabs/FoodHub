@@ -67,16 +67,10 @@ const VerificationScreen = () => {
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
-              {isOTPVerified ? (
-                <Text style={styles.bottomSignUpTxt2}>OTP Verified!</Text>
-              ) : (
-                <>
                   <Text style={styles.bottomSignUpTxt}>I don’t receive a code! </Text>
                   <TouchableOpacity onPress={() => navigation.navigate('Verification')}>
                     <Text style={styles.bottomSignUpTxt2}>Please resend</Text>
                   </TouchableOpacity>
-                </>
-              )}
             </View>
           </View>
           <Button

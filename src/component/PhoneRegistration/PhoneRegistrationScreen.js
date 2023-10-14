@@ -31,7 +31,7 @@ const PhoneRegistrationScreen = () => {
             setLoader(false);
             if (response) {
                 console.log('Registration', response);
-                navigation.navigate('Verification', { code: response });
+                navigation.navigate('Verification', { code: numberData });
             } else {
                 console.log('Register failed');
             }
@@ -58,6 +58,7 @@ const PhoneRegistrationScreen = () => {
                         onChangeText={(text) => setPhoneNumber(text)}
                         autoFocus
                         containerStyle={styles.containerStyle}
+                        textInputStyle={styles.textInputStyle}
                     />
                     <Button
                         color={colors.orange}

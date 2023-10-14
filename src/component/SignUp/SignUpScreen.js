@@ -16,7 +16,6 @@ import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { UserSignUp } from '../../redux/action/UserSignUp';
-import { showMessage } from 'react-native-flash-message';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
