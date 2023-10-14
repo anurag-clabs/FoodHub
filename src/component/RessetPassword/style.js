@@ -27,7 +27,7 @@ export const styles = StyleSheet.create({
     },
     textInputStyle: {
         fontSize: 18,
-        marginTop: vs(30),
+        marginTop: vs(10),
         borderColor: colors.lightGrey,
         borderWidth: 1,
         borderRadius: 10,
@@ -36,13 +36,6 @@ export const styles = StyleSheet.create({
         height: vs(55)
     },
     focusedTextInput: {
-        fontSize: 18,
-        marginTop: vs(30),
         borderColor: colors.orange,
-        borderWidth: 1,
-        borderRadius: 10,
-        fontFamily: Font.SofiaProMedium,
-        padding: 12,
-        height: vs(55),
       },
 })

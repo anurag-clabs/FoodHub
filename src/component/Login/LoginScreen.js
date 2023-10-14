@@ -22,6 +22,7 @@ const LoginScreen = () => {
   const navigation = useNavigation();
   const [passwordHide, setPasswordHide] = useState(true);
   const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('')
   const [password, setPassword] = useState('');
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -43,29 +44,41 @@ const LoginScreen = () => {
   };
 
   const handleLogin = async () => {
-    if (!email?.length) {
-      showMessage({
-        type: 'error',
-        message: isEmailSelected ? 'Please enter your Email' : 'Please enter your Number',
-        backgroundColor: colors.errorColor,
-      });
-      return;
-    }
+    if (isEmailSelected) {
+      if (!email?.length) {
+        showMessage({
+          type: 'error',
+          message: 'Please enter your Email',
+          backgroundColor: colors.errorColor,
+        });
+        return;
+      }
 
-    if (!password?.length && isEmailSelected) {
-      showMessage({
-        type: 'error',
-        message: 'Please enter your Password',
-        backgroundColor: colors.errorColor,
-      });
-      return;
+      if (!password?.length) {
+        showMessage({
+          type: 'error',
+          message: 'Please enter your Password',
+          backgroundColor: colors.errorColor,
+        });
+        return;
+      }
+    }
+    else {
+      if (!phoneNumber?.length) {
+        showMessage({
+          type: 'error',
+          message: 'Please enter your Number',
+          backgroundColor: colors.errorColor,
+        });
+        return;
+      }
     }
 
     const loginData = isEmailSelected ? {
       email: email,
       password: password,
     } : {
-      phoneNumber: email,
+      phoneNumber: phoneNumber,
     }
 
     try {
@@ -81,7 +94,7 @@ const LoginScreen = () => {
           });
 
         } else {
-          navigation.navigate('Verification', { loginData: response })
+          navigation.navigate('Verification', { phoneNumber })
         }
 
       } else {
@@ -106,15 +119,15 @@ const LoginScreen = () => {
           <View style={[commonStyle.rowCenter, styles.toggleView]}>
             <TouchableOpacity
               onPress={() => setIsEmailSelected(true)}
-              style={isEmailSelected ? styles.activeToggleBtn : styles.toggleBtn}>
-              <Text style={isEmailSelected ? styles.activeToggleTxt : styles.toggleTxt}>
+              style={isEmailSelected ? [styles.toggleBtn, commonStyle.orangeShadow] : styles.toggleBtn}>
+              <Text style={isEmailSelected ? [styles.toggleTxt, styles.activeToggleTxt] : styles.toggleTxt}>
                 E-mail
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setIsEmailSelected(false)}
-              style={!isEmailSelected ? styles.activeToggleBtn : styles.toggleBtn}>
-              <Text style={!isEmailSelected ? styles.activeToggleTxt : styles.toggleTxt}>
+              style={!isEmailSelected ? [styles.toggleBtn, commonStyle.orangeShadow] : styles.toggleBtn}>
+              <Text style={!isEmailSelected ? [styles.toggleTxt, styles.activeToggleTxt] : styles.toggleTxt}>
                 Number
               </Text>
             </TouchableOpacity>
@@ -155,8 +168,8 @@ const LoginScreen = () => {
                 onFocus={handleEmailFocus}
                 keyboardType="numeric"
                 placeholder="Your phone number"
-                onChangeText={(text) => setEmail(text)}
-                value={email}
+                onChangeText={(text) => setPhoneNumber(text)}
+                value={phoneNumber}
                 maxLength={10}
               />
             </View>
@@ -187,11 +200,11 @@ const LoginScreen = () => {
               <View style={styles.devider} />
             </View>
             <View style={[styles.iconView, commonStyle.m_20]}>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}>
                 <Image source={images.facebook} style={styles.iconImg} />
                 <Text style={styles.iconTxt}>FACEBOOK</Text>
               </TouchableOpacity>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn]}>
+              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}>
                 <Image source={images.google} style={styles.iconImg} />
                 <Text style={styles.iconTxt}>GOOGLE</Text>
               </TouchableOpacity>

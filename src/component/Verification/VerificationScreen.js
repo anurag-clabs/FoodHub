@@ -13,30 +13,30 @@ import { colors } from '../../utils/colors';
 const VerificationScreen = () => {
   const route = useRoute();
   const navigation = useNavigation();
-  const signupData = route?.params?.data?.user;
-  const numberOtp = route?.params?.code || '';
-  const loginData = route?.params?.loginData;
+  const email = route?.params?.email;
+  const type = route?.params?.type;
+  const phoneNumber = route?.params?.phoneNumber;
 
   const [loader, setLoader] = useState(false);
   const [enteredOTP, setEnteredOTP] = useState('');
   const [isOTPVerified, setIsOTPVerified] = useState(false);
 
   const handleOTPVerification = async () => {
-    if (numberOtp?.phoneNumber || loginData?.phoneNumber) {
+    if (phoneNumber) {
       setLoader(true);
       const response = await PhoneNumberVerify({
-        phoneNumber: numberOtp?.phoneNumber || loginData?.phoneNumber,
+        phoneNumber: phoneNumber,
         verificationCode: enteredOTP,
       })
       setLoader(false)
       if (response) {
         setIsOTPVerified(true);
-        navigation.navigate(numberOtp?.phoneNumber ? 'Login' : 'Drawer');
+        navigation.navigate(type === 'signup' ? 'Login' : 'Drawer');
       }
-    } else if (signupData?.email) {
+    } else if (email) {
       setLoader(true);
       const response = await EmailVerify({
-        email: signupData?.email,
+        email: email,
         verificationCode: enteredOTP,
       })
       setLoader(false)
@@ -53,7 +53,9 @@ const VerificationScreen = () => {
         <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
           <Text style={styles.headerTxt}>Verification Code</Text>
           <Text style={styles.textInputTxt}>
-            Please type the verification code sent to {signupData?.email}{numberOtp?.phoneNumber}
+            Please type the verification code sent to 
+            {email ? ` ${email.toString().slice(0,5)}*****` : ''}
+            {phoneNumber ? `*****${phoneNumber.toString().slice(5,10)}` : ''}
           </Text>
           <OTPTextView
             key={isOTPVerified ? 'verified' : 'unverified'}
@@ -67,10 +69,10 @@ const VerificationScreen = () => {
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
-                  <Text style={styles.bottomSignUpTxt}>I don’t receive a code! </Text>
-                  <TouchableOpacity onPress={() => navigation.navigate('Verification')}>
-                    <Text style={styles.bottomSignUpTxt2}>Please resend</Text>
-                  </TouchableOpacity>
+              <Text style={styles.bottomSignUpTxt}>I don’t receive a code! </Text>
+              <TouchableOpacity onPress={() => navigation.navigate('Verification')}>
+                <Text style={styles.bottomSignUpTxt2}>Please resend</Text>
+              </TouchableOpacity>
             </View>
           </View>
           <Button
