@@ -8,7 +8,6 @@ import {
   ScrollView,
   FlatList,
   Modal,
-  Pressable,
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { styles } from './style';
@@ -169,7 +168,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            contentContainerStyle={commonStyle.pH10}
             data={Featured_Restaurants}
             keyExtractor={item => item.id}
             renderItem={renderRestaurants}
@@ -187,7 +186,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            contentContainerStyle={commonStyle.pH10}
             data={PopularItems}
             keyExtractor={item => item.Id}
             renderItem={renderFoodItem}

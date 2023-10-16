@@ -5,7 +5,6 @@ import {
   ImageBackground,
   Image,
   TouchableOpacity,
-  FlatList,
   ScrollView,
   Modal,
 } from 'react-native';

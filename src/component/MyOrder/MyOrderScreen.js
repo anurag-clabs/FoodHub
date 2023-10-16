@@ -2,14 +2,11 @@ import React from 'react';
 import { View, Text, FlatList, SafeAreaView, ScrollView } from 'react-native';
 import { commonStyle } from '../../utils/commonStyles';
 import { OrderHistoryData, UpcomingOrder } from '../../common/Data/Data';
-import { useNavigation } from '@react-navigation/native';
 import OrderDetail from '../../common/UpcomingOrder/OrderDetail';
 import OrderHistory from '../../common/OrderHistory/OrderHistory';
 import { styles } from './style';
 
 const FavoriteResturentScreen = () => {
-
-  const navigation = useNavigation();
 
   const renderUpcomingOrder = () => {
     return UpcomingOrder.map((item) => (

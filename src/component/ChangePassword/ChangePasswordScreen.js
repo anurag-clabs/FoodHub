@@ -5,7 +5,6 @@ import { useNavigation } from '@react-navigation/native';
 import { styles } from './style';
 import { colors } from '../../utils/colors';
 import { Button } from '../../common/Button/Button';
-import { showMessage } from 'react-native-flash-message';
 import { ChangePassword } from '../../redux/action/ChangePassword';
 import { Header } from '../../common/Header/Header';
 

@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
   },
   title: {
-    fontSize: vs(18),
+    fontSize: 18,
     color: colors.black,
     fontFamily: Font.SofiaProMedium
   },

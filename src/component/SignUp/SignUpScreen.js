@@ -79,7 +79,7 @@ const SignUpScreen = () => {
       <ImageBackground
         source={images.commonBackGround}
         style={commonStyle.backGroundImg}>
-        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
+        <View style={[commonStyle.m_20, commonStyle.mV20]}>
           <Text style={styles.headerTxt}>Sign Up</Text>
           <Text style={styles.textInputTxt}>Full name</Text>
           <TextInput

@@ -7,11 +7,10 @@ import {
   TextInput,
   ScrollView,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { BackButton, Button } from '../../common/Button/Button';
-import { ms, s, vs } from 'react-native-size-matters';
 import { useNavigation } from '@react-navigation/native';
 import { styles } from './style';
 import { colors } from '../../utils/colors';

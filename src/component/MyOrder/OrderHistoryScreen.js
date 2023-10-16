@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, FlatList } from 'react-native'
+import {  SafeAreaView, FlatList } from 'react-native'
 import React from 'react'
 import { commonStyle } from '../../utils/commonStyles';
 import { OrderHistoryData } from '../../common/Data/Data';

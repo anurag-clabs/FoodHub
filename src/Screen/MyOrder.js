@@ -1,11 +1,8 @@
 import React from 'react';
-import { View, Text, SafeAreaView } from 'react-native'
+import { SafeAreaView } from 'react-native'
 import { Header } from '../common/Header/Header';
 import { useNavigation } from '@react-navigation/native';
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
-import { colors } from '../utils/colors';
-import { Font } from '../utils/Fonts';
-import { s, vs } from 'react-native-size-matters';
 import { commonStyle } from '../utils/commonStyles';
 import { images } from '../utils/image';
 import MyOrderScreen from '../component/MyOrder/MyOrderScreen';

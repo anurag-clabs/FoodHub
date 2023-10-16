@@ -1,3 +1,4 @@
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -8,7 +9,6 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
@@ -93,10 +93,7 @@ const ProfileScreen = () => {
             <Text style={styles.profileText}>{userName || 'User Name'}</Text>
             <TouchableOpacity>
               <Text
-                style={{
-                  fontFamily: Font.SofiaProRegular,
-                  color: colors.GreySuit,
-                }}>
+                style={styles.editProfileTxt}>
                 Edit Profile
               </Text>
             </TouchableOpacity>

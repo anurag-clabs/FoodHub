@@ -88,15 +88,10 @@ const LoginScreen = () => {
       if (response) {
         console.log('login successful', response);
         if (isEmailSelected) {
-          navigation.reset({
-            index: 0,
-            routes: [{ name: 'Drawer' }],
-          });
-
+          navigation.navigate('Verification', { email , type: 'login'})
         } else {
           navigation.navigate('Verification', { phoneNumber })
         }
-
       } else {
         console.log('Login failed');
       }
