@@ -13,13 +13,13 @@ import { TouchableOpacity } from 'react-native-gesture-handler';
 import { removeToken } from '../httpclient/httpclient/clientHelper';
 import { AUTH_TOKEN } from '../utils/constant';
 import { removeItem } from '../utils/storage';
+import { useSelector } from 'react-redux';
 
 const CustomDrawerContent = props => {
   const {progress, navigation} = props;
-  const [userName, setUserName] = useState('User Name');
-  const [userEmail, setUserEmail] = useState('Email');
-  const [userPhoneNumber, setUserPhoneNumber] = useState();
   const {setProgress} = useContext(DrawerAnimationContext);
+
+  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
 
   const handleLogout = async () => {
     removeItem(AUTH_TOKEN)
@@ -38,8 +38,8 @@ const CustomDrawerContent = props => {
       contentContainerStyle={styles.drawerView}>
       <View style={styles.ProfileView}>
         <Image source={images.UserProfile} style={styles.ProfileImage} />
-        <Text style={styles.profileText}>{userName}</Text>
-        <Text style={{fontFamily: Font.SofiaProMedium}}>{userEmail || userPhoneNumber}</Text>
+        <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
+        <Text style={{fontFamily: Font.SofiaProMedium}}>{getUserDetail?.email || 'Email'}</Text>
       </View>
       <View style={styles.drawerContent}>
         <CustomDrawerItem

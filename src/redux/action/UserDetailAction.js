@@ -3,24 +3,25 @@ import { AUTH_TOKEN } from '../../utils/constant';
 import { readData } from '../../utils/storage';
 import * as actions from './index';
 
-export const GetCategoriesAction = () => {
+export const GetUserDetailAction = () => {
   return async (dispatch) => {
     try {
-      dispatch(actions.CategoriesRequest());
+      dispatch(actions.UserDetailRequest());
       const userToken = await readData(AUTH_TOKEN);
+      console.log('userToken', userToken);
       if (userToken) {
         const headers = {
           'Authorization': `Bearer ${userToken}`,
           'Content-Type': 'application/json',
         };
-        const result = await apiInstance.get('categories', { headers });
-        dispatch(actions.CategoriesSuccess(result));
+        const result = await apiInstance.get('profiles', { headers });
+        dispatch(actions.UserDetailSuccess(result));
       } else {
         console.log('User token not found.');
       }
     } catch (error) {
-      console.log('No category list found');
-      dispatch(actions.CategoriesError(error.response.data.message));
+      console.log('No User Data found');
+      dispatch(actions.UserDetailError(error.response.data.message));
     }
   };
 };

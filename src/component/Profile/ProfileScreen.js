@@ -13,19 +13,31 @@ import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { useNavigation } from '@react-navigation/native';
-import { Font } from '../../utils/Fonts';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { GetUserDetailAction } from '../../redux/action/UserDetailAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { UpdateUserDetailAction } from '../../redux/action/UpdateUserDetailAction';
 
 const ProfileScreen = () => {
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+  const [email, setEmail] = useState('');
+  const [name, setName] = useState('');
+  const [location, setLocation] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [isFirstNameFocused, setIsFirstNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
   const [isLocationFocused, setIsLocationFocused] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const [userName, setUserName] = useState('');
+
+  const handleUserDetail = () => dispatch(GetUserDetailAction());
+  const handleUpdateUserDetail = () => dispatch(UpdateUserDetailAction());
+
+  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
+  // const putUserUserDetail = useSelector(state => state?.UpdateUserDetail?.profileData.data);
+  console.log('getUserDetail', getUserDetail);
+  // console.log('putUserUserDetail', putUserUserDetail);
 
   const handleFirstNameFocus = () => {
     setIsFirstNameFocused(true);
@@ -54,23 +66,18 @@ const ProfileScreen = () => {
     setIsLocationFocused(true);
   };
 
-  const retrieveData = async () => {
-    try {
-      const firstName = await AsyncStorage.getItem('userName');
-      const email = await AsyncStorage.getItem('userEmail');
-      if (firstName) {
-        setUserName(firstName);
-      }
-      if (email) {
-        setUserEmail(email);
-      }
-    } catch (error) {
-      console.error('Error retrieving data from AsyncStorage:', error);
-    }
+  const handleSave = () => {
+    const updatedData = {
+      name: name,
+      email: email,
+      phoneNumber: phoneNumber,
+    };
+    handleUpdateUserDetail(updatedData);
   };
 
   useEffect(() => {
-    retrieveData();
+    handleUserDetail();
+    // handleUpdateUserDetail();
   }, []);
 
   return (
@@ -90,7 +97,7 @@ const ProfileScreen = () => {
                 <Image source={images.Camera} style={commonStyle.ImageStyle} />
               </TouchableOpacity>
             </View>
-            <Text style={styles.profileText}>{userName || 'User Name'}</Text>
+            <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
             <TouchableOpacity>
               <Text
                 style={styles.editProfileTxt}>
@@ -108,7 +115,8 @@ const ProfileScreen = () => {
               }
               placeholder="Your Full Name"
               onFocus={handleFirstNameFocus}
-              value={userName}
+              value={name}
+              onChangeText={(text) => setName(text)}
             />
             <Text style={styles.textInputTxt}>E-mail</Text>
             <TextInput
@@ -119,8 +127,8 @@ const ProfileScreen = () => {
               }
               placeholder="Your email"
               onFocus={handleEmailFocus}
-              value={userEmail}
-
+              value={email}
+              onChangeText={(text) => setEmail(text)}
             />
             <Text style={styles.textInputTxt}>Phone Number</Text>
             <TextInput
@@ -131,6 +139,8 @@ const ProfileScreen = () => {
               }
               placeholder="Your phone Number"
               onFocus={handlePhoneNumberFocus}
+              value={phoneNumber}
+              onChangeText={(text) => setPhoneNumber(text)}
             />
             <Text style={styles.textInputTxt}>Location</Text>
             <TextInput
@@ -141,12 +151,14 @@ const ProfileScreen = () => {
               }
               placeholder="Your Location"
               onFocus={handleLocationFocus}
+              value={location}
+              // onChangeText={(text) => setLocation(text)}
             />
           </View>
           <Button
             buttonName="SAVE"
             color={colors.orange}
-            onPress={() => navigation.navigate('Reviews')}
+            onPress={handleSave}
           />
         </ScrollView>
       </ImageBackground>

@@ -2,24 +2,24 @@ import * as constant from '../../utils/constant';
 
 const initialState = {
   fetching: false,
-  categoriesGet: [],
+  profileData: {},
   error: {},
 };
 
-export const GetCatecories = (state = initialState, action) => {
+export const GetUserDetail = (state = initialState, action) => {
   switch (action.type) {
-    case constant.CATEGORIES_USER_REQUEST:
+    case constant.USER_DETAIL_REQUEST:
       return {
         ...state,
         fetching: true,
       };
-    case constant.CATEGORIES_USER_SUCCESS:
+    case constant.USER_DETAIL_SUCCESS:
       return {
         ...state,
-        categoriesGet: action.payload,
+        profileData: action.payload,
         fetching: false,
       };
-    case constant.CATEGORIES_USER_ERROR:
+    case constant.USER_DETAIL_ERROR:
       return {
         ...state,
         fetching: false,

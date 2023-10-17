@@ -13,7 +13,6 @@ import React, { useState, useEffect } from 'react';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { useNavigation } from '@react-navigation/native';
-import { s } from 'react-native-size-matters';
 import { commonStyle } from '../../utils/commonStyles';
 import {
   Featured_Restaurants,
@@ -47,7 +46,7 @@ const HomeScreen = () => {
 
   const handleCategories = () => dispatch(GetCategoriesAction());
 
-  const categories = useSelector(state => state?.GetCatecories?.categoriesGet);
+  const categories = useSelector(state => state?.GetCatecories?.categoriesGet?.data?.data);
 
   useEffect(() => {
     handleCategories();
@@ -72,7 +71,8 @@ const HomeScreen = () => {
     </View>
   );
 
-  const renderCategories = ({ category, index }) => {
+  const renderCategories = ({ item, index }) => {
+    // console.log('Rendering category:', item.images[0]); 
     const itemStyle = [
       styles.boxElevation,
       selectedFood === index && styles.selectedBoxElevation,
@@ -81,14 +81,18 @@ const HomeScreen = () => {
       styles.name,
       selectedFood === index && { color: colors.white },
     ];
-    <TouchableOpacity
-      onPress={() => handleFoodItemClick(index)}
-      key={index}
-      style={[itemStyle, commonStyle.mV25]}>
-      <Image style={styles.image} source={{ uri: category.images }} />
-      <Text style={nameStyle}>{category.name}</Text>
-    </TouchableOpacity>
-  }
+    
+    return (
+      <TouchableOpacity
+        onPress={() => handleFoodItemClick(index)}
+        key={index._id}
+        style={[itemStyle, commonStyle.mV25]}
+      >
+        <Image style={styles.image} source={{ uri: item.images[0] }} />
+        <Text style={nameStyle}>{item.name}</Text>
+      </TouchableOpacity>
+    );
+  };
 
   const renderFoodItem = ({ item }) => (
     <View style={[commonStyle.v_10]}>
@@ -104,15 +108,16 @@ const HomeScreen = () => {
   );
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <SafeAreaView style={commonStyle.constainer}>
-        <MenuHeader
+  <SafeAreaView style={commonStyle.constainer}>
+  <MenuHeader
           onPress={openDrawerClick}
           Deliver="Deliver to"
           DeliveryAddress="4102 Pretty View Lane"
           HeaderImg={images.UserProfile}
           HeaderImgstyle={styles.UserImg}
         />
+    <ScrollView showsVerticalScrollIndicator={false}>
+        
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
         </Text>
@@ -130,8 +135,9 @@ const HomeScreen = () => {
         </View>
         {/* <ScrollView
           horizontal={true}
-          showsHorizontalScrollIndicator={false}> */}
-          {/* {categories?.map((item, index) => {
+          showsHorizontalScrollIndicator={false}>
+          {categories?.map((item, index) => {
+            console.log('Rendering category:', item.images[0]);
             const itemStyle = [
               styles.boxElevation,
               selectedFood === index && styles.selectedBoxElevation,
@@ -145,7 +151,7 @@ const HomeScreen = () => {
                 onPress={() => handleFoodItemClick(index)}
                 key={index}
                 style={[itemStyle, commonStyle.mV25]}>
-                <Image style={styles.image} source={{ uri: category.images }} />
+                 <Image style={styles.image} source={{ uri: item.images[0] }} />
                 <Text style={nameStyle}>{item.name}</Text>
               </TouchableOpacity>
             );
@@ -194,7 +200,6 @@ const HomeScreen = () => {
             horizontal
           />
         </View>
-      </SafeAreaView>
       <Modal
         animationType="slide"
         transparent={true}
@@ -208,6 +213,7 @@ const HomeScreen = () => {
         </View>
       </Modal>
     </ScrollView>
+    </SafeAreaView>
   );
 };
 

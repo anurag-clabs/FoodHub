@@ -6,6 +6,7 @@ import { Font } from "../../utils/Fonts";
 export const styles = StyleSheet.create({
     HeaderView: {
         marginTop: vs(20),
+        marginBottom: vs(10),
         flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between'
