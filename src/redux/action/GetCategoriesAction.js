@@ -14,7 +14,7 @@ export const GetCategoriesAction = () => {
           'Content-Type': 'application/json',
         };
         const result = await apiInstance.get('categories', { headers });
-        dispatch(actions.CategoriesSuccess(result));
+        dispatch(actions.CategoriesSuccess(result.data));
       } else {
         console.log('User token not found.');
       }

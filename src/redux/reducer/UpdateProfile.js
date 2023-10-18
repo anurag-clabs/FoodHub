@@ -2,11 +2,11 @@ import * as constant from '../../utils/constant';
 
 const initialState = {
   fetching: false,
-  profileData: {},
+  UpdateProfileData: {},
   error: {},
 };
 
-export const UpdateUserDetail = (state = initialState, action) => {
+export const UpdateProfile = (state = initialState, action) => {
   switch (action.type) {
     case constant.UPDATE_USER_DETAIL_REQUEST:
       return {
@@ -16,7 +16,7 @@ export const UpdateUserDetail = (state = initialState, action) => {
     case constant.UPDATE_USER_DETAIL_SUCCESS:
       return {
         ...state,
-        profileData: action.payload,
+        UpdateProfileData: action.payload,
         fetching: false,
       };
     case constant.UPDATE_USER_DETAIL_ERROR:

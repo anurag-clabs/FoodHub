@@ -8,7 +8,6 @@ export const GetUserDetailAction = () => {
     try {
       dispatch(actions.UserDetailRequest());
       const userToken = await readData(AUTH_TOKEN);
-      console.log('userToken', userToken);
       if (userToken) {
         const headers = {
           'Authorization': `Bearer ${userToken}`,
@@ -21,7 +20,7 @@ export const GetUserDetailAction = () => {
       }
     } catch (error) {
       console.log('No User Data found');
-      dispatch(actions.UserDetailError(error.response.data.message));
+      dispatch(actions.UserDetailError(error?.response?.data?.message));
     }
   };
 };

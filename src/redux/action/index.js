@@ -13,6 +13,6 @@ export const UserDetailRequest = createAction(constant.USER_DETAIL_REQUEST);
 export const UserDetailSuccess = createAction(constant.USER_DETAIL_SUCCESS);
 export const UserDetailError = createAction(constant.USER_DETAIL_ERROR);
 
-export const UserDetailUpdateRequest = createAction(constant.UPDATE_USER_DETAIL_REQUEST);
-export const UserDetailUpdateSuccess = createAction(constant.UPDATE_USER_DETAIL_SUCCESS);
-export const UserDetailUpdateError = createAction(constant.UPDATE_USER_DETAIL_ERROR);
+export const UpdateProfileRequest = createAction(constant.UPDATE_USER_DETAIL_REQUEST);
+export const UpdateProfileSuccess = createAction(constant.UPDATE_USER_DETAIL_SUCCESS);
+export const UpdateProfileError = createAction(constant.UPDATE_USER_DETAIL_ERROR);

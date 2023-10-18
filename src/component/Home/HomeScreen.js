@@ -46,7 +46,7 @@ const HomeScreen = () => {
 
   const handleCategories = () => dispatch(GetCategoriesAction());
 
-  const categories = useSelector(state => state?.GetCatecories?.categoriesGet?.data?.data);
+  const categories = useSelector(state => state?.GetCatecories?.categoriesGet?.data);
 
   useEffect(() => {
     handleCategories();
@@ -72,7 +72,6 @@ const HomeScreen = () => {
   );
 
   const renderCategories = ({ item, index }) => {
-    // console.log('Rendering category:', item.images[0]); 
     const itemStyle = [
       styles.boxElevation,
       selectedFood === index && styles.selectedBoxElevation,
@@ -81,14 +80,14 @@ const HomeScreen = () => {
       styles.name,
       selectedFood === index && { color: colors.white },
     ];
-    
+
     return (
       <TouchableOpacity
         onPress={() => handleFoodItemClick(index)}
         key={index._id}
         style={[itemStyle, commonStyle.mV25]}
       >
-        <Image style={styles.image} source={{ uri: item.images[0] }} />
+        <Image style={styles.image} source={{ uri: item?.image[0] }} />
         <Text style={nameStyle}>{item.name}</Text>
       </TouchableOpacity>
     );
@@ -108,16 +107,16 @@ const HomeScreen = () => {
   );
 
   return (
-  <SafeAreaView style={commonStyle.constainer}>
-  <MenuHeader
-          onPress={openDrawerClick}
-          Deliver="Deliver to"
-          DeliveryAddress="4102 Pretty View Lane"
-          HeaderImg={images.UserProfile}
-          HeaderImgstyle={styles.UserImg}
-        />
-    <ScrollView showsVerticalScrollIndicator={false}>
-        
+    <SafeAreaView style={commonStyle.constainer}>
+      <MenuHeader
+        onPress={openDrawerClick}
+        Deliver="Deliver to"
+        DeliveryAddress="4102 Pretty View Lane"
+        HeaderImg={images.UserProfile}
+        HeaderImgstyle={styles.UserImg}
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
+
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
         </Text>
@@ -133,38 +132,13 @@ const HomeScreen = () => {
             <Image style={styles.filter} source={images.filter} />
           </TouchableOpacity>
         </View>
-        {/* <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}>
-          {categories?.map((item, index) => {
-            console.log('Rendering category:', item.images[0]);
-            const itemStyle = [
-              styles.boxElevation,
-              selectedFood === index && styles.selectedBoxElevation,
-            ];
-            const nameStyle = [
-              styles.name,
-              selectedFood === index && { color: colors.white },
-            ];
-            return (
-              <TouchableOpacity
-                onPress={() => handleFoodItemClick(index)}
-                key={index}
-                style={[itemStyle, commonStyle.mV25]}>
-                 <Image style={styles.image} source={{ uri: item.images[0] }} />
-                <Text style={nameStyle}>{item.name}</Text>
-              </TouchableOpacity>
-            );
-          })} */}
-          <FlatList 
+        <FlatList
           data={categories}
           keyExtractor={item => item._id}
           renderItem={renderCategories}
           horizontal
           showsHorizontalScrollIndicator={false}
-          />
-        {/* </ScrollView> */}
-
+        />
         <View>
           <View style={styles.HeaderView}>
             <Text style={styles.titleRestaurant}>Featured Restaurants</Text>
@@ -200,19 +174,19 @@ const HomeScreen = () => {
             horizontal
           />
         </View>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isFilterModalVisible}
-        onRequestClose={() => {
-          setModalVisible(!isModalVisible);
-        }}
-      >
-        <View style={styles.modalBackground}>
-          <FilterScreen onclick={toggleFilterModal} />
-        </View>
-      </Modal>
-    </ScrollView>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={isFilterModalVisible}
+          onRequestClose={() => {
+            setModalVisible(!isModalVisible);
+          }}
+        >
+          <View style={styles.modalBackground}>
+            <FilterScreen onclick={toggleFilterModal} />
+          </View>
+        </Modal>
+      </ScrollView>
     </SafeAreaView>
   );
 };

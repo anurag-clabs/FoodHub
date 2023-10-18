@@ -8,6 +8,7 @@ import {
   TextInput,
   SafeAreaView,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -17,27 +18,25 @@ import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { GetUserDetailAction } from '../../redux/action/UserDetailAction';
 import { useDispatch, useSelector } from 'react-redux';
-import { UpdateUserDetailAction } from '../../redux/action/UpdateUserDetailAction';
+import { UpdateProfileAction } from '../../redux/action/UpdateProfileAction';
 
 const ProfileScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
-  const [email, setEmail] = useState('');
-  const [name, setName] = useState('');
-  const [location, setLocation] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [loader, setLoader] = useState(false);
+  const [name, setName] = useState(getUserDetail?.name || '');
+  const [email, setEmail] = useState(getUserDetail?.email || '');
+  const [phoneNumber, setPhoneNumber] = useState(getUserDetail?.phoneNumber || '');
+  const [location, setLocation] = useState(getUserDetail?.location || '');
   const [isFirstNameFocused, setIsFirstNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
   const [isLocationFocused, setIsLocationFocused] = useState(false);
 
   const handleUserDetail = () => dispatch(GetUserDetailAction());
-  const handleUpdateUserDetail = () => dispatch(UpdateUserDetailAction());
 
   const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
-  // const putUserUserDetail = useSelector(state => state?.UpdateUserDetail?.profileData.data);
-  console.log('getUserDetail', getUserDetail);
-  // console.log('putUserUserDetail', putUserUserDetail);
+  // console.log('getUserDetail', getUserDetail);
 
   const handleFirstNameFocus = () => {
     setIsFirstNameFocused(true);
@@ -66,18 +65,32 @@ const ProfileScreen = () => {
     setIsLocationFocused(true);
   };
 
-  const handleSave = () => {
-    const updatedData = {
-      name: name,
-      email: email,
-      phoneNumber: phoneNumber,
-    };
-    handleUpdateUserDetail(updatedData);
+  const handleSave = async () => {
+    try {
+      const updatedData = {
+        name: name,
+        email: email,
+        phoneNumber: phoneNumber,
+        location: location,
+      };
+      setLoader(true);
+      const response = dispatch(UpdateProfileAction(updatedData));
+      console.log('response', response?.data);
+      if (response) {
+        console.log('Profile Updated successful');
+      } else {
+        console.log('Profile Update failed');
+      }
+      setLoader(false);
+      console.log('Update Profile successful', response);
+    } catch (error) {
+      setLoader(false);
+      console.log('Error updating user profile:', error);
+    }
   };
 
   useEffect(() => {
     handleUserDetail();
-    // handleUpdateUserDetail();
   }, []);
 
   return (
@@ -85,80 +98,87 @@ const ProfileScreen = () => {
       <ImageBackground
         source={images.ProfileBackGround}
         style={commonStyle.backGroundImg}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <BackButton
             style={styles.BackImgView}
             onPress={() => navigation.goBack()}
           />
-          <View style={styles.ProfileView}>
-            <View style={styles.ProfileImgView}>
-              <Image source={images.UserProfile} style={styles.ProfileImage} />
-              <TouchableOpacity style={styles.CameraView}>
-                <Image source={images.Camera} style={commonStyle.ImageStyle} />
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
+            style={{ flex: 1 }}
+          >
+            <View style={styles.ProfileView}>
+              <View style={styles.ProfileImgView}>
+                <Image source={images.UserProfile} style={styles.ProfileImage} />
+                <TouchableOpacity style={styles.CameraView}>
+                  <Image source={images.Camera} style={commonStyle.ImageStyle} />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
+              <TouchableOpacity>
+                <Text
+                  style={styles.editProfileTxt}>
+                  Edit Profile
+                </Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
-            <TouchableOpacity>
-              <Text
-                style={styles.editProfileTxt}>
-                Edit Profile
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={[commonStyle.m_20]}>
-            <Text style={styles.textInputTxt}>Full Name</Text>
-            <TextInput
-              style={
-                isFirstNameFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your Full Name"
-              onFocus={handleFirstNameFocus}
-              value={name}
-              onChangeText={(text) => setName(text)}
-            />
-            <Text style={styles.textInputTxt}>E-mail</Text>
-            <TextInput
-              style={
-                isEmailFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your email"
-              onFocus={handleEmailFocus}
-              value={email}
-              onChangeText={(text) => setEmail(text)}
-            />
-            <Text style={styles.textInputTxt}>Phone Number</Text>
-            <TextInput
-              style={
-                isPhoneNumberFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your phone Number"
-              onFocus={handlePhoneNumberFocus}
-              value={phoneNumber}
-              onChangeText={(text) => setPhoneNumber(text)}
-            />
-            <Text style={styles.textInputTxt}>Location</Text>
-            <TextInput
-              style={
-                isLocationFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your Location"
-              onFocus={handleLocationFocus}
-              value={location}
-              // onChangeText={(text) => setLocation(text)}
-            />
-          </View>
+            <View style={[commonStyle.m_20]}>
+              <Text style={styles.textInputTxt}>Full Name</Text>
+              <TextInput
+                style={
+                  isFirstNameFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your Full Name"
+                onFocus={handleFirstNameFocus}
+                value={name}
+                onChangeText={(text) => setName(text)}
+              />
+              <Text style={styles.textInputTxt}>E-mail</Text>
+              <TextInput
+                style={
+                  isEmailFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your email"
+                onFocus={handleEmailFocus}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+              />
+              <Text style={styles.textInputTxt}>Phone Number</Text>
+              <TextInput
+                style={
+                  isPhoneNumberFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your phone Number"
+                onFocus={handlePhoneNumberFocus}
+                maxLength={10}
+                value={phoneNumber}
+                onChangeText={(text) => setPhoneNumber(text)}
+              />
+              <Text style={styles.textInputTxt}>Location</Text>
+              <TextInput
+                style={
+                  isLocationFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your Location"
+                onFocus={handleLocationFocus}
+                value={location}
+                onChangeText={(text) => setLocation(text)}
+              />
+            </View>
+          </KeyboardAvoidingView>
           <Button
             buttonName="SAVE"
             color={colors.orange}
             onPress={handleSave}
+            loading={loader}
           />
         </ScrollView>
       </ImageBackground>
