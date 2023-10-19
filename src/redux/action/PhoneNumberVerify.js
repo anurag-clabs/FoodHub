@@ -11,6 +11,7 @@ export const PhoneNumberVerify = async (number) => {
         message: res.data.message,
         backgroundColor: colors.green,
       });
+      console.log('verifyNumber', res.data);
       return res.data;
     } catch (err) {
       console.log(' verifyPhoneNumber -=-=-=-=-=-=  err: ', err);

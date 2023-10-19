@@ -72,6 +72,7 @@ const HomeScreen = () => {
   );
 
   const renderCategories = ({ item, index }) => {
+    console.log('renderCategories Image: ', item.image);
     const itemStyle = [
       styles.boxElevation,
       selectedFood === index && styles.selectedBoxElevation,

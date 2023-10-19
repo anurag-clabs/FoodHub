@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   ScrollView,
   KeyboardAvoidingView,
+  Alert,
 } from 'react-native';
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -19,15 +20,24 @@ import { colors } from '../../utils/colors';
 import { GetUserDetailAction } from '../../redux/action/UserDetailAction';
 import { useDispatch, useSelector } from 'react-redux';
 import { UpdateProfileAction } from '../../redux/action/UpdateProfileAction';
+import ActionSheet from 'react-native-actionsheet';
+import ImagePicker from 'react-native-image-crop-picker';
+
 
 const ProfileScreen = () => {
+  const actionRef = useRef();
   const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
+  console.log('getUserDetail', getUserDetail);
+
   const [loader, setLoader] = useState(false);
   const [name, setName] = useState(getUserDetail?.name || '');
   const [email, setEmail] = useState(getUserDetail?.email || '');
   const [phoneNumber, setPhoneNumber] = useState(getUserDetail?.phoneNumber || '');
   const [location, setLocation] = useState(getUserDetail?.location || '');
+  const [profileImage, setProfileImage] = useState(getUserDetail?.image[0] || null);
   const [isFirstNameFocused, setIsFirstNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
@@ -35,8 +45,11 @@ const ProfileScreen = () => {
 
   const handleUserDetail = () => dispatch(GetUserDetailAction());
 
-  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
-  // console.log('getUserDetail', getUserDetail);
+  console.log('initialName', name);
+  console.log('initialEmail', email);
+  console.log('initialPhoneNumber', phoneNumber);
+  console.log('initialLocation', location);
+  console.log('initialProfileImage', profileImage);
 
   const handleFirstNameFocus = () => {
     setIsFirstNameFocused(true);
@@ -65,15 +78,34 @@ const ProfileScreen = () => {
     setIsLocationFocused(true);
   };
 
+  const clickOnFunction = () => {
+    actionRef.current.show()
+  }
+
+  const openCamera = async () => {
+    try {
+      const image = await ImagePicker.openCamera({
+        width: 300,
+        height: 400,
+        cropping: true,
+      });
+      setProfileImage(image.path);
+    } catch (error) {
+      console.log('Error opening camera:', error);
+    }
+  };
+
   const handleSave = async () => {
     try {
+      setLoader(true);
       const updatedData = {
         name: name,
         email: email,
         phoneNumber: phoneNumber,
         location: location,
+        image: profileImage
       };
-      setLoader(true);
+      console.log('Updated data', updatedData);
       const response = dispatch(UpdateProfileAction(updatedData));
       console.log('response', response?.data);
       if (response) {
@@ -109,8 +141,12 @@ const ProfileScreen = () => {
           >
             <View style={styles.ProfileView}>
               <View style={styles.ProfileImgView}>
-                <Image source={images.UserProfile} style={styles.ProfileImage} />
-                <TouchableOpacity style={styles.CameraView}>
+                {profileImage ? (
+                  <Image source={{ uri: profileImage }} style={styles.ProfileImage} />
+                ) : (
+                  <Image source={images.UserProfile} style={styles.ProfileImage} />
+                )}
+                <TouchableOpacity style={styles.CameraView} onPress={clickOnFunction}>
                   <Image source={images.Camera} style={commonStyle.ImageStyle} />
                 </TouchableOpacity>
               </View>
@@ -181,6 +217,24 @@ const ProfileScreen = () => {
             loading={loader}
           />
         </ScrollView>
+        <ActionSheet
+          ref={actionRef}
+          title={'Which one do you like ?'}
+          options={['Click Photo', 'Choose Photo', 'Delete Photo', 'Cancel']}
+          cancelButtonIndex={3}
+          destructiveButtonIndex={2}
+          onPress={(index) => {
+            if (index == 0) {
+              openCamera()
+            }
+            if (index == 1) {
+              openGallery()
+            }
+            if (index == 2) {
+              deleteImage()
+            }
+          }}
+        />
       </ImageBackground>
     </SafeAreaView>
   );

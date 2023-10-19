@@ -20,6 +20,7 @@ const CustomDrawerContent = props => {
   const {setProgress} = useContext(DrawerAnimationContext);
 
   const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
+  console.log('getUserDetail====>', getUserDetail);
 
   const handleLogout = async () => {
     removeItem(AUTH_TOKEN)

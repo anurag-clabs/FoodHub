@@ -11,7 +11,7 @@ export const UpdateProfileAction = updatedData => {
       if (userToken) {
         const headers = {
           'Authorization': `Bearer ${userToken}`,
-          'Content-Type': 'application/form-data',
+          'Content-Type': 'multipart/form-data',
         };
 
         const formData = new FormData();
@@ -19,6 +19,10 @@ export const UpdateProfileAction = updatedData => {
         formData.append('email', updatedData.email);
         formData.append('phoneNumber', updatedData.phoneNumber);
         formData.append('location', updatedData.location);
+        formData.append('image', {
+          uri: updatedData.image,
+          type: 'image/jpeg',
+        });
 
         const result = await apiInstance.put('profiles', formData, { headers });
         console.log('result', result?.data);
