@@ -17,7 +17,7 @@ export const ForgotPassword = async ForgotPassword => {
       showMessage({
         type: 'info',
         backgroundColor: colors.errorColor,
-        message: err.response.data.error,
+        message: err?.response?.data?.error,
         duration: 2000,
       });
       return null;

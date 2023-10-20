@@ -7,7 +7,7 @@ export const GetUserDetailAction = () => {
   return async (dispatch) => {
     try {
       dispatch(actions.UserDetailRequest());
-        const result = await apiInstance.get('profiles');
+        const result = await apiInstance.get('profile');
         dispatch(actions.UserDetailSuccess(result));
     } catch (error) {
       console.log('No User Data found');

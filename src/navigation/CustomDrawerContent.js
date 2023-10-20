@@ -1,14 +1,14 @@
 /* eslint-disable react-native/no-inline-styles */
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, {useContext, useEffect, useState} from 'react';
-import {Image, StyleSheet, Text, View} from 'react-native';
-import {DrawerContentScrollView} from '@react-navigation/drawer';
-import {images} from '../utils/image';
+import React, { useContext, useEffect, useState } from 'react';
+import { Image, StyleSheet, Text, View } from 'react-native';
+import { DrawerContentScrollView } from '@react-navigation/drawer';
+import { images } from '../utils/image';
 import CustomDrawerItem from './CustomDrawerItem';
-import {ms, s, vs} from 'react-native-size-matters';
+import { ms, s, vs } from 'react-native-size-matters';
 import DrawerAnimationContext from '../context/DrawerAnimationContext/Context';
-import {colors} from '../utils/colors';
-import {Font} from '../utils/Fonts';
+import { colors } from '../utils/colors';
+import { Font } from '../utils/Fonts';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { removeToken } from '../httpclient/httpclient/clientHelper';
 import { AUTH_TOKEN } from '../utils/constant';
@@ -16,11 +16,10 @@ import { removeItem } from '../utils/storage';
 import { useSelector } from 'react-redux';
 
 const CustomDrawerContent = props => {
-  const {progress, navigation} = props;
-  const {setProgress} = useContext(DrawerAnimationContext);
+  const { progress, navigation } = props;
+  const { setProgress } = useContext(DrawerAnimationContext);
 
   const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
-  console.log('getUserDetail====>', getUserDetail);
 
   const handleLogout = async () => {
     removeItem(AUTH_TOKEN)
@@ -38,9 +37,14 @@ const CustomDrawerContent = props => {
       scrollEnabled={false}
       contentContainerStyle={styles.drawerView}>
       <View style={styles.ProfileView}>
-        <Image source={images.UserProfile} style={styles.ProfileImage} />
+        <Image
+          source={
+            getUserDetail?.image?.length > 0 ?
+              { uri: getUserDetail?.image } : images.UserProfile}
+          style={styles.ProfileImage}
+        />
         <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
-        <Text style={{fontFamily: Font.SofiaProMedium}}>{getUserDetail?.email || 'Email'}</Text>
+        <Text style={{ fontFamily: Font.SofiaProMedium }}>{getUserDetail?.email || 'Email'}</Text>
       </View>
       <View style={styles.drawerContent}>
         <CustomDrawerItem
@@ -79,12 +83,12 @@ const CustomDrawerContent = props => {
           onPress={() => navigation.navigate('HelpsFAQ')}
         />
       </View>
-        <TouchableOpacity 
-        style={styles.LogoutView} 
+      <TouchableOpacity
+        style={styles.LogoutView}
         onPress={handleLogout}>
         <Image source={images.Logout} style={styles.drawerImage} />
         <Text style={styles.LogoutTxt}>Log Out</Text>
-        </TouchableOpacity>
+      </TouchableOpacity>
     </DrawerContentScrollView>
   );
 };
@@ -134,7 +138,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 1,
     shadowRadius: 4,
     shadowColor: colors.orange,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     elevation: 5,
   },
   LogoutTxt: {

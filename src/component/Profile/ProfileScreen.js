@@ -30,26 +30,19 @@ const ProfileScreen = () => {
   const navigation = useNavigation();
 
   const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
-  console.log('getUserDetail', getUserDetail);
 
   const [loader, setLoader] = useState(false);
   const [name, setName] = useState(getUserDetail?.name || '');
   const [email, setEmail] = useState(getUserDetail?.email || '');
   const [phoneNumber, setPhoneNumber] = useState(getUserDetail?.phoneNumber || '');
   const [location, setLocation] = useState(getUserDetail?.location || '');
-  const [profileImage, setProfileImage] = useState(getUserDetail?.image[0] || null);
+  const [profileImage, setProfileImage] = useState(getUserDetail?.image || '');
   const [isFirstNameFocused, setIsFirstNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
   const [isLocationFocused, setIsLocationFocused] = useState(false);
 
   const handleUserDetail = () => dispatch(GetUserDetailAction());
-
-  console.log('initialName', name);
-  console.log('initialEmail', email);
-  console.log('initialPhoneNumber', phoneNumber);
-  console.log('initialLocation', location);
-  console.log('initialProfileImage', profileImage);
 
   const handleFirstNameFocus = () => {
     setIsFirstNameFocused(true);
@@ -83,42 +76,36 @@ const ProfileScreen = () => {
   }
 
   const openCamera = async () => {
-    try {
-      const image = await ImagePicker.openCamera({
-        width: 300,
-        height: 400,
-        cropping: true,
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: false,
+    })
+      .then(image => {
+        setProfileImage(image.path);
+      })
+      .catch(e => {
+        console.log(e);
       });
-      setProfileImage(image.path);
-    } catch (error) {
-      console.log('Error opening camera:', error);
-    }
   };
 
   const handleSave = async () => {
-    try {
       setLoader(true);
-      const updatedData = {
-        name: name,
-        email: email,
-        phoneNumber: phoneNumber,
-        location: location,
-        image: profileImage
-      };
-      console.log('Updated data', updatedData);
-      const response = dispatch(UpdateProfileAction(updatedData));
-      console.log('response', response?.data);
-      if (response) {
-        console.log('Profile Updated successful');
-      } else {
-        console.log('Profile Update failed');
-      }
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phoneNumber', phoneNumber);
+      formData.append('location', location);
+      formData.append('image', {
+        name: `${new Date().getTime()}.jpg`,
+        uri: profileImage,
+        type: 'image/jpeg',
+      });
+
+      console.log('Updated data', JSON.stringify(formData));
+      // dispatch(UpdateProfileAction(formData));
+      await UpdateProfileAction(formData)
       setLoader(false);
-      console.log('Update Profile successful', response);
-    } catch (error) {
-      setLoader(false);
-      console.log('Error updating user profile:', error);
-    }
   };
 
   useEffect(() => {
@@ -193,7 +180,7 @@ const ProfileScreen = () => {
                 placeholder="Your phone Number"
                 onFocus={handlePhoneNumberFocus}
                 maxLength={10}
-                value={phoneNumber}
+                value={phoneNumber.toString()}
                 onChangeText={(text) => setPhoneNumber(text)}
               />
               <Text style={styles.textInputTxt}>Location</Text>
