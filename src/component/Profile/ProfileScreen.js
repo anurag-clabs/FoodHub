@@ -9,7 +9,6 @@ import {
   SafeAreaView,
   ScrollView,
   KeyboardAvoidingView,
-  Alert,
 } from 'react-native';
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -23,26 +22,37 @@ import { UpdateProfileAction } from '../../redux/action/UpdateProfileAction';
 import ActionSheet from 'react-native-actionsheet';
 import ImagePicker from 'react-native-image-crop-picker';
 
-
 const ProfileScreen = () => {
   const actionRef = useRef();
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
-  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData.data);
+  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData);
 
   const [loader, setLoader] = useState(false);
-  const [name, setName] = useState(getUserDetail?.name || '');
-  const [email, setEmail] = useState(getUserDetail?.email || '');
-  const [phoneNumber, setPhoneNumber] = useState(getUserDetail?.phoneNumber || '');
-  const [location, setLocation] = useState(getUserDetail?.location || '');
-  const [profileImage, setProfileImage] = useState(getUserDetail?.image || '');
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [location, setLocation] = useState('');
+  const [profileImage, setProfileImage] = useState('');
   const [isFirstNameFocused, setIsFirstNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
   const [isLocationFocused, setIsLocationFocused] = useState(false);
 
   const handleUserDetail = () => dispatch(GetUserDetailAction());
+
+  useEffect(() => {
+    handleUserDetail();
+  }, []);
+
+  useEffect(() => {
+    setName(getUserDetail?.name);
+    setEmail(getUserDetail?.email);
+    setPhoneNumber(getUserDetail?.phoneNumber);
+    setLocation(getUserDetail?.location);
+    setProfileImage(getUserDetail?.image)
+  }, [getUserDetail]);
 
   const handleFirstNameFocus = () => {
     setIsFirstNameFocused(true);
@@ -89,28 +99,40 @@ const ProfileScreen = () => {
       });
   };
 
+  const openGallery = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setProfileImage(image.path);
+    })
+      .catch(e => {
+        console.log('e-----', JSON.stringify(e));
+      })
+  }
+
   const handleSave = async () => {
-      setLoader(true);
-      const formData = new FormData();
-      formData.append('name', name);
-      formData.append('email', email);
-      formData.append('phoneNumber', phoneNumber);
-      formData.append('location', location);
+    setLoader(true);
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phoneNumber', phoneNumber);
+    formData.append('location', location);
+    if (profileImage) {
       formData.append('image', {
         name: `${new Date().getTime()}.jpg`,
         uri: profileImage,
         type: 'image/jpeg',
       });
+    } else {
+      formData.append('image', null);
+    }
 
-      console.log('Updated data', JSON.stringify(formData));
-      // dispatch(UpdateProfileAction(formData));
-      await UpdateProfileAction(formData)
-      setLoader(false);
+    console.log('Updated data', JSON.stringify(formData));
+    await UpdateProfileAction(formData)
+    setLoader(false);
   };
-
-  useEffect(() => {
-    handleUserDetail();
-  }, []);
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
@@ -128,7 +150,7 @@ const ProfileScreen = () => {
           >
             <View style={styles.ProfileView}>
               <View style={styles.ProfileImgView}>
-                {profileImage ? (
+                {profileImage?.length > 0 ? (
                   <Image source={{ uri: profileImage }} style={styles.ProfileImage} />
                 ) : (
                   <Image source={images.UserProfile} style={styles.ProfileImage} />
@@ -180,7 +202,7 @@ const ProfileScreen = () => {
                 placeholder="Your phone Number"
                 onFocus={handlePhoneNumberFocus}
                 maxLength={10}
-                value={phoneNumber.toString()}
+                value={phoneNumber?.toString()}
                 onChangeText={(text) => setPhoneNumber(text)}
               />
               <Text style={styles.textInputTxt}>Location</Text>
@@ -207,8 +229,8 @@ const ProfileScreen = () => {
         <ActionSheet
           ref={actionRef}
           title={'Which one do you like ?'}
-          options={['Click Photo', 'Choose Photo', 'Delete Photo', 'Cancel']}
-          cancelButtonIndex={3}
+          options={['Click Photo', 'Choose Photo', 'Cancel']}
+          cancelButtonIndex={2}
           destructiveButtonIndex={2}
           onPress={(index) => {
             if (index == 0) {
@@ -216,9 +238,6 @@ const ProfileScreen = () => {
             }
             if (index == 1) {
               openGallery()
-            }
-            if (index == 2) {
-              deleteImage()
             }
           }}
         />

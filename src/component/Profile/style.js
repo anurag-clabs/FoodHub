@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
   },
   BackImgView: {
-    marginTop: vs(30),
+    marginTop: vs(20),
     marginHorizontal: s(20),
   },
   ProfileView: {
