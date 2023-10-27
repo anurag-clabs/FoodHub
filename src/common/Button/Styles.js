@@ -37,6 +37,11 @@ export const Styles = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5,
   },
+  iconView: {
+    backgroundColor: colors.white,
+    borderRadius: 30,
+    width: '45%',
+  },
   TextButton: {
     fontSize: 15,
     color: colors.white,
@@ -117,5 +122,16 @@ export const Styles = StyleSheet.create({
     alignItems: 'center',
     marginLeft: s(5),
     marginRight: s(10)
+  },
+  iconTxt: {
+    fontFamily: Font.SofiaProMedium,
+    color: colors.black,
+    fontSize: 15,
+  },
+  iconImg: {
+    height: ms(25),
+    width: ms(25),
+    margin: 14,
+    resizeMode: 'contain',
   },
 });

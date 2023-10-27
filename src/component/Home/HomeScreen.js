@@ -16,7 +16,6 @@ import { useNavigation } from '@react-navigation/native';
 import { commonStyle } from '../../utils/commonStyles';
 import {
   Featured_Restaurants,
-  FoodList,
   PopularItems,
 } from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';

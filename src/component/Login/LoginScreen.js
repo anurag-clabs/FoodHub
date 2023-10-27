@@ -13,7 +13,7 @@ import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
 import { useNavigation } from '@react-navigation/native';
-import { BackButton, Button } from '../../common/Button/Button';
+import { BackButton, Button, SocialButton } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { showMessage } from 'react-native-flash-message';
 import { UserLogin } from '../../redux/action/UserLogin';
@@ -194,16 +194,18 @@ const LoginScreen = () => {
               <Text style={styles.deviderTxt}> Sign up with </Text>
               <View style={styles.devider} />
             </View>
-            <View style={[styles.iconView, commonStyle.m_20]}>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}>
-                <Image source={images.facebook} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>FACEBOOK</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}>
-                <Image source={images.google} style={styles.iconImg} />
-                <Text style={styles.iconTxt}>GOOGLE</Text>
-              </TouchableOpacity>
-            </View>
+            <View style={[styles.iconView, commonStyle.m_20,]}>
+            <SocialButton
+              shadowStyle={commonStyle.blackShadow}
+              image={images.facebook}
+              buttonName='FACEBOOK'
+            />
+            <SocialButton
+              shadowStyle={commonStyle.blackShadow}
+              image={images.google}
+              buttonName='GOOGLE'
+            />
+          </View>
           </View>
         </View>
       </ImageBackground>

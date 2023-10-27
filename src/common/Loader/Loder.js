@@ -19,3 +19,10 @@ export const ButtonLoader = () => {
     </View>
   );
 };
+export const BlackButtonLoader = () => {
+  return (
+    <View>
+      <ActivityIndicator size={'small'} color={colors.black} />
+    </View>
+  );
+};

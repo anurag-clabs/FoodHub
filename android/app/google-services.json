@@ -12,7 +12,12 @@
           "package_name": "com.foodhub"
         }
       },
-      "oauth_client": [],
+      "oauth_client": [
+        {
+          "client_id": "774557546104-7928mshorf5ladf6v5fec5ldep6mo849.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
       "api_key": [
         {
           "current_key": "AIzaSyBm1jRltApJUm5mBdBouTf_-fk_OrFF6To"
@@ -20,7 +25,12 @@
       ],
       "services": {
         "appinvite_service": {
-          "other_platform_oauth_client": []
+          "other_platform_oauth_client": [
+            {
+              "client_id": "774557546104-7928mshorf5ladf6v5fec5ldep6mo849.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         }
       }
     }
