@@ -7,7 +7,7 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
@@ -16,6 +16,8 @@ import { Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { UserSignUp } from '../../redux/action/UserSignUp';
+import { GoogleSignin, GoogleSigninButton } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -28,6 +30,13 @@ const SignUpScreen = () => {
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
   const [loader, setLoader] = useState(false);
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      webClientId: '774557546104-7928mshorf5ladf6v5fec5ldep6mo849.apps.googleusercontent.com',
+      offlineAccess: false,
+    });
+  }, []);
 
   const handleFullNameFocus = () => {
     setIsFullNameFocused(true);
@@ -71,6 +80,20 @@ const SignUpScreen = () => {
       }
     } catch (error) {
       setLoader(false)
+    }
+  };
+
+  const handleGoogleSignIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const userInfo = await GoogleSignin.signIn();
+
+      const googleCredential = auth.GoogleAuthProvider.credential(userInfo.idToken);
+
+      await auth().signInWithCredential(googleCredential);
+
+    } catch (error) {
+      console.error(error);
     }
   };
 
@@ -142,7 +165,10 @@ const SignUpScreen = () => {
               <Image source={images.facebook} style={styles.iconImg} />
               <Text style={styles.iconTxt}>FACEBOOK</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}>
+            <TouchableOpacity 
+            style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}
+            onPress={handleGoogleSignIn}
+            >
               <Image source={images.google} style={styles.iconImg} />
               <Text style={styles.iconTxt}>GOOGLE</Text>
             </TouchableOpacity>
