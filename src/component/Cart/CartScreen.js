@@ -8,7 +8,6 @@ import Icon from 'react-native-vector-icons/Feather';
 import Icon2 from 'react-native-vector-icons/AntDesign';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
 import { colors } from '../../utils/colors';
-import { s, vs } from 'react-native-size-matters';
 import { ApplyButton, Button } from '../../common/Button/Button';
 import { useNavigation } from '@react-navigation/native';
 
@@ -30,7 +29,7 @@ const CartScreen = () => {
                     </View>
                     <View style={{ alignItems: 'flex-end' }}>
                         <Icon2 name="close" size={20} color={colors.orange} />
-                        <View style={[commonStyle.rowCenter, { marginTop: vs(20) }]}>
+                        <View style={[commonStyle.rowCenter, commonStyle.mT20]}>
                             <TouchableOpacity>
                                 <Icon name="minus-circle" size={25} color={colors.orange} style={commonStyle.orangeShadow} />
                             </TouchableOpacity>
@@ -50,7 +49,7 @@ const CartScreen = () => {
                     </View>
                     <View style={{ alignItems: 'flex-end' }}>
                         <Icon2 name="close" size={20} color={colors.orange} />
-                        <View style={[commonStyle.rowCenter, { marginTop: vs(20) }]}>
+                        <View style={[commonStyle.rowCenter, commonStyle.mT20]}>
                             <TouchableOpacity>
                                 <Icon name="minus-circle" size={25} color={colors.orange} style={commonStyle.orangeShadow} />
                             </TouchableOpacity>

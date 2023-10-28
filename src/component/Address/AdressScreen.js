@@ -2,19 +2,14 @@ import {
   View,
   Text,
   SafeAreaView,
-  TouchableOpacity,
-  Image,
   TextInput,
   ScrollView,
 } from 'react-native';
 import React from 'react';
 import {styles} from './style';
 import {useNavigation} from '@react-navigation/native';
-import {images} from '../../utils/image';
 import {commonStyle} from '../../utils/commonStyles';
-import {Font} from '../../utils/Fonts';
-import {vs} from 'react-native-size-matters';
-import {BackButton, Button} from '../../common/Button/Button';
+import {Button} from '../../common/Button/Button';
 import {Header} from '../../common/Header/Header';
 import {colors} from '../../utils/colors';
 import {DropDown} from '../../common/DropDown/DropDown';
@@ -23,9 +18,9 @@ const AdressScreen = () => {
   const navigation = useNavigation();
   return (
     <SafeAreaView style={commonStyle.constainer}>
-      <ScrollView showsVerticalScrollIndicator={false}>
         <Header Text="Add new address" onPress={() => navigation.goBack()} />
-        <View style={[commonStyle.m_20, {marginVertical: vs(30)}]}>
+      <ScrollView showsVerticalScrollIndicator={false}>
+        <View style={[commonStyle.m_20, commonStyle.mV25]}>
           <Text style={styles.TextInputTxt}>Full Name</Text>
           <TextInput
             style={commonStyle.textInputStyle}

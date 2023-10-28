@@ -114,6 +114,7 @@ export const styles = StyleSheet.create({
     resizeMode: 'contain',
   },
   boxElevation: {
+    // marginRight: s(10),
     marginLeft: s(20),
     height: vs(100),
     width: s(62),

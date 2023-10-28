@@ -1,3 +1,4 @@
+import React, { useEffect, useRef, useState } from 'react';
 import {
   View,
   Text,
@@ -7,25 +8,51 @@ import {
   TextInput,
   SafeAreaView,
   ScrollView,
+  KeyboardAvoidingView,
 } from 'react-native';
-import React, { useEffect, useState } from 'react';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { useNavigation } from '@react-navigation/native';
-import { Font } from '../../utils/Fonts';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+import { GetUserDetailAction } from '../../redux/action/UserDetailAction';
+import { useDispatch, useSelector } from 'react-redux';
+import { UpdateProfileAction } from '../../redux/action/UpdateProfileAction';
+import ActionSheet from 'react-native-actionsheet';
+import ImagePicker from 'react-native-image-crop-picker';
 
 const ProfileScreen = () => {
+  const actionRef = useRef();
+  const dispatch = useDispatch();
   const navigation = useNavigation();
+
+  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData);
+
+  const [loader, setLoader] = useState(false);
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('');
+  const [location, setLocation] = useState('');
+  const [profileImage, setProfileImage] = useState('');
   const [isFirstNameFocused, setIsFirstNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPhoneNumberFocused, setIsPhoneNumberFocused] = useState(false);
   const [isLocationFocused, setIsLocationFocused] = useState(false);
-  const [userEmail, setUserEmail] = useState('');
-  const [userName, setUserName] = useState('');
+
+  const handleUserDetail = () => dispatch(GetUserDetailAction());
+
+  useEffect(() => {
+    handleUserDetail();
+  }, []);
+
+  useEffect(() => {
+    setName(getUserDetail?.name);
+    setEmail(getUserDetail?.email);
+    setPhoneNumber(getUserDetail?.phoneNumber);
+    setLocation(getUserDetail?.location);
+    setProfileImage(getUserDetail?.image)
+  }, [getUserDetail]);
 
   const handleFirstNameFocus = () => {
     setIsFirstNameFocused(true);
@@ -54,104 +81,166 @@ const ProfileScreen = () => {
     setIsLocationFocused(true);
   };
 
-  const retrieveData = async () => {
-    try {
-      const firstName = await AsyncStorage.getItem('userName');
-      const email = await AsyncStorage.getItem('userEmail');
-      if (firstName) {
-        setUserName(firstName);
-      }
-      if (email) {
-        setUserEmail(email);
-      }
-    } catch (error) {
-      console.error('Error retrieving data from AsyncStorage:', error);
-    }
+  const clickOnFunction = () => {
+    actionRef.current.show()
+  }
+
+  const openCamera = async () => {
+    ImagePicker.openCamera({
+      width: 300,
+      height: 400,
+      cropping: false,
+    })
+      .then(image => {
+        setProfileImage(image.path);
+      })
+      .catch(e => {
+        console.log(e);
+      });
   };
 
-  useEffect(() => {
-    retrieveData();
-  }, []);
+  const openGallery = () => {
+    ImagePicker.openPicker({
+      width: 300,
+      height: 400,
+      cropping: true,
+    }).then(image => {
+      setProfileImage(image.path);
+    })
+      .catch(e => {
+        console.log('e-----', JSON.stringify(e));
+      })
+  }
+
+  const handleSave = async () => {
+    setLoader(true);
+    const formData = new FormData();
+    formData.append('name', name);
+    formData.append('email', email);
+    formData.append('phoneNumber', phoneNumber);
+    formData.append('location', location);
+    if (profileImage) {
+      formData.append('image', {
+        name: `${new Date().getTime()}.jpg`,
+        uri: profileImage,
+        type: 'image/jpeg',
+      });
+    } else {
+      formData.append('image', null);
+    }
+
+    console.log('Updated data', JSON.stringify(formData));
+    await UpdateProfileAction(formData)
+    setLoader(false);
+  };
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground
         source={images.ProfileBackGround}
         style={commonStyle.backGroundImg}>
-        <ScrollView>
+        <ScrollView showsVerticalScrollIndicator={false}>
           <BackButton
             style={styles.BackImgView}
             onPress={() => navigation.goBack()}
           />
-          <View style={styles.ProfileView}>
-            <View style={styles.ProfileImgView}>
-              <Image source={images.UserProfile} style={styles.ProfileImage} />
-              <TouchableOpacity style={styles.CameraView}>
-                <Image source={images.Camera} style={commonStyle.ImageStyle} />
+          <KeyboardAvoidingView
+            behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
+            style={{ flex: 1 }}
+          >
+            <View style={styles.ProfileView}>
+              <View style={styles.ProfileImgView}>
+                {profileImage?.length > 0 ? (
+                  <Image source={{ uri: profileImage }} style={styles.ProfileImage} />
+                ) : (
+                  <Image source={images.UserProfile} style={styles.ProfileImage} />
+                )}
+                <TouchableOpacity style={styles.CameraView} onPress={clickOnFunction}>
+                  <Image source={images.Camera} style={commonStyle.ImageStyle} />
+                </TouchableOpacity>
+              </View>
+              <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
+              <TouchableOpacity>
+                <Text
+                  style={styles.editProfileTxt}>
+                  Edit Profile
+                </Text>
               </TouchableOpacity>
             </View>
-            <Text style={styles.profileText}>{userName || 'User Name'}</Text>
-            <TouchableOpacity>
-              <Text
-                style={{
-                  fontFamily: Font.SofiaProRegular,
-                  color: colors.GreySuit,
-                }}>
-                Edit Profile
-              </Text>
-            </TouchableOpacity>
-          </View>
-          <View style={[commonStyle.m_20]}>
-            <Text style={styles.textInputTxt}>Full Name</Text>
-            <TextInput
-              style={
-                isFirstNameFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your Full Name"
-              onFocus={handleFirstNameFocus}
-              value={userName}
-            />
-            <Text style={styles.textInputTxt}>E-mail</Text>
-            <TextInput
-              style={
-                isEmailFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your email"
-              onFocus={handleEmailFocus}
-              value={userEmail}
-
-            />
-            <Text style={styles.textInputTxt}>Phone Number</Text>
-            <TextInput
-              style={
-                isPhoneNumberFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your phone Number"
-              onFocus={handlePhoneNumberFocus}
-            />
-            <Text style={styles.textInputTxt}>Location</Text>
-            <TextInput
-              style={
-                isLocationFocused
-                  ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
-                  : commonStyle.textInputStyle
-              }
-              placeholder="Your Location"
-              onFocus={handleLocationFocus}
-            />
-          </View>
+            <View style={[commonStyle.m_20]}>
+              <Text style={styles.textInputTxt}>Full Name</Text>
+              <TextInput
+                style={
+                  isFirstNameFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your Full Name"
+                onFocus={handleFirstNameFocus}
+                value={name}
+                onChangeText={(text) => setName(text)}
+              />
+              <Text style={styles.textInputTxt}>E-mail</Text>
+              <TextInput
+                style={
+                  isEmailFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your email"
+                onFocus={handleEmailFocus}
+                value={email}
+                onChangeText={(text) => setEmail(text)}
+              />
+              <Text style={styles.textInputTxt}>Phone Number</Text>
+              <TextInput
+                style={
+                  isPhoneNumberFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your phone Number"
+                onFocus={handlePhoneNumberFocus}
+                maxLength={10}
+                value={phoneNumber?.toString()}
+                onChangeText={(text) => setPhoneNumber(text)}
+              />
+              <Text style={styles.textInputTxt}>Location</Text>
+              <TextInput
+                style={
+                  isLocationFocused
+                    ? [commonStyle.textInputStyle, commonStyle.focusedTextInput]
+                    : commonStyle.textInputStyle
+                }
+                placeholder="Your Location"
+                onFocus={handleLocationFocus}
+                value={location}
+                onChangeText={(text) => setLocation(text)}
+              />
+            </View>
+          </KeyboardAvoidingView>
           <Button
             buttonName="SAVE"
             color={colors.orange}
-            onPress={() => navigation.navigate('Reviews')}
+            onPress={handleSave}
+            loading={loader}
           />
         </ScrollView>
+        <ActionSheet
+          ref={actionRef}
+          title={'Which one do you like ?'}
+          options={['Click Photo', 'Choose Photo', 'Cancel']}
+          cancelButtonIndex={2}
+          destructiveButtonIndex={2}
+          onPress={(index) => {
+            if (index == 0) {
+              openCamera()
+            }
+            if (index == 1) {
+              openGallery()
+            }
+          }}
+        />
       </ImageBackground>
     </SafeAreaView>
   );

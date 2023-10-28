@@ -12,7 +12,7 @@ const SettingScreen = () => {
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <Header
-        Text={'Setting'}
+        Text='Setting'
         onPress={() => navigation.goBack()}
       />
       <View style={[commonStyle.m_20, commonStyle.mT20]}>

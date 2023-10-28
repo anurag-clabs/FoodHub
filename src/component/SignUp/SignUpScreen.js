@@ -12,10 +12,14 @@ import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
-import { Button } from '../../common/Button/Button';
+import { Button, SocialButton } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { UserSignUp } from '../../redux/action/UserSignUp';
+import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import auth from '@react-native-firebase/auth';
+import { saveData } from '../../utils/storage';
+import { AUTH_TOKEN } from '../../utils/constant';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
@@ -74,12 +78,33 @@ const SignUpScreen = () => {
     }
   };
 
+  const handleGoogleSignIn = async () => {
+    try {
+      await GoogleSignin.hasPlayServices();
+      const data = await GoogleSignin.signIn();
+      const googleCredential = auth.GoogleAuthProvider.credential(data.idToken);
+      const res = await auth().signInWithCredential(googleCredential);
+      console.log('Google', res.user.email);
+      const email = res.user.email;
+
+      saveData(AUTH_TOKEN, 'true')
+      if (email) {
+        navigation.navigate("Drawer");
+      } else {
+        navigation.navigate("SignUp");
+      }
+      console.log('Google Sign-In successful');
+    } catch (error) {
+      console.error('Google Sign-In error:', error);
+    }
+  };
+
   return (
     <SafeAreaView style={styles.constainer}>
       <ImageBackground
         source={images.commonBackGround}
         style={commonStyle.backGroundImg}>
-        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
+        <View style={[commonStyle.m_20, commonStyle.mV20]}>
           <Text style={styles.headerTxt}>Sign Up</Text>
           <Text style={styles.textInputTxt}>Full name</Text>
           <TextInput
@@ -101,7 +126,7 @@ const SignUpScreen = () => {
           <View onFocus={handlePasswordFocus}
             style={isPasswordFocused ? [styles.passwordView, styles.FocuspasswordView] : styles.passwordView}>
             <TextInputText
-            style={styles.passwordInputStyle}
+              style={styles.passwordInputStyle}
               secureTextEntry={passwordHide}
               placeHolder="Password"
               value={password}
@@ -137,15 +162,17 @@ const SignUpScreen = () => {
             <Text style={styles.deviderTxt}> Sign up with </Text>
             <View style={styles.devider} />
           </View>
-          <View style={[styles.iconView, commonStyle.m_20]}>
-            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}>
-              <Image source={images.facebook} style={styles.iconImg} />
-              <Text style={styles.iconTxt}>FACEBOOK</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[commonStyle.rowCenter, styles.iconBtn, commonStyle.blackShadow]}>
-              <Image source={images.google} style={styles.iconImg} />
-              <Text style={styles.iconTxt}>GOOGLE</Text>
-            </TouchableOpacity>
+          <View style={[styles.iconView, commonStyle.m_20,]}>
+            <SocialButton
+              shadowStyle={commonStyle.blackShadow}
+              image={images.facebook}
+              buttonName='FACEBOOK'
+            />
+            <SocialButton
+              shadowStyle={commonStyle.blackShadow}
+              image={images.google}
+              buttonName='GOOGLE'
+            />
           </View>
         </View>
       </ImageBackground>

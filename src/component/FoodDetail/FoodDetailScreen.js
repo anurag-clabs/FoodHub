@@ -1,5 +1,5 @@
-import { View, Text, ImageBackground, SafeAreaView, TouchableOpacity, Image, Platform, ScrollView } from 'react-native';
-import React from 'react'
+import React from 'react';
+import { View, Text, ImageBackground, SafeAreaView, TouchableOpacity, Image, ScrollView } from 'react-native';
 import { images } from '../../utils/image';
 import { styles } from './style';
 import { commonStyle } from '../../utils/commonStyles';

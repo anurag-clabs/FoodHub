@@ -1,5 +1,5 @@
-import { View, Text, ImageBackground, SafeAreaView } from 'react-native'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react';
+import { View, Text, ImageBackground, SafeAreaView } from 'react-native';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
@@ -8,18 +8,12 @@ import PhoneInput from "react-native-phone-number-input";
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { PhoneRegistration } from '../../redux/action/PhoneRegistration';
-import { showMessage } from 'react-native-flash-message';
 
 const PhoneRegistrationScreen = () => {
 
     const navigation = useNavigation()
     const [loader, setLoader] = useState(false);
     const [phoneNumber, setPhoneNumber] = useState();
-
-    let msg = {
-        type: 'info',
-        backgroundColor: colors.errorColor,
-    };
 
     const handleRegistration = async () => {
         try {

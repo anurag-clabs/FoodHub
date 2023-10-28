@@ -8,17 +8,14 @@ import {
   ScrollView,
   FlatList,
   Modal,
-  Pressable,
 } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { useNavigation } from '@react-navigation/native';
-import { s } from 'react-native-size-matters';
 import { commonStyle } from '../../utils/commonStyles';
 import {
   Featured_Restaurants,
-  FoodList,
   PopularItems,
 } from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';
@@ -48,7 +45,7 @@ const HomeScreen = () => {
 
   const handleCategories = () => dispatch(GetCategoriesAction());
 
-  const categories = useSelector(state => state?.GetCatecories?.categoriesGet);
+  const categories = useSelector(state => state?.GetCatecories?.categoriesGet?.data);
 
   useEffect(() => {
     handleCategories();
@@ -73,7 +70,7 @@ const HomeScreen = () => {
     </View>
   );
 
-  const renderCategories = ({ category, index }) => {
+  const renderCategories = ({ item, index }) => {
     const itemStyle = [
       styles.boxElevation,
       selectedFood === index && styles.selectedBoxElevation,
@@ -82,14 +79,18 @@ const HomeScreen = () => {
       styles.name,
       selectedFood === index && { color: colors.white },
     ];
-    <TouchableOpacity
-      onPress={() => handleFoodItemClick(index)}
-      key={index}
-      style={[itemStyle, commonStyle.mV25]}>
-      <Image style={styles.image} source={{ uri: category.images }} />
-      <Text style={nameStyle}>{category.name}</Text>
-    </TouchableOpacity>
-  }
+
+    return (
+      <TouchableOpacity
+        onPress={() => handleFoodItemClick(index)}
+        key={index._id}
+        style={[itemStyle, commonStyle.mV25]}
+      >
+        <Image style={styles.image} source={{ uri: item?.image[0] }} />
+        <Text style={nameStyle}>{item.name}</Text>
+      </TouchableOpacity>
+    );
+  };
 
   const renderFoodItem = ({ item }) => (
     <View style={[commonStyle.v_10]}>
@@ -105,15 +106,16 @@ const HomeScreen = () => {
   );
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <SafeAreaView style={commonStyle.constainer}>
-        <MenuHeader
-          onPress={openDrawerClick}
-          Deliver="Deliver to"
-          DeliveryAddress="4102 Pretty View Lane"
-          HeaderImg={images.UserProfile}
-          HeaderImgstyle={styles.UserImg}
-        />
+    <SafeAreaView style={commonStyle.constainer}>
+      <MenuHeader
+        onPress={openDrawerClick}
+        Deliver="Deliver to"
+        DeliveryAddress="4102 Pretty View Lane"
+        HeaderImg={images.UserProfile}
+        HeaderImgstyle={styles.UserImg}
+      />
+      <ScrollView showsVerticalScrollIndicator={false}>
+
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
         </Text>
@@ -129,37 +131,13 @@ const HomeScreen = () => {
             <Image style={styles.filter} source={images.filter} />
           </TouchableOpacity>
         </View>
-        {/* <ScrollView
-          horizontal={true}
-          showsHorizontalScrollIndicator={false}> */}
-          {/* {categories?.map((item, index) => {
-            const itemStyle = [
-              styles.boxElevation,
-              selectedFood === index && styles.selectedBoxElevation,
-            ];
-            const nameStyle = [
-              styles.name,
-              selectedFood === index && { color: colors.white },
-            ];
-            return (
-              <TouchableOpacity
-                onPress={() => handleFoodItemClick(index)}
-                key={index}
-                style={[itemStyle, commonStyle.mV25]}>
-                <Image style={styles.image} source={{ uri: category.images }} />
-                <Text style={nameStyle}>{item.name}</Text>
-              </TouchableOpacity>
-            );
-          })} */}
-          <FlatList 
+        <FlatList
           data={categories}
           keyExtractor={item => item._id}
           renderItem={renderCategories}
           horizontal
           showsHorizontalScrollIndicator={false}
-          />
-        {/* </ScrollView> */}
-
+        />
         <View>
           <View style={styles.HeaderView}>
             <Text style={styles.titleRestaurant}>Featured Restaurants</Text>
@@ -169,7 +147,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            contentContainerStyle={commonStyle.pH10}
             data={Featured_Restaurants}
             keyExtractor={item => item.id}
             renderItem={renderRestaurants}
@@ -187,7 +165,7 @@ const HomeScreen = () => {
             </TouchableOpacity>
           </View>
           <FlatList
-            contentContainerStyle={{ paddingHorizontal: s(10) }}
+            contentContainerStyle={commonStyle.pH10}
             data={PopularItems}
             keyExtractor={item => item.Id}
             renderItem={renderFoodItem}
@@ -195,20 +173,20 @@ const HomeScreen = () => {
             horizontal
           />
         </View>
-      </SafeAreaView>
-      <Modal
-        animationType="slide"
-        transparent={true}
-        visible={isFilterModalVisible}
-        onRequestClose={() => {
-          setModalVisible(!isModalVisible);
-        }}
-      >
-        <View style={styles.modalBackground}>
-          <FilterScreen onclick={toggleFilterModal} />
-        </View>
-      </Modal>
-    </ScrollView>
+        <Modal
+          animationType="slide"
+          transparent={true}
+          visible={isFilterModalVisible}
+          onRequestClose={() => {
+            setModalVisible(!isModalVisible);
+          }}
+        >
+          <View style={styles.modalBackground}>
+            <FilterScreen onclick={toggleFilterModal} />
+          </View>
+        </Modal>
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import {View, Text, FlatList, SafeAreaView} from 'react-native';
+import {FlatList, SafeAreaView} from 'react-native';
 import {commonStyle} from '../../utils/commonStyles';
 import {Featured_Restaurants} from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';

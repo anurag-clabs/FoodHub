@@ -46,7 +46,7 @@ export const styles = StyleSheet.create({
     elevation: 3,
   },
   textInputStyle: {
-    fontSize: 18,
+    fontSize: 17,
     marginVertical: vs(10),
     borderColor: colors.lightGrey,
     borderWidth: 1,
@@ -59,7 +59,7 @@ export const styles = StyleSheet.create({
     borderColor: colors.orange,
   },
   passwordInputStyle: {
-    fontSize: 18,
+    fontSize: 17,
   },
   hidePassword: {
     height: ms(18),

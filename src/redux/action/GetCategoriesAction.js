@@ -1,21 +1,17 @@
 import { apiInstance } from '../../httpclient/httpclient';
-import { getToken } from '../../utils/token';
+import { AUTH_TOKEN } from '../../utils/constant';
+import { readData } from '../../utils/storage';
 import * as actions from './index';
 
-export const GetCategoriesAction = () => dispatch => {
-    console.log('token', getToken());
-  dispatch(actions.CategoriesRequest());
-  const token = getToken();
-  const headers = {
-    Authorization: `Bearer ${token}`,
+export const GetCategoriesAction = () => {
+  return async (dispatch) => {
+    try {
+      dispatch(actions.CategoriesRequest());
+        const result = await apiInstance.get('categories');
+        dispatch(actions.CategoriesSuccess(result?.data));
+    } catch (error) {
+      console.log('No category list found');
+      dispatch(actions.CategoriesError(error?.response?.data?.message));
+    }
   };
-  console.log('headers', headers);
-  apiInstance.get('categories', {headers})
-    .then(result => {
-      console.log('Categories', result);
-      dispatch(actions.CategoriesSuccess(result));
-    })
-    .catch(error => {
-      dispatch(actions.CategoriesError(error.response.message));
-    });
 };

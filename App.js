@@ -5,6 +5,9 @@ import { DrawerAnimationProvider } from './src/context/DrawerAnimationContext/Dr
 import { SafeAreaProvider } from 'react-native-safe-area-context';
 import { Provider } from 'react-redux';
 import configureStore from './src/redux/store/configureStore';
+import { LogBox } from 'react-native';
+
+LogBox.ignoreAllLogs();
 
 const store = configureStore();
 

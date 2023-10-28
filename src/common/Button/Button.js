@@ -1,7 +1,7 @@
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import React from 'react';
 import { Styles } from './styles';
-import { ButtonLoader } from '../Loader/Loder';
+import { BlackButtonLoader, ButtonLoader } from '../Loader/Loder';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import Icon from 'react-native-vector-icons/FontAwesome6';
@@ -18,6 +18,23 @@ export const Button = props => {
         <ButtonLoader />
       )}
     </TouchableOpacity>
+  );
+};
+
+export const SocialButton = props => {
+  return (
+    <View style={[Styles.iconView, Styles.iconBtn, props.shadowStyle]}>
+    <TouchableOpacity
+      style={[commonStyle.rowCenter]}
+      onPress={props.onPress}>
+        <Image source={props.image} style={Styles.iconImg} />
+      {!props?.loading ? (
+        <Text style={Styles.iconTxt}>{props.buttonName}</Text>
+      ) : (
+        <BlackButtonLoader />
+      )}
+    </TouchableOpacity>
+    </View>
   );
 };
 

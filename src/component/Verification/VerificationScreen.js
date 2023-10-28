@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, TextInput, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, ImageBackground, TouchableOpacity, SafeAreaView } from 'react-native';
 import React, { useState, useEffect } from 'react';
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -31,7 +31,10 @@ const VerificationScreen = () => {
       setLoader(false)
       if (response) {
         setIsOTPVerified(true);
-        navigation.navigate(type === 'signup' ? 'Login' : 'Drawer');
+        navigation.reset({
+          index: 0,
+          routes: [{ name: type === 'signup' ? 'Login' : 'Drawer' }],
+        });
       }
     } else if (email) {
       setLoader(true);
@@ -42,7 +45,7 @@ const VerificationScreen = () => {
       setLoader(false)
       if (response) {
         setIsOTPVerified(true);
-        navigation.navigate('Login');
+        navigation.navigate( type === 'login' ? 'Drawer' : 'Login' );
       }
     }
   };
@@ -50,7 +53,7 @@ const VerificationScreen = () => {
   return (
     <SafeAreaView style={styles.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
-        <View style={[commonStyle.m_20, { marginVertical: 20 }]}>
+        <View style={[commonStyle.m_20, commonStyle.mV20]}>
           <Text style={styles.headerTxt}>Verification Code</Text>
           <Text style={styles.textInputTxt}>
             Please type the verification code sent to 
