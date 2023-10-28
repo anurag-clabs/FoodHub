@@ -8,16 +8,18 @@ import { images } from '../utils/image';
 import MyOrderScreen from '../component/MyOrder/MyOrderScreen';
 import OrderHistoryScreen from '../component/MyOrder/OrderHistoryScreen';
 import CustomTabBar from '../navigation/CustomTabBar';
+import { useSelector } from 'react-redux';
 
 const MyOrder = () => {
-    const navigation = useNavigation();
     const ProfileTabNavigator = createMaterialTopTabNavigator()
+
+    const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData);
 
     return (
         <SafeAreaView style={commonStyle.constainer}>
             <Header
                 Text='My Orders'
-                onPress={() => navigation.goBack()}
+                profileImage={getUserDetail?.image}
                 HeaderImg={images.UserProfile}
                 HeaderImgstyle={commonStyle.headerImg}
             />

@@ -45,7 +45,9 @@ const HomeScreen = () => {
 
   const handleCategories = () => dispatch(GetCategoriesAction());
 
-  const categories = useSelector(state => state?.GetCatecories?.categoriesGet?.data);
+  const categories = useSelector(state => state?.GetCatecories?.categoriesGet);
+  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData);
+
 
   useEffect(() => {
     handleCategories();
@@ -111,8 +113,9 @@ const HomeScreen = () => {
         onPress={openDrawerClick}
         Deliver="Deliver to"
         DeliveryAddress="4102 Pretty View Lane"
+        profileImage={getUserDetail?.image}
         HeaderImg={images.UserProfile}
-        HeaderImgstyle={styles.UserImg}
+        HeaderImgstyle={commonStyle.headerImg}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
 

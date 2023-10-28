@@ -11,7 +11,9 @@ export const Button = props => {
   return (
     <TouchableOpacity
       style={[Styles.Button, props.style, { backgroundColor: props.color }]}
-      onPress={props.onPress}>
+      onPress={props.onPress}
+      disabled={props.disabled}
+    >
       {!props?.loading ? (
         <Text style={Styles.TextButton}>{props.buttonName}</Text>
       ) : (
@@ -24,16 +26,16 @@ export const Button = props => {
 export const SocialButton = props => {
   return (
     <View style={[Styles.iconView, Styles.iconBtn, props.shadowStyle]}>
-    <TouchableOpacity
-      style={[commonStyle.rowCenter]}
-      onPress={props.onPress}>
+      <TouchableOpacity
+        style={[commonStyle.rowCenter]}
+        onPress={props.onPress}>
         <Image source={props.image} style={Styles.iconImg} />
-      {!props?.loading ? (
-        <Text style={Styles.iconTxt}>{props.buttonName}</Text>
-      ) : (
-        <BlackButtonLoader />
-      )}
-    </TouchableOpacity>
+        {!props?.loading ? (
+          <Text style={Styles.iconTxt}>{props.buttonName}</Text>
+        ) : (
+          <BlackButtonLoader />
+        )}
+      </TouchableOpacity>
     </View>
   );
 };
@@ -43,9 +45,9 @@ export const BagButton = props => {
     <TouchableOpacity
       style={[Styles.BagButton, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
-        <View style={Styles.bagImgView}>
-        <Icon  name='bag-shopping' size={20} color={colors.orange}/>
-        </View>
+      <View style={Styles.bagImgView}>
+        <Icon name='bag-shopping' size={20} color={colors.orange} />
+      </View>
       {!props?.loading ? (
         <Text style={Styles.TextButton}>{props.buttonName}</Text>
       ) : (
@@ -102,7 +104,7 @@ export const ApplyButton = props => {
     <TouchableOpacity
       style={[Styles.applyButtonView, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
-      <Text style={[Styles.ButtonTxt2, props.Txtstyle,  { color: props.Txtcolor }]}>{props.buttonName}</Text>
+      <Text style={[Styles.ButtonTxt2, props.Txtstyle, { color: props.Txtcolor }]}>{props.buttonName}</Text>
     </TouchableOpacity>
   )
 }

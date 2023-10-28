@@ -15,12 +15,10 @@ import {ms, vs} from 'react-native-size-matters';
 import { Header } from '../Header/Header';
 
 const ContactScreen = () => {
-  const navigation = useNavigation();
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <Header
         Text={'Contact Us'}
-        onPress={() => navigation.goBack()}
       />
       <View style={[commonStyle.mH15, commonStyle.mT10]}>
         <View style={commonStyle.flexRow}>

@@ -54,8 +54,6 @@ const reviewsData = [
 
 const ReviewScreen = () => {
 
-    const navigation = useNavigation();
-
     const renderItem = ({ item }) => (
         <UserReview
             UserImage={item.UserImage}
@@ -71,7 +69,6 @@ const ReviewScreen = () => {
         <SafeAreaView style={commonStyle.constainer}>
             <Header
                 Text='Reviews'
-                onPress={() => navigation.goBack()}
             />
             <View style={styles.ReaviewTxtView}>
                 <TouchableOpacity >

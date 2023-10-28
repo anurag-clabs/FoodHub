@@ -27,14 +27,12 @@ const PaymentMethodScreen = () => {
       tintColor: colors.Blue
     },
   ];
-    const navigation = useNavigation();
     const [selectedMethod, setSelectedMethod] = useState(null);
 
     return (
         <SafeAreaView style={commonStyle.constainer}>
             <Header
                 Text='Payment Method'
-                onPress={() => navigation.goBack()}
             />
             <View style={styles.header}>
                 <Text style={styles.headerText}>Payments methods</Text>

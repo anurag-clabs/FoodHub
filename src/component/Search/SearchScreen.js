@@ -1,5 +1,5 @@
 import React from 'react';
-import { View, Text, SafeAreaView, Image, TextInput, TouchableOpacity, ScrollView } from 'react-native';
+import { View, Text, SafeAreaView, Image, TextInput, TouchableOpacity, ScrollView, FlatList } from 'react-native';
 import { commonStyle } from '../../utils/commonStyles';
 import { Header } from '../../common/Header/Header';
 import { useNavigation } from '@react-navigation/native';
@@ -7,9 +7,10 @@ import { styles } from './style';
 import { images } from '../../utils/image';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import { colors } from '../../utils/colors';
-import { FoodData, FoodList } from '../../common/Data/Data';
+import { FoodData } from '../../common/Data/Data';
 import { useState } from 'react';
 import FavoritesFoodItem from '../../common/FoodItem/FavoritesFoodItem';
+import { useSelector } from 'react-redux';
 
 const SearchScreen = () => {
 
@@ -18,6 +19,8 @@ const SearchScreen = () => {
   const handleFoodItemClick = index => {
     setSelectedFood(index);
   };
+
+  const categories = useSelector(state => state?.GetCatecories?.categoriesGet);
 
   const renderItem = () => {
     return FoodData.map((item, index) => (
@@ -34,11 +37,32 @@ const SearchScreen = () => {
     ))
   }
 
+  const renderCategories = ({ item, index }) => {
+    const itemStyle = [
+      styles.boxElevation,
+      selectedFood === index && styles.selectedBoxElevation,
+    ];
+    const nameStyle = [
+      styles.name,
+      selectedFood === index && { color: colors.white },
+    ];
+
+    return (
+      <TouchableOpacity
+        onPress={() => handleFoodItemClick(index)}
+        key={index._id}
+        style={[itemStyle, commonStyle.mV25]}
+      >
+        <Image style={styles.image} source={{ uri: item?.image[0] }} />
+        <Text style={nameStyle}>{item.name}</Text>
+      </TouchableOpacity>
+    );
+  };
+
   return (
     <SafeAreaView styles={commonStyle.constainer}>
       <Header
         Text='Search'
-        onPress={() => navigation.goBack()}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={[styles.textInputStyleView, commonStyle.mT20, commonStyle.m_20]}>
@@ -53,29 +77,13 @@ const SearchScreen = () => {
           <Icon name="mic-none" size={22} style={commonStyle.pH10} />
         </TouchableOpacity>
       </View>
-      <ScrollView
-        horizontal={true}
-        showsHorizontalScrollIndicator={false}>
-        {FoodList.map((item, index) => {
-          const itemStyle = [
-            styles.boxElevation,
-            selectedFood === index && styles.selectedBoxElevation,
-          ];
-          const nameStyle = [
-            styles.name,
-            selectedFood === index && { color: colors.white },
-          ];
-          return (
-            <TouchableOpacity
-              onPress={() => handleFoodItemClick(index)}
-              key={index}
-              style={[itemStyle, commonStyle.mV25]}>
-              <Image style={styles.image} source={item.image} />
-              <Text style={nameStyle}>{item.title}</Text>
-            </TouchableOpacity>
-          );
-        })}
-      </ScrollView>
+      <FlatList
+          data={categories}
+          keyExtractor={item => item._id}
+          renderItem={renderCategories}
+          horizontal
+          showsHorizontalScrollIndicator={false}
+        />
       <Text style={[styles.headerText, commonStyle.m_20]}>Populer Items</Text>
       <View style={[commonStyle.mT20, commonStyle.pH10, commonStyle.mB40]}>
         {renderItem()}

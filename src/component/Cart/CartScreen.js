@@ -17,7 +17,6 @@ const CartScreen = () => {
         <SafeAreaView style={commonStyle.constainer}>
             <Header
                 Text='Cart'
-                onPress={() => navigation.goBack()}
             />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={[commonStyle.rowSpace, commonStyle.m_20, commonStyle.mV20]}>

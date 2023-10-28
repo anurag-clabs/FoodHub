@@ -34,11 +34,6 @@ export const styles = StyleSheet.create({
   BackImg: {
     resizeMode: 'contain',
   },
-  UserImg: {
-    height: ms(40),
-    width: ms(40),
-    borderRadius: 10,
-  },
   TextHeader: {
     flexDirection: 'row',
     alignSelf: 'center',
