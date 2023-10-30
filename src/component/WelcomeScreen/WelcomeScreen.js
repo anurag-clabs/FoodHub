@@ -33,12 +33,10 @@ const WelcomScreen = () => {
       const data = await GoogleSignin.signIn();
       const googleCredential = auth.GoogleAuthProvider.credential(data.idToken);
       const res = await auth().signInWithCredential(googleCredential);
-      console.log('Google', res.user);
-      const email = res.user.email;
-      const name = res.user.displayName;
+      const email = res?.user?.email;
+      const name = res?.user?.displayName;
 
       const deviceId = await DeviceInfo.getUniqueId();
-      console.log('Device ID:', deviceId);
 
       const SocialLoginData = {
         name: name,
@@ -48,7 +46,6 @@ const WelcomScreen = () => {
       setLoader(true);
       const response = await UserSocialLogin(SocialLoginData);
       setLoader(false);
-      console.log('UserSocialLogin', response);
       if (response) {
         console.log('Google Sign-in successful');
         navigation.navigate('Drawer');
@@ -86,7 +83,7 @@ const WelcomScreen = () => {
           </View>
           <View style={[styles.iconView, commonStyle.m_20]}>
             <SocialButton
-            style={commonStyle.blackShadow}
+              style={commonStyle.blackShadow}
               image={images.facebook}
               buttonName='FACEBOOK'
             />

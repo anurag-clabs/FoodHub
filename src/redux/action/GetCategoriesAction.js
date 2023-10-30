@@ -8,7 +8,7 @@ export const GetCategoriesAction = () => {
     try {
       dispatch(actions.CategoriesRequest());
         const result = await apiInstance.get('categories');
-        dispatch(actions.CategoriesSuccess(result?.data));
+        dispatch(actions.CategoriesSuccess(result?.data?.data));
     } catch (error) {
       console.log('No category list found');
       dispatch(actions.CategoriesError(error?.response?.data?.message));

@@ -8,18 +8,19 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import FavoriteResturentScreen from '../component/Favorites/FavoriteResturentScreen';
 import FavoritesFoodScreen from '../component/Favorites/FavoritesFoodScreen';
 import CustomTabBar from '../navigation/CustomTabBar';
+import { useSelector } from 'react-redux';
 
 const FavoritesFood = () => {
-  const navigation = useNavigation();
   const ProfileTabNavigator = createMaterialTopTabNavigator();
+
+  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData);
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <Header
         Text="Favorites"
-        onPress={() => navigation.goBack()}
-        HeaderImg={images.UserProfile}
         HeaderImgstyle={commonStyle.headerImg}
+        showImage={true}
       />
       <ProfileTabNavigator.Navigator
         tabBar={props => <CustomTabBar {...props} />}>

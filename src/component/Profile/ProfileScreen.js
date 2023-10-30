@@ -9,6 +9,7 @@ import {
   SafeAreaView,
   ScrollView,
   KeyboardAvoidingView,
+  Platform,
 } from 'react-native';
 import { styles } from './style';
 import { images } from '../../utils/image';
@@ -114,24 +115,28 @@ const ProfileScreen = () => {
 
   const handleSave = async () => {
     setLoader(true);
-    const formData = new FormData();
-    formData.append('name', name);
-    formData.append('email', email);
-    formData.append('phoneNumber', phoneNumber);
-    formData.append('location', location);
-    if (profileImage) {
-      formData.append('image', {
-        name: `${new Date().getTime()}.jpg`,
-        uri: profileImage,
-        type: 'image/jpeg',
-      });
-    } else {
-      formData.append('image', null);
-    }
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('phoneNumber', phoneNumber);
+      formData.append('location', location);
 
-    console.log('Updated data', JSON.stringify(formData));
-    await UpdateProfileAction(formData)
-    setLoader(false);
+      if (profileImage) {
+        formData.append('image', {
+          name: `${new Date().getTime()}.jpg`,
+          uri: profileImage,
+          type: 'image/jpeg',
+        });
+      } else {
+        formData.append('image', null);
+      }
+      await UpdateProfileAction(formData);
+      setLoader(false);
+    } catch (error) {
+      setLoader(false);
+      console.error('API error:', error);
+    }
   };
 
   return (
@@ -139,16 +144,18 @@ const ProfileScreen = () => {
       <ImageBackground
         source={images.ProfileBackGround}
         style={commonStyle.backGroundImg}>
+        <BackButton
+          style={styles.BackImgView}
+          onPress={() => navigation.goBack()}
+        />
         <ScrollView showsVerticalScrollIndicator={false}>
-          <BackButton
-            style={styles.BackImgView}
-            onPress={() => navigation.goBack()}
-          />
+
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
-            style={{ flex: 1 }}
+            style={[{ flex: 1 }]}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 0 : 80}
           >
-            <View style={styles.ProfileView}>
+            <View style={[styles.ProfileView, commonStyle.mB10]}>
               <View style={styles.ProfileImgView}>
                 {profileImage?.length > 0 ? (
                   <Image source={{ uri: profileImage }} style={styles.ProfileImage} />
@@ -160,12 +167,6 @@ const ProfileScreen = () => {
                 </TouchableOpacity>
               </View>
               <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
-              <TouchableOpacity>
-                <Text
-                  style={styles.editProfileTxt}>
-                  Edit Profile
-                </Text>
-              </TouchableOpacity>
             </View>
             <View style={[commonStyle.m_20]}>
               <Text style={styles.textInputTxt}>Full Name</Text>
@@ -219,13 +220,15 @@ const ProfileScreen = () => {
               />
             </View>
           </KeyboardAvoidingView>
-          <Button
-            buttonName="SAVE"
-            color={colors.orange}
-            onPress={handleSave}
-            loading={loader}
-          />
         </ScrollView>
+        <Button
+          style={styles.btnPosition}
+          buttonName="SAVE"
+          color={colors.orange}
+          onPress={handleSave}
+          disabled={loader}
+          loading={loader}
+        />
         <ActionSheet
           ref={actionRef}
           title={'Which one do you like ?'}

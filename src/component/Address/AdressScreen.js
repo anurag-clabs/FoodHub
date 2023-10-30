@@ -15,10 +15,9 @@ import {colors} from '../../utils/colors';
 import {DropDown} from '../../common/DropDown/DropDown';
 
 const AdressScreen = () => {
-  const navigation = useNavigation();
   return (
     <SafeAreaView style={commonStyle.constainer}>
-        <Header Text="Add new address" onPress={() => navigation.goBack()} />
+        <Header Text="Add new address"  />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={[commonStyle.m_20, commonStyle.mV25]}>
           <Text style={styles.TextInputTxt}>Full Name</Text>

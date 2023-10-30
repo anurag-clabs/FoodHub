@@ -32,7 +32,6 @@ const HelpsFAQScreen = () => {
         <SafeAreaView style={commonStyle.constainer}>
             <Header
                 Text='Helps & FAQs'
-                onPress={() => navigation.goBack()}
             />
             <View style={styles.header}>
                 <Text style={styles.headerText}>Helps & FAQs</Text>

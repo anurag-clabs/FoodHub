@@ -72,4 +72,8 @@ export const styles = StyleSheet.create({
     fontFamily: Font.SofiaProRegular,
     color: colors.GreySuit,
   },
+  btnPosition: {
+    position: 'relative',
+    bottom: 10,
+  },
 });
