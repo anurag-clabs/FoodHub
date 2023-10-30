@@ -105,10 +105,7 @@ const LoginScreen = () => {
       <ImageBackground
         source={images.commonBackGround}
         style={commonStyle.backGroundImg}>
-        <BackButton
-          style={styles.BackImgView}
-          onPress={() => navigation.goBack()}
-        />
+        <BackButton />
         <View style={[commonStyle.m_20, commonStyle.mV5]}>
           <Text style={styles.headerTxt}>Login</Text>
           <View style={[commonStyle.rowCenter, styles.toggleView]}>

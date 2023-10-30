@@ -9,16 +9,15 @@ import {
 import React from 'react';
 import {commonStyle} from '../../utils/commonStyles';
 import {styles} from './style';
-import {useNavigation} from '@react-navigation/native';
 import {images} from '../../utils/image';
 import {ms, vs} from 'react-native-size-matters';
-import { Header } from '../Header/Header';
+import { Header } from '../../common/Header/Header';
 
 const ContactScreen = () => {
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <Header
-        Text={'Contact Us'}
+        text={'Contact Us'}
       />
       <View style={[commonStyle.mH15, commonStyle.mT10]}>
         <View style={commonStyle.flexRow}>

@@ -47,9 +47,9 @@ const FilterScreen = ({ onclick }) => {
         </TouchableOpacity>
         <ApplyButton
           style={styles.applyButton}
-          Txtstyle={styles.Txtstyle}
+          txtstyle={styles.Txtstyle}
           color={colors.orange}
-          Txtcolor={colors.white}
+          txtcolor={colors.white}
           buttonName='Apply'
         />
       </View>

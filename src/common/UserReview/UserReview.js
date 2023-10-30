@@ -1,6 +1,5 @@
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
-import { images } from '../../utils/image'
+import React from 'react';
+import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
 import { commonStyle } from '../../utils/commonStyles'
 import { ms, s, vs } from 'react-native-size-matters'
 import { Font } from '../../utils/Fonts'
@@ -11,20 +10,20 @@ const UserReview = props => {
         <View style={styles.userView}>
             <View style={styles.userHeaderView}>
                 <View style={styles.userImgView}>
-                    <Image source={props.UserImage} style={styles.userImg} />
+                    <Image source={props.userImage} style={styles.userImg} />
                     <View style={styles.reviewCount}>
-                        <Text style={styles.reviewCountTxt}>{props.Rating}</Text>
+                        <Text style={styles.reviewCountTxt}>{props.rating}</Text>
                     </View>
                 </View>
                 <View style={styles.usernameView}>
-                    <Text style={styles.userName}>{props.UserName}</Text>
-                    <Text style={styles.date}>{props.Date}</Text>
+                    <Text style={styles.userName}>{props.userName}</Text>
+                    <Text style={styles.date}>{props.date}</Text>
                 </View>
                 <TouchableOpacity>
-                    <Image source={props.MoreImage} style={commonStyle.ImageStyle} />
+                    <Image source={props.moreImage} style={commonStyle.imageStyle} />
                 </TouchableOpacity>
             </View>
-            <Text style={styles.reviewDescription}>{props.ReviewDescription}</Text>
+            <Text style={styles.reviewDescription}>{props.reviewDescription}</Text>
         </View>
     )
 }
@@ -54,7 +53,7 @@ const styles = StyleSheet.create({
     usernameView: {
         height: vs(55),
         width: s(190),
-        marginHorizontal: s(10), 
+        marginHorizontal: s(10),
         marginRight: 50,
     },
     reviewCount: {

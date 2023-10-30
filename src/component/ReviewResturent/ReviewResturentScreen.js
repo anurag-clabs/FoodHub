@@ -32,10 +32,7 @@ const ReviewResturentScreen = () => {
 
     return (
         <SafeAreaView style={commonStyle.constainer}>
-            <BackButton
-                style={styles.BackImgView} 
-                onPress={() => navigation.goBack()}
-                />
+            <BackButton />
             <ScrollView showsHorizontalScrollIndicator={false} >
                 <View style={styles.mainView}>
                     <View style={styles.ResturentLogoView}>

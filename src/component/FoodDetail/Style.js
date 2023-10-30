@@ -4,7 +4,7 @@ import { colors } from "../../utils/colors";
 import { Font } from "../../utils/Fonts";
 
 export const styles = StyleSheet.create({
-    BackgroundImg: {
+    backgroundImg: {
         width: 'auto',
         height: vs(180),
         resizeMode: 'contain'
@@ -17,11 +17,11 @@ export const styles = StyleSheet.create({
         fontSize: 30,
         color: colors.black
     },
-    BackImgView: {
+    backImgView: {
         marginTop: vs(10),
         marginHorizontal: s(10),
     },
-    HeartIconView: {
+    heartIconView: {
         borderRadius: ms(30) / 2,
         backgroundColor: colors.orange,
         height: ms(32),
@@ -29,9 +29,7 @@ export const styles = StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
     },
-    FavoritesreviewTxtView: {
-    },
-    ReviewTxt: {
+    reviewTxt: {
         fontFamily: Font.SofiaProMedium,
         fontSize: 15,
         color: colors.black
@@ -61,7 +59,7 @@ export const styles = StyleSheet.create({
         color: colors.black,
         fontSize: 20
     },
-    FoodDetail: {
+    foodDetail: {
         fontSize: 15,
         fontFamily: Font.SofiaProRegular,
     },

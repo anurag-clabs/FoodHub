@@ -5,24 +5,24 @@ import {Font} from '../../utils/Fonts';
 import {ms} from 'react-native-size-matters';
 
 export const styles = StyleSheet.create({
-  BackgroundImg: {
+  backgroundImg: {
     width: s(310),
     height: vs(150),
     borderRadius: 15,
   },
-  FoodBackgroundImg: {
+  foodBackgroundImg: {
     height: vs(140),
     width: s(140),
     borderRadius: 15,
   },
-  MainView: {
+  mainView: {
     marginHorizontal: s(10),
     borderRadius: 20,
     marginBottom: vs(20),
     backgroundColor: colors.white,
     elevation: 1.5,
   },
-  IosShadow: {
+  iosShadow: {
     marginHorizontal: s(10),
     borderRadius: 20,
     marginBottom: vs(20),
@@ -32,7 +32,7 @@ export const styles = StyleSheet.create({
     shadowColor: '#171717',
     shadowOffset: {width: 0, height: 2},
   },
-  PriceTagView: {
+  priceTagView: {
     borderRadius: 20,
     backgroundColor: colors.white,
     height: vs(28),
@@ -41,7 +41,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     flexDirection: 'row',
   },
-  HeartIconView: {
+  heartIconView: {
     borderRadius: ms(30) / 2,
     backgroundColor: colors.orange,
     height: ms(32),
@@ -49,18 +49,18 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  PriceTagTxt: {
+  priceTagTxt: {
     fontFamily: Font.SofiaProBold,
     color: colors.black,
     fontSize: 22,
   },
-  PriceHeaderView: {
+  priceHeaderView: {
     marginTop: vs(5),
     marginHorizontal: s(10),
     flexDirection: 'row',
     justifyContent: 'space-between',
   },
-  FavoritespriceHeaderView: {
+  favoritespriceHeaderView: {
     marginTop: vs(10),
     marginHorizontal: s(5),
     flexDirection: 'row',
@@ -69,7 +69,7 @@ export const styles = StyleSheet.create({
     width: s(290),
     left: s(15),
   },
-  ReviewTxtView: {
+  reviewTxtView: {
     borderRadius: ms(30) / 2,
     backgroundColor: colors.white,
     height: ms(32),
@@ -81,7 +81,7 @@ export const styles = StyleSheet.create({
     bottom: vs(60),
     left: s(8),
   },
-  FavoritesreviewTxtView: {
+  favoritesreviewTxtView: {
     borderRadius: ms(30) / 2,
     backgroundColor: colors.white,
     height: ms(32),
@@ -93,7 +93,7 @@ export const styles = StyleSheet.create({
     bottom: vs(60),
     left: 15,
   },
-  Favoritesreview: {
+  favoritesreview: {
     borderRadius: ms(30) / 2,
     backgroundColor: colors.white,
     height: ms(32),
@@ -108,25 +108,25 @@ export const styles = StyleSheet.create({
     bottom: vs(60),
     left: 15,
   },
-  ReviewTxt: {
+  reviewTxt: {
     fontFamily: Font.SofiaProMedium,
     fontSize: 12,
     color: colors.black,
   },
-  ItemNameView: {
+  itemNameView: {
     marginHorizontal: s(10),
     marginVertical: vs(15),
   },
-  ItemName: {
+  itemName: {
     fontFamily: Font.SofiaProBold,
     color: colors.black,
     fontSize: 20,
   },
-  ItemDescription: {
+  itemDescription: {
     fontFamily: Font.SofiaProMedium,
     fontSize: 15,
   },
-  RatingHeaderView: {
+  ratingHeaderView: {
     width: s(150),
     marginTop: vs(10),
     marginHorizontal: s(5),

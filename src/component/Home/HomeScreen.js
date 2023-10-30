@@ -46,8 +46,6 @@ const HomeScreen = () => {
   const handleCategories = () => dispatch(GetCategoriesAction());
 
   const categories = useSelector(state => state?.GetCatecories?.categoriesGet);
-  const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData);
-
 
   useEffect(() => {
     handleCategories();
@@ -56,17 +54,17 @@ const HomeScreen = () => {
   const renderRestaurants = ({ item }) => (
     <View style={commonStyle.v_10}>
       <Resturents
-        BackgroundImg={item.BackgroundImg}
-        RestaurantName={item.RestaurantName}
-        Rating={item.Rating}
-        Verified={item.Verified}
-        DeliveryIcon={item.DeliveryIcon}
-        DeliveryOption={item.DeliveryOption}
-        TimeIcon={item.TimeIcon}
-        DeliveryTime={item.DeliveryTime}
-        Burger={item.Burger}
-        Chicken={item.Chicken}
-        FastFood={item.FastFood}
+        backgroundImg={item.BackgroundImg}
+        restaurantName={item.RestaurantName}
+        rating={item.Rating}
+        verified={item.Verified}
+        deliveryIcon={item.DeliveryIcon}
+        deliveryOption={item.DeliveryOption}
+        timeIcon={item.TimeIcon}
+        deliveryTime={item.DeliveryTime}
+        burger={item.Burger}
+        chicken={item.Chicken}
+        fastFood={item.FastFood}
         onPress={() => navigation.navigate('Reviews')}
       />
     </View>
@@ -97,11 +95,11 @@ const HomeScreen = () => {
   const renderFoodItem = ({ item }) => (
     <View style={[commonStyle.v_10]}>
       <FoodItem
-        ItemImg={item.ItemImg}
-        Price={item.Price}
-        Rating={item.Rating}
-        FoodName={item.FoodName}
-        FoodDescription={item.FoodDescription}
+        itemImg={item.ItemImg}
+        price={item.Price}
+        rating={item.Rating}
+        foodName={item.FoodName}
+        foodDescription={item.FoodDescription}
         onPress={() => navigation.navigate('Reviews')}
       />
     </View>
@@ -111,11 +109,9 @@ const HomeScreen = () => {
     <SafeAreaView style={commonStyle.constainer}>
       <MenuHeader
         onPress={openDrawerClick}
-        Deliver="Deliver to"
-        DeliveryAddress="4102 Pretty View Lane"
-        profileImage={getUserDetail?.image}
-        HeaderImg={images.UserProfile}
-        HeaderImgstyle={commonStyle.headerImg}
+        deliver="Deliver to"
+        deliveryAddress="4102 Pretty View Lane"
+        showImage={true}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
 

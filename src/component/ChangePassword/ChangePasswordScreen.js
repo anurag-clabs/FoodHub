@@ -57,7 +57,7 @@ const ChangePasswordScreen = () => {
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <ScrollView showsVerticalScrollIndicator={false}>
-        <Header Text={'Change Password'} />
+        <Header text={'Change Password'} />
         <View style={[commonStyle.m_20, commonStyle.mV15]}>
           <Text style={styles.textInputTxt}>Current Password</Text>
           <TextInput

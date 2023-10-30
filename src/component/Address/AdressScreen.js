@@ -17,7 +17,7 @@ import {DropDown} from '../../common/DropDown/DropDown';
 const AdressScreen = () => {
   return (
     <SafeAreaView style={commonStyle.constainer}>
-        <Header Text="Add new address"  />
+        <Header text="Add new address"  />
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={[commonStyle.m_20, commonStyle.mV25]}>
           <Text style={styles.TextInputTxt}>Full Name</Text>

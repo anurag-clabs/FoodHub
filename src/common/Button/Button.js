@@ -6,13 +6,13 @@ import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
 import Icon from 'react-native-vector-icons/FontAwesome6';
 import { colors } from '../../utils/colors';
+import { useNavigation } from '@react-navigation/native';
 
 export const Button = props => {
   return (
     <TouchableOpacity
       style={[Styles.Button, props.style, { backgroundColor: props.color }]}
       onPress={props.onPress}
-      disabled={props.disabled}
     >
       {!props?.loading ? (
         <Text style={Styles.TextButton}>{props.buttonName}</Text>
@@ -69,11 +69,12 @@ export const TitleHeader = ({ onPress, title, source }) => {
 };
 
 export const BackButton = props => {
+  const navigation = useNavigation();
   return (
     <TouchableOpacity
       style={[Styles.BackImgView, props.style]}
-      onPress={() => props.onPress()}>
-      <Image source={images.BackImg} style={commonStyle.ImageStyle} />
+      onPress={() => navigation.goBack()}>
+      <Image source={images.BackImg} style={commonStyle.imageStyle} />
     </TouchableOpacity>
   );
 };
@@ -83,7 +84,7 @@ export const MenuButton = props => {
     <TouchableOpacity
       style={[Styles.BackImgView, props.style]}
       onPress={() => props.onPress()}>
-      <Image source={images.Menu} style={commonStyle.ImageStyle} />
+      <Image source={images.Menu} style={commonStyle.imageStyle} />
     </TouchableOpacity>
   );
 };
@@ -94,7 +95,7 @@ export const SmallButton = props => {
     <TouchableOpacity
       style={[Styles.buttonView, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
-      <Text style={[Styles.ButtonTxt, { color: props.Txtcolor }]}>{props.buttonName}</Text>
+      <Text style={[Styles.ButtonTxt, { color: props.txtcolor }]}>{props.buttonName}</Text>
     </TouchableOpacity>
   )
 }
@@ -104,7 +105,7 @@ export const ApplyButton = props => {
     <TouchableOpacity
       style={[Styles.applyButtonView, props.style, { backgroundColor: props.color }]}
       onPress={() => props.onPress()}>
-      <Text style={[Styles.ButtonTxt2, props.Txtstyle, { color: props.Txtcolor }]}>{props.buttonName}</Text>
+      <Text style={[Styles.ButtonTxt2, props.txtstyle, { color: props.txtcolor }]}>{props.buttonName}</Text>
     </TouchableOpacity>
   )
 }
