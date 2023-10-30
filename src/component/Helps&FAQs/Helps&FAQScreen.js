@@ -31,7 +31,7 @@ const HelpsFAQScreen = () => {
     return (
         <SafeAreaView style={commonStyle.constainer}>
             <Header
-                Text='Helps & FAQs'
+                text='Helps & FAQs'
             />
             <View style={styles.header}>
                 <Text style={styles.headerText}>Helps & FAQs</Text>

@@ -11,11 +11,11 @@ const FavoritesFoodScreen = () => {
 
   const renderItem = ({item}) => (
     <FavoritesFoodItem
-      ItemImg={item.ItemImg}
-      Price={item.Price}
-      Rating={item.Rating}
-      FoodName={item.FoodName}
-      FoodDescription={item.FoodDescription}
+      itemImg={item.ItemImg}
+      price={item.Price}
+      rating={item.Rating}
+      foodName={item.FoodName}
+      foodDescription={item.FoodDescription}
       onPress={() => navigation.navigate('Reviews')}
     />
   );

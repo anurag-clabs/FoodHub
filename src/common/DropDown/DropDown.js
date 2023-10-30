@@ -7,7 +7,7 @@ export const DropDown = props => {
   return (
     <View style={commonStyle.Boxs}>
       <Dropdown
-        style={[commonStyle.dropdown, props.isFocus && Styles.focusColor]}
+        style={[commonStyle.dropdown, props.isFocus && styles.focusColor]}
         placeholderStyle={commonStyle.BoxText}
         placeholder={props.placeholder}
         selectedTextStyle={commonStyle.BoxText}
@@ -19,7 +19,7 @@ export const DropDown = props => {
         iconStyle={commonStyle.DownArrow}
         labelField="label"
         valueField="value"
-        value={props.DropDownValue}
+        value={props.dropDownValue}
         disable={props.disable}
         onChange={props.onchangeFunction}
         itemTextStyle={{color: 'black'}}

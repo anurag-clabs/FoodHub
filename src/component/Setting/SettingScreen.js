@@ -12,7 +12,7 @@ const SettingScreen = () => {
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <Header
-        Text='Setting'
+        text='Setting'
       />
       <View style={[commonStyle.m_20, commonStyle.mT20]}>
         {Setting.map(item => {

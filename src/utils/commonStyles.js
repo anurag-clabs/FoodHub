@@ -60,7 +60,7 @@ export const commonStyle = StyleSheet.create({
     width: Dimensions.get('window').width,
     height: Dimensions.get('window').height,
   },
-  ImageStyle: {
+  imageStyle: {
     height: ms(15),
     width: ms(15),
     resizeMode: 'contain',
@@ -164,5 +164,4 @@ export const commonStyle = StyleSheet.create({
     shadowRadius: 4,
     elevation: 5, 
   },
-
 });

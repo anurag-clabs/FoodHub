@@ -42,10 +42,7 @@ const RatingScreen = () => {
       <ScrollView showsVerticalScrollIndicator={false}>
         <View style={[commonStyle.m_20, styles.headerView]}>
           <ImageBackground source={images.FoodItem1} style={styles.BackgroundImg} imageStyle={{ borderRadius: 15 }}>
-            <BackButton
-              style={styles.BackImgView}
-              onPress={() => navigation.goBack()}
-            />
+            <BackButton />
             <View style={styles.logoMainView}>
               <View style={styles.logoImgView}>
                 <View style={styles.PizzaHutImageView}>

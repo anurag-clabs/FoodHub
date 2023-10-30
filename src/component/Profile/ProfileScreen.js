@@ -146,10 +146,8 @@ const ProfileScreen = () => {
         style={commonStyle.backGroundImg}>
         <BackButton
           style={styles.BackImgView}
-          onPress={() => navigation.goBack()}
         />
         <ScrollView showsVerticalScrollIndicator={false}>
-
           <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'position'}
             style={[{ flex: 1 }]}
@@ -163,7 +161,7 @@ const ProfileScreen = () => {
                   <Image source={images.UserProfile} style={styles.ProfileImage} />
                 )}
                 <TouchableOpacity style={styles.CameraView} onPress={clickOnFunction}>
-                  <Image source={images.Camera} style={commonStyle.ImageStyle} />
+                  <Image source={images.Camera} style={commonStyle.imageStyle} />
                 </TouchableOpacity>
               </View>
               <Text style={styles.profileText}>{getUserDetail?.name || 'User Name'}</Text>
@@ -226,7 +224,6 @@ const ProfileScreen = () => {
           buttonName="SAVE"
           color={colors.orange}
           onPress={handleSave}
-          disabled={loader}
           loading={loader}
         />
         <ActionSheet

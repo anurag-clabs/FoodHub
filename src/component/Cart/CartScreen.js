@@ -15,9 +15,7 @@ const CartScreen = () => {
     const navigation = useNavigation();
     return (
         <SafeAreaView style={commonStyle.constainer}>
-            <Header
-                Text='Cart'
-            />
+            <Header text='Cart' />
             <ScrollView showsVerticalScrollIndicator={false}>
                 <View style={[commonStyle.rowSpace, commonStyle.m_20, commonStyle.mV20]}>
                     <Image source={images.ChickenHawaiian} style={styles.ItemImg} />
@@ -67,7 +65,7 @@ const CartScreen = () => {
                     />
                     <ApplyButton
                         color={colors.orange}
-                        Txtcolor={colors.white}
+                        txtcolor={colors.white}
                         buttonName='Apply'
                     />
                 </View>

@@ -12,11 +12,11 @@ const FavoriteResturentScreen = () => {
     return UpcomingOrder.map((item) => (
       <OrderDetail
         key={item.Id}
-        RestaurantName={item.RestaurantName}
-        RestaurantImage={item.RestaurantImage}
-        EstimateTime={item.EstimateTime}
-        Items={item.Items}
-        OrderNumber={item.OrderNumber}
+        restaurantName={item.RestaurantName}
+        restaurantImage={item.RestaurantImage}
+        estimateTime={item.EstimateTime}
+        items={item.Items}
+        orderNumber={item.OrderNumber}
       />
     ));
     }
@@ -25,11 +25,11 @@ const FavoriteResturentScreen = () => {
       return OrderHistoryData.map((item) => (
         <OrderHistory
           key={item.Id}
-          RestaurantName={item.RestaurantName}
-          RestaurantImage={item.RestaurantImage}
-          OrderDate={item.OrderDate}
-          OrderPrice={item.OrderPrice}
-          Items={item.Items}
+          restaurantName={item.RestaurantName}
+          restaurantImage={item.RestaurantImage}
+          orderDate={item.OrderDate}
+          orderPrice={item.OrderPrice}
+          items={item.Items}
         />
       ));
     };

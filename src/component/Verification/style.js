@@ -4,18 +4,7 @@ import { Font } from "../../utils/Fonts";
 import { s, vs, ms } from "react-native-size-matters";
 
 export const styles = StyleSheet.create({
-    constainer: {
-        flex: 1,
-    },
-    BackImgView: {
-        marginTop: vs(30),
-        marginHorizontal: s(20),
-    },
-    BackImg: {
-        height: ms(15),
-        width: ms(15),
-        resizeMode: 'contain',
-    },
+
     headerTxt: {
         fontFamily: Font.SofiaProBold,
         fontSize: 36,
@@ -58,7 +47,6 @@ export const styles = StyleSheet.create({
     codelineStyleHighLighted: {
         borderColor: colors.orange,
     },
-    otpView: {},
     textInputContainer: {
         marginVertical: vs(30),
     },

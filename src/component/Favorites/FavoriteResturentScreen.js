@@ -11,17 +11,17 @@ const FavoriteResturentScreen = () => {
 
   const renderItem = ({item}) => (
     <Resturents
-      BackgroundImg={item.BackgroundImg}
-      RestaurantName={item.RestaurantName}
-      Rating={item.Rating}
-      Verified={item.Verified}
-      DeliveryIcon={item.DeliveryIcon}
-      DeliveryOption={item.DeliveryOption}
-      TimeIcon={item.TimeIcon}
-      DeliveryTime={item.DeliveryTime}
-      Burger={item.Burger}
-      Chicken={item.Chicken}
-      FastFood={item.FastFood}
+      backgroundImg={item.BackgroundImg}
+      restaurantName={item.RestaurantName}
+      rating={item.Rating}
+      verified={item.Verified}
+      deliveryIcon={item.DeliveryIcon}
+      deliveryOption={item.DeliveryOption}
+      timeIcon={item.TimeIcon}
+      deliveryTime={item.DeliveryTime}
+      burger={item.Burger}
+      chicken={item.Chicken}
+      fastFood={item.FastFood}
       onPress={() => navigation.navigate('Reviews')}
     />
   );

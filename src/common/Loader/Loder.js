@@ -1,6 +1,5 @@
 import React from 'react';
 import {ActivityIndicator, View} from 'react-native';
-import {color} from '../../utils/colour';
 import { commonStyle } from '../../utils/commonStyles';
 import { colors } from '../../utils/colors';
 

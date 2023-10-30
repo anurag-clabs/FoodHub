@@ -4,26 +4,21 @@ import { images } from '../../utils/image';
 import { styles } from './style';
 import { commonStyle } from '../../utils/commonStyles';
 import { BackButton, BagButton } from '../../common/Button/Button';
-import { useNavigation } from '@react-navigation/native';
 import { colors } from '../../utils/colors';
 import Icon from 'react-native-vector-icons/Feather';
 import Icon1 from 'react-native-vector-icons/FontAwesome6';
 
 const FoodDetailScreen = () => {
 
-    const navigation = useNavigation();
-
     return (
         <SafeAreaView style={commonStyle.constainer}>
             <ScrollView>
             <View style={[commonStyle.m_20, styles.headerView]}>
-                <ImageBackground source={images.McDonaldBack} style={styles.BackgroundImg} imageStyle={{ borderRadius: 15 }} >
-                    <View style={[commonStyle.rowSpace, styles.BackImgView]}>
-                        <BackButton
-                            onPress={() => navigation.goBack()}
-                        />
-                        <TouchableOpacity style={styles.HeartIconView}>
-                            <Image source={images.HeartIcon} style={commonStyle.ImageStyle} />
+                <ImageBackground source={images.McDonaldBack} style={styles.backgroundImg} imageStyle={{ borderRadius: 15 }} >
+                    <View style={[commonStyle.rowSpace, styles.backImgView]}>
+                        <BackButton />
+                        <TouchableOpacity style={styles.heartIconView}>
+                            <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
                         </TouchableOpacity>
                     </View>
                 </ImageBackground>
@@ -31,7 +26,7 @@ const FoodDetailScreen = () => {
             <Text style={[commonStyle.m_20, commonStyle.v_10, styles.headerTxt]}>Ground Beef Tacos</Text>
             <View style={[commonStyle.rowCenter]}>
                 <TouchableOpacity style={[styles.FavoritesreviewTxtView, commonStyle.m_20]} >
-                    <Text style={styles.ReviewTxt}>⭐ 4.5 (25+)</Text>
+                    <Text style={styles.reviewTxt}>⭐ 4.5 (25+)</Text>
                 </TouchableOpacity>
                 <TouchableOpacity>
                     <Text style={styles.seeReviewTxt}>See Review</Text>
@@ -52,7 +47,7 @@ const FoodDetailScreen = () => {
                     </TouchableOpacity>
                 </View>
             </View>
-            <Text style={[commonStyle.m_20, commonStyle.mV15, styles.FoodDetail]}>
+            <Text style={[commonStyle.m_20, commonStyle.mV15, styles.foodDetail]}>
                 Brown the beef better. Lean ground beef – I like to use 85% lean angus. Garlic –
                 use fresh  chopped. Spices – chili powder, cumin, onion powder.
             </Text>

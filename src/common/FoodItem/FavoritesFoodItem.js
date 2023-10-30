@@ -2,7 +2,6 @@ import React from 'react';
 import {
   View,
   Text,
-  ImageBackground,
   Image,
   TouchableOpacity,
   Platform,
@@ -12,7 +11,6 @@ import {styles} from './style';
 import {images} from '../../utils/image';
 import {colors} from '../../utils/colors';
 import {useNavigation} from '@react-navigation/native';
-import {FoodData} from '../Data/Data';
 
 const FavoritesFoodItem = props => {
   const navigation = useNavigation();
@@ -20,29 +18,29 @@ const FavoritesFoodItem = props => {
   return (
     <>
       <TouchableOpacity
-        style={[styles.MainView, Platform.OS === 'ios' && styles.IosShadow]}
+        style={[styles.mainView, Platform.OS === 'ios' && styles.iosShadow]}
         onPress={() => navigation.navigate('FoodDetail')}>
-        <Image source={props.ItemImg} style={styles.BackgroundImg} />
+        <Image source={props.itemImg} style={styles.backgroundImg} />
         <TouchableOpacity
           style={[
-            styles.FavoritesreviewTxtView,
-            Platform.OS === 'ios' && styles.Favoritesreview,
+            styles.favoritesreviewTxtView,
+            Platform.OS === 'ios' && styles.favoritesreview,
           ]}
           onPress={props.onPress}>
-          <Text style={styles.ReviewTxt}>{props.Rating}</Text>
+          <Text style={styles.reviewTxt}>{props.rating}</Text>
         </TouchableOpacity>
-        <View style={styles.ItemNameView}>
-          <Text style={styles.ItemName}>{props.FoodName}</Text>
-          <Text style={styles.ItemDescription}>{props.FoodDescription}</Text>
+        <View style={styles.itemNameView}>
+          <Text style={styles.itemName}>{props.foodName}</Text>
+          <Text style={styles.itemDescription}>{props.foodDescription}</Text>
         </View>
       </TouchableOpacity>
-      <View style={styles.FavoritespriceHeaderView}>
-        <View style={styles.PriceTagView}>
+      <View style={styles.favoritespriceHeaderView}>
+        <View style={styles.priceTagView}>
           <Text style={{color: colors.orange}}>$</Text>
-          <Text style={styles.PriceTagTxt}>{props.Price}</Text>
+          <Text style={styles.priceTagTxt}>{props.price}</Text>
         </View>
-        <TouchableOpacity style={styles.HeartIconView}>
-          <Image source={images.HeartIcon} style={commonStyle.ImageStyle} />
+        <TouchableOpacity style={styles.heartIconView}>
+          <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
         </TouchableOpacity>
       </View>
     </>

@@ -32,7 +32,7 @@ const PaymentMethodScreen = () => {
     return (
         <SafeAreaView style={commonStyle.constainer}>
             <Header
-                Text='Payment Method'
+                text='Payment Method'
             />
             <View style={styles.header}>
                 <Text style={styles.headerText}>Payments methods</Text>

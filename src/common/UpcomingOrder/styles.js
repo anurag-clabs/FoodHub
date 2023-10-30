@@ -4,7 +4,7 @@ import { colors } from "../../utils/colors";
 import { Font } from "../../utils/Fonts";
 
 export const styles = StyleSheet.create({
-    MainView: {
+    mainView: {
         marginHorizontal: s(20),
         borderRadius: 20,
         marginVertical: vs(10),
@@ -23,20 +23,20 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between'
     },
-    ResturentItemView: {
+    resturentItemView: {
         marginRight: s(45),
         justifyContent: 'center',
     },
-    ResturentNameView: {
+    resturentNameView: {
         flexDirection: 'row',
         alignItems: 'center',
     },
-    ResturentNameTxt: {
+    resturentNameTxt: {
         fontFamily: Font.SofiaProBold,
         color: colors.black,
         fontSize: 17
     },
-    ItemTxt: {
+    itemTxt: {
         fontFamily: Font.SofiaProMedium,
     },
     imageView: {

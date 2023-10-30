@@ -4,7 +4,7 @@ import {colors} from '../../utils/colors';
 import {Font} from '../../utils/Fonts';
 
 export const styles = StyleSheet.create({
-    BackgroundImg: {
+    backgroundImg: {
         width: s(310),
         height: vs(150),
         borderRadius: 15
@@ -16,7 +16,7 @@ export const styles = StyleSheet.create({
         backgroundColor: colors.white,
         elevation: 1.5,
     },
-    IosShadow: {
+    iosShadow: {
         marginHorizontal: s(10),
         borderRadius: 20,
         marginBottom: vs(20),
@@ -35,14 +35,13 @@ export const styles = StyleSheet.create({
         justifyContent: 'center',
         flexDirection: 'row',
     },
-    HeartIconView: {
+    heartIconView: {
         borderRadius: ms(30) / 2,
         backgroundColor: colors.orange,
         height: ms(32),
         width: ms(32),
         alignItems: 'center',
         justifyContent: 'center',
-        // flexDirection: 'row',
     },
     priceTagTxt: {
         fontFamily: Font.SofiaProBold,
@@ -76,18 +75,18 @@ export const styles = StyleSheet.create({
         fontFamily: Font.SofiaProMedium,
         fontSize: 15,
     },
-    DeliveryIcon: {
+    deliveryIcon: {
         resizeMode: 'contain',
         width: ms(20),
         height: ms(20),
         alignSelf: 'center',
     },
-    Delivery: {
+    delivery: {
         fontFamily: Font.SofiaProRegular,
         fontSize: 16,
         alignSelf: 'center',
     },
-    Box: {
+    box: {
         marginTop: vs(10),
         marginLeft: s(10),
         height: vs(28),
@@ -98,7 +97,7 @@ export const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-evenly',
     },
-    Food: {
+    food: {
         fontFamily: Font.SofiaProRegular,
         color: colors.RomanSilver,
         fontSize: 12,

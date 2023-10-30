@@ -56,19 +56,19 @@ const ReviewScreen = () => {
 
     const renderItem = ({ item }) => (
         <UserReview
-            UserImage={item.UserImage}
-            Rating={item.Rating}
-            UserName={item.UserName}
-            Date={item.Date}
-            MoreImage={item.MoreImage}
-            ReviewDescription={item.ReviewDescription}
+            userImage={item.UserImage}
+            rating={item.Rating}
+            userName={item.UserName}
+            date={item.Date}
+            moreImage={item.MoreImage}
+            reviewDescription={item.ReviewDescription}
         />
     );
 
     return (
         <SafeAreaView style={commonStyle.constainer}>
             <Header
-                Text='Reviews'
+                text='Reviews'
             />
             <View style={styles.ReaviewTxtView}>
                 <TouchableOpacity >

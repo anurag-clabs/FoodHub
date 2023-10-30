@@ -26,11 +26,11 @@ const SearchScreen = () => {
     return FoodData.map((item, index) => (
       <View key={index}>
         <FavoritesFoodItem
-          ItemImg={item.ItemImg}
-          Price={item.Price}
-          Rating={item.Rating}
-          FoodName={item.FoodName}
-          FoodDescription={item.FoodDescription}
+          itemImg={item.ItemImg}
+          price={item.Price}
+          rating={item.Rating}
+          foodName={item.FoodName}
+          foodDescription={item.FoodDescription}
           onPress={() => navigation.navigate('Reviews')}
         />
       </View>
@@ -62,7 +62,8 @@ const SearchScreen = () => {
   return (
     <SafeAreaView styles={commonStyle.constainer}>
       <Header
-        Text='Search'
+        text='Search' 
+        showImage={true}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
       <View style={[styles.textInputStyleView, commonStyle.mT20, commonStyle.m_20]}>

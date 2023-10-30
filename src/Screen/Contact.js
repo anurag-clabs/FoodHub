@@ -1,6 +1,5 @@
-import {View, Text} from 'react-native';
 import React from 'react';
-import ContactScreen from '../common/Contact/ContactScreen';
+import ContactScreen from '../component/Contact/ContactScreen';
 
 const Contact = () => {
   return <ContactScreen />;

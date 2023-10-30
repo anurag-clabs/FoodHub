@@ -45,20 +45,20 @@ const VerificationScreen = () => {
       setLoader(false)
       if (response) {
         setIsOTPVerified(true);
-        navigation.navigate( type === 'login' ? 'Drawer' : 'Login' );
+        navigation.navigate(type === 'login' ? 'Drawer' : 'Login');
       }
     }
   };
 
   return (
-    <SafeAreaView style={styles.constainer}>
+    <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
         <View style={[commonStyle.m_20, commonStyle.mV20]}>
           <Text style={styles.headerTxt}>Verification Code</Text>
           <Text style={styles.textInputTxt}>
-            Please type the verification code sent to 
-            {email ? ` ${email.toString().slice(0,5)}*****` : ''}
-            {phoneNumber ? `*****${phoneNumber.toString().slice(5,10)}` : ''}
+            Please type the verification code sent to
+            {email ? ` ${email.toString().slice(0, 5)}*****` : ''}
+            {phoneNumber ? `*****${phoneNumber.toString().slice(5, 10)}` : ''}
           </Text>
           <OTPTextView
             key={isOTPVerified ? 'verified' : 'unverified'}

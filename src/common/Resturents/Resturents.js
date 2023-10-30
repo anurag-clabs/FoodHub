@@ -1,48 +1,48 @@
 import React from 'react';
-import { View, Text, ImageBackground, Image, TouchableOpacity } from 'react-native'
+import { View, Text, Image, TouchableOpacity } from 'react-native'
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
-import { s, vs } from 'react-native-size-matters';
+import { vs } from 'react-native-size-matters';
 
 const Resturents = props => {
     return (
         <>
-            <TouchableOpacity style={[styles.mainView, Platform.OS === 'ios' && styles.IosShadow]}>
-                <Image source={props.BackgroundImg} style={styles.BackgroundImg} />
+            <TouchableOpacity style={[styles.mainView, Platform.OS === 'ios' && styles.iosShadow]}>
+                <Image source={props.backgroundImg} style={styles.backgroundImg} />
                 <View style={[commonStyle.f_D_R, { alignItems: 'center' }]} >
-                    <Text style={styles.itemName}>{props.RestaurantName} </Text>
-                    <Image style={commonStyle.ImageStyle} source={props.Verified} />
+                    <Text style={styles.itemName}>{props.restaurantName} </Text>
+                    <Image style={commonStyle.imageStyle} source={props.verified} />
                 </View>
                 <View style={[commonStyle.f_D_R]}>
                     <Image
-                        style={styles.DeliveryIcon}
-                        source={props.DeliveryIcon}
+                        style={styles.deliveryIcon}
+                        source={props.deliveryIcon}
                     />
-                    <Text style={[styles.Delivery, { marginRight: 20 }]}>
-                        {props.DeliveryOption}
+                    <Text style={[styles.delivery, { marginRight: 20 }]}>
+                        {props.deliveryOption}
                     </Text>
-                    <Image style={styles.DeliveryIcon} source={props.TimeIcon} />
-                    <Text style={styles.Delivery}>{props.DeliveryTime}</Text>
+                    <Image style={styles.deliveryIcon} source={props.timeIcon} />
+                    <Text style={styles.delivery}>{props.deliveryTime}</Text>
                 </View>
                 <View style={{ flexDirection: 'row', marginBottom: vs(10) }}>
-                    <View style={styles.Box}>
-                        <Text style={styles.Food}>{props.Burger}</Text>
+                    <View style={styles.box}>
+                        <Text style={styles.food}>{props.burger}</Text>
                     </View>
-                    <View style={styles.Box}>
-                        <Text style={styles.Food}>{props.Chicken}</Text>
+                    <View style={styles.box}>
+                        <Text style={styles.food}>{props.chicken}</Text>
                     </View>
-                    <View style={styles.Box}>
-                        <Text style={styles.Food}>{props.FastFood}</Text>
+                    <View style={styles.box}>
+                        <Text style={styles.food}>{props.fastFood}</Text>
                     </View>
                 </View>
             </TouchableOpacity>
             <View style={styles.ratingHeaderView}>
                 <TouchableOpacity style={styles.priceTagView} onPress={props.onPress}>
-                    <Text style={styles.reviewTxt}>{props.Rating}</Text>
+                    <Text style={styles.reviewTxt}>{props.rating}</Text>
                 </TouchableOpacity>
-                <TouchableOpacity style={styles.HeartIconView}>
-                    <Image source={images.HeartIcon} style={commonStyle.ImageStyle} />
+                <TouchableOpacity style={styles.heartIconView}>
+                    <Image source={images.HeartIcon} style={commonStyle.imageStyle} />
                 </TouchableOpacity>
             </View>
         </>

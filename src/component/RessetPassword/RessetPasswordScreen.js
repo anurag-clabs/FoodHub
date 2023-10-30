@@ -43,10 +43,7 @@ const RessetPasswordScreen = () => {
   return (
     <SafeAreaView style={styles.container}>
       <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
-      <BackButton
-        style={styles.BackImgView}
-          onPress={() => navigation.goBack()}
-        />
+      <BackButton/>
         <View style={[commonStyle.m_20, commonStyle.mV20]}>
           <Text style={styles.headerTxt}>Resset Password</Text>
           <Text style={styles.textInputTxt}>Please enter your email address to request a password reset</Text>
