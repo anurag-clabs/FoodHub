@@ -14,7 +14,6 @@ import {
 import { styles } from './style';
 import { images } from '../../utils/image';
 import { commonStyle } from '../../utils/commonStyles';
-import { useNavigation } from '@react-navigation/native';
 import { BackButton, Button } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { GetUserDetailAction } from '../../redux/action/UserDetailAction';
@@ -26,7 +25,6 @@ import ImagePicker from 'react-native-image-crop-picker';
 const ProfileScreen = () => {
   const actionRef = useRef();
   const dispatch = useDispatch();
-  const navigation = useNavigation();
 
   const getUserDetail = useSelector(state => state?.GetUserDetail?.profileData);
 
@@ -49,8 +47,8 @@ const ProfileScreen = () => {
 
   useEffect(() => {
     setName(getUserDetail?.name);
-    setEmail(getUserDetail?.email);
-    setPhoneNumber(getUserDetail?.phoneNumber);
+    setEmail(getUserDetail?.email || '');
+    setPhoneNumber(getUserDetail?.phoneNumber || '');
     setLocation(getUserDetail?.location);
     setProfileImage(getUserDetail?.image)
   }, [getUserDetail]);
@@ -75,6 +73,7 @@ const ProfileScreen = () => {
     setIsPhoneNumberFocused(true);
     setIsLocationFocused(false);
   };
+
   const handleLocationFocus = () => {
     setIsFirstNameFocused(false);
     setIsEmailFocused(false);
@@ -114,7 +113,6 @@ const ProfileScreen = () => {
   }
 
   const handleSave = async () => {
-    setLoader(true);
     try {
       const formData = new FormData();
       formData.append('name', name);
@@ -131,6 +129,7 @@ const ProfileScreen = () => {
       } else {
         formData.append('image', null);
       }
+      setLoader(true);
       await UpdateProfileAction(formData);
       setLoader(false);
     } catch (error) {
@@ -189,7 +188,12 @@ const ProfileScreen = () => {
                 placeholder="Your email"
                 onFocus={handleEmailFocus}
                 value={email}
-                onChangeText={(text) => setEmail(text)}
+                editable={!getUserDetail?.email}
+                onChangeText={(text) => {
+                  if (!getUserDetail?.email) {
+                    setEmail(text);
+                  }
+                }}
               />
               <Text style={styles.textInputTxt}>Phone Number</Text>
               <TextInput
@@ -201,6 +205,7 @@ const ProfileScreen = () => {
                 placeholder="Your phone Number"
                 onFocus={handlePhoneNumberFocus}
                 maxLength={10}
+                editable={!getUserDetail?.phoneNumber}
                 value={phoneNumber?.toString()}
                 onChangeText={(text) => setPhoneNumber(text)}
               />

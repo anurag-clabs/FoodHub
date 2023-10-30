@@ -1,7 +1,7 @@
-import {StyleSheet} from 'react-native';
-import {Font} from '../../utils/Fonts';
-import {s, vs, ms} from 'react-native-size-matters';
-import {colors} from '../../utils/colors';
+import { StyleSheet } from 'react-native';
+import { Font } from '../../utils/Fonts';
+import { s, vs, ms } from 'react-native-size-matters';
+import { colors } from '../../utils/colors';
 
 export const styles = StyleSheet.create({
   constainer: {
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     elevation: 5,
   },
   ImgView: {
@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     elevation: 1,
   },
   textInputBar: {
@@ -100,48 +100,13 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     elevation: 1,
   },
   filter: {
     height: vs(20),
     width: s(20),
     resizeMode: 'contain',
-  },
-  boxElevation: {
-    // marginRight: s(10),
-    marginLeft: s(20),
-    height: vs(100),
-    width: s(62),
-    backgroundColor: colors.white,
-    borderRadius: 80 / 2,
-    alignItems: 'center',
-    justifyContent: 'center',
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: 0, height: 2},
-    elevation: 2,
-  },
-  selectedBoxElevation: {
-    backgroundColor: colors.orange,
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
-    shadowColor: colors.orange,
-    shadowOffset: {width: 0, height: 2},
-    elevation: 5,
-  },
-  image: {
-    width: ms(50),
-    height: ms(50),
-    borderRadius: 30,
-    resizeMode: 'cover',
-  },
-  name: {
-    marginVertical: vs(10),
-    color: colors.DimGray,
-    fontSize: 13,
-    fontFamily: Font.SofiaProMedium,
   },
   titleRestaurant: {
     marginHorizontal: s(20),
@@ -282,7 +247,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: {width: 0, height: 2},
+    shadowOffset: { width: 0, height: 2 },
     elevation: 5,
   },
   ItemTitle: {

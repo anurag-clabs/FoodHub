@@ -14,7 +14,7 @@ export const FullScreenLoader = () => {
 export const ButtonLoader = () => {
   return (
     <View>
-      <ActivityIndicator size={'small'} color="#fff" />
+      <ActivityIndicator size={'large'} color="#fff" />
     </View>
   );
 };

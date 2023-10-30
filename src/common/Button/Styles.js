@@ -3,7 +3,7 @@ import { ms, s, vs } from 'react-native-size-matters';
 import { Font } from '../../utils/Fonts';
 import { colors } from '../../utils/colors';
 
-export const Styles = StyleSheet.create({
+export const styles = StyleSheet.create({
   Button: {
     height: vs(45),
     width: s(220),

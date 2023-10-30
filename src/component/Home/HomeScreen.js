@@ -21,22 +21,18 @@ import {
 import Resturents from '../../common/Resturents/Resturents';
 import FoodItem from '../../common/FoodItem/FoodItem';
 import { MenuHeader } from '../../common/Header/Header';
-import { colors } from '../../utils/colors';
 import FilterScreen from '../Filter/FilterScreen';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { GetCategoriesAction } from '../../redux/action/GetCategoriesAction';
+import CategoriesList from '../../common/Categories/CategoriesList';
 
 const HomeScreen = () => {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const [selectedFood, setSelectedFood] = useState(null);
   const [isFilterModalVisible, setFilterModalVisible] = useState(false);
 
   const openDrawerClick = () => {
     navigation.openDrawer();
-  };
-  const handleFoodItemClick = index => {
-    setSelectedFood(index);
   };
 
   const toggleFilterModal = () => {
@@ -44,8 +40,6 @@ const HomeScreen = () => {
   };
 
   const handleCategories = () => dispatch(GetCategoriesAction());
-
-  const categories = useSelector(state => state?.GetCatecories?.categoriesGet);
 
   useEffect(() => {
     handleCategories();
@@ -69,28 +63,6 @@ const HomeScreen = () => {
       />
     </View>
   );
-
-  const renderCategories = ({ item, index }) => {
-    const itemStyle = [
-      styles.boxElevation,
-      selectedFood === index && styles.selectedBoxElevation,
-    ];
-    const nameStyle = [
-      styles.name,
-      selectedFood === index && { color: colors.white },
-    ];
-
-    return (
-      <TouchableOpacity
-        onPress={() => handleFoodItemClick(index)}
-        key={index._id}
-        style={[itemStyle, commonStyle.mV25]}
-      >
-        <Image style={styles.image} source={{ uri: item?.image[0] }} />
-        <Text style={nameStyle}>{item.name}</Text>
-      </TouchableOpacity>
-    );
-  };
 
   const renderFoodItem = ({ item }) => (
     <View style={[commonStyle.v_10]}>
@@ -130,13 +102,7 @@ const HomeScreen = () => {
             <Image style={styles.filter} source={images.filter} />
           </TouchableOpacity>
         </View>
-        <FlatList
-          data={categories}
-          keyExtractor={item => item._id}
-          renderItem={renderCategories}
-          horizontal
-          showsHorizontalScrollIndicator={false}
-        />
+        <CategoriesList />
         <View>
           <View style={styles.HeaderView}>
             <Text style={styles.titleRestaurant}>Featured Restaurants</Text>
