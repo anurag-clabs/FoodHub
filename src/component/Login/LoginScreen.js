@@ -105,8 +105,10 @@ const LoginScreen = () => {
       <ImageBackground
         source={images.commonBackGround}
         style={commonStyle.backGroundImg}>
-        <BackButton />
-        <View style={[commonStyle.m_20, commonStyle.mV5]}>
+        <BackButton 
+          style={[commonStyle.m_20, commonStyle.mV20]}
+        />
+        <View style={[commonStyle.m_20, ]}>
           <Text style={styles.headerTxt}>Login</Text>
           <View style={[commonStyle.rowCenter, styles.toggleView]}>
             <TouchableOpacity

@@ -16,3 +16,7 @@ export const UserDetailError = createAction(constant.USER_DETAIL_ERROR);
 export const UpdateProfileRequest = createAction(constant.UPDATE_USER_DETAIL_REQUEST);
 export const UpdateProfileSuccess = createAction(constant.UPDATE_USER_DETAIL_SUCCESS);
 export const UpdateProfileError = createAction(constant.UPDATE_USER_DETAIL_ERROR);
+
+export const UserAddressRequest = createAction(constant.USER_ADDRESS_REQUEST);
+export const UserAddressSuccess = createAction(constant.USER_ADDRESS_SUCCESS);
+export const UserAddressError = createAction(constant.USER_ADDRESS_ERROR);

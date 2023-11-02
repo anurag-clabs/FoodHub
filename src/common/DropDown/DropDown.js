@@ -2,6 +2,7 @@ import React from 'react';
 import {Dropdown} from 'react-native-element-dropdown';
 import {View} from 'react-native';
 import { commonStyle } from '../../utils/commonStyles';
+import { styles } from './style';
 
 export const DropDown = props => {
   return (
@@ -10,19 +11,18 @@ export const DropDown = props => {
         style={[commonStyle.dropdown, props.isFocus && styles.focusColor]}
         placeholderStyle={commonStyle.BoxText}
         placeholder={props.placeholder}
-        selectedTextStyle={commonStyle.BoxText}
+        selectedTextStyle={styles.boxText}
         data={props.data ? props.data.length ? props.data : [{ label: `Not Available`, value: null }]
                 : [{ label: 'Loading...', value: null }]
               }
         maxHeight={200}
-        iconColor="blue"
-        iconStyle={commonStyle.DownArrow}
+        iconStyle={styles.downArrow}
         labelField="label"
         valueField="value"
         value={props.dropDownValue}
         disable={props.disable}
         onChange={props.onchangeFunction}
-        itemTextStyle={{color: 'black'}}
+        itemTextStyle={styles.boxText}
       />
     </View>
   );

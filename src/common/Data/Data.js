@@ -1,5 +1,20 @@
 import {images} from '../../utils/image';
 
+export const AddressType = [
+  {
+    value: 'home',
+    label: 'Home'
+  },
+  {
+    value: 'office',
+    label: 'Office'
+  },
+  {
+    value: 'other',
+    label: 'Other'
+  },
+]
+
 export const FoodList = [
   {
     id: '0',

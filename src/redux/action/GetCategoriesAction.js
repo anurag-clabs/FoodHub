@@ -1,6 +1,4 @@
 import { apiInstance } from '../../httpclient/httpclient';
-import { AUTH_TOKEN } from '../../utils/constant';
-import { readData } from '../../utils/storage';
 import * as actions from './index';
 
 export const GetCategoriesAction = () => {

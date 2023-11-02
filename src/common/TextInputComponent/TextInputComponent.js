@@ -3,6 +3,7 @@ import { StyleSheet, TextInput } from "react-native";
 import { ms, s, vs } from "react-native-size-matters";
 import { colors } from "../../utils/colors";
 import { Font } from "../../utils/Fonts";
+import { commonStyle } from "../../utils/commonStyles";
 
 export const TextInputText = props => {
     return (
@@ -12,6 +13,20 @@ export const TextInputText = props => {
         onChangeText={props.onChangeText}
         placeholder={props.placeHolder}
         secureTextEntry={props.secureTextEntry}
+      />
+    );
+  };
+
+export const CommonTextInput = props => {
+    return (
+      <TextInput
+        style={[commonStyle.textInputStyle, props.style]}
+        value={props.value}
+        onChangeText={props.onChangeText}
+        placeholder={props.placeholder}
+        secureTextEntry={props.secureTextEntry}
+        keyboardType={props.keyboardType}
+        maxLength={props.maxLength}
       />
     );
   };

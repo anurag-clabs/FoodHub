@@ -14,6 +14,7 @@ import Authatication from '../Screen/AuthScreen';
 import FoodDetail from '../Screen/FoodDetail';
 import Category from '../Screen/Category';
 import Filter from '../Screen/Filter';
+import AddresseTextInput from '../common/Addresses/AddresseTextInput';
 
 const Stack = createNativeStackNavigator();
 
@@ -36,6 +37,7 @@ const StackNavigation = () => {
       <Stack.Screen name="FoodDetail" component={FoodDetail} />
       <Stack.Screen name="Category" component={Category} />
       <Stack.Screen name="Filter" component={Filter} />
+      <Stack.Screen name="AddresseTextInput" component={AddresseTextInput} />
     </Stack.Navigator>
   );
 };

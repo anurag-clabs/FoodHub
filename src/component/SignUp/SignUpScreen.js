@@ -16,10 +16,6 @@ import { Button, SocialButton } from '../../common/Button/Button';
 import { colors } from '../../utils/colors';
 import { useNavigation } from '@react-navigation/native';
 import { UserSignUp } from '../../redux/action/UserSignUp';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import auth from '@react-native-firebase/auth';
-import { saveData } from '../../utils/storage';
-import { AUTH_TOKEN } from '../../utils/constant';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();

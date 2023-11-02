@@ -20,7 +20,7 @@ export const styles = StyleSheet.create({
     fontFamily: Font.SofiaProBold,
     fontSize: 36,
     color: colors.black,
-    marginTop: vs(30),
+    marginTop: vs(25),
   },
   textInputTxt: {
     fontFamily: Font.SofiaProMedium,

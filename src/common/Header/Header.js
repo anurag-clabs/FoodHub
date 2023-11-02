@@ -36,12 +36,12 @@ export const MenuHeader = props => {
             <MenuButton
                 onPress={() => props.onPress()}
             />
-            <View>
+            <View style={commonStyle.alignCenter}>
                 <View style={styles.TextHeader}>
                     <Text style={styles.Deliver}>{props.deliver}</Text>
                     <Image style={styles.HeaderAero} source={images.HeaderAero} />
                 </View>
-                <Text style={styles.HeaderAddress}>{props.deliveryAddress}</Text>
+                <Text style={styles.HeaderAddress}>{getUserDetail.location || 'No Address Added'}</Text>
             </View>
             <View>
                 <Image source={imageSource} style={commonStyle.headerImg} />
