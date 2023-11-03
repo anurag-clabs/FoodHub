@@ -8,13 +8,12 @@ export const DeleteUserAddressAction = async id => {
     showMessage({
       type: 'success',
       duration: 2000,
-      message: 'Address updated successfully',
-      backgroundColor: colors.green,
+      message: result.data.message,
+      backgroundColor: colors.errorColor,
     });
-    console.log('Addresses Deleted successfully', result);
     return result;
   } catch (error) {
-    console.log('Error Delete User Address:', JSON.stringify(error));
+    console.log('Error Delete User Address:', error);
     return error;
   }
 }

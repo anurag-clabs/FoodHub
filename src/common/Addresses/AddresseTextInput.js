@@ -59,29 +59,20 @@ const AddresseTextInput = () => {
                 pincode: pincode,
                 type: type
             }
-            setLoader(true)
             if (editType) {
+                setLoader(true)
                 const response = await UpdateUserAddressAction(id, addressData);
-                setLoader(false)
-                if (response) {
-                    navigation.goBack();
-                } else {
-                    console.log('Update Valid User Address ', response);
-                }
                 console.log('Update User Address successful', response);
-            } else {
-                const response = await CreateUserAddress(addressData);
                 setLoader(false)
-                if (response) {
-                    navigation.goBack();
-                } else {
-                    console.log('Add Valid User Address ', response);
-                }
+            } else {
+                setLoader(true)
+                const response = await CreateUserAddress(addressData);
                 console.log('Create User Address successful', response);
+                setLoader(false)
             }
         } catch (error) {
-            console.log('Create User Address failed', error);
             setLoader(false);
+            console.log('Create User Address failed', error);
         }
     }
 
@@ -126,6 +117,7 @@ const AddresseTextInput = () => {
                     <CommonTextInput
                         keyboardType='numeric'
                         placeholder="Pincode"
+                        maxLength={6}
                         value={pincode}
                         onChangeText={(text) => setPincode(text)}
                     />
@@ -146,7 +138,6 @@ const AddresseTextInput = () => {
                 buttonName="SAVE"
                 color={colors.orange}
                 loading={loader}
-
             />
         </SafeAreaView>
     )

@@ -50,7 +50,6 @@ export const styles = StyleSheet.create({
     borderColor: colors.lightGrey,
   },
   BackImgView: {
-    
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
@@ -70,8 +69,12 @@ export const styles = StyleSheet.create({
   },
   devider: {
     marginVertical: vs(10),
-    // width: '30%',
     height: 0.7,
     backgroundColor: colors.lightGrey,
+  },
+  noDataTxt: {
+    textAlign: 'center',
+    fontFamily: Font.SofiaProMedium,
+    color: colors.GreySuit,
   },
 });

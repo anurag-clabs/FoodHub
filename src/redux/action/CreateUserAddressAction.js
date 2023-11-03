@@ -8,7 +8,7 @@ export const CreateUserAddress = async addressData => {
       showMessage({
         type: 'success',
         duration: 2000,
-        message: res.data.message,
+        message: 'Addresses added successfully',
         backgroundColor: colors.green,
       });
       return res.data;
@@ -16,7 +16,7 @@ export const CreateUserAddress = async addressData => {
       showMessage({
         type: 'info',
         backgroundColor: colors.errorColor,
-        message: err.response.data.error,
+        message: 'Failed to add address',
         duration: 2000,
       });
       return null;
