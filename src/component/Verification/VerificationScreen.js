@@ -1,14 +1,20 @@
-import { View, Text, ImageBackground, TouchableOpacity, SafeAreaView } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { commonStyle } from '../../utils/commonStyles';
-import { useNavigation, useRoute } from '@react-navigation/native';
+import {
+  View,
+  Text,
+  ImageBackground,
+  TouchableOpacity,
+  SafeAreaView,
+} from 'react-native';
+import React, {useState, useEffect} from 'react';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {commonStyle} from '../../utils/commonStyles';
+import {useNavigation, useRoute} from '@react-navigation/native';
 import OTPTextView from 'react-native-otp-textinput';
-import { Button } from '../../common/Button/Button';
-import { PhoneNumberVerify } from '../../redux/action/PhoneNumberVerify';
-import { EmailVerify } from '../../redux/action/EmailVerify';
-import { colors } from '../../utils/colors';
+import {Button} from '../../common/Button/Button';
+import {PhoneNumberVerify} from '../../redux/action/PhoneNumberVerify';
+import {EmailVerify} from '../../redux/action/EmailVerify';
+import {colors} from '../../utils/colors';
 
 const VerificationScreen = () => {
   const route = useRoute();
@@ -27,13 +33,13 @@ const VerificationScreen = () => {
       const response = await PhoneNumberVerify({
         phoneNumber: phoneNumber,
         verificationCode: enteredOTP,
-      })
-      setLoader(false)
+      });
+      setLoader(false);
       if (response) {
         setIsOTPVerified(true);
         navigation.reset({
           index: 0,
-          routes: [{ name: type === 'signup' ? 'Login' : 'Drawer' }],
+          routes: [{name: type === 'signup' ? 'Login' : 'Drawer'}],
         });
       }
     } else if (email) {
@@ -41,8 +47,8 @@ const VerificationScreen = () => {
       const response = await EmailVerify({
         email: email,
         verificationCode: enteredOTP,
-      })
-      setLoader(false)
+      });
+      setLoader(false);
       if (response) {
         setIsOTPVerified(true);
         navigation.navigate(type === 'login' ? 'Drawer' : 'Login');
@@ -52,7 +58,9 @@ const VerificationScreen = () => {
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
-      <ImageBackground source={images.commonBackGround} style={commonStyle.backGroundImg}>
+      <ImageBackground
+        source={images.commonBackGround}
+        style={commonStyle.backGroundImg}>
         <View style={[commonStyle.m_20, commonStyle.mV20]}>
           <Text style={styles.headerTxt}>Verification Code</Text>
           <Text style={styles.textInputTxt}>
@@ -66,14 +74,17 @@ const VerificationScreen = () => {
             autoFocus
             keyboardType="numeric"
             containerStyle={styles.textInputContainer}
-            handleTextChange={(text) => setEnteredOTP(text)}
+            handleTextChange={text => setEnteredOTP(text)}
             textInputStyle={styles.roundedTextInput}
             tintColor={colors.orange}
           />
           <View style={commonStyle.alignCenter}>
             <View style={styles.bottomSignUpTxtView}>
-              <Text style={styles.bottomSignUpTxt}>I don’t receive a code! </Text>
-              <TouchableOpacity onPress={() => navigation.navigate('Verification')}>
+              <Text style={styles.bottomSignUpTxt}>
+                I don’t receive a code!{' '}
+              </Text>
+              <TouchableOpacity
+                onPress={() => navigation.navigate('Verification')}>
                 <Text style={styles.bottomSignUpTxt2}>Please resend</Text>
               </TouchableOpacity>
             </View>

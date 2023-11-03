@@ -1,7 +1,7 @@
-import { Platform, StyleSheet } from 'react-native';
-import { ms, s, vs } from 'react-native-size-matters';
-import { Font } from '../../utils/Fonts';
-import { colors } from '../../utils/colors';
+import {Platform, StyleSheet} from 'react-native';
+import {ms, s, vs} from 'react-native-size-matters';
+import {Font} from '../../utils/Fonts';
+import {colors} from '../../utils/colors';
 
 export const styles = StyleSheet.create({
   Button: {
@@ -13,8 +13,8 @@ export const styles = StyleSheet.create({
     borderRadius: 25,
     shadowColor: colors.black,
     shadowOffset: {
-        width: 0,
-        height: 2,
+      width: 0,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -30,8 +30,8 @@ export const styles = StyleSheet.create({
     borderRadius: 30,
     shadowColor: colors.black,
     shadowOffset: {
-        width: 0,
-        height: 2,
+      width: 0,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -67,8 +67,8 @@ export const styles = StyleSheet.create({
     borderRadius: 15,
     shadowColor: colors.black,
     shadowOffset: {
-        width: 0,
-        height: 2,
+      width: 0,
+      height: 2,
     },
     shadowOpacity: 0.25,
     shadowRadius: 4,
@@ -121,7 +121,7 @@ export const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginLeft: s(5),
-    marginRight: s(10)
+    marginRight: s(10),
   },
   iconTxt: {
     fontFamily: Font.SofiaProMedium,

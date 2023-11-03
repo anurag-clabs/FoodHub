@@ -21,12 +21,12 @@ import {DrawerAnimationContext} from '../context/DrawerAnimationContext/Index';
 import Animated, {Value} from 'react-native-reanimated';
 import {useNavigation} from '@react-navigation/native';
 import {commonStyle} from '../utils/commonStyles';
-import Profile from '../Screen/Profile';
-import Address from '../Screen/Address';
-import Reviews from '../Screen/Reviews';
-import ReviewResturent from '../Screen/ReviewResturent';
-import PaymentMethod from '../Screen/PaymentMethod';
-import HelpsFAQs from '../Screen/HelpsFAQs';
+import Profile from '../screens/Profile';
+import Address from '../screens/Address';
+import Reviews from '../screens/Reviews';
+import ReviewResturent from '../screens/ReviewResturent';
+import PaymentMethod from '../screens/PaymentMethod';
+import HelpsFAQs from '../screens/HelpsFAQs';
 
 const Drawer = createDrawerNavigator();
 const {width: WIDTH} = Dimensions.get('window');
@@ -87,7 +87,8 @@ const DrawerNav = () => {
         style={{flex: 1}}>
         <Drawer.Navigator
           screenOptions={{
-            headerShown: false, activeTintColor: 'white',
+            headerShown: false,
+            activeTintColor: 'white',
             inactiveTintColor: 'grey',
           }}
           initialRouteName="Screens"
@@ -103,7 +104,7 @@ const DrawerNav = () => {
             overflow: 'visible',
             zIndex: 1,
           }}
-          drawerContent={(props) => {
+          drawerContent={props => {
             return <CustomDrawerContent {...props} />;
           }}>
           <Drawer.Screen name="Screens">

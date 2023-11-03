@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
-import { Font } from '../../utils/Fonts';
-import { s, vs, ms } from 'react-native-size-matters';
-import { colors } from '../../utils/colors';
+import {StyleSheet} from 'react-native';
+import {Font} from '../../utils/Fonts';
+import {s, vs, ms} from 'react-native-size-matters';
+import {colors} from '../../utils/colors';
 
 export const styles = StyleSheet.create({
   constainer: {
@@ -24,7 +24,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     elevation: 5,
   },
   ImgView: {
@@ -83,7 +83,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     elevation: 1,
   },
   textInputBar: {
@@ -100,7 +100,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     elevation: 1,
   },
   filter: {
@@ -183,7 +183,7 @@ export const styles = StyleSheet.create({
   Restaurants: {
     fontFamily: Font.SofiaProBold,
     fontSize: 16,
-    color: colors.black
+    color: colors.black,
   },
   Verified: {
     resizeMode: 'contain',
@@ -247,14 +247,14 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 3,
     shadowColor: colors.DarkShadeGray,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     elevation: 5,
   },
   ItemTitle: {
     marginTop: vs(20),
     fontFamily: Font.SofiaProBold,
     fontSize: 16,
-    color: colors.black
+    color: colors.black,
   },
   FoodName: {
     marginVertical: vs(10),

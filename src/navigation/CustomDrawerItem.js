@@ -1,8 +1,8 @@
 import React from 'react';
 import {StyleSheet, Text, TouchableOpacity, View} from 'react-native';
 import {s, vs} from 'react-native-size-matters';
-import { colors } from '../utils/colors';
-import { Font } from '../utils/Fonts';
+import {colors} from '../utils/colors';
+import {Font} from '../utils/Fonts';
 
 const CustomDrawerItem = props => {
   const {title, icon, titleStyle, ...touchableProps} = props;
@@ -32,6 +32,6 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     color: colors.black,
-    fontFamily: Font.SofiaProMedium
+    fontFamily: Font.SofiaProMedium,
   },
 });

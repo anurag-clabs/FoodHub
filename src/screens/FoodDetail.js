@@ -2,7 +2,7 @@ import React from 'react';
 import FoodDetailScreen from '../component/FoodDetail/FoodDetailScreen';
 
 const FoodDetail = () => {
-  return <FoodDetailScreen />
-}
+  return <FoodDetailScreen />;
+};
 
 export default FoodDetail;
