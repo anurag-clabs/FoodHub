@@ -1,10 +1,8 @@
-import React from 'react'
+import React from 'react';
 import PhoneRegistrationScreen from '../component/PhoneRegistration/PhoneRegistrationScreen';
 
 const PhoneRegistration = () => {
-  return (
-    <PhoneRegistrationScreen />
-  )
-}
+  return <PhoneRegistrationScreen />;
+};
 
 export default PhoneRegistration;

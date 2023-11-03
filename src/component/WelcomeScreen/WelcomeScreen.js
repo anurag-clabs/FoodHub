@@ -5,15 +5,15 @@ import {
   TouchableOpacity,
   Image,
 } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { images } from '../../utils/image';
-import { styles } from './style';
-import { commonStyle } from '../../utils/commonStyles';
-import { useNavigation } from '@react-navigation/native';
-import { UserSocialLogin } from '../../redux/action/UserSocialLogin';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import React, {useState, useEffect} from 'react';
+import {images} from '../../utils/image';
+import {styles} from './style';
+import {commonStyle} from '../../utils/commonStyles';
+import {useNavigation} from '@react-navigation/native';
+import {UserSocialLogin} from '../../redux/action/UserSocialLogin';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
 import auth from '@react-native-firebase/auth';
-import { SocialButton } from '../../common/Button/Button';
+import {SocialButton} from '../../common/Button/Button';
 import DeviceInfo from 'react-native-device-info';
 
 const WelcomScreen = () => {
@@ -22,7 +22,8 @@ const WelcomScreen = () => {
 
   useEffect(() => {
     GoogleSignin.configure({
-      webClientId: '774557546104-7928mshorf5ladf6v5fec5ldep6mo849.apps.googleusercontent.com',
+      webClientId:
+        '774557546104-7928mshorf5ladf6v5fec5ldep6mo849.apps.googleusercontent.com',
       offlineAccess: true,
     });
   }, []);
@@ -41,7 +42,7 @@ const WelcomScreen = () => {
       const SocialLoginData = {
         name: name,
         email: email,
-        deviceId: deviceId
+        deviceId: deviceId,
       };
       setLoader(true);
       const response = await UserSocialLogin(SocialLoginData);
@@ -64,7 +65,9 @@ const WelcomScreen = () => {
         source={images.welcomeBackIMG}
         style={styles.backgroundImg}>
         <View style={styles.skipBtnView}>
-          <TouchableOpacity style={styles.skipBtn} onPress={() => navigation.navigate('Drawer')}>
+          <TouchableOpacity
+            style={styles.skipBtn}
+            onPress={() => navigation.navigate('Drawer')}>
             <Text style={styles.skipBtnTxt}>Skip</Text>
           </TouchableOpacity>
         </View>
@@ -85,11 +88,11 @@ const WelcomScreen = () => {
             <SocialButton
               style={commonStyle.blackShadow}
               image={images.facebook}
-              buttonName='FACEBOOK'
+              buttonName="FACEBOOK"
             />
             <SocialButton
               image={images.google}
-              buttonName='GOOGLE'
+              buttonName="GOOGLE"
               loading={loader}
               onPress={handelSignUpVerify}
             />

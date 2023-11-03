@@ -9,21 +9,18 @@ import {
   FlatList,
   Modal,
 } from 'react-native';
-import React, { useState, useEffect } from 'react';
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { useNavigation } from '@react-navigation/native';
-import { commonStyle } from '../../utils/commonStyles';
-import {
-  Featured_Restaurants,
-  PopularItems,
-} from '../../common/Data/Data';
+import React, {useState, useEffect} from 'react';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {useNavigation} from '@react-navigation/native';
+import {commonStyle} from '../../utils/commonStyles';
+import {Featured_Restaurants, PopularItems} from '../../common/Data/Data';
 import Resturents from '../../common/Resturents/Resturents';
 import FoodItem from '../../common/FoodItem/FoodItem';
-import { MenuHeader } from '../../common/Header/Header';
+import {MenuHeader} from '../../common/Header/Header';
 import FilterScreen from '../Filter/FilterScreen';
-import { useDispatch } from 'react-redux';
-import { GetCategoriesAction } from '../../redux/action/GetCategoriesAction';
+import {useDispatch} from 'react-redux';
+import {GetCategoriesAction} from '../../redux/action/GetCategoriesAction';
 import CategoriesList from '../../common/Categories/CategoriesList';
 
 const HomeScreen = () => {
@@ -45,7 +42,7 @@ const HomeScreen = () => {
     handleCategories();
   }, []);
 
-  const renderRestaurants = ({ item }) => (
+  const renderRestaurants = ({item}) => (
     <View style={commonStyle.v_10}>
       <Resturents
         backgroundImg={item.BackgroundImg}
@@ -64,7 +61,7 @@ const HomeScreen = () => {
     </View>
   );
 
-  const renderFoodItem = ({ item }) => (
+  const renderFoodItem = ({item}) => (
     <View style={[commonStyle.v_10]}>
       <FoodItem
         itemImg={item.ItemImg}
@@ -86,11 +83,11 @@ const HomeScreen = () => {
         showImage={true}
       />
       <ScrollView showsVerticalScrollIndicator={false}>
-
         <Text style={styles.titleHeader}>
           What would you like {'\n'}to order
         </Text>
-        <View style={[commonStyle.rowCenter, commonStyle.mT20, commonStyle.m_20]}>
+        <View
+          style={[commonStyle.rowCenter, commonStyle.mT20, commonStyle.m_20]}>
           <View style={styles.textInputStyleView}>
             <Image style={styles.search} source={images.search} />
             <TextInput
@@ -123,8 +120,7 @@ const HomeScreen = () => {
             <Text style={styles.titleRestaurant}>Popular Items</Text>
             <TouchableOpacity
               style={styles.titleView}
-              onPress={() => navigation.navigate('Category')}
-            >
+              onPress={() => navigation.navigate('Category')}>
               <Text style={styles.ViewAll}>View All</Text>
               <Image style={styles.OpenAero} source={images.OpenAero} />
             </TouchableOpacity>
@@ -144,8 +140,7 @@ const HomeScreen = () => {
           visible={isFilterModalVisible}
           onRequestClose={() => {
             setModalVisible(!isModalVisible);
-          }}
-        >
+          }}>
           <View style={styles.modalBackground}>
             <FilterScreen onclick={toggleFilterModal} />
           </View>

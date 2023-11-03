@@ -2,9 +2,7 @@ import React from 'react';
 import VerificationScreen from '../component/Verification/VerificationScreen';
 
 const Verification = () => {
-  return (
-      <VerificationScreen />
-  );
+  return <VerificationScreen />;
 };
 
 export default Verification;

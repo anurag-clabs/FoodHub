@@ -7,23 +7,23 @@ import {
   TouchableOpacity,
   SafeAreaView,
 } from 'react-native';
-import React, { useState } from 'react';
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { commonStyle } from '../../utils/commonStyles';
-import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
-import { Button, SocialButton } from '../../common/Button/Button';
-import { colors } from '../../utils/colors';
-import { useNavigation } from '@react-navigation/native';
-import { UserSignUp } from '../../redux/action/UserSignUp';
+import React, {useState} from 'react';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {commonStyle} from '../../utils/commonStyles';
+import {TextInputText} from '../../common/TextInputComponent/TextInputComponent';
+import {Button, SocialButton} from '../../common/Button/Button';
+import {colors} from '../../utils/colors';
+import {useNavigation} from '@react-navigation/native';
+import {UserSignUp} from '../../redux/action/UserSignUp';
 
 const SignUpScreen = () => {
   const navigation = useNavigation();
 
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
   const [passwordHide, setPasswordHide] = useState(true);
-  const [password, setPassword] = useState("");
+  const [password, setPassword] = useState('');
   const [isFullNameFocused, setIsFullNameFocused] = useState(false);
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -58,19 +58,19 @@ const SignUpScreen = () => {
         email: email,
         password: password,
       };
-      setLoader(true)
+      setLoader(true);
       const response = await UserSignUp(signupData);
-      setLoader(false)
+      setLoader(false);
       if (response) {
         console.log('Signup successful');
         navigation.navigate('Verification', {
-          email
+          email,
         });
       } else {
         console.log('Signup failed');
       }
     } catch (error) {
-      setLoader(false)
+      setLoader(false);
     }
   };
 
@@ -83,23 +83,36 @@ const SignUpScreen = () => {
           <Text style={styles.headerTxt}>Sign Up</Text>
           <Text style={styles.textInputTxt}>Full name</Text>
           <TextInput
-            style={isFullNameFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
-            placeholder='Your Full name'
+            style={
+              isFullNameFocused
+                ? [styles.textInputStyle, styles.focusedTextInput]
+                : styles.textInputStyle
+            }
+            placeholder="Your Full name"
             onFocus={handleFullNameFocus}
             value={name}
             onChangeText={text => setName(text)}
           />
           <Text style={styles.textInputTxt}>E-mail</Text>
           <TextInput
-            style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
-            placeholder='Your email'
+            style={
+              isEmailFocused
+                ? [styles.textInputStyle, styles.focusedTextInput]
+                : styles.textInputStyle
+            }
+            placeholder="Your email"
             onFocus={handleEmailFocus}
             value={email}
             onChangeText={text => setEmail(text)}
           />
           <Text style={styles.textInputTxt}>Password</Text>
-          <View onFocus={handlePasswordFocus}
-            style={isPasswordFocused ? [styles.passwordView, styles.FocuspasswordView] : styles.passwordView}>
+          <View
+            onFocus={handlePasswordFocus}
+            style={
+              isPasswordFocused
+                ? [styles.passwordView, styles.FocuspasswordView]
+                : styles.passwordView
+            }>
             <TextInputText
               style={styles.passwordInputStyle}
               secureTextEntry={passwordHide}
@@ -137,16 +150,16 @@ const SignUpScreen = () => {
             <Text style={styles.deviderTxt}> Sign up with </Text>
             <View style={styles.devider} />
           </View>
-          <View style={[styles.iconView, commonStyle.m_20,]}>
+          <View style={[styles.iconView, commonStyle.m_20]}>
             <SocialButton
               shadowStyle={commonStyle.blackShadow}
               image={images.facebook}
-              buttonName='FACEBOOK'
+              buttonName="FACEBOOK"
             />
             <SocialButton
               shadowStyle={commonStyle.blackShadow}
               image={images.google}
-              buttonName='GOOGLE'
+              buttonName="GOOGLE"
             />
           </View>
         </View>

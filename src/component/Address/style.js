@@ -1,7 +1,7 @@
-import { StyleSheet } from 'react-native';
-import { colors } from '../../utils/colors';
-import { Font } from '../../utils/Fonts';
-import { ms, s, vs } from 'react-native-size-matters';
+import {StyleSheet} from 'react-native';
+import {colors} from '../../utils/colors';
+import {Font} from '../../utils/Fonts';
+import {ms, s, vs} from 'react-native-size-matters';
 
 export const styles = StyleSheet.create({
   textInputTxt: {
@@ -11,18 +11,18 @@ export const styles = StyleSheet.create({
   addressDataNameTxt: {
     fontSize: 16,
     fontFamily: Font.SofiaProSemiBold,
-    color: colors.darkPrimaryColor
+    color: colors.darkPrimaryColor,
   },
   addressDataTxt: {
     width: '75%',
     fontSize: 16,
     fontFamily: Font.SofiaProRegular,
-    color: colors.DimGray
+    color: colors.DimGray,
   },
   numberText: {
     fontSize: 16,
     fontFamily: Font.SofiaProSemiBold,
-    color: colors.darkPrimaryColor
+    color: colors.darkPrimaryColor,
   },
   editTxt: {
     fontSize: 16,
@@ -38,7 +38,7 @@ export const styles = StyleSheet.create({
     shadowOpacity: 0.5,
     shadowRadius: 4,
     shadowColor: colors.orange,
-    shadowOffset: { width: 0, height: 2 },
+    shadowOffset: {width: 0, height: 2},
     elevation: 2,
   },
   addressBox: {
@@ -56,16 +56,15 @@ export const styles = StyleSheet.create({
     borderRadius: 15,
   },
   backImg: {
-    tintColor: colors.black
+    tintColor: colors.black,
   },
   addAddressBtn: {
     marginTop: vs(10),
     flexDirection: 'row',
-    justifyContent: 'flex-end' 
-
+    justifyContent: 'flex-end',
   },
   deletebtn: {
-    marginRight: s(20)
+    marginRight: s(20),
   },
   devider: {
     marginVertical: vs(10),

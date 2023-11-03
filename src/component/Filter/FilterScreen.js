@@ -1,12 +1,12 @@
 import React from 'react';
-import { View, Text, TouchableOpacity, Image } from 'react-native';
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { commonStyle } from '../../utils/commonStyles';
-import { ApplyButton } from '../../common/Button/Button';
-import { colors } from '../../utils/colors';
+import {View, Text, TouchableOpacity, Image} from 'react-native';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {commonStyle} from '../../utils/commonStyles';
+import {ApplyButton} from '../../common/Button/Button';
+import {colors} from '../../utils/colors';
 
-const FilterScreen = ({ onclick }) => {
+const FilterScreen = ({onclick}) => {
   return (
     <View style={styles.container}>
       <TouchableOpacity onPress={onclick} style={styles.closeImg}>
@@ -14,7 +14,7 @@ const FilterScreen = ({ onclick }) => {
       </TouchableOpacity>
       <View style={commonStyle.m_20}>
         <Text style={styles.itemName}>Sort</Text>
-        <View style={[styles.devider,]} />
+        <View style={[styles.devider]} />
         <TouchableOpacity style={[commonStyle.rowSpace, commonStyle.mV5]}>
           <Text style={styles.subTotalTxt}>Relevance</Text>
           <Image source={images.BlankDot} style={styles.blankImg} />
@@ -40,7 +40,7 @@ const FilterScreen = ({ onclick }) => {
           <Image source={images.BlankDot} style={styles.blankImg} />
         </TouchableOpacity>
       </View>
-      <View style={[styles.devider, commonStyle.m_20, commonStyle.mT10,]} />
+      <View style={[styles.devider, commonStyle.m_20, commonStyle.mT10]} />
       <View style={[commonStyle.rowSpace, commonStyle.m_20]}>
         <TouchableOpacity>
           <Text style={styles.cleanTxt}>Clear All</Text>
@@ -50,11 +50,11 @@ const FilterScreen = ({ onclick }) => {
           txtstyle={styles.Txtstyle}
           color={colors.orange}
           txtcolor={colors.white}
-          buttonName='Apply'
+          buttonName="Apply"
         />
       </View>
     </View>
-  )
-}
+  );
+};
 
 export default FilterScreen;

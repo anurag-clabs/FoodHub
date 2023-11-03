@@ -1,21 +1,21 @@
 import React from 'react';
-import { AnimatedTabBarNavigator } from 'react-native-animated-nav-tab-bar';
+import {AnimatedTabBarNavigator} from 'react-native-animated-nav-tab-bar';
 import Animated from 'react-native-reanimated';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { DrawerAnimationContext } from '../context/DrawerAnimationContext/Index';
-import { vs, s } from 'react-native-size-matters';
-import { StyleSheet } from 'react-native';
-import { colors } from '../utils/colors';
-import Home from '../Screen/Home';
-import FavoritesFood from '../Screen/FavoritesFood';
-import { Font } from '../utils/Fonts';
-import MyOrder from '../Screen/MyOrder';
-import Cart from '../Screen/Cart';
-import Search from '../Screen/Search';
+import {DrawerAnimationContext} from '../context/DrawerAnimationContext/Index';
+import {vs, s} from 'react-native-size-matters';
+import {StyleSheet} from 'react-native';
+import {colors} from '../utils/colors';
+import Home from '../screens/Home';
+import FavoritesFood from '../screens/FavoritesFood';
+import {Font} from '../utils/Fonts';
+import MyOrder from '../screens/MyOrder';
+import Cart from '../screens/Cart';
+import Search from '../screens/Search';
 
 const AppTabNavigator = () => {
   const Tabs = AnimatedTabBarNavigator();
-  const { progress } = React.useContext(DrawerAnimationContext);
+  const {progress} = React.useContext(DrawerAnimationContext);
 
   // const scale = Animated.interpolate(progress, {
   //   inputRange: [0, 1],
@@ -66,14 +66,14 @@ const AppTabNavigator = () => {
             inactiveTintColor: 'grey',
             activeBackgroundColor: colors.orange,
             labelStyle: {
-              fontFamily: Font.SofiaProMedium
+              fontFamily: Font.SofiaProMedium,
             },
           }}>
           <Tabs.Screen
             name="Home"
             component={Home}
             options={{
-              tabBarIcon: ({ focused, color, size }) => (
+              tabBarIcon: ({focused, color, size}) => (
                 <Icon
                   name={focused ? 'compass' : 'compass-outline'}
                   size={size}
@@ -86,7 +86,7 @@ const AppTabNavigator = () => {
             name="Search"
             component={Search}
             options={{
-              tabBarIcon: ({ focused, color, size }) => (
+              tabBarIcon: ({focused, color, size}) => (
                 <Icon
                   name={focused ? 'search-circle' : 'search'}
                   size={size}
@@ -99,7 +99,7 @@ const AppTabNavigator = () => {
             name="Cart"
             component={Cart}
             options={{
-              tabBarIcon: ({ focused, color, size }) => (
+              tabBarIcon: ({focused, color, size}) => (
                 <Icon
                   name={focused ? 'bag' : 'bag-outline'}
                   size={size}
@@ -112,7 +112,7 @@ const AppTabNavigator = () => {
             name="Favorites"
             component={FavoritesFood}
             options={{
-              tabBarIcon: ({ focused, color, size }) => (
+              tabBarIcon: ({focused, color, size}) => (
                 <Icon
                   name={focused ? 'heart' : 'heart-outline'}
                   size={size}
@@ -125,7 +125,7 @@ const AppTabNavigator = () => {
             name="Notifications"
             component={MyOrder}
             options={{
-              tabBarIcon: ({ focused, color, size }) => (
+              tabBarIcon: ({focused, color, size}) => (
                 <Icon
                   name={focused ? 'notifications' : 'notifications-outline'}
                   size={size}

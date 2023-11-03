@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import {
   View,
   Text,
@@ -8,21 +8,21 @@ import {
   Image,
   SafeAreaView,
 } from 'react-native';
-import { styles } from './style';
-import { images } from '../../utils/image';
-import { commonStyle } from '../../utils/commonStyles';
-import { TextInputText } from '../../common/TextInputComponent/TextInputComponent';
-import { useNavigation } from '@react-navigation/native';
-import { BackButton, Button, SocialButton } from '../../common/Button/Button';
-import { colors } from '../../utils/colors';
-import { showMessage } from 'react-native-flash-message';
-import { UserLogin } from '../../redux/action/UserLogin';
+import {styles} from './style';
+import {images} from '../../utils/image';
+import {commonStyle} from '../../utils/commonStyles';
+import {TextInputText} from '../../common/TextInputComponent/TextInputComponent';
+import {useNavigation} from '@react-navigation/native';
+import {BackButton, Button, SocialButton} from '../../common/Button/Button';
+import {colors} from '../../utils/colors';
+import {showMessage} from 'react-native-flash-message';
+import {UserLogin} from '../../redux/action/UserLogin';
 
 const LoginScreen = () => {
   const navigation = useNavigation();
   const [passwordHide, setPasswordHide] = useState(true);
   const [email, setEmail] = useState('');
-  const [phoneNumber, setPhoneNumber] = useState('')
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [password, setPassword] = useState('');
   const [isEmailFocused, setIsEmailFocused] = useState(false);
   const [isPasswordFocused, setIsPasswordFocused] = useState(false);
@@ -62,8 +62,7 @@ const LoginScreen = () => {
         });
         return;
       }
-    }
-    else {
+    } else {
       if (!phoneNumber?.length) {
         showMessage({
           type: 'error',
@@ -74,23 +73,25 @@ const LoginScreen = () => {
       }
     }
 
-    const loginData = isEmailSelected ? {
-      email: email,
-      password: password,
-    } : {
-      phoneNumber: phoneNumber,
-    }
+    const loginData = isEmailSelected
+      ? {
+          email: email,
+          password: password,
+        }
+      : {
+          phoneNumber: phoneNumber,
+        };
 
     try {
-      setLoader(true)
+      setLoader(true);
       const response = await UserLogin(loginData);
-      setLoader(false)
+      setLoader(false);
       if (response) {
         console.log('login successful', response);
         if (isEmailSelected) {
-          navigation.navigate('Verification', { email , type: 'login'})
+          navigation.navigate('Verification', {email, type: 'login'});
         } else {
-          navigation.navigate('Verification', { phoneNumber })
+          navigation.navigate('Verification', {phoneNumber});
         }
       } else {
         console.log('Login failed');
@@ -98,30 +99,46 @@ const LoginScreen = () => {
     } catch (error) {
       setLoader(false);
     }
-  }
+  };
 
   return (
     <SafeAreaView style={commonStyle.constainer}>
       <ImageBackground
         source={images.commonBackGround}
         style={commonStyle.backGroundImg}>
-        <BackButton 
-          style={[commonStyle.m_20, commonStyle.mV20]}
-        />
-        <View style={[commonStyle.m_20, ]}>
+        <BackButton style={[commonStyle.m_20, commonStyle.mV20]} />
+        <View style={[commonStyle.m_20]}>
           <Text style={styles.headerTxt}>Login</Text>
           <View style={[commonStyle.rowCenter, styles.toggleView]}>
             <TouchableOpacity
               onPress={() => setIsEmailSelected(true)}
-              style={isEmailSelected ? [styles.toggleBtn, commonStyle.orangeShadow] : styles.toggleBtn}>
-              <Text style={isEmailSelected ? [styles.toggleTxt, styles.activeToggleTxt] : styles.toggleTxt}>
+              style={
+                isEmailSelected
+                  ? [styles.toggleBtn, commonStyle.orangeShadow]
+                  : styles.toggleBtn
+              }>
+              <Text
+                style={
+                  isEmailSelected
+                    ? [styles.toggleTxt, styles.activeToggleTxt]
+                    : styles.toggleTxt
+                }>
                 E-mail
               </Text>
             </TouchableOpacity>
             <TouchableOpacity
               onPress={() => setIsEmailSelected(false)}
-              style={!isEmailSelected ? [styles.toggleBtn, commonStyle.orangeShadow] : styles.toggleBtn}>
-              <Text style={!isEmailSelected ? [styles.toggleTxt, styles.activeToggleTxt] : styles.toggleTxt}>
+              style={
+                !isEmailSelected
+                  ? [styles.toggleBtn, commonStyle.orangeShadow]
+                  : styles.toggleBtn
+              }>
+              <Text
+                style={
+                  !isEmailSelected
+                    ? [styles.toggleTxt, styles.activeToggleTxt]
+                    : styles.toggleTxt
+                }>
                 Number
               </Text>
             </TouchableOpacity>
@@ -131,20 +148,29 @@ const LoginScreen = () => {
               <Text style={styles.textInputTxt}>E-mail</Text>
               <TextInput
                 onFocus={handleEmailFocus}
-                style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
+                style={
+                  isEmailFocused
+                    ? [styles.textInputStyle, styles.focusedTextInput]
+                    : styles.textInputStyle
+                }
                 placeholder="Your email"
-                onChangeText={(text) => setEmail(text)}
+                onChangeText={text => setEmail(text)}
                 value={email}
               />
               <Text style={styles.textInputTxt}>Password</Text>
-              <View onFocus={handlePasswordFocus}
-                style={isPasswordFocused ? [styles.passwordView, styles.FocuspasswordView] : styles.passwordView}>
+              <View
+                onFocus={handlePasswordFocus}
+                style={
+                  isPasswordFocused
+                    ? [styles.passwordView, styles.FocuspasswordView]
+                    : styles.passwordView
+                }>
                 <TextInputText
                   style={styles.passwordInputStyle}
                   secureTextEntry={passwordHide}
                   placeHolder="Password"
                   value={password}
-                  onChangeText={(text) => setPassword(text)}
+                  onChangeText={text => setPassword(text)}
                 />
                 <TouchableOpacity onPress={hideandShowPassword}>
                   <Image
@@ -158,11 +184,15 @@ const LoginScreen = () => {
             <View style={commonStyle.mT20}>
               <Text style={styles.textInputTxt}>Number</Text>
               <TextInput
-                style={isEmailFocused ? [styles.textInputStyle, styles.focusedTextInput] : styles.textInputStyle}
+                style={
+                  isEmailFocused
+                    ? [styles.textInputStyle, styles.focusedTextInput]
+                    : styles.textInputStyle
+                }
                 onFocus={handleEmailFocus}
                 keyboardType="numeric"
                 placeholder="Your phone number"
-                onChangeText={(text) => setPhoneNumber(text)}
+                onChangeText={text => setPhoneNumber(text)}
                 value={phoneNumber}
                 maxLength={10}
               />
@@ -170,7 +200,8 @@ const LoginScreen = () => {
           )}
         </View>
         <View style={styles.bottomView}>
-          <TouchableOpacity onPress={() => navigation.navigate('RessetPassword')}>
+          <TouchableOpacity
+            onPress={() => navigation.navigate('RessetPassword')}>
             <Text style={styles.forgotTxt}>Forgot password?</Text>
           </TouchableOpacity>
           <Button
@@ -181,7 +212,9 @@ const LoginScreen = () => {
           />
           <View style={[commonStyle.alignCenter]}>
             <View style={styles.bottomSignUpTxtView}>
-              <Text style={styles.bottomSignUpTxt}>Don’t have an account? </Text>
+              <Text style={styles.bottomSignUpTxt}>
+                Don’t have an account?{' '}
+              </Text>
               <TouchableOpacity onPress={() => navigation.navigate('SignUp')}>
                 <Text style={styles.bottomSignUpTxt2}>Sign up</Text>
               </TouchableOpacity>
@@ -193,18 +226,18 @@ const LoginScreen = () => {
               <Text style={styles.deviderTxt}> Sign up with </Text>
               <View style={styles.devider} />
             </View>
-            <View style={[styles.iconView, commonStyle.m_20,]}>
-            <SocialButton
-              shadowStyle={commonStyle.blackShadow}
-              image={images.facebook}
-              buttonName='FACEBOOK'
-            />
-            <SocialButton
-              shadowStyle={commonStyle.blackShadow}
-              image={images.google}
-              buttonName='GOOGLE'
-            />
-          </View>
+            <View style={[styles.iconView, commonStyle.m_20]}>
+              <SocialButton
+                shadowStyle={commonStyle.blackShadow}
+                image={images.facebook}
+                buttonName="FACEBOOK"
+              />
+              <SocialButton
+                shadowStyle={commonStyle.blackShadow}
+                image={images.google}
+                buttonName="GOOGLE"
+              />
+            </View>
           </View>
         </View>
       </ImageBackground>
