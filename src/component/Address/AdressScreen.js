@@ -20,7 +20,6 @@ const AdressScreen = () => {
   const dispatch = useDispatch();
   const navigation = useNavigation();
   const [loader, setLoader] = useState(false);
-  const [refreshing, setRefreshing] = useState(false);
 
   const handleUserAddress = () => dispatch(GetUserAddressAction());
   const getUserAddressDetail = useSelector(state => state?.GetUserAddress?.getAddressData);
@@ -43,9 +42,9 @@ const AdressScreen = () => {
   }
 
   const onRefresh = () => {
-    setRefreshing(true);
+    setLoader(true)
     setTimeout(() => {
-      setRefreshing(false);
+      setLoader(false);
     }, 1000);
   };
 
@@ -58,7 +57,7 @@ const AdressScreen = () => {
         ) : (
           <ScrollView showsVerticalScrollIndicator={false}
             refreshControl={
-              <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+              <RefreshControl refreshing={loader} onRefresh={onRefresh} />
             }>
             <TouchableOpacity
               onPress={() => navigation.navigate('AddresseTextInput')}

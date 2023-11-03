@@ -9,9 +9,11 @@ import { colors } from '../../utils/colors';
 const FilterScreen = ({ onclick }) => {
   return (
     <View style={styles.container}>
-      <TouchableOpacity onPress={onclick} style={styles.closeImg}>
-        <Image source={images.Close} style={styles.closeIcon} />
-      </TouchableOpacity>
+      <View style={commonStyle.alignCenter}>
+        <TouchableOpacity onPress={onclick} style={styles.closeImg}>
+          <Image source={images.Close} style={styles.closeIcon} />
+        </TouchableOpacity>
+      </View>
       <View style={commonStyle.m_20}>
         <Text style={styles.itemName}>Sort</Text>
         <View style={[styles.devider,]} />

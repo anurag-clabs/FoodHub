@@ -143,9 +143,8 @@ const HomeScreen = () => {
           transparent={true}
           visible={isFilterModalVisible}
           onRequestClose={() => {
-            setModalVisible(!isModalVisible);
-          }}
-        >
+            setFilterModalVisible(!isFilterModalVisible);
+          }}>
           <View style={styles.modalBackground}>
             <FilterScreen onclick={toggleFilterModal} />
           </View>

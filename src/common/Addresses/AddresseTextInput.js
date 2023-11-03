@@ -62,17 +62,19 @@ const AddresseTextInput = () => {
             if (editType) {
                 setLoader(true)
                 const response = await UpdateUserAddressAction(id, addressData);
+                navigation.goBack()
                 console.log('Update User Address successful', response);
                 setLoader(false)
             } else {
                 setLoader(true)
                 const response = await CreateUserAddress(addressData);
+                navigation.goBack()
                 console.log('Create User Address successful', response);
                 setLoader(false)
             }
         } catch (error) {
-            setLoader(false);
             console.log('Create User Address failed', error);
+            setLoader(false);
         }
     }
 

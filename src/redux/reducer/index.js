@@ -4,6 +4,7 @@ import {GetCatecories} from "./GetCategories";
 import {GetUserDetail} from "./GetUserDetail";
 import {UpdateProfile} from "./UpdateProfile";
 import {GetUserAddress} from "./GetUserAddress";
+import {GetResturents} from "./GetResturents";
 
 const config = {
     key: 'primary',
@@ -14,7 +15,8 @@ const config = {
     GetCatecories,
     GetUserDetail,
     UpdateProfile,
-    GetUserAddress
+    GetUserAddress,
+    GetResturents
   };
 
 

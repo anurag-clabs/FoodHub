@@ -34,7 +34,7 @@ const SearchScreen = () => {
         text='Search'
         showImage={true}
       />
-      <ScrollView showsVerticalScrollIndicator={false}>
+      <ScrollView showsVerticalScrollIndicator={false} style={commonStyle.mB40}>
         <View style={[styles.textInputStyleView, commonStyle.mT20, commonStyle.m_20]}>
           <View style={commonStyle.rowCenter}>
             <Image style={styles.search} source={images.search} />
@@ -51,7 +51,7 @@ const SearchScreen = () => {
         <CategoriesList />
         </View>
         <Text style={[styles.headerText, commonStyle.m_20]}>Populer Items</Text>
-        <View style={[commonStyle.mT20, commonStyle.pH10, commonStyle.mB40]}>
+        <View style={[commonStyle.mT20, commonStyle.pH10, ]}>
           {renderItem()}
         </View>
       </ScrollView>

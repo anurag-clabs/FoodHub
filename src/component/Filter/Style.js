@@ -18,7 +18,6 @@ export const styles = StyleSheet.create({
         alignItems: "center",
         justifyContent: "center",
         position: "absolute",
-        left: 200,
         top: vs(-40),
         backgroundColor: colors.white
     },
